@@ -6,7 +6,7 @@ let mapleader=" "
 
 " PLUGIN ----- {{{
 
-call plug#begin('/home/ben/.config/nvim/plugged')
+call plug#begin('~/.config/plugged')
 Plug '907th/vim-auto-save'
 Plug 'vimwiki/vimwiki'
 Plug 'cohama/lexima.vim'
@@ -156,7 +156,7 @@ vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 
 " (r)eload config
-nnoremap <leader>r :so $vimrc_v2<CR>
+nnoremap <leader>r :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>w :w<CR>
 
 " reamp S-K to leader K, S-K can open man under cursor
