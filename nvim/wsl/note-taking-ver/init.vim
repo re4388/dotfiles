@@ -328,4 +328,22 @@ augroup auto_fold_init_vim
 	au Filetype vim setlocal foldlevel=0 foldmethod=marker
 augroup END
 
+" gl- is to long..use leader l
+autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiChangeSymbolTo -<CR>
+
 " }}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
