@@ -1,5 +1,6 @@
+
 export ZSH=$HOME/.oh-my-zsh
-#
+
 # to not let tmux mess the vim color schem
 export TERM=xterm-256color
 
@@ -8,13 +9,11 @@ export TERM=xterm-256color
 # vim 
 # ===============
 
-export MYVIMRC=$HOME/.config/nvim/init.vim
-export vimrc_v2=$HOME/.config/nvim2/init.vim
 
 #  export my_vimrc_plugin_folder=$HOME/.config/nvim/config_group
 
-export vp1=$HOME/.config/nvim/init.vim
-
+export vrc=$HOME/.config/nvim/init.vim
+export vp=$HOME/.config/nvim
 export VIMCONFIG=~/.config/nvim
 
 alias v=nvim
