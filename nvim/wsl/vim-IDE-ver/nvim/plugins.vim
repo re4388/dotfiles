@@ -1,13 +1,22 @@
 
 call plug#begin('~/.config/plugged')
 
-" Theme
+
+
+" status line
 Plug 'itchyny/lightline.vim'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+
+
+
+" Theme
 " Plug 'jacoborus/tender.vim'
 " Plug 'morhetz/gruvbox'
 Plug 'folke/tokyonight.nvim'
-Plug 'vim-airline/vim-airline-themes'
+
+
+"visual help
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'Xuyuanp/scrollbar.nvim'
 
@@ -34,6 +43,10 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'andymass/vim-matchup'
 " q
 Plug 'wellle/targets.vim'
+" I like this plugin, maybe oneday I will enable it when I do coding!
+" Plug 'mbbill/undotree'
+
+
 
 " doc in vim
 " try :DD js map
@@ -73,15 +86,14 @@ Plug 'justinmk/vim-sneak'
 " Rooter changes the working directory to the project root  
 Plug 'airblade/vim-rooter'
 
-
-Plug 'vim-test/vim-test'
-
+" enable when I need
+" Plug 'vim-test/vim-test'
 
 " auto disbale highlight after search
 Plug 'romainl/vim-cool'
 
 " auto session
-Plug 'rmagatti/auto-session'
+" Plug 'rmagatti/auto-session'
 
 " not working 2021_07_21_08_10
 " Plug 'tpope/vim-obsession'
