@@ -1,4 +1,4 @@
-echom "Source wsl-v2 init.vim"
+echom "Source note-taking ver init.vim"
 
 " always set leaderkey at front
 nnoremap <SPACE> <Nop>
@@ -332,18 +332,3 @@ augroup END
 autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiChangeSymbolTo -<CR>
 
 " }}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
