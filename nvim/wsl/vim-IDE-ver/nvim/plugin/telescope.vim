@@ -1,6 +1,6 @@
 
 " nnoremap <silent> <M-y> <cmd>:lua require("FTerm").toggle()<CR>
-nnoremap <M-e> <cmd>Telescope buffers<cr>
+" nnoremap <M-e> <cmd>Telescope buffers<cr>
 nnoremap <M-w> <cmd>Telescope live_grep<cr>
 
 " change to toggle exploer in kyazdani42/nvim-tree.lua

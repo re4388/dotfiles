@@ -1,4 +1,3 @@
-
 using namespace System.Management.Automation.Host
 Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
 
@@ -128,3 +127,4 @@ function show {
     Write-Output "- `$vp => neovim init.vim path"
     Write-Output "- `$ws => c:/projects"
     Write-Output "*****"
+}
