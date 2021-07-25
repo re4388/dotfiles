@@ -8,7 +8,6 @@ source ~/.config/nvim/plugins.vim
 
 " put this into lua
 lua require('commented').setup()
-
 " put this into file in auto load place
 augroup auto_fold_init_vim
 	au!
@@ -30,3 +29,8 @@ lua require("t1")
 
 " lua << EOF
 " vim.api.nvim_set_var('sneak#s_next', 1)
+"
+
+
+
+

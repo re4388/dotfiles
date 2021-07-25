@@ -1,7 +1,8 @@
 
 call plug#begin('~/.config/plugged')
 
-
+" like favoriats file
+Plug 'ThePrimeagen/harpoon'
 
 " status line
 Plug 'itchyny/lightline.vim'

@@ -14,3 +14,5 @@ print("util.lua loading")
 -- options = { noremap = true}
 -- map('n', '<leader><esc>', ':nohlsearch<cr>', options)
 -- map('number')
+--
+--
