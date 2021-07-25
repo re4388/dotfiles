@@ -1,8 +1,12 @@
 
-echom "load nvim-for-win and vscode"
+echo "load nvim-for-win and vscode"
+
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+
+" nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
+" nmap s <Plug>ReplaceWithRegisterOperator
 
 call plug#begin(stdpath('config') . '/plugged')
 
@@ -13,6 +17,7 @@ Plug 'morhetz/gruvbox'
 " already built in in vscode-neovim
 " Plug 'tpope/vim-commentary'
 " Plug 'terrortylor/nvim-comment'
+
 " text object
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
@@ -22,13 +27,14 @@ Plug 'kana/vim-textobj-line'
 " I also modify the plugin folder to only want ii and aI(modifed to ai), the
 " plugin folder is inside nvim folder, not vscode inner folder
 Plug 'michaeljsmith/vim-indent-object'
-" let you use ciq and use cib for both [ and {
+" let you use ciq and use cib for both [ and { 
 Plug 'wellle/targets.vim'
 
 " this allow me have a better %/<BS> function
 " like jump to close bracket even in the same line
 " but still there's some functionality not working in TS file
 Plug 'andymass/vim-matchup'
+
 Plug 'winston0410/commented.nvim'
 " justinmk apple justinmk
 " tpope apple justinmk wellle
@@ -37,12 +43,13 @@ Plug 'winston0410/commented.nvim'
 Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
+ 
 Plug 'romainl/vim-cool'
 Plug 'unblevable/quick-scope'
 
 " use :DD lang keyword to get doc
 Plug 'romainl/vim-devdocs'
-call plug#end()
+call plug#end() 
 
 
 
@@ -80,11 +87,11 @@ endfunction
 
 
 if exists('g:vscode')
-
-	    " =======================================
+		
+	  " =======================================
 		" leader key in VScode
 		" =======================================
-
+		
 		" file save and quit
 		xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
 		nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
@@ -104,10 +111,10 @@ if exists('g:vscode')
 		nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 
 		" use leader c is way better then gcc XD
-		xmap <leader>c  <Plug>VSCodeCommentary
-		nmap <leader>c  <Plug>VSCodeCommentary
-		omap <leader>c  <Plug>VSCodeCommentary
-		nmap <leader>cc <Plug>VSCodeCommentaryLine
+    xmap <leader>c  <Plug>VSCodeCommentary
+    nmap <leader>c  <Plug>VSCodeCommentary
+    omap <leader>c  <Plug>VSCodeCommentary
+    nmap <leader>cc <Plug>VSCodeCommentaryLine
 
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
@@ -134,35 +141,33 @@ if exists('g:vscode')
 
 		xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
 
-		" use space as which key, but this way is slow..
+		" use space as which key, but this way is slow.. 
 		" nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 		" xnoremap <silent> <Space> :<C-u>call <SID>openWhichKeyInVisualMode()<CR>
 
-		" use tab to change tab
-		nmap <Tab> gt
-		nmap <S-Tab> gT
+		" use tab to change tab 
+		nmap <Tab> gt 
+		nmap <S-Tab> gT 
 
 		" set clipboard=unnamed
 else
 		if (has("termguicolors"))
  				set termguicolors
 		endif
-
+    
 		" use another leader + c for non-vscode comment
     lua require('commented').setup()
 
 	  " =======================================
 		" leader key in window (not vscode)
 		" =======================================
-
+		
 		" use leader and w to save
 		nnoremap <leader>w :w<cr>
-    " faster ex mode
-    nnoremap <CR> :
 		" the counterpart is npm script in vscode
 		nnoremap <leader>r :so %<cr>
 		nnoremap <leader>q :q<cr>
-
+		
 		" Start an external command with a single bang
 		nnoremap ! :!
 		" Simulate same TAB behavior in VSCode
@@ -174,7 +179,7 @@ else
 		vnoremap > >gv
 
 		" Theme
-		syntax enable
+		" syntax enable
 
 		" colorscheme tender
 		colorscheme gruvbox
@@ -182,7 +187,7 @@ else
     set relativenumber
     set ruler
     set syntax
-    syntax on
+    " syntax on
     set wrap
     set noswapfile
 		set shiftwidth=2
@@ -192,11 +197,13 @@ else
 
 endif
 
+" faster ex mode
+nnoremap <CR> :
 
 " =======================================
 " Below are shared by win & vscode
 " =======================================
-
+		
 set clipboard=unnamed
 
 " ========================
@@ -234,7 +241,7 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nnoremap <M-d> .
+nnoremap <M-d> . 
 
 " Duplicate lines
 " make it even easier than yyp
@@ -254,6 +261,8 @@ nnoremap <leader>v V
 " this is very useful to copy the whole block down and modify it!
 " as long as you have padding space between block
 nnoremap <Leader>cp yap<S-}>p
+
+
 
 " ========================
 " easier to move
@@ -282,8 +291,10 @@ vnoremap <C-c>l g$
 xmap <M-n> /
 nmap <M-n> /
 
+
 " To turn off highlighting until the next search
 nnoremap <leader>n :noh<cr>
+
 
 " find word in file under cursor
 nnoremap <M-m> *
@@ -293,9 +304,12 @@ nmap m <Plug>ReplaceWithRegisterOperator
 nnoremap gm m
 xnoremap gm m
 
+
+
 " Use backspace key for matching parens
 nnoremap <M-q> %
 xnoremap <M-q> %
+
 
 " use shift j/k to move line down/up
 nnoremap <S-j> :m .+1<CR>==
@@ -309,8 +323,9 @@ highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=unde
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 let g:qs_max_chars=150
 
-" andymass/vim-matchup
-" below line is to disable highlight
+" andymass/vim-matchup 
+" below line is to disable highlight functionalites
+" to lessen possible performance issue
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
