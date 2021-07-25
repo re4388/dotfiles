@@ -1,0 +1,933 @@
+{
+  "whichkey.sortOrder": "alphabetically",
+  "whichkey.delay": 0,
+  "whichkey.bindings": [
+    {
+      "key": ";",
+      "name": "vscode command",
+      "type": "command",
+      "command": "workbench.action.showCommands"
+    },
+    {
+      "key": "p",
+      "name": "project open in new window",
+      "type": "command",
+      "command": "projectManager.listProjectsNewWindow"
+    },
+    {
+      "key": "a",
+      "name": "add project/note",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "p",
+          "name": "new project",
+          "type": "command",
+          "command": "projectManager.saveProject"
+        },
+        {
+          "key": "n",
+          "name": "note",
+          "type": "command",
+          "command": "Notes.newNote"
+        }
+      ]
+    },
+
+    // kind of I can use this for a better view(side bar)
+    // than use gH(popup style)
+    {
+      "key": "?",
+      "name": "View All References",
+      "type": "command",
+      "command": "references-view.find",
+      "when": "editorHasReferenceProvider"
+    },
+    {
+      "key": "r",
+      "name": "Run",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "t",
+          "name": "task",
+          "type": "command",
+          "command": "workbench.action.tasks.runTask"
+        },
+        {
+          "key": "n",
+          "name": "npm script",
+          "type": "command",
+          "command": "npm-script.run"
+        }
+      ]
+    },
+    {
+      "key": ".",
+      "name": "setting(JSON)",
+      "type": "command",
+      "command": "workbench.action.openSettingsJson"
+    },
+    {
+      "key": "k",
+      "name": "keyboard(JSON)",
+      "type": "command",
+      "command": "workbench.action.openGlobalKeybindingsFile"
+    },
+    {
+      "key": "c",
+      "name": "close all open window",
+      "type": "command",
+      "command": "workbench.action.closeAllEditors"
+    },
+    {
+      "key": "b",
+      "name": "Toggle SideBar visible",
+      "type": "command",
+      "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+      "key": "f",
+      "name": "File",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "f",
+          "name": "file save without format",
+          "type": "command",
+          "command": "workbench.action.files.saveWithoutFormatting"
+        },
+        {
+          "key": "n",
+          "name": "copy file name",
+          "type": "command",
+          "command": "copy-file-name.copyFileNameWithExtension"
+        }
+      ]
+    },
+    {
+      "key": "o",
+      "name": "Open",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "o",
+          "name": "open outlined sidebar",
+          "type": "command",
+          "command": "outline.focus-files.focus"
+        },
+        {
+          "key": "u",
+          "name": "open unsaved files",
+          "type": "command",
+          "command": "unsaved-files.focus"
+        },
+        {
+          "key": "m",
+          "name": "open modifed area",
+          "type": "command",
+          "command": "workbench.scm.focus"
+        },
+        {
+          "key": "g",
+          "name": "open git graph",
+          "type": "command",
+          "command": "git-graph.view"
+        },
+        {
+          "key": "r",
+          "name": "Recent Project",
+          "type": "command",
+          "command": "workbench.action.openRecent"
+        },
+        {
+          "key": "n",
+          "name": "Note",
+          "type": "command",
+          "command": "Notes.listNotes"
+        },
+        {
+          "key": "t",
+          "name": "user task",
+          "type": "command",
+          "command": "workbench.action.tasks.openUserTasks"
+        },
+        {
+          "key": "q",
+          "name": "Quokka TS",
+          "type": "command",
+          "command": "quokka.createFile"
+        }
+      ]
+    },
+    {
+      "key": "v",
+      "name": "Split Vertical",
+      "type": "command",
+      "command": "workbench.action.splitEditor"
+    },
+    {
+      "key": "h",
+      "name": "Split Horizontal",
+      "type": "command",
+      "command": "workbench.action.splitEditorDown"
+    },
+    {
+      "key": "l",
+      "name": "LSP...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": ";",
+          "name": "Refactor",
+          "type": "command",
+          "command": "editor.action.refactor",
+          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+        },
+        {
+          "key": "a",
+          "name": "Auto Fix",
+          "type": "command",
+          "command": "editor.action.autoFix",
+          "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
+        },
+        {
+          "key": "d",
+          "name": "Definition",
+          "type": "command",
+          "command": "editor.action.revealDefinition",
+          "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        },
+        {
+          "key": "D",
+          "name": "Declaration",
+          "type": "command",
+          "command": "editor.action.revealDeclaration"
+        },
+        {
+          "key": "e",
+          "name": "Errors",
+          "type": "command",
+          "command": "workbench.actions.view.problems"
+        },
+        {
+          "key": "f",
+          "name": "Format",
+          "type": "command",
+          "command": "editor.action.formatDocument",
+          "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+        },
+        {
+          "key": "i",
+          "name": "Implementation",
+          "type": "command",
+          "command": "editor.action.goToImplementation",
+          "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+        },
+        {
+          "key": "l",
+          "name": "Code Lens",
+          "type": "command",
+          "command": "codelens.showLensesInCurrentLine"
+        },
+        {
+          "key": "n",
+          "name": "Next Problem",
+          "type": "command",
+          "command": "editor.action.marker.next",
+          "when": "editorFocus"
+        },
+        {
+          "key": "N",
+          "name": "Next Problem (Proj)",
+          "type": "command",
+          "command": "editor.action.marker.nextInFiles",
+          "when": "editorFocus"
+        },
+        {
+          "key": "o",
+          "name": "Outline",
+          "type": "command",
+          "command": "outline.focus"
+        },
+        {
+          "key": "p",
+          "name": "Prev Problem",
+          "type": "command",
+          "command": "editor.action.marker.prevInFiles",
+          "when": "editorFocus"
+        },
+        {
+          "key": "P",
+          "name": "Prev Problem (Proj)",
+          "type": "command",
+          "command": "editor.action.marker.prev",
+          "when": "editorFocus"
+        },
+        {
+          "key": "q",
+          "name": "Quick Fix",
+          "type": "command",
+          "command": "editor.action.quickFix",
+          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+        },
+        {
+          "key": "r",
+          "name": "References",
+          "type": "command",
+          "command": "editor.action.goToReferences",
+          "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+        },
+        {
+          "key": "R",
+          "name": "Rename",
+          "type": "command",
+          "command": "editor.action.rename",
+          "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+        },
+        {
+          "key": "v",
+          "name": "View All References",
+          "type": "command",
+          "command": "references-view.find",
+          "when": "editorHasReferenceProvider"
+        },
+        {
+          "key": "s",
+          "name": "Go To Symbol",
+          "type": "command",
+          "command": "workbench.action.gotoSymbol"
+        },
+        {
+          "key": "S",
+          "name": "Show All Symbols",
+          "type": "command",
+          "command": "workbench.action.showAllSymbols"
+        }
+      ]
+    },
+    {
+      "key": "n",
+      "name": "No Highlight",
+      "type": "command",
+      "command": "vscode-neovim.send",
+      "args": ":noh<CR>"
+    },
+    {
+      "key": "t",
+      "name": "Toggle terminal",
+      "type": "command",
+      "command": "workbench.action.togglePanel"
+    }
+  ],
+  "postfix.languages": ["html", "vue", "python", "javascript", "typescript"],
+  "editor.lineHeight": 25,
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "Hack Nerd Font Mono, 'Courier New', monospace, 細明體",
+  "editor.fontLigatures": true,
+  "editor.formatOnType": true,
+  // "editor.cursorStyle": "block",
+  "editor.renderIndentGuides": true,
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "all",
+  "editor.wrappingIndent": "indent",
+  "editor.accessibilitySupport": "off",
+  "editor.foldingStrategy": "indentation",
+  "editor.cursorSmoothCaretAnimation": false,
+  "editor.formatOnSave": true,
+  "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
+  "javascript.format.enable": false,
+  "workbench.sideBar.location": "right",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
+  },
+  "javascript.validate.enable": false,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true
+  },
+  "gitlens.views.repositories.files.layout": "list",
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "left": {
+        "underline": "yellow"
+      },
+      "right": {
+        "surround": "#155FFA"
+      },
+      "name": {
+        // "highlight": "rgba(180, 20, 80, 0.3)"
+        "highlight": "rgba(101, 113, 200,0.2)"
+      }
+    },
+    "closing": {
+      "full": {
+        "custom": {
+          "dark": {
+            "borderWidth": "0 0 2px 0",
+            "borderColor": "white",
+            "borderStyle": "solid",
+            "borderRadius": "4px",
+            "right": "10px"
+          },
+          "light": {
+            "borderWidth": "0 0 2px 0",
+            "borderColor": "black",
+            "borderStyle": "solid",
+            "borderRadius": "4px",
+            "right": "10px"
+          }
+        }
+      }
+    }
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "telemetry.enableTelemetry": false,
+  "workbench.statusBar.visible": true,
+  "breadcrumbs.enabled": true,
+
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.vue",
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.fontSize": 15,
+  "explorer.confirmDragAndDrop": false,
+  "git.enableSmartCommit": true,
+  "jenkins.pipeline.linter.connector.crumbUrl": "http://10.0.4.52:3080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)",
+  "jenkins.pipeline.linter.connector.url": "http://10.0.4.52:3080/pipeline-model-converter/validate",
+  "jenkins.pipeline.linter.connector.pass": "2aoxjgju",
+  "jenkins.pipeline.linter.connector.user": "re4388",
+  "files.eol": "\n",
+  // "code-runner.runInTerminal": true,
+  // "pyqt-integration.qtdesigner.path": "c:\\Users\\re438\\Anaconda3\\Lib\\site-packages\\pyqt5_tools\\Qt\\bin\\designer.exe",
+  "explorer.confirmDelete": false,
+  "workbench.tree.indent": 20,
+  "problems.showCurrentInStatus": true,
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    },
+    {
+      "name": "Auth0 Orange",
+      "value": "#eb5424"
+    },
+    {
+      "name": "C# Purple",
+      "value": "#68217A"
+    },
+    {
+      "name": "Gatsby Purple",
+      "value": "#639"
+    },
+    {
+      "name": "Go Cyan",
+      "value": "#5dc9e2"
+    },
+    {
+      "name": "Java Blue-Gray",
+      "value": "#557c9b"
+    }
+  ],
+  // "leetcode.endpoint": "leetcode-cn",
+  // "leetcode.workspaceFolder": "C:\\Users\\re438\\.leetcode",
+  // "leetcode.defaultLanguage": "python3",
+  // "leetcode.hint.commandShortcut": false,
+  // "leetcode.hint.configWebviewMarkdown": false,
+  // "leetcode.hint.commentDescription": false,
+  "files.trimTrailingWhitespace": true,
+  "trailing-spaces.trimOnSave": true,
+  "sync.quietSync": true,
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  "sync.removeExtensions": false,
+  "remote.SSH.remotePlatform": {
+    "10.0.4.52": "linux"
+  },
+  "files.associations": {
+    "*.py": "python",
+    "*.js": "javascript",
+    "*.lua": "lua"
+  },
+  "python.terminal.activateEnvironment": false,
+  "python.analysis.disabled": ["unresolved-import"],
+  "python.jediEnabled": true,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": [
+    "--max-line-length",
+    "120",
+    "--experimental"
+  ],
+  "python.condaPath": "C:\\Users\\re438\\Anaconda3",
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  "python.experiments.enabled": false,
+  "python.testing.promptToConfigure": false,
+  "python.defaultInterpreterPath": "C:\\Users\\re438\\Anaconda3",
+  "yaml.schemas": {
+    "file:///c%3A/Users/tp2011002/.vscode/extensions/atlassian.atlascode-2.8.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "file:///toc.schema.json": "/toc\\.yml/i"
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": false
+  },
+  "[javascript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false
+    // "editor.formatOnSave": true
+  },
+  "codemetrics.basics.DecorationModeEnabled": false,
+  "python.languageServer": "Jedi",
+  "cSpell.userWords": [
+    "Autosize",
+    "BIOPACS",
+    "CFMN",
+    "Customizer",
+    "DICOM",
+    "Datepicker",
+    "Devkit",
+    "Envr",
+    "Firestorage",
+    "Focusable",
+    "Framefunctional",
+    "Gamification",
+    "Heera",
+    "MUEN",
+    "Mammo",
+    "SLMB",
+    "SPECT",
+    "STUDYDIRECT",
+    "Scrollable",
+    "Sidenav",
+    "Timepoint",
+    "Todos",
+    "Truncator",
+    "UIDs",
+    "VDOM",
+    "Vercel",
+    "Vite",
+    "Wado",
+    "apikey",
+    "bioclinica",
+    "boto",
+    "chrono",
+    "combinator",
+    "commandline",
+    "dasherize",
+    "downlevel",
+    "drawcloud",
+    "dynamoose",
+    "esbuild",
+    "favourite",
+    "filesaver",
+    "firestore",
+    "formik",
+    "gcloud",
+    "ifps",
+    "inversify",
+    "joinhandles",
+    "keycodes",
+    "linkify",
+    "minigrep",
+    "minlength",
+    "mockito",
+    "noprefix",
+    "notionhq",
+    "numer",
+    "nums",
+    "octokit",
+    "openweather",
+    "overmind",
+    "paginator",
+    "palevioletred",
+    "papayawhip",
+    "parens",
+    "prerender",
+    "runtimes",
+    "sendgrid",
+    "serializable",
+    "set",
+    "shiftcoders",
+    "slimbot",
+    "spfs",
+    "stackoverflow",
+    "strs",
+    "structopt",
+    "subcommand",
+    "tabindex",
+    "telegramtoken",
+    "templat",
+    "timepoints",
+    "tsdx",
+    "typedoc",
+    "typeorm",
+    "unmanaged",
+    "unmarshall",
+    "uuidv",
+    "vals",
+    "viewports",
+    "wadouri",
+    "xstate",
+    "youtube"
+  ],
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // "[dart]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.formatOnType": true,
+  //   "editor.rulers": [80],
+  //   "editor.selectionHighlight": false,
+  //   "editor.suggest.snippetsPreventQuickSuggestions": false,
+  //   "editor.suggestSelection": "first",
+  //   "editor.tabCompletion": "onlySnippets",
+  //   "editor.wordBasedSuggestions": false
+  // },
+  "vscode_custom_css.imports": ["file:///C:/vscode/custom.css"],
+  "vscode_custom_css.policy": true,
+
+  "editor.quickSuggestions": {
+    "other": true, // set false and only use ctrl+ space to activiate
+    "comments": true,
+    "strings": true
+  },
+  "editor.acceptSuggestionOnCommitCharacter": false, // if we want to use . or ; to accept suggesiton
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.suggest.localityBonus": true,
+  "editor.quickSuggestionsDelay": 0,
+  "editor.wordBasedSuggestions": true,
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.suggestFontSize": 17,
+
+  // when cursor hover, all words highlighted
+  "editor.occurrencesHighlight": true,
+
+  // when use in Angular, maybe 5000 or turn off
+  "files.autoSaveDelay": 5000,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "yaml.format.singleQuote": true,
+  // comment this out to let eslint to indent files, and not allow Prettier isn’t overriding it.
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.singleQuote": true,
+  "[rust]": {
+    "editor.defaultFormatter": "statiolake.vscode-rustfmt"
+  },
+  "prettier.useEditorConfig": false,
+  "workbench.editor.decorations.colors": true,
+  "workbench.editor.decorations.badges": true,
+  "jestrunner.codeLensSelector": "**/*.{test,spec,jest}.{js,jsx,ts,tsx}",
+  // "jestrunner.configPath": "jest.config.js",
+  // "jestrunner.changeDirectoryToWorkspaceRoot": true,
+  // "jestrunner.jestCommand": "npm run test --",
+  "jestrunner.debugOptions": {
+    "name": "Debug Jest Tests 20210224",
+    "type": "node",
+    "request": "launch",
+    "skipFiles": [
+      "${workspaceFolder}/node_modules/**/*.js",
+      "${workspaceFolder}/lib/**/*.js",
+      "<node_internals>/**/*.js"
+    ],
+    "runtimeArgs": [
+      // "--inspect-brk",   // this will break at first
+      "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "--runInBand"
+    ],
+    "console": "integratedTerminal",
+    "internalConsoleOptions": "neverOpen",
+    "port": 9230
+  },
+  "git-graph.repository.commits.order": "topo",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "editor.linkedEditing": true,
+  "settingsSync.keybindingsPerPlatform": false,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "gitlens.blame.avatars": false,
+  "gitlens.currentLine.enabled": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+  "php.validate.executablePath": "c:/PHP7/php.exe",
+  "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace, 細明體",
+  "vsintellicode.features.python.deepLearning": "disabled",
+  "debug.onTaskErrors": "debugAnyway",
+  "editor.fontSize": 16,
+  "workbench.colorTheme": "Darcula Theme from IntelliJ",
+  "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "codetour.showMarkers": false,
+  "terminal.integrated.tabs.enabled": true,
+  "powershell.promptToUpdatePowerShell": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.suggest.preview": true,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "redhat.telemetry.enabled": true,
+  "rust-analyzer.cargo.allFeatures": true,
+  "dashboard.projectData": null,
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    // "warning",
+    // "info",
+    "hint"
+  ],
+  "leetcode.workspaceFolder": "c:\\projects\\leetcode\\ts\\src",
+  // vim
+  "vim.incsearch": true,
+  // "vim.smartcase": false,
+  // this will allow * search case sensitive
+  "vim.ignorecase": false,
+  "vim.useCtrlKeys": true,
+  // "vim.enableNeovim": true,
+  // "vim.neovimPath": "",
+  "vim.hlsearch": true,
+  "vim.leader": "<Space>",
+  "vim.replaceWithRegister": true,
+  "vim.handleKeys": {
+    //"<C-a>": false,
+    //"<C-f>": false
+  },
+
+  //
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // use h and l to go to line start and end
+    {
+      "before": ["<C-h>"],
+      "after": ["^"]
+    },
+    { "before": ["<C-l>"], "after": ["$"] },
+    // still use ctrl+a to select the all doc
+    // {
+    //   "before": ["<C-a>"],
+    //   "after": ["g", "g", "V", "G"]
+    // },
+    // fater vertical move
+    {
+      "before": ["<C-j>"],
+      "after": ["3", "j"]
+    },
+    {
+      "before": ["C-k"],
+      "after": ["3", "k"]
+    },
+    // allow indent and undent active in normal mode
+    {
+      "before": ["Tab"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<shift+tab>"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    // mapping switch b/n screen, only left and right switch
+
+    // here we map redo and undo to vscode native due to hard to support
+    // https://stackoverflow.com/questions/47527162/vscode-vscodevim-undo-key-rebinding
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo",
+          "args": []
+          // }
+        }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "h"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["leader", "l"],
+      "after": ["<C-w>", "l"]
+    },
+    // to disable highlighted afer search done with simple keystroke
+    {
+      "before": ["<Leader>", "/"],
+      "commands": [":noh"]
+    },
+    // use leader key for some operations
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<Leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<Leader>", "t"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["g", "d"],
+      "after": [],
+      "commands": ["editor.action.revealDefinition"],
+      "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+      "before": ["leader", "r"],
+      "commands": ["editor.action.goToReferences"],
+      "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+      "before": ["<Leader>", "b"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<Leader>", "f"],
+      "commands": ["workbench.explorer.fileView.focus"]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
+    }
+  ],
+  "vim.sneak": true,
+  "vim.easymotion": true,
+  "vim.useSystemClipboard": true,
+  // solve this next time..
+  "vim.neovimPath": "C:/tools/neovim/Neovim/bin/nvim.exe",
+  "vim.enableNeovim": true,
+  "vim.neovimConfigPath": "C:/tools/vs_vode_neovim_config/init.vim",
+  "vim.neovimUseConfigFile": true,
+  // setting for neo vim
+  "open-in-vim.useNeovim": true,
+  "snippet.openInNewEditor": false,
+  "snippet.verbose": true,
+  "snippet.defaultLanguage": "JavaScript",
+  "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init.vim",
+  "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "editor.scrollBeyondLastLine": false,
+  "workbench.list.automaticKeyboardNavigation": false,
+  "Lua.telemetry.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.codeLens": false,
+  "toggle.settingTitle": "editor.lineNumbers",
+  "toggle.settingState1": "on",
+  "toggle.settingState2": "off",
+  "editor.lineNumbers": "off",
+  // "update.mode": "manual",
+  "update.mode": "manual",
+  "gitlens.codeLens.enabled": false,
+  "macros": {
+    "commentDown": [
+      "editor.action.copyLinesDownAction",
+      "cursorUp",
+      "editor.action.addCommentLine",
+      "cursorDown"
+    ],
+    "consoleLogDown": [
+      "editor.action.addSelectionToNextFindMatch",
+      "extension.clog"
+    ]
+  },
+  "Notes.notesLocation": "c:\\Users\\re438\\OneDrive - g.ntu.edu.tw\\vscode_note_ext",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
+  },
+  "workbench.startupEditor": "readme",
+  "window.zoomLevel": -1
+  // comment out unused setting
+  // "sync.gist": "15a5c108da48387f044f32a00dcca024",
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   "html",
+  //   "vue",
+  //   "typescript",
+  //   "typescriptreact"
+  // ],
+  // "eslint.options": {
+  //   "extensinons": [".ts", ".js", ".tsx", ".jsx"]
+  // },
+  // "eslint.alwaysShowStatus": true,
+  // "eslint.format.enable": true,
+  // "[lua]": {
+  //   "editor.defaultFormatter": "gccfeli.vscode-lua"
+  // }
+}
