@@ -39,6 +39,7 @@ Plug 'winston0410/commented.nvim'
 
 " good utl
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
  
@@ -123,7 +124,7 @@ map Y y$
 nnoremap U <C-r>
 
 " use alt-d to replace .
-nnoremap <M-d> . 
+nmap <M-d> . 
 
 
 " Duplicate paragraph and put down
