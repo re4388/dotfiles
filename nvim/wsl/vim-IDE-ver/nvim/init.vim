@@ -20,11 +20,16 @@ lua require("t1")
 "  POC
 " ==========================================
 
+
+
+
+
+
+
+
 " How to code function defined in lua file
 " command! Scratch lua require'tool'.makeScratch()
 
-" test autoload test_folder
-" call test_folder#test1#sayHello()
 
 
 " lua << EOF

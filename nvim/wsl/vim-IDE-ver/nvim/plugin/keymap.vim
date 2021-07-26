@@ -75,7 +75,7 @@ map Y y$
 nnoremap U <C-r>
 
 " use alt-d to replace .
-nnoremap <M-d> . 
+nmap <M-d> . 
 
 
 " Duplicate paragraph and put down
@@ -125,6 +125,8 @@ vnoremap U u
 " no need to hit shift
 nnoremap gu gU
 nnoremap gU gu
+
+
 
 
 
@@ -207,7 +209,7 @@ cnoremap <C-l> <Right>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 
-
+nnoremap <leader><leader>s :g//#<Left><Left>
 
 
 " Map execute vim script this line
@@ -215,6 +217,25 @@ cnoremap <C-k> <Up>
 nnoremap <leader>x :exe getline(".")<CR>
 vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
+
+" https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
+" <key> + pattern + <CR> + digits + <CR> to jump to global search result
+function! CCR()
+    " grab the current command-line
+    let cmdline = getcmdline()
+    
+    " does it end with '#' or 'number' or one of its abbreviations?
+    if cmdline =~ '\v\C/(#|nu|num|numb|numbe|number)$'
+        " press '<CR>' then ':' to enter command-line mode
+        return "\<CR>:"
+    else
+        " press '<CR>'
+        return "\<CR>"
+    endif
+endfunction
+
+" map '<CR>' in command-line mode to execute the function above
+cnoremap <expr> <CR> CCR()
 
 
 """"""""""""""""""""""""""""""

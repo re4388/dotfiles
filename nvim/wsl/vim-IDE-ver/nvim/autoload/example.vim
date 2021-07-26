@@ -1,7 +1,5 @@
-echom "Loading..."
 
 function! example#Hello()
-    echom "Hello, world!"
+    echom "from example#Hello"
 endfunction
 
-echom "Done loading."

@@ -42,16 +42,18 @@ require('formatter').setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
+  autocmd FileType lua autocmd BufWritePre <buffer> FormatWrite
+  autocmd FileType typescript  autocmd BufWritePre <buffer> FormatWrite
   autocmd BufWritePost *.ts,*.js,*.rs,*.lua FormatWrite
 augroup END
 ]], true)
 EOF
 
 
-augroup FormatAutogroup
-  autocmd!
-  autocmd FileType lua autocmd BufWritePre <buffer> FormatWrite
-  autocmd FileType typescript  autocmd BufWritePre <buffer> FormatWrite
-  " autocmd FileType rust autocmd BufWritePre <buffer> FormatWrite
-  " Add other filetype hooks below...
-augroup end
+" augroup FormatAutogroup
+  " autocmd!
+  " autocmd FileType lua autocmd BufWritePre <buffer> FormatWrite
+  " autocmd FileType typescript  autocmd BufWritePre <buffer> FormatWrite
+  " " autocmd FileType rust autocmd BufWritePre <buffer> FormatWrite
+  " " Add other filetype hooks below...
+" augroup end
