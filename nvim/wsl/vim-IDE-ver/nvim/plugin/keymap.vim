@@ -49,17 +49,25 @@ vnoremap <C-c>h g^
 vnoremap <C-c>l g$
 
 " Treat long lines as break lines (useful when moving around in them)
-nmap j gj
-nmap k gk
+" nmap j gj
+" nmap k gk
 vmap j gj
 vmap k gk
+nnoremap j <cmd>call benhu#jump_direction('j')<CR>
+nnoremap k <cmd>call benhu#jump_direction('k')<CR>
+
+
+" TODO: tj mapping, not working, investiage later
+" For moving quickly up and down,
+" Goes to the first line above/below that isn't whitespace
+" Thanks to: http://vi.stackexchange.com/a/213
+" nnoremap <silent> gj :let _=&lazyredraw<CR>:set lazyredraw<CR>/\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
+" nnoremap <silent> gk :let _=&lazyredraw<CR>:set lazyredraw<CR>?\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
 
 """"""""""""""""""""""""""""""
 " Fast edit 
 """"""""""""""""""""""""""""""
-
 inoremap jk <esc>
-
 " align Y to D, C
 map Y y$
 
@@ -181,6 +189,8 @@ nnoremap <C-Down> :resize +2<cr>
 """""""""""""""""""""""""""""
 " => ex-mode 
 """"""""""""""""""""""""""""""
+" Run the last command
+nnoremap <leader><leader>c :<up>
 
 " Quick command mod
 nnoremap <CR> :
@@ -196,6 +206,16 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
+
+
+
+
+" Map execute vim script this line
+" nnoremap  :exec '!'.getline('.')<cr>
+nnoremap <leader>x :exe getline(".")<CR>
+vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
+
+
 
 """"""""""""""""""""""""""""""
 " => Misc 
