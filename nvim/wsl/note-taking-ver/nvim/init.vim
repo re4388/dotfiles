@@ -1,8 +1,8 @@
 echom "Source note-taking ver init.vim"
 
 " always set leaderkey at front
-nnoremap <SPACE> <Nop>
-let mapleader=" "
+let g:mapleader = "\<Space>"
+
 
 " PLUGIN ----- {{{
 
@@ -53,13 +53,106 @@ call plug#end()
 " KEYMAP -----{{{
 
 
-inoremap jk <esc>
+""""""""""""""""""""""""""""""
+" File mgmt
+""""""""""""""""""""""""""""""
 
+" (r)eload config
+nnoremap <leader>r :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader>w :w<CR>
+
+nnoremap <silent> <leader>q :bd<CR> 
+nnoremap <silent> <Leader>qq  :qa!<CR>
+
+nnoremap <M-u> :Format<CR>
+
+" for vimscript and lua, this is run up the file
+nnoremap <leader>o :so %<CR>
+" (r)eload config
+
+
+""""""""""""""""""""""""""""""
+" Search 
+""""""""""""""""""""""""""""""
+
+" seach word under cusor in current buffer
+nnoremap <M-m> *
+
+" easier to type
+xmap <M-n> /
+nmap <M-n> /
+
+" clear hightligh
+nnoremap <leader>n :noh<cr>
+
+
+""""""""""""""""""""""""""""""
+" move
+""""""""""""""""""""""""""""""
+
+" easier to move bracket
+xmap <M-q> %
+nmap <M-q> %
+
+" Treat long lines as break lines (useful when moving around in them)
+nmap j gj
+nmap k gk
+vmap j gj
+vmap k gk
+
+
+" go line start and end
+" try use <C-c> as prefix
+nnoremap <C-c>h g^
+nnoremap <C-c>l g$
+vnoremap <C-c>h g^
+vnoremap <C-c>l g$
+
+
+
+
+""""""""""""""""""""""""""""""
+" Fast edit 
+"""""""""""""""""""""""""""""""
+
+inoremap jk <esc>
 " align Y to D, C
 map Y y$
 
 " Redo
 nnoremap U <C-r>
+
+" use alt-d to replace .
+nnoremap <M-d> . 
+
+
+" Duplicate paragraph and put down
+nnoremap <Leader>cp yap<S-}>p
+
+" Duplicate lines and put down
+" make it even easier than yyp
+nnoremap <Leader>d m`YP``
+vnoremap <Leader>d YPgv
+
+
+" Quit visual mode
+vnoremap v <Esc>
+nnoremap <leader>v V 
+
+" reamp S-K to leader K, S-K can open man under cursor
+noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
+
+
+" use shift alt + j/k to move line up and down
+nnoremap <S-j> :m .+1<CR>==
+nnoremap <S-k> :m .-2<CR>==
+vnoremap <S-j> :m '>+1<CR>gv=gv
+vnoremap <S-k> :m '<-2<CR>gv=gv
+
+
+" Better tabbing in visual mode
+vnoremap < <gv
+vnoremap > >gv
 
 " Universal opposite of J
 function! BreakHere()
@@ -68,6 +161,7 @@ function! BreakHere()
 endfunction
 
 nnoremap <leader>j :<C-u>call BreakHere()<CR>
+
 
 " reverse visual mode u/U mapping
 " I usually change from lower to upper
@@ -80,99 +174,65 @@ vnoremap U u
 nnoremap gu gU
 nnoremap gU gu
 
-" use alt-d to replace .
-" also require vscode setting setup to send alt-d to neovim
-nnoremap <M-d> . 
 
-" Duplicate lines
-" make it even easier than yyp
-nnoremap <Leader>d m`YP``
-vnoremap <Leader>d YPgv
-
-" Quit visual mode
-vnoremap v <Esc>
-
-" use leade v for faster go to visual line mode
-nnoremap <leader>v V
-
-" Duplicate paragraph and put down
-nnoremap <Leader>cp yap<S-}>p
-
-" ========================
-" easier to move
-" ========================
-
-" Treat long lines as break lines (useful when moving around in them)
-nmap j gj
-nmap k gk
-vmap j gj
-vmap k gk
-
-" " go line start and end
-" nnoremap gh g^
-" nnoremap gl g$
-" vnoremap gh g^
-" vnoremap gl g$
-
-" go line start and end
-" try use <C-c> as prefix
-nnoremap <C-c>h g^
-nnoremap <C-c>l g$
-vnoremap <C-c>h g^
-vnoremap <C-c>l g$
-
-" ========================
-" eaier to search
-" ========================
-
-" easier to type
-xmap <M-n> /
-nmap <M-n> /
-
-
-" To turn off highlighting until the next search
-nnoremap <leader>n :noh<cr>
-
-
-" find word in file under cursor
-nnoremap <M-m> *
-
-nmap m <Plug>ReplaceWithRegisterOperator
 
 "remap mark `m` to gm
 nnoremap gm m
 xnoremap gm m
 
 
-" Use backspace key for matching parens
-nnoremap <M-q> %
-xnoremap <M-q> %
 
 
-" use shift j/k to move line down/up
-nnoremap <S-j> :m .+1<CR>==
-nnoremap <S-k> :m .-2<CR>==
-vnoremap <S-j> :m '>+1<CR>gv=gv
-vnoremap <S-k> :m '<-2<CR>gv=gv
 
-" (r)eload config
-nnoremap <leader>r :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>w :w<CR>
-
-" reamp S-K to leader K, S-K can open man under cursor
-noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
+""""""""""""""""""""""""""""""
+" Terminal Mode
+""""""""""""""""""""""""""""""
 " faster ex mode
 nnoremap <CR> :
-" the counterpart is npm script in vscode
-nnoremap <leader>r :so %<cr>
-nnoremap <leader>q :bd<cr>
-nnoremap <leader>qq :qa!<cr>
 
 " Start an external command with a single bang
 nnoremap ! :!
-" Simulate same TAB behavior in VSCode
-nmap <Tab> :bn<CR>
-nmap <S-Tab> :bp<CR>
+
+" use same way to switch between terminal
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+" use esc to switch to terminal normal mode
+tnoremap <Esc> <C-\><C-n>
+" use c-v and esc if we want esc in termninal mode
+tnoremap <C-v><Esc> <Esc>
+
+highlight! link TermCursor Cursor
+highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+
+
+""""""""""""""""""""""""""""""
+" windown mgmt 
+""""""""""""""""""""""""""""""
+
+" easier to change panel
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+
+"resize
+nnoremap <C-Left> :vertical resize +2<cr>
+nnoremap <C-Right> :vertical resize -2<cr>
+nnoremap <C-Up> :resize -2<cr>
+nnoremap <C-Down> :resize +2<cr>
+
+
+
+""""""""""""""""""""""""""""""
+" Tab mgmt 
+""""""""""""""""""""""""""""""
+
+nnoremap <silent> <S-Tab> :bp<CR>
+nnoremap <silent> <Tab> :bn<CR>
+
 
 " Better tabbing in visual mode
 vnoremap < <gv
@@ -182,6 +242,18 @@ vnoremap > >gv
 "https://www.reddit.com/r/vim/comments/6ga90i/tabbing_out_of_brackets_and_quotes/
 inoremap <expr> <Tab> search('\%#[]>)}]', 'n') ? '<Right>' : '<Tab>' 
 										
+
+
+""""""""""""""""""""""""""""""
+" => Misc 
+""""""""""""""""""""""""""""""
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
 
 " Allow misspellings
 cnoreabbrev qw wq
@@ -194,6 +266,8 @@ cnoreabbrev bD bd
 " Basically commandline fixes for fat fingering
 cnoremap %:H %:h
 cnoremap %:Q %:q
+
+
 " }}}
 
 " SETTING -----{{{
@@ -248,6 +322,8 @@ endif
 let g:sneak#s_next = 1
 
 
+nmap m <Plug>ReplaceWithRegisterOperator
+
 " dsiable autosave gloablly
 let g:auto_save = 0
 " only autosave for md file
@@ -267,41 +343,6 @@ let g:vimwiki_list = [
           \ 'syntax': 'markdown', 
           \ 'ext': '.md'}]
 
-" let g:vimwiki_listsyms = '✗○◐●✓'
-"
-" function Check()
-    " let l:line=getline('.')
-    " let l:curs=winsaveview()
-    " if l:line=~?'\s*-\s*\[\s*\].*'
-        " s/\[\s*\]/[.]/
-    " elseif l:line=~?'\s*-\s*\[\.\].*'
-        " s/\[.\]/[x]/
-    " elseif l:line=~?'\s*-\s*\[x\].*'
-        " s/\[x\]/[ ]/
-    " endif
-    " call winrestview(l:curs)
-" endfunction
-" autocmd! FileType vimwiki nnoremap <buffer> <silent> - :call Check()<CR>
-
-" augroup demo
- " autocmd!
- " autocmd FileType markdown,vimwiki nnoremap <buffer> <silent> - :call VimwikiChangeSymbolTo -<CR>
- " " autocmd FileType vimwiki nnoremap <buffer> <silent> - :call Check()<CR>
-" augroup END
-
-"- [x] ssdddddddddddddddddds
-
-
-" augroup MappyTime
-  " autocmd!
-  " autocmd FileType markdown nnoremap <buffer> <silent> - :call winrestview(<SID>toggle('^\s*-\s*\[\zs.\ze\]', {' ': '.', '.': 'x', 'x': ' '}))<cr>
-" augroup END
-
-" function s:toggle(pattern, dict, ...)
-  " let view = winsaveview()
-  " execute 'keeppatterns s/' . a:pattern . '/\=get(a:dict, submatch(0), a:0 ? a:1 : " ")/e'
-  " return view
-" endfunction
 
 
 " config for quickscope
@@ -312,7 +353,6 @@ let g:qs_max_chars=150
 
 " andymass/vim-matchup 
 " below line is to disable highlight functionalites
-" to lessen possible performance issue
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
@@ -328,7 +368,18 @@ augroup auto_fold_init_vim
 	au Filetype vim setlocal foldlevel=0 foldmethod=marker
 augroup END
 
+
+" you don't need to have <cr> for runnning command
+" <cr> is only for mapping
+function Covert_to_CheckBox()
+ :VimwikiChangeSymbolTo -
+ :VimwikiToggleListItem
+endfunction
+
+
 " gl- is to long..use leader l
-autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiChangeSymbolTo -<CR>
+autocmd FileType vimwiki nnoremap <buffer> <leader>l :call Covert_to_CheckBox()<cr>
+
+
 
 " }}}
