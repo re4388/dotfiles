@@ -41,6 +41,7 @@ Plug 'winston0410/commented.nvim'
 
 " good utl
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
  
@@ -50,7 +51,6 @@ Plug 'unblevable/quick-scope'
 " use :DD lang keyword to get doc
 Plug 'romainl/vim-devdocs'
 call plug#end() 
-
 
 
 
@@ -241,7 +241,9 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nnoremap <M-d> . 
+nmap <M-d> . 
+
+
 
 " Duplicate lines
 " make it even easier than yyp
@@ -295,6 +297,9 @@ nmap <M-n> /
 " To turn off highlighting until the next search
 nnoremap <leader>n :noh<cr>
 
+" https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
+" sadly, this can't go well vscode.. QQ
+" nnoremap <leader><leader>s :g//#<Left><Left>
 
 " find word in file under cursor
 nnoremap <M-m> *
