@@ -5,6 +5,24 @@
 
 ; Msgbox, %A_ComputerName%
 
+; Note:
+; I would like try to use ctrl+shift+key for autohotkey global hotkey..
+; this is not a easy reach to type in coding since far from home-row
+; so I probably not use this Combo when coding, so might a good idea to use this for global key like autohotkey
+
+
+; ================================
+; debug code
+; ================================
+
+^+z::
+  msgBox, hello world %computername%
+
+
+; ================================
+; variable define
+; ================================
+
 if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
   autoHotkey_Path = "C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk"
   vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
@@ -13,28 +31,14 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
   ; Msgbox, %A_OSVersion%
 }
 
-; debug purpose
-^+z::
-  msgBox, hello world %computername%
 
 
-; press ctrl+shift+a to edit autohotkey
-^+a::Run,%vscode_path% %autoHotkey_Path%
-
-; press ctrl+shift+n to open my tmp.txt in Onedrive
-^+n::
-    ; myPath := "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-    ; myPath := %OneDriveTmpNotepad_path%
-    ; SplitPath, myPath,,,,fName
-    Run,"notepad.exe" %OneDriveTmpNotepad_path%
-    If WinExist("tmp.txt")
-        WinActivate
-    Return
-
+; ================================
+; hotstring
+; ================================
 
 ::xbackup::bash ~/backup.sh
 ;::rrr::. C:\Users\tp2011002\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1; show
-
 
 ::wv2::nvim -u 'C:\Users\re438\AppData\Local\nvim_v2\init.vim'
 ::lv2::nvim -u '/home/re4388/.config/nvim2/init.vim'
@@ -50,14 +54,11 @@ F10::Volume_Up
 
 ::aaa::npm run serve:src:open:dev
 
+; ::tmuxrc::~/.tmux.conf.local
+; ::wprc::xxxxtodoforWindowPreviewRC
 
-::tmuxrc::~/.tmux.conf.local
-::wprc::xxxxtodoforWindowPreviewRC
-
-
-
+;bash
 ::sss::./show.sh
-
 
 ;powershell
 ::fff::get-Bioclincal-repos
@@ -73,9 +74,29 @@ F10::Volume_Up
 
 ; coding
 ::mm!::/**
+
+; alt + j, k , l for (), [], {}
+
+!j::
+Send,(
+return
+
+!k::
+Send,[
+return
+
+!l::
+Send, {Raw}{
+return
+
+!;::
+Send, {Raw}j
+return
+
+;git
 ::git-stash::git stash --include-untracked
 
-; ttt => it will produce 20200829
+; ttt => 20200829
 :R*?:ttt::
 FormatTime, CurrentDateTime,, yyyy_MM_dd_hh_mm
 SendInput %CurrentDateTime%
@@ -83,46 +104,27 @@ SendInput %CurrentDateTime%
 
 ; ::disk52::df -h --total
 ; ::ng new1::ng new XX --skipInstall --routing
-::gitlog::git log --pretty=oneline -30
+; ::gitlog::git log --pretty=oneline -30
 
 
 
-; Inside win10 Powertoy, to simulate vim deletion in insert mode
-; - map <C-w> to C-backsapce to remove one word
-; - map <C-u> to backspace to remove one letter
+; ================================
+; Open...something
+; ================================
 
-;
-; alt + j, k , l for (), [], {}
-;
-; !j::
-; Send ()
-; Send {Left}
-; return
+; press ctrl+shift+a to edit autohotkey
+^+a::Run,%vscode_path% %autoHotkey_Path%
 
-; !k::
-; Send []
-; Send {Left}
-; return
+; press ctrl+shift+n to open my tmp.txt in Onedrive
+^+n::
+    ; myPath := "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+    ; myPath := %OneDriveTmpNotepad_path%
+    ; SplitPath, myPath,,,,fName
+    Run,"notepad.exe" %OneDriveTmpNotepad_path%
+    If WinExist("tmp.txt")
+        WinActivate
+    Return
 
-!j::
-Send,(
-return
-;
-
-!k::
-Send,[
-return
-;
-
-!l::
-Send, {Raw}{
-return
-;
-
-!;::
-Send, {Raw}j
-return
-;
 
 
 
@@ -130,6 +132,9 @@ return
 +Space::
 
 
+; ================================
+; Open...something
+; ================================
 
 ; ANOTHER CAPSLOCK TRY
 ; CHANGE CAPSLOCK TO CTRL AND ALSO ENABLE ALL ORIGINAL CTRL + X COMBO
@@ -388,7 +393,7 @@ LWin & 9::switchDesktopByNumber(9)
 
 ; another way to ref: https://dilpreet.dev/blog/autohotkey-for-developers/
 ; use current hl and search it via chrome google
-!w::
++^g::
 OpenHighlighted()
 return
 
