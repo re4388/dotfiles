@@ -7,6 +7,17 @@ let g:mapleader = "\<Space>"
 " PLUGIN ----- {{{
 
 call plug#begin('~/.config/plugged')
+
+
+" fooBar, qq_bar, SeriesPreprocessBar
+" iv and av
+Plug 'Julian/vim-textobj-variable-segment'
+" enable *(M-m in my keymap) in visual mode, good to select more than one word
+Plug 'nelstrom/vim-visual-star-search'
+
+
+
+
 Plug '907th/vim-auto-save'
 Plug 'vimwiki/vimwiki'
 Plug 'cohama/lexima.vim'
@@ -77,7 +88,13 @@ nnoremap <leader>o :so %<CR>
 """"""""""""""""""""""""""""""
 
 " seach word under cusor in current buffer
-nnoremap <M-m> *
+" recursive since M-m not going to use original *, 
+" like nelstrom/vim-visual-star-search add more function to * and I want to
+" use it
+nmap <M-m> *
+vmap <M-m> *
+
+
 
 " easier to type
 xmap <M-n> /
