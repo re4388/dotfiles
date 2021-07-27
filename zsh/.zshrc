@@ -56,3 +56,14 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 alias lg='lazygit'
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+
+# zoxide
+zoxide import --from autojump /home/re4388/.local/share/autojump/autojump.txt
+# update your PATH to use zoxide
+export PATH="/home/re4388/.local/bin:$PATH"
+eval "$(zoxide init --cmd j zsh)"

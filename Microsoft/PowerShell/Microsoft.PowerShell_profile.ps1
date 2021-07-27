@@ -114,6 +114,11 @@ Import-Module oh-my-posh
 # Set-PoshPrompt -Theme Space
 Set-PoshPrompt -Theme Iterm2
 
+# add zoxide
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --cmd j --hook $hook powershell) -join "`n"
+})
 # show all self-hand command
 function show {
     Write-Output ""
