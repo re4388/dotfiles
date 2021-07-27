@@ -1,0 +1,19 @@
+[user]
+	name = ben.hu
+	email = ben.hu@bioclinica.com
+[http]
+	sslcainfo = C:/Users/re438/git_certs/cert_WitsCA-Windows.crt
+	sslVerify = false
+[core]
+	autocrlf = input
+[alias]
+	# ac   = !git add -A && git commit
+	cn    = commit --no-verify -m
+	c     = commit -m
+	Pf    = push -f
+	rm    = rebase origin/master
+	rc    = rebase --continue
+	ra    = rebase --abort
+	P     = push
+	p     = pull
+	a     = !git add . && git reset -- ./.favorites.json
