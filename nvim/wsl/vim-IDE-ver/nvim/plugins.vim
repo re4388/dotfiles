@@ -1,6 +1,15 @@
 
 call plug#begin('~/.config/plugged')
 
+
+
+" fooBar, qq_bar, SeriesPreprocessBar
+" iv and av
+Plug 'Julian/vim-textobj-variable-segment'
+" enable *(M-m in my keymap) in visual mode, good to select more than one word
+Plug 'nelstrom/vim-visual-star-search'
+
+
 " like favoriats file
 Plug 'ThePrimeagen/harpoon'
 

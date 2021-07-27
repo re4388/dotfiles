@@ -20,7 +20,8 @@ nnoremap <leader>o :so %<CR>
 """"""""""""""""""""""""""""""
 
 " seach word under cusor in current buffer
-nnoremap <M-m> *
+nmap <M-m> *
+vmap <M-m> *
 
 " easier to type
 xmap <M-n> /
