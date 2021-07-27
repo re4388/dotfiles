@@ -6,14 +6,8 @@
 	sslVerify = false
 [core]
 	autocrlf = input
+	excludesFile = C:\\Users\\re438\\.gitignore_global
 [alias]
-	# ac   = !git add -A && git commit
 	cn    = commit --no-verify -m
-	c     = commit -m
-	Pf    = push -f
-	rm    = rebase origin/master
-	rc    = rebase --continue
-	ra    = rebase --abort
-	P     = push
-	p     = pull
-	a     = !git add . && git reset -- ./.favorites.json
+	a     = !git add . && git reset -- ./.gitignore
+	s     = status
