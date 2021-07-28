@@ -3,34 +3,45 @@ export ZSH=$HOME/.oh-my-zsh
 
 # to not let tmux mess the vim color schem
 export TERM=xterm-256color
-
+export HISTCONTROL=erasedups	# when adding an item to history, delete itentical commands upstream
+export HISTSIZE=10000		# save 10000 items in history
 
 # ===============
 # vim 
 # ===============
 
-
 #  export my_vimrc_plugin_folder=$HOME/.config/nvim/config_group
-
 export vrc=$HOME/.config/nvim/init.vim
 export vp=$HOME/.config/nvim
 export VIMCONFIG=~/.config/nvim
 
 alias v=nvim
-# alias lv2=nvim -u ~/.config/nvim2/init.vim
-#  alias nvim1="nvim -u ~/.config/nvim1/init.vim"
-#  alias nvim2="nvim -u ~/.config/nvim2/init.vim"
+#  alias weather='curl htt://wttr.in/New Taipei?1q'
+#  alias weather='curl -4 http://wttr.in/Seattle'
+alias weather="curl -H 'Accept-Language: zh' wttr.in/'${1:-New Taipei}?${2:-2q}'"
+
 
 
 
 ZSH_THEME="ys"
-plugins=(git zsh-completions zsh-autosuggestions zsh-syntax-highlighting autojump)
+RPROMPT="%{$fg[green]%}[%D{%c}]"
+
+plugins=(
+  git
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  autojump
+  auto-fortune-cowsay
+)
+
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 
 alias so=source
 alias ll='ls -a'
-
+alias ..='cd ..'
+alias treeless='tree -C | less -R'	# -C outputs colour, -R makes less understand color
 
 
 source $ZSH/oh-my-zsh.sh
@@ -63,7 +74,21 @@ alias lg='lazygit'
 
 
 # zoxide
-zoxide import --from autojump /home/re4388/.local/share/autojump/autojump.txt
+#  zoxide import --from autojump /home/re4388/.local/share/autojump/autojump.txt
 # update your PATH to use zoxide
-export PATH="/home/re4388/.local/bin:$PATH"
-eval "$(zoxide init --cmd j zsh)"
+#  export PATH="/home/re4388/.local/bin:$PATH"
+#  eval "$(zoxide init --cmd j zsh)"
+
+
+
+
+
+
+chpwd() {
+  ls
+}
+
+
+
+# easy access to find's size search
+function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort -nr; }
