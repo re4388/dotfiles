@@ -3,10 +3,16 @@ Add-Type -AssemblyName System.Device #Required to access System.Device.Location 
 
 Set-Alias -Name v -Value nvim
 Set-Alias -Name lg -Value lazygit
-Function CallV2 {nvim -u C:\Users\re438\AppData\Local\nvim_v2\init.vim}
-Set-Alias -Name v2 -Value CallV2
+# Function CallV2 {nvim -u C:\Users\re438\AppData\Local\nvim_v2\init.vim}
+# Set-Alias -Name v2 -Value CallV2
+
+function Open-VsCodeNvim-init {
+   nvim "C:\Users\re438\AppData\Local\nvim\init.vim"
+}
+
+$time = (Get-Date).ToString("yyyy_MMdd_HHmm")
 $vp = "C:\Users\re438\AppData\Local\nvim\init.vim"
-$ws = "C:\projects\"
+$workspace = "C:\projects\"
 
 function touch {set-content -Path ($args[0]) -Value ($null)}
 # Global variable wich shall be the same in different machine
@@ -102,6 +108,8 @@ function get_imgLib {
 
 function get_webApp {
     git clone https://stash.imgdev.bioclinica.com/scm/vf/view-webapp.git $workspace$time-web-app
+    # cd can also be replaced with Set-Location
+    # this is where the wingle underscore comes from
     cd $workspace$time-web-app
     npm i
 }
@@ -112,7 +120,10 @@ Import-Module oh-my-posh
 # Set-PoshPrompt -Theme Darkblood
 # no subfolder..
 # Set-PoshPrompt -Theme Space
-Set-PoshPrompt -Theme Iterm2
+# Set-PoshPrompt -Theme Iterm2
+# Set-PoshPrompt -Theme ys
+# Set-PoshPrompt -Theme jonnychipz
+Set-PoshPrompt -Theme microverse-power
 
 # add zoxide
 Invoke-Expression (& {
@@ -122,14 +133,25 @@ Invoke-Expression (& {
 # show all self-hand command
 function show {
     Write-Output ""
-    Write-Output "*****"
-    Write-Output "All Custom Utility"
+    Write-Output " == Utility == "
+    Write-Output ""
     Write-Output "- Open Profile with Vscode:        open-profile             (ahk:ooo)"
     Write-Output "- Reload config & show:            . `$profile               (ahk:rrr)"
-    Write-Output "- Git clone Utility:               get-Bioclincal-repo      (ahk:fff)"
+    Write-Output "- Utility:                         get-Bioclincal-repo      (ahk:fff)"
+    Write-Output "- Edit vscode neovim init:                                  (ahk:vvv)"
     Write-Output "- Check global npm packages:       npm list -g --depth 0"
     Write-Output "- Change acc b/n GitHub &Bucket:   change_repo_acc"
-    Write-Output "- `$vp => neovim init.vim path"
-    Write-Output "- `$ws => c:/projects"
+    Write-Output "- `$vp                              neovim init.vim path"
+    Write-Output "- `$ws                              c:/projects"
+    Write-Output "-  open git config (win10)         code %USERPROFILE%\.gitconfig"
+    Write-Output "-  open npmrc (win10)              code %USERPROFILE%\.npmrc"
+    Write-Output ""
+    Write-Output " == git alias =="
+    Write-Output ""
+    Write-Output "gcn   = commit --no-verify -m"
+    Write-Output "a     = add ."
+    Write-Output "s     = status"
     Write-Output "*****"
 }
+
+
