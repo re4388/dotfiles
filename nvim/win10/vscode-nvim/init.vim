@@ -1,61 +1,53 @@
+echom "load nvim-for-win and vscode"
 
-echo "load nvim-for-win and vscode"
-
+" something better put at beginning ========
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
-" nmap s <Plug>ReplaceWithRegisterOperator
+" Plugins =============
+" Plugins shall put at begin!
 
 call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'vim-airline/vim-airline'
-" Plug 'jacoborus/tender.vim'
 Plug 'morhetz/gruvbox'
-" gc
-" already built in in vscode-neovim
-" Plug 'tpope/vim-commentary'
-" Plug 'terrortylor/nvim-comment'
+
 
 " text object
+Plug 'Julian/vim-textobj-variable-segment' " iv and av for fooBar, qq_bar, SeriesPreprocessBar
+Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mode, good to select more than one word
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'kana/vim-textobj-line'
-" I also modify the plugin folder to only want ii and aI(modifed to ai), the
-" plugin folder is inside nvim folder, not vscode inner folder
 Plug 'michaeljsmith/vim-indent-object'
-" let you use ciq and use cib for both [ and { 
-Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim' " let you use ciq and use cib for both [ and { 
 
-" this allow me have a better %/<BS> function
+" better %/<BS> function
 " like jump to close bracket even in the same line
 " but still there's some functionality not working in TS file
 Plug 'andymass/vim-matchup'
 
 Plug 'winston0410/commented.nvim'
-" justinmk apple justinmk
-" tpope apple justinmk wellle
 
 " good utl
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
- 
 Plug 'romainl/vim-cool'
+
+" movement
 Plug 'unblevable/quick-scope'
 
-" use :DD lang keyword to get doc
-Plug 'romainl/vim-devdocs'
+" doc
+Plug 'romainl/vim-devdocs' " use :DD lang keyword to get doc
+
 call plug#end() 
 
-
-
-
-let g:sneak#s_next = 1
+" vscode helper =============
 
 function! s:openVSCodeCommandsInVisualMode()
     normal! gv
@@ -84,13 +76,9 @@ function! s:vscodeCommentary(...) abort
     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
 endfunction
 
-
-
 if exists('g:vscode')
 		
-	  " =======================================
-		" leader key in VScode
-		" =======================================
+		" vscode only =============
 		
 		" file save and quit
 		xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
@@ -149,19 +137,21 @@ if exists('g:vscode')
 		nmap <Tab> gt 
 		nmap <S-Tab> gT 
 
-		" set clipboard=unnamed
+
 else
+
+	  " neovim only ============
+		
 		if (has("termguicolors"))
  				set termguicolors
 		endif
     
-		" use another leader + c for non-vscode comment
+		" colorscheme tender
+		colorscheme gruvbox
+    
+		" comment plugin only for neovim
     lua require('commented').setup()
 
-	  " =======================================
-		" leader key in window (not vscode)
-		" =======================================
-		
 		" use leader and w to save
 		nnoremap <leader>w :w<cr>
 		" the counterpart is npm script in vscode
@@ -170,19 +160,18 @@ else
 		
 		" Start an external command with a single bang
 		nnoremap ! :!
+
 		" Simulate same TAB behavior in VSCode
 		nmap <Tab> :tabnext<CR>
 		nmap <S-Tab> :tabprev<CR>
 
-		" Better tabbing in visual mode
+		" Better indent in visual mode
 		vnoremap < <gv
 		vnoremap > >gv
 
 		" Theme
 		" syntax enable
 
-		" colorscheme tender
-		colorscheme gruvbox
 
     set relativenumber
     set ruler
@@ -197,14 +186,16 @@ else
 
 endif
 
+" Share General Setting =========
+
+set clipboard=unnamed
+
+
+" Share key mapping =============
+
+
 " faster ex mode
 nnoremap <CR> :
-
-" =======================================
-" Below are shared by win & vscode
-" =======================================
-		
-set clipboard=unnamed
 
 " ========================
 " fast edit
@@ -277,12 +268,13 @@ vmap j gj
 vmap k gk
 
 
-" go line start and end
-" try use <C-c> as prefix
-nnoremap <C-c>h g^
-nnoremap <C-c>l g$
-vnoremap <C-c>h g^
-vnoremap <C-c>l g$
+
+" try use <leader> as prefix
+nnoremap <leader>h g^
+nnoremap <leader>l g$
+vnoremap <leader>h g^
+vnoremap <leader>l g$
+
 
 
 " ========================
@@ -302,7 +294,8 @@ nnoremap <leader>n :noh<cr>
 " nnoremap <leader><leader>s :g//#<Left><Left>
 
 " find word in file under cursor
-nnoremap <M-m> *
+nmap <M-m> *
+vmap <M-m> *
 
 nmap m <Plug>ReplaceWithRegisterOperator
 "remap mark `m` to gm
@@ -317,10 +310,20 @@ xnoremap <M-q> %
 
 
 " use shift j/k to move line down/up
-nnoremap <S-j> :m .+1<CR>==
-nnoremap <S-k> :m .-2<CR>==
-vnoremap <S-j> :m '>+1<CR>gv=gv
-vnoremap <S-k> :m '<-2<CR>gv=gv
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" had use J above, so I here remap join to ctrl+c prefix version
+nnoremap <C-c>j J
+
+
+
+" nvim plugin setting =============
+"
+" vim sneak
+let g:sneak#s_next = 1
 
 " config for quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -335,6 +338,3 @@ let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0
-
-
-
