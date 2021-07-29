@@ -278,11 +278,36 @@ nnoremap <Leader>cp yap<S-}>p
 " ========================
 
 " Treat long lines as break lines (useful when moving around in them)
-nmap j gj
-nmap k gk
+" nmap j gj
+" nmap k gk
+" vmap j gj
+" vmap k gk
+
+" Treat long lines as break lines (useful when moving around in them)
+" nmap j gj
+" nmap k gk
 vmap j gj
 vmap k gk
+nnoremap j <cmd>call BetterJK('j')<CR>
+nnoremap k <cmd>call BetterJK('k')<CR>
 
+
+function! BetterJK(letter)
+  let jump_count = v:count
+
+"  For wrapped lines, does gj/gk
+  if jump_count == 0
+    call execute(printf('normal! g%s', a:letter))
+    return
+  endif
+
+"  For large jumps, adds a spot on the jump list
+  if jump_count > 5
+    call execute("normal! m'")
+  endif
+
+  call execute(printf('normal! %d%s', jump_count, a:letter))
+endfunction
 
 
 " try use <leader> as prefix
@@ -331,7 +356,13 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " had use J above, so I here remap join to ctrl+c prefix version
-nnoremap <C-c>j J"}}}
+" nnoremap <C-c>j J
+nnoremap gj J
+
+
+
+"}}}
+
 
 " nvim plugin setting ============={{{
 "
