@@ -61,9 +61,26 @@ vnoremap <leader>l g$
 " nmap k gk
 vmap j gj
 vmap k gk
-nnoremap j <cmd>call benhu#jump_direction('j')<CR>
-nnoremap k <cmd>call benhu#jump_direction('k')<CR>
+nnoremap j <cmd>call BetterJK('j')<CR>
+nnoremap k <cmd>call BetterJK('k')<CR>
 
+
+function! BetterJK(letter)
+  let jump_count = v:count
+
+"  For wrapped lines, does gj/gk
+  if jump_count == 0
+    call execute(printf('normal! g%s', a:letter))
+    return
+  endif
+
+"  For large jumps, adds a spot on the jump list
+  if jump_count > 5
+    call execute("normal! m'")
+  endif
+
+  call execute(printf('normal! %d%s', jump_count, a:letter))
+endfunction
 
 " TODO: tj mapping, not working, investiage later
 " For moving quickly up and down,
