@@ -1,11 +1,13 @@
 echom "load nvim-for-win and vscode"
 
-" something better put at beginning ========
+" something better put at beginning ========{{{
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Plugins =============
+"}}}
+
+" Plugins ============={{{
 " Plugins shall put at begin!
 
 call plug#begin(stdpath('config') . '/plugged')
@@ -13,6 +15,16 @@ call plug#begin(stdpath('config') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 
+
+
+" if exists('g:vscode')
+	" Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
+" else
+	" Plug 'easymotion/vim-easymotion'
+" endif
+
+
+" use vscode easymotion when in vscode mode
 
 " text object
 Plug 'Julian/vim-textobj-variable-segment' " iv and av for fooBar, qq_bar, SeriesPreprocessBar
@@ -32,8 +44,10 @@ Plug 'andymass/vim-matchup'
 
 Plug 'winston0410/commented.nvim'
 
+
 " good utl
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
+Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -45,9 +59,9 @@ Plug 'unblevable/quick-scope'
 " doc
 Plug 'romainl/vim-devdocs' " use :DD lang keyword to get doc
 
-call plug#end() 
+call plug#end() "}}}
 
-" vscode helper =============
+" vscode helper ============={{{
 
 function! s:openVSCodeCommandsInVisualMode()
     normal! gv
@@ -74,11 +88,11 @@ function! s:vscodeCommentary(...) abort
     endif
 
     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
-endfunction
+endfunction"}}}
 
 if exists('g:vscode')
 		
-		" vscode only =============
+		" vscode only ============={{{
 		
 		" file save and quit
 		xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
@@ -136,11 +150,11 @@ if exists('g:vscode')
 		" use tab to change tab 
 		nmap <Tab> gt 
 		nmap <S-Tab> gT 
-
+"}}}
 
 else
 
-	  " neovim only ============
+	  " neovim only ============{{{
 		
 		if (has("termguicolors"))
  				set termguicolors
@@ -157,6 +171,7 @@ else
 		" the counterpart is npm script in vscode
 		nnoremap <leader>r :so %<cr>
 		nnoremap <leader>q :q<cr>
+		nnoremap <leader>qq :qa<cr>
 		
 		" Start an external command with a single bang
 		nnoremap ! :!
@@ -182,16 +197,16 @@ else
 		set shiftwidth=2
 		set autoindent
 		set smartindent
-		set tabstop=2
+		set tabstop=2"}}}
 
 endif
 
-" Share General Setting =========
+" Share General Setting ========={{{
 
 set clipboard=unnamed
+"}}}
 
-
-" Share key mapping =============
+" Share key mapping ============={{{
 
 
 " faster ex mode
@@ -301,8 +316,7 @@ nmap m <Plug>ReplaceWithRegisterOperator
 "remap mark `m` to gm
 nnoremap gm m
 xnoremap gm m
-
-
+ 
 
 " Use backspace key for matching parens
 nnoremap <M-q> %
@@ -316,14 +330,16 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " had use J above, so I here remap join to ctrl+c prefix version
-nnoremap <C-c>j J
+nnoremap <C-c>j J"}}}
 
-
-
-" nvim plugin setting =============
+" nvim plugin setting ============={{{
 "
 " vim sneak
 let g:sneak#s_next = 1
+
+" vim easymotion
+" map <Leader><Leader>s <Plug>(easymotion-prefix)
+
 
 " config for quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -337,4 +353,12 @@ let g:qs_max_chars=150
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
-let g:matchup_matchparen_insert_timeout = 0
+let g:matchup_matchparen_insert_timeout = 0"}}}
+
+" autocommand setting ============={{{
+" put this into file in auto load place
+augroup auto_fold_init_vim
+	au!
+	au Filetype vim setlocal foldlevel=0 foldmethod=marker
+augroup END"}}}
+

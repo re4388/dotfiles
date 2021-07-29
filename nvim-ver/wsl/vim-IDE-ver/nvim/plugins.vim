@@ -18,8 +18,6 @@ Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 
-
-
 " Theme
 " Plug 'jacoborus/tender.vim'
 " Plug 'morhetz/gruvbox'
@@ -77,7 +75,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 "Operator
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-commentary'
 " Plug 'terrortylor/nvim-comment'
@@ -90,7 +89,7 @@ Plug 'winston0410/commented.nvim'
 
 "Motion"
 Plug 'unblevable/quick-scope'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 
 "project management
 " Rooter changes the working directory to the project root  

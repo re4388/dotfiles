@@ -1,20 +1,15 @@
-
 echom "load wsl-v1-init.vim"
+
+
 let g:mapleader = "\<Space>"
 
 " Plugin need to put first
 source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/setting.vim
+source ~/.config/nvim/keymap.vim
 
 
-" put this into lua
-lua require('commented').setup()
-" put this into file in auto load place
-augroup auto_fold_init_vim
-	au!
-	au Filetype vim setlocal foldlevel=0 foldmethod=marker
-augroup END
-
-
+" just test if lua in loadeable
 lua require("t1")
 " ==========================================
 "  POC
