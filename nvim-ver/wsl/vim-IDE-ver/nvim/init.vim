@@ -10,7 +10,7 @@ source ~/.config/nvim/keymap.vim
 
 
 " just test if lua in loadeable
-lua require("t1")
+lua require("lsp-config")
 " ==========================================
 "  POC
 " ==========================================

@@ -150,6 +150,7 @@ if exists('g:vscode')
 		" use tab to change tab 
 		nmap <Tab> gt 
 		nmap <S-Tab> gT 
+
 "}}}
 
 else
@@ -339,7 +340,9 @@ let g:sneak#s_next = 1
 
 " vim easymotion
 " map <Leader><Leader>s <Plug>(easymotion-prefix)
-
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" let g:EasyMotion_smartcase = 1
+" nmap <Leader>s <Plug>(easymotion-s)
 
 " config for quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

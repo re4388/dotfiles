@@ -109,7 +109,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " had use J above, so I here remap join to ctrl+c prefix version
-nnoremap <C-c>j J
+nnoremap gj J
 
 " reamp K to leader K, S-K can open man under cursor
 noremap <leader>k :execute "tab h " . expand("<cword>")<cr>

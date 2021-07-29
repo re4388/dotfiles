@@ -4,10 +4,9 @@ call plug#begin('~/.config/plugged')
 
 
 " fooBar, qq_bar, SeriesPreprocessBar
-" iv and av
 Plug 'Julian/vim-textobj-variable-segment'
-" enable *(M-m in my keymap) in visual mode, good to select more than one word
-Plug 'nelstrom/vim-visual-star-search'
+" iv and av
+Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mode
 
 
 " like favoriats file
@@ -34,9 +33,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 "Buffer management"
 " Plug 'romgrk/barbar.nvim'
 
-"Text objects"
-" e
 Plug 'kana/vim-textobj-entire'
+" e
 " create your own text objects
 Plug 'kana/vim-textobj-user'
 " f in c, java and vim
