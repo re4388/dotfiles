@@ -2,6 +2,7 @@
 " nnoremap <silent> <M-y> <cmd>:lua require("FTerm").toggle()<CR>
 " nnoremap <M-e> <cmd>Telescope buffers<cr>
 nnoremap <M-w> <cmd>Telescope live_grep<cr>
+nnoremap <M-e> <<cmd>lua require('telescope.builtin').oldfiles()<cr>
 
 " change to toggle exploer in kyazdani42/nvim-tree.lua
 " nnoremap <M-f> <cmd>Telescope file_browser<cr>
