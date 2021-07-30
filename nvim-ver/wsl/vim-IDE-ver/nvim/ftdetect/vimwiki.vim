@@ -10,5 +10,5 @@ endfunction
 
 
 " gl- is to long..use leader l
-autocmd FileType vimwiki nnoremap <buffer> <leader>l :call Covert_to_CheckBox()<cr>
+autocmd FileType vimwiki nnoremap <buffer> <leader><leader>l :call Covert_to_CheckBox()<cr>
 
