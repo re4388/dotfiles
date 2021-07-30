@@ -2,6 +2,7 @@
 call plug#begin('~/.config/plugged')
 
 
+Plug 'mhinz/vim-startify'
 
 " fooBar, qq_bar, SeriesPreprocessBar
 Plug 'Julian/vim-textobj-variable-segment'
