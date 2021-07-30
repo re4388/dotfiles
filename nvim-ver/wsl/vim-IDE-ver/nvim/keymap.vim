@@ -116,8 +116,15 @@ vnoremap <Leader>d YPgv
 vnoremap v <Esc>
 nnoremap <leader>v V 
 
+" tab out
+" https://www.reddit.com/r/vim/comments/6ga90i/tabbing_out_of_brackets_and_quotes/
+" inoremap <expr> <Tab> search('\%#[]>)}]', 'n') ? '<Right>' : '<Tab>'   
+inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<Tab>'   
 
-
+" inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}]' || 
+  " \ getline('.')[col('.')-1] =~? '[''"`]'
+  " \ && synIDattr(synID(line("."), col(".")+1, 1), "name") !~? 'string' ?
+  " \ '<Right>' : '<Tab>'   
 
 " use shift j/k to move line down/up
 nnoremap J :m .+1<CR>==

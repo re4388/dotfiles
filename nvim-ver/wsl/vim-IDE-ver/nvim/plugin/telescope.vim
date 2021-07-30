@@ -23,14 +23,14 @@ require('telescope').setup{
     mappings = {
       i = {
         ["q"] = actions.close,
-        ["<tab>"] = actions.move_selection_next,
-        ["<s-tab>"] = actions.move_selection_previous,
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
       },
       n = {
         ["q"] = actions.close,
-        ["<tab>"] = actions.move_selection_next,
-        ["<s-tab>"] = actions.move_selection_previous,
-      },
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+ z     },
     },
   }
 }

@@ -165,4 +165,7 @@ Plug 'mhartington/formatter.nvim'
 " see ftplugin/vim.lua for demo
 Plug 'tjdevries/astronauta.nvim'
 
+" Plug 'abecodes/tabout.nvim'
+
+
 call plug#end()

@@ -40,13 +40,11 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Choose over popup menu
 " , when no popup, <tab> in insert mode is to use <esc>la to tab over
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<esc>la"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<esc>la"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " use c-j and c-k to choose popup menu
-" inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
-" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-
+inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " SirVer_ultisnips
 
