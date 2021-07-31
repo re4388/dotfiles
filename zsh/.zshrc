@@ -51,7 +51,7 @@ export EDITOR=nvim;
 # binding auto suggest accept with ctrl + space
 # bindkey '^ ' autosuggest-accept
 
-bindkey '^E' autosuggest-accept
+bindkey '^f' autosuggest-accept
 
 # ===============
 # fzf
@@ -79,11 +79,6 @@ alias lg='lazygit'
 #  export PATH="/home/re4388/.local/bin:$PATH"
 #  eval "$(zoxide init --cmd j zsh)"
 
-
-
-
-
-
 chpwd() {
   ls
 }
@@ -92,3 +87,17 @@ chpwd() {
 
 # easy access to find's size search
 function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort -nr; }
+
+
+
+
+
+source ~/projects/zsh_init_event.sh
+
+
+
+
+
+
+
+

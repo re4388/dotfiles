@@ -1,6 +1,12 @@
 
 nnoremap <M-w> <cmd>Telescope live_grep<cr>
-nnoremap <M-e> <<cmd>lua require('telescope.builtin').oldfiles()<cr>
+
+
+" https://github.com/nvim-telescope/telescope.nvim#pickers
+nnoremap <M-e> <cmd>lua require('telescope.builtin').oldfiles()<cr>
+nnoremap <leader><leader>h <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader><leader>tt <cmd>lua require('telescope.builtin').colorscheme()<cr>
+nnoremap <leader><leader>mm <cmd>lua require('telescope.builtin').keymaps()<cr>
 
 " change to toggle exploer in kyazdani42/nvim-tree.lua
 " nnoremap <M-f> <cmd>Telescope file_browser<cr>

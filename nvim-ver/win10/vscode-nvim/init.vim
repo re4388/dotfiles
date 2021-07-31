@@ -46,8 +46,8 @@ Plug 'winston0410/commented.nvim'
 
 
 " good utl
-" Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
-Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
+Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
+" Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -250,7 +250,12 @@ nnoremap gU gu
 " also require vscode setting setup to send alt-d to neovim
 nmap <M-d> . 
 
-
+" after search, center, zz and unfolder zv
+nnoremap n nzz
+nnoremap N Nzz
+" when join, do not move cursour
+" not working for me since I remap
+" nnoremap J mzJ`z
 
 " Duplicate lines
 " make it even easier than yyp
@@ -284,10 +289,9 @@ nnoremap <Leader>cp yap<S-}>p
 " vmap k gk
 
 " Treat long lines as break lines (useful when moving around in them)
-" nmap j gj
-" nmap k gk
-vmap j gj
-vmap k gk
+vnoremap j gj
+vnoremap k gk
+
 nnoremap j <cmd>call BetterJK('j')<CR>
 nnoremap k <cmd>call BetterJK('k')<CR>
 
@@ -357,7 +361,7 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " had use J above, so I here remap join to ctrl+c prefix version
 " nnoremap <C-c>j J
-nnoremap gj J
+noremap gj J
 
 
 

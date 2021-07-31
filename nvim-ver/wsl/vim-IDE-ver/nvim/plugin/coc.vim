@@ -45,39 +45,38 @@ endif
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 
-" inoremap <expr> <C-j>
-   " \ pumvisible() ? "\<c-n>" :
-   " \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
-   " \ "\<c-j>"
-" inoremap <expr> <C-k>
-   " \ pumvisible() ? "\<c-p>" :
-   " \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
-   " \ "\<c-k>"
-
-
 " https://vi.stackexchange.com/questions/24892/unmap-c-n-c-p-in-completion-menu-to-use-as-previous-next-snippet-placeho
 let g:coc_snippet_next = ''
 let g:coc_snippet_prev = ''
 inoremap <expr> <C-j>
    \ pumvisible() ? "\<c-n>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
    \ "\<c-j>"
 inoremap <expr> <C-k>
    \ pumvisible() ? "\<c-p>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
    \ "\<c-k>"
 
+" inoremap <expr> <C-j>
+   " \ pumvisible() ? "\<c-n>" :
+   " \ "\<c-j>"
+" inoremap <expr> <C-k>
+   " \ pumvisible() ? "\<c-p>" :
+   " \ "\<c-k>"
 
 
-inoremap <silent><expr> <TAB>
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" https://github.com/neoclide/coc-snippets
+" inoremap <silent><expr> <TAB>
+      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
 
 
 
@@ -113,9 +112,11 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> <M-h> :call <SID>show_documentation()<CR>
 
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-nnoremap <silent> <M-u> :Prettier<cr>
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+nnoremap <silent> <M-u> :Format<Cr>
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" nnoremap <silent> <M-u> :Prettier<cr>
 
 
 
@@ -141,8 +142,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
 " Formatting selected code.
-xmap <M-u>  <Plug>(coc-format-selected)
-nmap <M-u>  <Plug>(coc-format-selected)
+" xmap <M-u>  <Plug>(coc-format-selected)
+" nmap <M-u>  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -219,8 +220,6 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)

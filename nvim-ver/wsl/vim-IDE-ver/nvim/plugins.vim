@@ -3,22 +3,19 @@ call plug#begin('~/.config/plugged')
 
 
 " TypeScript
-" Plug 'pangloss/vim-javascript'    " JavaScript support
-" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-" Plug 'jparise/vim-graphql'        " GraphQL syntax
 "------------------------ COC ------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-snippets', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
+      \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
+      \'coc-yank', 'coc-prettier',
+      \'coc-sumneko-lua']
 
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" vim-tsx will do all the coloring for jsx in the .tsx file
-" Plug 'ianks/vim-tsx'
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" typescript-vim will do all the coloring for typescript keywords
 Plug 'leafgarland/typescript-vim'
+Plug 'kevinoid/vim-jsonc'
+Plug 'yamatsum/nvim-cursorline'
+
+
 
 
 
@@ -40,10 +37,12 @@ Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline-themes'
 
 " Theme
-" Plug 'jacoborus/tender.vim'
+Plug 'jacoborus/tender.vim'
 Plug 'morhetz/gruvbox'
-" Plug 'folke/tokyonight.nvim'
-
+Plug 'folke/tokyonight.nvim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'rakr/vim-one'
 
 "visual help
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -101,8 +100,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 "Operator
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'machakann/vim-sandwich'
-" Plug 'tpope/vim-surround'
+" Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-commentary'
 " Plug 'terrortylor/nvim-comment'
@@ -115,7 +114,7 @@ Plug 'winston0410/commented.nvim'
 
 "Motion"
 Plug 'unblevable/quick-scope'
-" Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
 "project management
 " Rooter changes the working directory to the project root  

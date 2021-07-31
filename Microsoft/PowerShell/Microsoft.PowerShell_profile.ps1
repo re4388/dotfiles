@@ -126,10 +126,26 @@ Import-Module oh-my-posh
 Set-PoshPrompt -Theme microverse-power
 
 # add zoxide
-Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --cmd j --hook $hook powershell) -join "`n"
-})
+# Invoke-Expression (& {
+#     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+#     (zoxide init --cmd j --hook $hook powershell) -join "`n"
+# })
+# Shows navigable menu of all options when hitting Tab
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+# Autocompletion for arrow keys
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+
+# auto-suggestion
+Import-Module PSReadLine
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
+# alow Ctrl + A, Ctrl -E, Ctrl -P, Ctrl-N work well as linux
+Set-PSReadLineOption -EditMode Emacs
+
+
+
 # show all self-hand command
 function show {
     Write-Output ""
@@ -143,14 +159,12 @@ function show {
     Write-Output "- Change acc b/n GitHub &Bucket:   change_repo_acc"
     Write-Output "- `$vp                              neovim init.vim path"
     Write-Output "- `$ws                              c:/projects"
-    Write-Output "-  open git config (win10)         code %USERPROFILE%\.gitconfig"
-    Write-Output "-  open npmrc (win10)              code %USERPROFILE%\.npmrc"
     Write-Output ""
     Write-Output " == git alias =="
     Write-Output ""
-    Write-Output "gcn   = commit --no-verify -m"
-    Write-Output "a     = add ."
-    Write-Output "s     = status"
+    Write-Output "git cn    = git commit --no-verify -m"
+    Write-Output "git a     = git add ."
+    Write-Output "git s     = git status"
     Write-Output "*****"
 }
 

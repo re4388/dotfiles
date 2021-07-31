@@ -11,7 +11,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <silent> <leader>q :bd<CR> 
 nnoremap <silent> <Leader>qq  :qa!<CR>
 
-nnoremap <M-u> :Format<CR>
+" nnoremap <M-u> :Format<CR>
 
 " for vimscript and lua, this is run up the file
 nnoremap <leader>o :so %<CR>
@@ -225,7 +225,7 @@ nnoremap <C-Down> :resize +2<cr>
 " => ex-mode 
 """"""""""""""""""""""""""""""
 " Run the last command
-nnoremap <leader><leader>c :<up>
+nnoremap <leader><leader>r :<up>
 
 " Quick command mod
 nnoremap <CR> :
