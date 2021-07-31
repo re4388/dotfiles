@@ -1,3 +1,3 @@
 
-colorscheme tokyonight
-let g:lightline = {'colorscheme': 'tokyonight'}
+colorscheme gruvbox
+let g:lightline = {'colorscheme': 'one'}

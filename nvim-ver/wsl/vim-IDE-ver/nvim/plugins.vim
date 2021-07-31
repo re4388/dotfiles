@@ -2,6 +2,26 @@
 call plug#begin('~/.config/plugged')
 
 
+" TypeScript
+" Plug 'pangloss/vim-javascript'    " JavaScript support
+" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+" Plug 'jparise/vim-graphql'        " GraphQL syntax
+"------------------------ COC ------------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" coc extensions
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-snippets', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
+"------------------------ VIM TSX ------------------------
+" by default, if you open tsx file, neovim does not show syntax colors
+" vim-tsx will do all the coloring for jsx in the .tsx file
+" Plug 'ianks/vim-tsx'
+"------------------------ VIM TSX ------------------------
+" by default, if you open tsx file, neovim does not show syntax colors
+" typescript-vim will do all the coloring for typescript keywords
+Plug 'leafgarland/typescript-vim'
+
+
+
 Plug 'mhinz/vim-startify'
 
 " fooBar, qq_bar, SeriesPreprocessBar
@@ -11,7 +31,8 @@ Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mo
 
 
 " like favoriats file
-Plug 'ThePrimeagen/harpoon'
+" replace with oldfiles with finder plugin
+" Plug 'ThePrimeagen/harpoon'
 
 " status line
 Plug 'itchyny/lightline.vim'
@@ -20,8 +41,8 @@ Plug 'itchyny/lightline.vim'
 
 " Theme
 " Plug 'jacoborus/tender.vim'
-" Plug 'morhetz/gruvbox'
-Plug 'folke/tokyonight.nvim'
+Plug 'morhetz/gruvbox'
+" Plug 'folke/tokyonight.nvim'
 
 
 "visual help
@@ -67,6 +88,12 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" try to use this, seems faster
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+
+
+
 "Explorer
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'scrooloose/nerdtree'
@@ -92,7 +119,7 @@ Plug 'unblevable/quick-scope'
 
 "project management
 " Rooter changes the working directory to the project root  
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 
 " enable when I need
 " Plug 'vim-test/vim-test'
@@ -113,7 +140,7 @@ Plug 'vimwiki/vimwiki'
 Plug '907th/vim-auto-save'
 
 " Autocompletion related
-Plug 'hrsh7th/nvim-compe'
+" Plug 'hrsh7th/nvim-compe'
 Plug 'cohama/lexima.vim'
 
 " Plug 'nvim-lua/completion-nvim'
@@ -125,9 +152,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'folke/lua-dev.nvim'
-Plug 'onsails/lspkind-nvim'
+" Plug 'glepnir/lspsaga.nvim'
+" Plug 'folke/lua-dev.nvim'
+" Plug 'onsails/lspkind-nvim'
 " not working...don't know why... 
 " Plug 'RishabhRD/popfix'
 " Plug 'RishabhRD/nvim-lsputils'
@@ -144,15 +171,15 @@ Plug 'radenling/vim-dispatch-neovim'
 
 
 " Snippet
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'rafamadriz/friendly-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 
 
 "Formatter
-Plug 'mhartington/formatter.nvim'
+" Plug 'mhartington/formatter.nvim'
 " Floting terminal 
 " Plug 'numtostr/FTerm.nvim'
 

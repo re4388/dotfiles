@@ -3,12 +3,23 @@
 ;  !  alt
 ;  ^  ctrl
 
+
+
 ; Msgbox, %A_ComputerName%
 
 ; Note:
 ; I would like try to use ctrl+shift+key for autohotkey global hotkey..
 ; this is not a easy reach to type in coding since far from home-row
 ; so I probably not use this Combo when coding, so might a good idea to use this for global key like autohotkey
+
+; letter I had use for ctrl+shift Combo
+; z,debug
+; a, autohotkey file opened in vscode
+; g, google in highlighted/text in clipboard
+; n, opne tmp.txt
+; j, no use, reverse to tab switch for window terminal preview
+; k, same as above
+
 
 
 ; ================================
@@ -37,12 +48,19 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 ; hotstring
 ; ================================
 
-::xbackup::bash ~/backup.sh
-;::rrr::. C:\Users\tp2011002\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1; show
-
-::wv2::nvim -u 'C:\Users\re438\AppData\Local\nvim_v2\init.vim'
-::lv2::nvim -u '/home/re4388/.config/nvim2/init.vim'
+;win10
+;edit git, edit npm
+::egit::code "$env:USERPROFILE\.gitconfig"
+::enpm::code "$env:USERPROFILE\.npmrc"
 ::xwsl::wsl -d Ubuntu-20.04
+
+;wsl
+; x like execute
+::xbackup::bash ~/backup.sh
+::xbk::bash /mnt/c/Users/re438/Dropbox/bash/bk-asus-wsl-v1-to-dotfiles.sh
+
+
+
 
 F1::#d
 ;f2 need to reserve to edit file name in vscode
@@ -52,6 +70,8 @@ F8::Volume_Mute
 F9::Volume_Down
 F10::Volume_Up
 
+
+
 ::aaa::npm run serve:src:open:dev
 
 ; ::tmuxrc::~/.tmux.conf.local
@@ -59,11 +79,13 @@ F10::Volume_Up
 
 ;bash
 ::sss::./show.sh
+::bashheader::{raw}#!/bin/bash
 
 ;powershell
 ::fff::get-Bioclincal-repos
 ::rrr::. $profile; show
 ::ooo::open-profile
+::vvv::Open-VsCodeNvim-init
 
 
 ; bioclinica
@@ -102,14 +124,16 @@ FormatTime, CurrentDateTime,, yyyy_MM_dd_hh_mm
 SendInput %CurrentDateTime%
 
 
-; ::disk52::df -h --total
-; ::ng new1::ng new XX --skipInstall --routing
-; ::gitlog::git log --pretty=oneline -30
 
-
+; ENABLE use alt + arrow key to go line end and begin in every place
+; like notion or simplenote
+!Left::Send {Home}
+!Right::Send {End}
+!Up::Send {PgUp}
+!Down::Send {PgDn}
 
 ; ================================
-; Open...something
+; Open something
 ; ================================
 
 ; press ctrl+shift+a to edit autohotkey
@@ -247,19 +271,12 @@ g_ControlRepeatDetected := false
 
 
 
-; ENABLE use alt + arrow key to go line end and begin in every place
-; like notion or simplenote
-!Left::Send {Home}
-!Right::Send {End}
-!Up::Send {PgUp}
-!Down::Send {PgDn}
-
-
 
 
 
 
 ; ENABLE USE WIN + NUMNBER KEY TO SWITCH VIRTUAL DESKTOP
+
 ; Globals
 DesktopCount = 2 ; Windows starts with 2 desktops at boot
 CurrentDesktop = 1 ; Desktop count is 1-indexed (Microsoft numbers them this way)

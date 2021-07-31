@@ -4,7 +4,8 @@
 """"""""""""""""""""""""""""""
 
 " (r)eload config
-nnoremap <leader>r :so ~/.config/nvim/init.vim<CR>
+" nnoremap <leader>r :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>w :w<CR>
 
 nnoremap <silent> <leader>q :bd<CR> 
@@ -57,10 +58,9 @@ vnoremap <leader>l g$
 
 
 " Treat long lines as break lines (useful when moving around in them)
-" nmap j gj
-" nmap k gk
-vmap j gj
-vmap k gk
+vnoremap j gj
+vnoremap k gk
+
 nnoremap j <cmd>call BetterJK('j')<CR>
 nnoremap k <cmd>call BetterJK('k')<CR>
 
@@ -121,10 +121,6 @@ nnoremap <leader>v V
 " inoremap <expr> <Tab> search('\%#[]>)}]', 'n') ? '<Right>' : '<Tab>'   
 inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<Tab>'   
 
-" inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}]' || 
-  " \ getline('.')[col('.')-1] =~? '[''"`]'
-  " \ && synIDattr(synID(line("."), col(".")+1, 1), "name") !~? 'string' ?
-  " \ '<Right>' : '<Tab>'   
 
 " use shift j/k to move line down/up
 nnoremap J :m .+1<CR>==

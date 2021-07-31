@@ -1,6 +1,4 @@
 
-" nnoremap <silent> <M-y> <cmd>:lua require("FTerm").toggle()<CR>
-" nnoremap <M-e> <cmd>Telescope buffers<cr>
 nnoremap <M-w> <cmd>Telescope live_grep<cr>
 nnoremap <M-e> <<cmd>lua require('telescope.builtin').oldfiles()<cr>
 
@@ -30,7 +28,7 @@ require('telescope').setup{
         ["q"] = actions.close,
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,
- z     },
+      },
     },
   }
 }
