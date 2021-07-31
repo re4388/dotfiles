@@ -89,15 +89,4 @@ chpwd() {
 function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort -nr; }
 
 
-
-
-
 source ~/projects/zsh_init_event.sh
-
-
-
-
-
-
-
-
