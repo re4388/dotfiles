@@ -1,5 +1,3 @@
-
-""""""""""""""""""""""""""""""
 " File mgmt
 """"""""""""""""""""""""""""""
 
@@ -141,6 +139,17 @@ nnoremap gj J
 noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
 
 
+" depend on current comment plugins
+function! s:commentLineDown()
+  :execute "normal \<Plug>kommentary_line_default"
+  :normal! m`YP``
+  :execute "normal \<Plug>kommentary_line_default"
+endfunction
+
+nnoremap <M-p> :call <SID>commentLineDown()<cr>
+
+
+
 " Better tabbing in visual mode
 vnoremap < <gv
 vnoremap > >gv
@@ -251,6 +260,23 @@ nnoremap <C-Down> :resize +2<cr>
 """"""""""""""""""""""""""""""
 " Run the last command
 nnoremap <m-1> :<up><esc>
+
+" <C-a>, A: move to head.
+cnoremap <C-a>          <Home>
+" <C-d>: delete char.
+cnoremap <C-d>          <Del>
+" <C-e>, E: move to end.
+cnoremap <C-e>          <End>
+" <C-f>: next char.
+" cnoremap <C-f>          <Right>
+" <C-b>: previous char.
+" cnoremap <C-b>          <Left>
+" <C-n>: next history.
+cnoremap <C-n>          <Down>
+" <C-p>: previous history.
+cnoremap <C-p>          <Up>
+
+
 
 " nnoremap <leader><leader>r :<up>
 

@@ -111,7 +111,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-commentary'
 " Plug 'terrortylor/nvim-comment'
-Plug 'winston0410/commented.nvim'
+" Plug 'winston0410/commented.nvim'
+Plug 'b3nj5m1n/kommentary'
 " Plug 'rhysd/accelerated-jk'
 
 

@@ -217,6 +217,8 @@ endif
 
 " Share General Setting ========={{{
 
+set ttimeout          " for key codes
+set ttimeoutlen=10    " unnoticeable small value, set higher for slow machine, see :h ttimeout
 set clipboard=unnamed
 "}}}
 
@@ -412,4 +414,8 @@ augroup auto_fold_init_vim
 	au!
 	au Filetype vim setlocal foldlevel=0 foldmethod=marker
 augroup END"}}}
+
+
+
+
 

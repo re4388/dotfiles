@@ -58,6 +58,8 @@ set smartindent
 set splitbelow        " Horizontal splits will automatically be below
 set splitright        " Vertical splits will automatically be to the right
 set timeoutlen=500     " By default timeoutlen is 1000 ms
+set ttimeout          " for key codes
+set ttimeoutlen=10    " small value for quick control sequence sending, set higher for slow machine, see :h ttimeout
 set updatetime=300     " Faster completion
 
 " not sure below config work, follow vim-better-default"

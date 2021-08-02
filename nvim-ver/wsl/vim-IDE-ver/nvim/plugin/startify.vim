@@ -5,6 +5,9 @@ let g:startify_lists = [
       " \ { 'type': 'sessions',  'header': ['   Sessions']       },
       " \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       " \ { 'type': 'commands',  'header': ['   Commands']       },
+
+
+
 let g:startify_custom_header = [
       \ '#     #                         #######              ',
       \ '#     #   ##   #    # ######    #       #    # #    #',
@@ -12,7 +15,7 @@ let g:startify_custom_header = [
       \ '####### #    # #    # #####     #####   #    # # #  #',
       \ '#     # ###### #    # #         #       #    # #  # #',
       \ '#     # #    #  #  #  #         #       #    # #   ##',
-      \ '#     # #    #   ##   ######    #        ####  #    #'
+      \ '#     # #    #   ##   ######    #        ####  #    #',
       \ ]
 
 " let s:footer = ['ddd'|cowsay]
@@ -20,8 +23,8 @@ let g:startify_custom_header = [
 
 " let g:startify_custom_footer = s:footer
 
- let g:startify_custom_footer =
-            \ startify#pad(split(system('taocl'), '\n'))
+" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
+" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
 
 
 
