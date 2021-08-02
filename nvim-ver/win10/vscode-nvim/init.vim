@@ -49,12 +49,25 @@ Plug 'winston0410/commented.nvim'
 Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
 " Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
+
 Plug 'justinmk/vim-sneak'
+let g:sneak#s_next = 1
+" Plug 'ggandor/lightspeed.nvim'
+
+
+
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'romainl/vim-cool'
 
 " movement
 Plug 'unblevable/quick-scope'
+" put the following block before you set colorscheme <colorsname>
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+let g:qs_max_chars=150
+
+
 
 " doc
 Plug 'romainl/vim-devdocs' " use :DD lang keyword to get doc
@@ -234,6 +247,10 @@ endfunction
 nnoremap <leader>j :<C-u>call BreakHere()<CR>
 
 
+" Better indent in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
 " reverse visual mode u/U mapping
 " I usually change from lower to upper
 " this make me easier to use `vu` to change to upper case for the letter
@@ -250,12 +267,9 @@ nnoremap gU gu
 " also require vscode setting setup to send alt-d to neovim
 nmap <M-d> . 
 
-" after search, center, zz and unfolder zv
-nnoremap n nzz
-nnoremap N Nzz
 " when join, do not move cursour
 " not working for me since I remap
-" nnoremap J mzJ`z
+" noremap J mzJ`z
 
 " Duplicate lines
 " make it even easier than yyp
@@ -342,11 +356,10 @@ nnoremap <leader>n :noh<cr>
 nmap <M-m> *
 vmap <M-m> *
 
-nmap m <Plug>ReplaceWithRegisterOperator
-"remap mark `m` to gm
-nnoremap gm m
-xnoremap gm m
  
+" after search, center, zz and unfolder zv
+map n nzzzv
+map N Nzzzv
 
 " Use backspace key for matching parens
 nnoremap <M-q> %
@@ -369,9 +382,14 @@ noremap gj J
 
 
 " nvim plugin setting ============={{{
-"
-" vim sneak
-let g:sneak#s_next = 1
+
+nmap m <Plug>ReplaceWithRegisterOperator
+"need to remap mark `m` to gm
+nnoremap gm m
+xnoremap gm m
+
+
+
 
 " vim easymotion
 " map <Leader><Leader>s <Plug>(easymotion-prefix)
@@ -379,11 +397,6 @@ let g:sneak#s_next = 1
 " let g:EasyMotion_smartcase = 1
 " nmap <Leader>s <Plug>(easymotion-s)
 
-" config for quickscope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-let g:qs_max_chars=150
 
 " andymass/vim-matchup 
 " below line is to disable highlight functionalites

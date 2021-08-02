@@ -6,8 +6,9 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/setting.vim
 source ~/.config/nvim/keymap.vim
 
-" just test if lua in loadeable
-lua require("lsp-config")
 
+lua require('commented').setup()
+lua require("lsp-config")
+colorscheme one
 
 

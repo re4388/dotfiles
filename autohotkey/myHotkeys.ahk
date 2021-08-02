@@ -56,8 +56,9 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 
 ;wsl
 ; x like execute
-::xbackup::bash ~/backup.sh
-::xbk::bash /mnt/c/Users/re438/Dropbox/bash/bk-asus-wsl-v1-to-dotfiles.sh
+;::xbackup::bash ~/backup.sh
+;::xbk::bash /mnt/c/Users/re438/Dropbox/bash/bk-asus-wsl-v1-to-dotfiles.sh
+::xbackup::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh";bash ~/backup.sh
 
 
 
@@ -79,7 +80,7 @@ F10::Volume_Up
 
 ;bash
 ::sss::./show.sh
-::bashheader::{raw}#!/bin/bash
+::xbashheader::{raw}#!/bin/bash
 
 ;powershell
 ::fff::get-Bioclincal-repos

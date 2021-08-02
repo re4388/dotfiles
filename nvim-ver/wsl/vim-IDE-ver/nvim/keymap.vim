@@ -31,6 +31,12 @@ nmap <M-n> /
 " clear hightligh
 nnoremap <leader>n :noh<cr>
 
+
+" after search, center, zz and unfolder zv
+map n nzzzv
+map N Nzzzv
+
+
 """"""""""""""""""""""""""""""
 " move
 """"""""""""""""""""""""""""""
@@ -205,6 +211,25 @@ tnoremap <C-v><Esc> <Esc>
 
 highlight! link TermCursor Cursor
 highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+
+
+
+" directly go into insert mode when entering terminal mode
+" directly go into normal mode when leaving terminal mode
+" https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
+ function! TerminalOptions()
+    silent! au BufEnter <buffer> startinsert!
+    silent! au BufLeave <buffer> stopinsert!
+ endfunction
+
+au TermOpen * call TerminalOptions()
+
+
+
+
+
+
+
 """"""""""""""""""""""""""""""
 " windown mgmt 
 """"""""""""""""""""""""""""""
@@ -225,7 +250,9 @@ nnoremap <C-Down> :resize +2<cr>
 " => ex-mode 
 """"""""""""""""""""""""""""""
 " Run the last command
-nnoremap <leader><leader>r :<up>
+nnoremap <m-1> :<up><esc>
+
+" nnoremap <leader><leader>r :<up>
 
 " Quick command mod
 nnoremap <CR> :

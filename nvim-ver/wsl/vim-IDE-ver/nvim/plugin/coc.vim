@@ -118,7 +118,7 @@ nnoremap <silent> <M-u> :Format<Cr>
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " nnoremap <silent> <M-u> :Prettier<cr>
 
-
+autocmd FileType markdown let b:coc_suggest_disable = 1
 
 
 function! s:show_documentation()
@@ -167,20 +167,19 @@ nmap z= <Plug>(coc-fix-current)
 
 " Mappings for CoCList
 " Show all diagnostics.
-" nnoremap <silent><nowait> <space>ca  :<C-u>CocList diagnostics<cr>
-nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
 " Manage extensionsj
-nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
+" nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
 

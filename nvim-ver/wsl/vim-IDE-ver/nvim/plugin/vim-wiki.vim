@@ -8,10 +8,21 @@ let g:vimwiki_list = [
           \ 'syntax': 'markdown', 
           \ 'ext': '.md'}]
 
-
 command! Diary VimwikiDiaryIndex
 augroup vimwikigroup
     autocmd!
     " automatically update links on read diary
     autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
 augroup end
+
+
+
+" you don't need to have <cr> for runnning command
+" <cr> is only for mapping
+function! Covert_to_CheckBox()
+ :VimwikiChangeSymbolTo -
+ :VimwikiToggleListItem
+endfunction
+
+" gl- is to long..use leader l
+autocmd FileType vimwiki nnoremap <buffer> <leader><leader>l :call Covert_to_CheckBox()<cr>

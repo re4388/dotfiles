@@ -2,14 +2,20 @@
 call plug#begin('~/.config/plugged')
 
 
+
+
+" deno
+Plug 'vim-denops/denops.vim'
+set runtimepath^=~/dps-helloworld
+
 " TypeScript
 "------------------------ COC ------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
 let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
       \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
-      \'coc-yank', 'coc-prettier',
-      \'coc-sumneko-lua']
+      \'coc-yank', 'coc-prettier','coc-marketplace',
+      \'coc-sumneko-lua', 'coc-denoland']
 
 Plug 'leafgarland/typescript-vim'
 Plug 'kevinoid/vim-jsonc'
@@ -115,6 +121,7 @@ Plug 'winston0410/commented.nvim'
 "Motion"
 Plug 'unblevable/quick-scope'
 Plug 'justinmk/vim-sneak'
+let g:sneak#s_next = 1
 
 "project management
 " Rooter changes the working directory to the project root  
@@ -150,6 +157,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "Lsp
 Plug 'neovim/nvim-lspconfig'
+
 Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'glepnir/lspsaga.nvim'
 " Plug 'folke/lua-dev.nvim'
