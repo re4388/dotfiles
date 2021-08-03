@@ -176,6 +176,14 @@ nnoremap gU gu
 
 
 
+" no more go to insert mode keep hit <Cr>
+" add blank line above and below for ]sapce
+" also take count, like [count]<leader>[
+nnoremap <leader>]  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
+
+
 
 
 """"""""""""""""""""""""""""""
@@ -264,7 +272,7 @@ nnoremap <m-1> :<up><esc>
 " <C-a>, A: move to head.
 cnoremap <C-a>          <Home>
 " <C-d>: delete char.
-cnoremap <C-d>          <Del>
+" cnoremap <C-d>          <Del>
 " <C-e>, E: move to end.
 cnoremap <C-e>          <End>
 " <C-f>: next char.
@@ -322,6 +330,26 @@ endfunction
 
 " map '<CR>' in command-line mode to execute the function above
 cnoremap <expr> <CR> CCR()
+
+
+
+" use this to redirection ex-mode output to empty buffer in new tab
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+
 
 
 """"""""""""""""""""""""""""""

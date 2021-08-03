@@ -12,19 +12,15 @@ lua require("lsp-config")
 colorscheme one
 
 
+" autocmd FileType typescript let b:match_words = '\<if\>::\<else\>'
+" let b:match_words = '\<if\>:\<endif\>,'
+		" \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
 
-
-
-
-
-function! s:commentLineDown()
-  :execute "normal \<Plug>kommentary_line_default"
-  :normal! m`YP``
-  :execute "normal \<Plug>kommentary_line_default"
-endfunction
-
-nnoremap <M-p> :call <SID>commentLineDown()<cr>
-
-
-
-
+" let b:match_ignorecase=0
+"     let b:match_words =
+"      \  '<:>,' .
+"      \  '<\@<=!--:-->,'.
+"      \  '<\@<=?\k\+:?>,'.
+"      \  '<\@<=\([^ \t>/]\+\)\%(\s\+[^>]*\%([^/]>\|$\)\|>\|$\):<\@<=/\1>,'.
+"      \  '<\@<=\%([^ \t>/]\+\)\%(\s\+[^/>]*\|$\):/>'.
+"      \  '\<if\>::\<else\>'

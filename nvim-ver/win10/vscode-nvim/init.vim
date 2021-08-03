@@ -133,6 +133,8 @@ if exists('g:vscode')
 
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+		nnoremap [[ <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+		nnoremap ]] <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
@@ -378,6 +380,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " nnoremap <C-c>j J
 noremap gj J
 
+" no more go to insert mode keep hit <Cr>
+" add blank line above and below for ]sapce
+" also take count, like [count]<leader>[
+nnoremap <leader>]  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 
 "}}}

@@ -2,32 +2,17 @@
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
+set hidden " TextEdit might fail if hidden is not set.
+set nobackup " Some servers have issues with backup files, see #649.
 set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
+set cmdheight=2 " Give more space for displaying messages.
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=number " Recently vim can merge signcolumn and number column into one
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -79,8 +64,6 @@ inoremap <expr> <C-k>
 " let g:coc_snippet_next = '<tab>'
 
 
-
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -100,14 +83,14 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [[ <Plug>(coc-diagnostic-next)
+nmap <silent> ]] <Plug>(coc-diagnostic-prev)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <M-d> <Plug>(coc-definition)
+nmap <silent> <M-r> <Plug>(coc-references)
 " nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> <M-h> :call <SID>show_documentation()<CR>
