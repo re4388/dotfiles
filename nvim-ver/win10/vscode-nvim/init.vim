@@ -269,7 +269,7 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nmap <M-d> . 
+nmap <M-x> . 
 
 " when join, do not move cursour
 " not working for me since I remap

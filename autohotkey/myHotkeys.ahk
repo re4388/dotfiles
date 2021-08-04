@@ -63,6 +63,7 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 
 
 
+
 F1::#d
 ;f2 need to reserve to edit file name in vscode
 ;F3::Browser_Back
@@ -90,6 +91,9 @@ F10::Volume_Up
 
 
 ; bioclinica
+
+::lll::imageFileCacheAction
+
 ::ccc::vfauto1.user@bioclinica.com
 ::ddd::Pa$$w0rd
 ::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294

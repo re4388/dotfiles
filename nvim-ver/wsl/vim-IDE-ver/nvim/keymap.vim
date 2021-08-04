@@ -104,7 +104,7 @@ map Y y$
 nnoremap U <C-r>
 
 " use alt-d to replace .
-nmap <M-d> . 
+nmap <M-x> . 
 
 
 " Duplicate paragraph and put down
