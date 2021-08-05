@@ -269,7 +269,7 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nmap <M-x> . 
+nmap <M-d> . 
 
 " when join, do not move cursour
 " not working for me since I remap
@@ -294,6 +294,24 @@ nnoremap <leader>v V
 " as long as you have padding space between block
 nnoremap <Leader>cp yap<S-}>p
 
+" Copy whole text in system register
+" copy all!
+nnoremap ca :%y+<CR>
+
+" paste last thing yanked, not deleted
+nmap ,p "0p
+nmap ,P "0P
+
+
+" eaiser surrounding vim
+nmap ,` ysiw`
+nmap ," ysiw"
+nmap ,' ysiw'
+nmap ,b ysiwb 
+nmap ,B ysiwB
+nmap ,t ysiw<
+nmap ,[ ysiw[
+" don't forget you can use S in visual mode...
 
 
 " ========================
@@ -337,8 +355,6 @@ nnoremap <leader>h g^
 nnoremap <leader>l g$
 vnoremap <leader>h g^
 vnoremap <leader>l g$
-
-
 
 " ========================
 " eaier to search
@@ -420,9 +436,37 @@ let g:matchup_matchparen_insert_timeout = 0"}}}
 augroup auto_fold_init_vim
 	au!
 	au Filetype vim setlocal foldlevel=0 foldmethod=marker
-augroup END"}}}
+augroup END
+
+"}}}
 
 
 
+" useful function ============={{{
+"
+" handy stuff to check ex-mode output
+" this will redirect ex-mode output to empty buffer in new tab
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+" example, just fill in namp or namp <leader>
+" :call TabMessage("nmap") 
+" :call TabMessage("nmap <leader>") 
+" then you can use ctrl+o/i to back and forth the new opneing tab
+" or you don't need to go back, use 'leader q' to close the tab
+nnoremap <leader><leader>h :call TabMessage("")<Left><Left>
 
 
+"}}}

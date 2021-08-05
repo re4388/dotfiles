@@ -183,8 +183,24 @@ nnoremap <leader>]  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 
+" Copy whole text in system register
+" copy all!
+nnoremap ca :%y+<CR>
+
+" paste last thing yanked, not deleted
+nmap ,p "0p
+nmap ,P "0P
 
 
+" eaiser surrounding vim
+nmap ,` ysiw`
+nmap ," ysiw"
+nmap ,' ysiw'
+nmap ,b ysiwb 
+nmap ,B ysiwB
+nmap ,t ysiw<
+nmap ,[ ysiw[
+" don't forget you can use S in visual mode...
 
 """"""""""""""""""""""""""""""
 "  remove all arrow key
@@ -245,8 +261,6 @@ au TermOpen * call TerminalOptions()
 
 
 
-
-
 """"""""""""""""""""""""""""""
 " windown mgmt 
 """"""""""""""""""""""""""""""
@@ -263,9 +277,13 @@ nnoremap <C-Right> :vertical resize -2<cr>
 nnoremap <C-Up> :resize -2<cr>
 nnoremap <C-Down> :resize +2<cr>
 
+
+
+
 """""""""""""""""""""""""""""
 " => ex-mode 
 """"""""""""""""""""""""""""""
+
 " Run the last command
 nnoremap <m-1> :<up><esc>
 
@@ -294,8 +312,6 @@ nnoremap <CR> :
 " Start an external command with a single bang
 nnoremap ! :!
 
-" Put vim command output into buffer
-nnoremap g! :<C-u>put=execute('')<Left><Left>
 
 " ex-mode move"
 cnoremap <C-h> <Left>
@@ -333,7 +349,11 @@ cnoremap <expr> <CR> CCR()
 
 
 
+" Put vim command output into buffer
+nnoremap g! :<C-u>put=execute('')<Left><Left>
+
 " use this to redirection ex-mode output to empty buffer in new tab
+" e.g. :call TabMessage("nmap") 
 function! TabMessage(cmd)
   redir => message
   silent execute a:cmd
@@ -349,7 +369,12 @@ function! TabMessage(cmd)
 endfunction
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
-
+" try use below to check key mapping
+" :call TabMessage("nmap") 
+" :call TabMessage("nmap <leader>") 
+" then you can use ctrl+o/i to back and forth the new tab
+" or you don't need to go back, use 'leader q' to close the tab
+nnoremap <leader><leader>h :call TabMessage("")<Left><Left>
 
 
 """"""""""""""""""""""""""""""
