@@ -3,38 +3,33 @@ Add-Type -AssemblyName System.Device #Required to access System.Device.Location 
 
 Set-Alias -Name v -Value nvim
 Set-Alias -Name lg -Value lazygit
-# Function CallV2 {nvim -u C:\Users\re438\AppData\Local\nvim_v2\init.vim}
-# Set-Alias -Name v2 -Value CallV2
-
-function Open-VsCodeNvim-init {
-   nvim "C:\Users\re438\AppData\Local\nvim\init.vim"
-}
 
 $time = (Get-Date).ToString("yyyy_MMdd_HHmm")
-$vp = "C:\Users\re438\AppData\Local\nvim\init.vim"
-$workspace = "C:\projects\"
+$vp = "${env:userprofile}\AppData\Local\nvim\init.vim"
+$workspace = "C:\link\ws\"
 
-function touch {set-content -Path ($args[0]) -Value ($null)}
-# Global variable wich shall be the same in different machine
-# $dateTimeFormat= "yyyy_MMdd_HHmm"
-function lsa{
+function touch {
+    set-content -Path ($args[0]) -Value ($null)
+}
+
+function lsa {
     ls | Format-Wide -Column 5
 }
 
-# open profile with vscode
-function Edit-ProfileFile{
+function Edit-ProfileFile {
     code $profile
 }
+
 Set-Alias open-profile Edit-ProfileFile
 
 
 function change_repo_acc {
     [CmdletBinding()]
 
-    $show = [ChoiceDescription]::new('&show','show')
-    $Bitbucket = [ChoiceDescription]::new('&Bitbucket','Bitbucket')
-    $GitHub = [ChoiceDescription]::new('&GitHub','GitHub')
-    $quit = [ChoiceDescription]::new('&quit','Quit')
+    $show = [ChoiceDescription]::new('&show', 'show')
+    $Bitbucket = [ChoiceDescription]::new('&Bitbucket', 'Bitbucket')
+    $GitHub = [ChoiceDescription]::new('&GitHub', 'GitHub')
+    $quit = [ChoiceDescription]::new('&quit', 'Quit')
 
     $options = [ChoiceDescription[]]($show, $Bitbucket, $GitHub, $quit )
     $result = $host.ui.PromptForChoice($Title, $Question, $options, 0)
@@ -68,11 +63,11 @@ function switch_to_GitHub {
 function get-Bioclincal-repos {
     [CmdletBinding()]
 
-    $web = [ChoiceDescription]::new('&web-app','web-app')
-    $img = [ChoiceDescription]::new('&img-lib','imging-library')
-    $view = [ChoiceDescription]::new('&view','view-service')
-    $quit = [ChoiceDescription]::new('&quit','quit')
-    $other = [ChoiceDescription]::new('&other','other')
+    $web = [ChoiceDescription]::new('&web-app', 'web-app')
+    $img = [ChoiceDescription]::new('&img-lib', 'imging-library')
+    $view = [ChoiceDescription]::new('&view', 'view-service')
+    $quit = [ChoiceDescription]::new('&quit', 'quit')
+    $other = [ChoiceDescription]::new('&other', 'other')
 
     $options = [ChoiceDescription[]]($web, $img, $view, $quit, $other )
     $result = $host.ui.PromptForChoice($Title, $Question, $options, 0)
