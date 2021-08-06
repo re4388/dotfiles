@@ -1,2 +1,0 @@
-
-lua require('commented').setup()
