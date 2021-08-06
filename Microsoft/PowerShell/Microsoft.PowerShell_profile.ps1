@@ -34,16 +34,16 @@ function change_repo_acc {
     $show = [ChoiceDescription]::new('&show','show')
     $Bitbucket = [ChoiceDescription]::new('&Bitbucket','Bitbucket')
     $GitHub = [ChoiceDescription]::new('&GitHub','GitHub')
-    $abort = [ChoiceDescription]::new('&abort','Abort')
+    $quit = [ChoiceDescription]::new('&quit','Quit')
 
-    $options = [ChoiceDescription[]]($show, $Bitbucket, $GitHub, $abort )
+    $options = [ChoiceDescription[]]($show, $Bitbucket, $GitHub, $quit )
     $result = $host.ui.PromptForChoice($Title, $Question, $options, 0)
 
     switch ($result) {
         0 { show_current_version_control_account }
         1 { switch_to_Bioclical_GitBucket }
         2 { switch_to_GitHub }
-        3 { "Do nothing, Abort mission.." }
+        3 { "Quit" }
     }
 }
 
@@ -71,17 +71,17 @@ function get-Bioclincal-repos {
     $web = [ChoiceDescription]::new('&web-app','web-app')
     $img = [ChoiceDescription]::new('&img-lib','imging-library')
     $view = [ChoiceDescription]::new('&view','view-service')
-    $abort = [ChoiceDescription]::new('&abort','Abort')
+    $quit = [ChoiceDescription]::new('&quit','quit')
     $other = [ChoiceDescription]::new('&other','other')
 
-    $options = [ChoiceDescription[]]($web, $img, $view, $abort, $other )
+    $options = [ChoiceDescription[]]($web, $img, $view, $quit, $other )
     $result = $host.ui.PromptForChoice($Title, $Question, $options, 0)
 
     switch ($result) {
         0 { get_webApp }
         1 { get_imgLib }
         2 { get_viewservice }
-        3 { "Do nothing, Abort mission.." }
+        3 { "Quit Successfully" }
         4 { get_other_repo }
     }
 }

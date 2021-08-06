@@ -106,6 +106,11 @@ nnoremap U <C-r>
 " use alt-d to replace .
 nmap <M-x> . 
 
+nmap m <Plug>ReplaceWithRegisterOperator
+"need to remap mark `m` to gm
+" I seldom use H, M, L to move, so use it here.
+nnoremap M m
+xnoremap M m
 
 " Duplicate paragraph and put down
 nnoremap <Leader>cp yap<S-}>p
@@ -201,28 +206,38 @@ nmap ,B ysiwB
 nmap ,t ysiw<
 nmap ,[ ysiw[
 " don't forget you can use S in visual mode...
+"
+
+" Do NOT yank with x/s
+nnoremap x "_x
+
+" Disable dengerous/annoying mappings
+" ZZ - save and close Vim
+" ZQ - close Vim
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
 
 """"""""""""""""""""""""""""""
 "  remove all arrow key
 """"""""""""""""""""""""""""""
 
 "" remove all arrow key to faster my learning
-map <UP> <NOP>
-map <DOWN> <NOP>
-map <LEFT> <NOP>
-map <RIGHT> <NOP>
-inoremap <UP> <NOP>
-inoremap <DOWN> <NOP>
-inoremap <LEFT> <NOP>
-inoremap <RIGHt> <NOP>
+" map <UP> <NOP>
+" map <DOWN> <NOP>
+" map <LEFT> <NOP>
+" map <RIGHT> <NOP>
+" inoremap <UP> <NOP>
+" inoremap <DOWN> <NOP>
+" inoremap <LEFT> <NOP>
+" inoremap <RIGHt> <NOP>
 
 
 """"""""""""""""""""""""""""""
 " Tab mgmt 
 """"""""""""""""""""""""""""""
 
-nnoremap <silent> <S-Tab> :bp<CR>
 nnoremap <silent> <Tab> :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
 
 """"""""""""""""""""""""""""""
 " Terminal Mode

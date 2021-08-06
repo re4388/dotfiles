@@ -12,19 +12,15 @@ let mapleader=" "
 
 call plug#begin(stdpath('config') . '/plugged')
 
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-
-
-
-" if exists('g:vscode')
+if exists('g:vscode')
 	" Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
-" else
+else
+	Plug 'vim-airline/vim-airline'
+	Plug 'morhetz/gruvbox'
+  Plug 'romainl/vim-cool'
+	Plug 'winston0410/commented.nvim'
 	" Plug 'easymotion/vim-easymotion'
-" endif
-
-
-" use vscode easymotion when in vscode mode
+endif
 
 " text object
 Plug 'Julian/vim-textobj-variable-segment' " iv and av for fooBar, qq_bar, SeriesPreprocessBar
@@ -42,7 +38,6 @@ Plug 'wellle/targets.vim' " let you use ciq and use cib for both [ and {
 " but still there's some functionality not working in TS file
 Plug 'andymass/vim-matchup'
 
-Plug 'winston0410/commented.nvim'
 
 
 " good utl
@@ -54,10 +49,7 @@ Plug 'justinmk/vim-sneak'
 let g:sneak#s_next = 1
 " Plug 'ggandor/lightspeed.nvim'
 
-
-
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'romainl/vim-cool'
 
 " movement
 Plug 'unblevable/quick-scope'
@@ -66,7 +58,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 let g:qs_max_chars=150
-
 
 
 " doc
@@ -196,13 +187,16 @@ else
 		nmap <Tab> :tabnext<CR>
 		nmap <S-Tab> :tabprev<CR>
 
-		" Better indent in visual mode
-		vnoremap < <gv
-		vnoremap > >gv
-
-		" Theme
-		" syntax enable
-
+		" put this into file in auto load place
+		augroup auto_fold_init_vim
+			au!
+			au Filetype vim setlocal foldlevel=0 foldmethod=marker
+		augroup END
+		
+		" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
+		" already do by pressing the <j> key, which is a waste of keys!
+		" Be useful <enter> key!:
+    " nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
     set relativenumber
     set ruler
@@ -228,6 +222,7 @@ set clipboard=unnamed
 
 
 " faster ex mode
+" nnore
 nnoremap <CR> :
 
 " ========================
@@ -242,26 +237,25 @@ map Y y$
 " Redo
 nnoremap U <C-r>
 
-" Universal opposite of J
+" unjoin: opposite of J
+nnoremap <leader>j :<C-u>call BreakHere()<CR>
 function! BreakHere()
 	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
 	call histdel("/", -1)
 endfunction
-
-nnoremap <leader>j :<C-u>call BreakHere()<CR>
 
 
 " Better indent in visual mode
 vnoremap < <gv
 vnoremap > >gv
 
-" reverse visual mode u/U mapping
-" I usually change from lower to upper
-" this make me easier to use `vu` to change to upper case for the letter
+" want to use `vu` to change to upper case
+" so I reverse visual mode u/U mapping
 vnoremap u U
 vnoremap U u
 
-" also, guiw make the word to upper case
+" also, change to operator,
+" `guiw` make the word to upper case
 " no need to hit shift
 nnoremap gu gU
 nnoremap gU gu
@@ -269,7 +263,7 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nmap <M-d> . 
+nmap <M-x> . 
 
 " when join, do not move cursour
 " not working for me since I remap
@@ -312,7 +306,16 @@ nmap ,B ysiwB
 nmap ,t ysiw<
 nmap ,[ ysiw[
 " don't forget you can use S in visual mode...
+"
+" Do NOT yank with x/s
+nnoremap x "_x
 
+
+" Disable dengerous/annoying mappings
+" ZZ - save and close Vim
+" ZQ - close Vim
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
 
 " ========================
 " easier to move
@@ -351,19 +354,36 @@ endfunction
 
 
 " try use <leader> as prefix
-nnoremap <leader>h g^
-nnoremap <leader>l g$
-vnoremap <leader>h g^
-vnoremap <leader>l g$
+" nnoremap <leader>h g^
+" nnoremap <leader>l g$
+" vnoremap <leader>h g^
+" vnoremap <leader>l g$
+
+" I think maybe combo is faster
+nnoremap H g^
+nnoremap L g$
+vnoremap H g^
+vnoremap L g$
+
+
+
 
 " ========================
 " eaier to search
 " ========================
 
-" easier to type
-xmap <M-n> /
-nmap <M-n> /
 
+" currently, vscode sometimes don't update the cursor
+" so I need to use vscode native search
+" here in neovim, also use alt+m to active the word under cursor search
+" find word in file under cursor
+nmap <M-m> *
+vmap <M-m> *
+
+
+" easier to type
+nmap <M-n> /
+xmap <M-n> /
 
 " To turn off highlighting until the next search
 nnoremap <leader>n :noh<cr>
@@ -372,14 +392,11 @@ nnoremap <leader>n :noh<cr>
 " sadly, this can't go well vscode.. QQ
 " nnoremap <leader><leader>s :g//#<Left><Left>
 
-" find word in file under cursor
-nmap <M-m> *
-vmap <M-m> *
 
  
 " after search, center, zz and unfolder zv
-map n nzzzv
-map N Nzzzv
+" map n nzzzv
+" map N Nzzzv
 
 " Use backspace key for matching parens
 nnoremap <M-q> %
@@ -410,9 +427,9 @@ nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 nmap m <Plug>ReplaceWithRegisterOperator
 "need to remap mark `m` to gm
-nnoremap gm m
-xnoremap gm m
-
+" I seldom use H, M, L to move, so use it here.
+nnoremap M m
+xnoremap M m
 
 
 
@@ -432,15 +449,11 @@ let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0"}}}
 
 " autocommand setting ============={{{
-" put this into file in auto load place
-augroup auto_fold_init_vim
-	au!
-	au Filetype vim setlocal foldlevel=0 foldmethod=marker
-augroup END
+
+" nothing here
+
 
 "}}}
-
-
 
 " useful function ============={{{
 "
