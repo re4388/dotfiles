@@ -21,8 +21,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'kevinoid/vim-jsonc'
 Plug 'yamatsum/nvim-cursorline'
 
-
-
+Plug 'junegunn/goyo.vim'
 
 
 Plug 'mhinz/vim-startify'

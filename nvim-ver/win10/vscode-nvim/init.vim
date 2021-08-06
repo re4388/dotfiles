@@ -223,7 +223,10 @@ set clipboard=unnamed
 
 " faster ex mode
 " nnore
-nnoremap <CR> :
+" nnoremap <CR> :
+
+
+
 
 " ========================
 " fast edit
@@ -296,6 +299,8 @@ nnoremap ca :%y+<CR>
 nmap ,p "0p
 nmap ,P "0P
 
+" Do NOT yank with x/s
+nnoremap x "_x
 
 " eaiser surrounding vim
 nmap ,` ysiw`
@@ -307,8 +312,6 @@ nmap ,t ysiw<
 nmap ,[ ysiw[
 " don't forget you can use S in visual mode...
 "
-" Do NOT yank with x/s
-nnoremap x "_x
 
 
 " Disable dengerous/annoying mappings
@@ -320,12 +323,6 @@ nnoremap ZQ <Nop>
 " ========================
 " easier to move
 " ========================
-
-" Treat long lines as break lines (useful when moving around in them)
-" nmap j gj
-" nmap k gk
-" vmap j gj
-" vmap k gk
 
 " Treat long lines as break lines (useful when moving around in them)
 vnoremap j gj
@@ -377,9 +374,15 @@ vnoremap L g$
 " so I need to use vscode native search
 " here in neovim, also use alt+m to active the word under cursor search
 " find word in file under cursor
+"
+" Will remove below when I get used to use enter to cursor-search
 nmap <M-m> *
 vmap <M-m> *
 
+" Put <enter> to work ! Otherwise <enter> moves to the next line, which we can
+" already do by pressing the <j> key, which is a waste of keys!
+" Be useful <enter> key!:
+nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
 " easier to type
 nmap <M-n> /

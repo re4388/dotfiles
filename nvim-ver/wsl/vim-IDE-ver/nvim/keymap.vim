@@ -18,9 +18,6 @@ nnoremap <leader>o :so %<CR>
 " Search 
 """"""""""""""""""""""""""""""
 
-" seach word under cusor in current buffer
-nmap <M-m> *
-vmap <M-m> *
 
 " easier to type
 xmap <M-n> /
@@ -29,6 +26,17 @@ nmap <M-n> /
 " clear hightligh
 nnoremap <leader>n :noh<cr>
 
+
+" seach word under cusor in current buffer
+" remove below when I get used to use enter to search
+nmap <M-m> *
+vmap <M-m> *
+
+
+" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
+" already do by pressing the <j> key, which is a waste of keys!
+" Be useful <enter> key!:
+nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
 " after search, center, zz and unfolder zv
 map n nzzzv
@@ -104,7 +112,15 @@ map Y y$
 nnoremap U <C-r>
 
 " use alt-d to replace .
-nmap <M-x> . 
+nmap <c-x> . 
+" nmap ,, . 
+
+
+" nnoremap
+" nnoremap
+" nmap
+
+
 
 nmap m <Plug>ReplaceWithRegisterOperator
 "need to remap mark `m` to gm
@@ -180,6 +196,8 @@ nnoremap gu gU
 nnoremap gU gu
 
 
+nnoremap ; :
+nnoremap : ;
 
 " no more go to insert mode keep hit <Cr>
 " add blank line above and below for ]sapce
@@ -299,6 +317,9 @@ nnoremap <C-Down> :resize +2<cr>
 " => ex-mode 
 """"""""""""""""""""""""""""""
 
+" Quick command mod
+" nnoremap <CR> :
+
 " Run the last command
 nnoremap <m-1> :<up><esc>
 
@@ -321,8 +342,6 @@ cnoremap <C-p>          <Up>
 
 " nnoremap <leader><leader>r :<up>
 
-" Quick command mod
-nnoremap <CR> :
 
 " Start an external command with a single bang
 nnoremap ! :!
