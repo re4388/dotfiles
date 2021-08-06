@@ -247,6 +247,8 @@ function! BreakHere()
 	call histdel("/", -1)
 endfunction
 
+nnoremap ; :
+nnoremap : ;
 
 " Better indent in visual mode
 vnoremap < <gv
