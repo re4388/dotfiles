@@ -3,8 +3,8 @@
 
 " (r)eload config
 " nnoremap <leader>r :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
-nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>w :w<CR>
+" nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>w :w<CR>:source ~/.config/nvim/init.vim<CR>
 
 nnoremap <silent> <leader>q :bd<CR> 
 nnoremap <silent> <Leader>qq  :qa!<CR>
@@ -12,12 +12,12 @@ nnoremap <silent> <Leader>qq  :qa!<CR>
 " nnoremap <M-u> :Format<CR>
 
 " for vimscript and lua, this is run up the file
-nnoremap <leader>o :so %<CR>
+" TODO: change to other later...
+" nnoremap <leader>o :so %<CR>
 
 """"""""""""""""""""""""""""""
 " Search 
 """"""""""""""""""""""""""""""
-
 
 " easier to type
 xmap <M-n> /
@@ -51,22 +51,12 @@ map N Nzzzv
 xmap <M-q> %
 nmap <M-q> %
 
-" Easier line-wise movement
-" nnoremap gh g^
-" nnoremap gl g$
 
-" go line start and end
-" try use <C-c> as prefix
-" nnoremap <C-c>h g^
-" nnoremap <C-c>l g$
-" vnoremap <C-c>h g^
-" vnoremap <C-c>l g$
-
-" try use <leader> as prefix
-nnoremap <leader>h g^
-nnoremap <leader>l g$
-vnoremap <leader>h g^
-vnoremap <leader>l g$
+" I think maybe combo is faster
+nnoremap H g^
+nnoremap L g$
+vnoremap H g^
+vnoremap L g$
 
 
 " Treat long lines as break lines (useful when moving around in them)
@@ -136,6 +126,13 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
+" super fast whole word/WORD selection.. 
+nno ee yiw 
+" nno e. yiW 
+" nno w, yaw 
+
+" cover all non-whitespace conseuctive word
+nno ww yaW
 
 " Quit visual mode
 vnoremap v <Esc>
@@ -198,12 +195,13 @@ nnoremap gU gu
 
 nnoremap ; :
 nnoremap : ;
+vnoremap : ;
+vnoremap ; :
 
-" no more go to insert mode keep hit <Cr>
-" add blank line above and below for ]sapce
-" also take count, like [count]<leader>[
-nnoremap <leader>]  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+" add blank line above and below
+" also take count, like [count]<leader>o
+nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
 
 " Copy whole text in system register
@@ -214,6 +212,8 @@ nnoremap ca :%y+<CR>
 nmap ,p "0p
 nmap ,P "0P
 
+" paste at current cursor (add one space)
+nnoremap <space>p a<space><esc>p
 
 " eaiser surrounding vim
 nmap ,` ysiw`
@@ -224,7 +224,12 @@ nmap ,B ysiwB
 nmap ,t ysiw<
 nmap ,[ ysiw[
 " don't forget you can use S in visual mode...
-"
+
+" super fast whole word/WORD selection.. 
+nno e, yiw 
+nno e. yiW 
+nno w, yaw 
+nno w. yaW
 
 " Do NOT yank with x/s
 nnoremap x "_x
@@ -253,6 +258,10 @@ nnoremap ZQ <Nop>
 """"""""""""""""""""""""""""""
 " Tab mgmt 
 """"""""""""""""""""""""""""""
+
+" just like vscode
+nnoremap <M-m> <c-^>
+" nnoremap <C-tab> <c-^>
 
 nnoremap <silent> <Tab> :bn<CR>
 nnoremap <silent> <S-Tab> :bp<CR>
@@ -323,16 +332,23 @@ nnoremap <C-Down> :resize +2<cr>
 " Run the last command
 nnoremap <m-1> :<up><esc>
 
-" <C-a>, A: move to head.
-cnoremap <C-a>          <Home>
-" <C-d>: delete char.
-" cnoremap <C-d>          <Del>
+
+
+" make ex-mode like emacs terminal mode
 " <C-e>, E: move to end.
 cnoremap <C-e>          <End>
-" <C-f>: next char.
-" cnoremap <C-f>          <Right>
-" <C-b>: previous char.
-" cnoremap <C-b>          <Left>
+" <C-a>, A: move to head.
+
+cnoremap <C-a>          <Home>
+" <C-d>: delete char.
+cnoremap <C-d>          <Del>
+
+
+" <C-f>: forward
+cnoremap <C-f>          <Right>
+" <C-b>: backward
+cnoremap <C-b>          <Left>
+
 " <C-n>: next history.
 cnoremap <C-n>          <Down>
 " <C-p>: previous history.
@@ -408,7 +424,8 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " :call TabMessage("nmap <leader>") 
 " then you can use ctrl+o/i to back and forth the new tab
 " or you don't need to go back, use 'leader q' to close the tab
-nnoremap <leader><leader>h :call TabMessage("")<Left><Left>
+" nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
+nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
 
 
 """"""""""""""""""""""""""""""

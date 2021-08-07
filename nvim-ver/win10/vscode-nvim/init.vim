@@ -45,19 +45,24 @@ Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
 " Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 
-Plug 'justinmk/vim-sneak'
-let g:sneak#s_next = 1
-" Plug 'ggandor/lightspeed.nvim'
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#s_next = 1
+" Plug 'unblevable/quick-scope'
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+" let g:qs_max_chars=150
+
+" f for one word and then use f to go to the next one
+" s for two word and then use s to go to the next one
+Plug 'ggandor/lightspeed.nvim'
+
+" Plug 'phaazon/hop.nvim'
+" nnoremap f <cmd>lua require'hop'.hint_words()<cr>
+
 
 Plug 'vim-scripts/ReplaceWithRegister'
 
-" movement
-Plug 'unblevable/quick-scope'
-" put the following block before you set colorscheme <colorsname>
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-let g:qs_max_chars=150
 
 
 " doc
@@ -109,8 +114,10 @@ if exists('g:vscode')
 		nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 
 		" o refer to :so, like run task in vscode
-		xnoremap <leader>o <Cmd>call VSCodeNotify('workbench.action.tasks.runTask')<CR>
-		nnoremap <leader>o <Cmd>call VSCodeNotify('workbench.action.tasks.runTask')<CR>
+		" change to add space via leader o, I use this way more often
+		" and run task and use which key combo or use last command in vsc
+		" xnoremap <leader>o <Cmd>call VSCodeNotify('workbench.action.tasks.runTask')<CR>
+		" nnoremap <leader>o <Cmd>call VSCodeNotify('workbench.action.tasks.runTask')<CR>
 
 		" toggle side bar
 		xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
@@ -174,14 +181,16 @@ else
     lua require('commented').setup()
 
 		" use leader and w to save
-		nnoremap <leader>w :w<cr>
+		nnoremap <leader>w :w<cr>:so %<cr>
 		" the counterpart is npm script in vscode
-		nnoremap <leader>r :so %<cr>
+		" nnoremap <leader>r :so %<cr>
 		nnoremap <leader>q :q<cr>
 		nnoremap <leader>qq :qa<cr>
+
+
+		" just like vscode
+		nnoremap <M-m> <c-^>
 		
-		" Start an external command with a single bang
-		nnoremap ! :!
 
 		" Simulate same TAB behavior in VSCode
 		nmap <Tab> :tabnext<CR>
@@ -197,6 +206,49 @@ else
 		" already do by pressing the <j> key, which is a waste of keys!
 		" Be useful <enter> key!:
     " nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
+		"
+		"
+		"
+
+		nno <c-tab> <c-^>
+
+
+		" after search, center, zz and unfolder zv
+		" vscode don't work
+		map n nzzzv
+		map N Nzzzv
+
+		"""""""""""""""""""""""""""""
+		" => ex-mode
+		" only works in neovim
+		" in vscode, the vscode popup is used
+		""""""""""""""""""""""""""""""
+
+		" make ex-mode like emacs terminal mode
+		" <C-e>, E: move to end.
+		cnoremap <C-e>          <End>
+		" <C-a>, A: move to head.
+
+		cnoremap <C-a>          <Home>
+		" <C-d>: delete char.
+		cnoremap <C-d>          <Del>
+
+
+		" <C-f>: forward
+		cnoremap <C-f>          <Right>
+		" <C-b>: backward
+		cnoremap <C-b>          <Left>
+
+		" <C-n>: next history.
+		cnoremap <C-n>          <Down>
+		" <C-p>: previous history.
+		cnoremap <C-p>          <Up>
+
+
+		" Start an external command with a single bang
+		nnoremap ! :!
+
+
 
     set relativenumber
     set ruler
@@ -207,7 +259,10 @@ else
 		set shiftwidth=2
 		set autoindent
 		set smartindent
-		set tabstop=2"}}}
+		set tabstop=2
+		
+
+		"}}}
 
 endif
 
@@ -219,14 +274,6 @@ set clipboard=unnamed
 "}}}
 
 " Share key mapping ============={{{
-
-
-" faster ex mode
-" nnore
-" nnoremap <CR> :
-
-
-
 
 " ========================
 " fast edit
@@ -247,8 +294,11 @@ function! BreakHere()
 	call histdel("/", -1)
 endfunction
 
+
 nnoremap ; :
 nnoremap : ;
+vnoremap : ;
+vnoremap ; :
 
 " Better indent in visual mode
 vnoremap < <gv
@@ -268,7 +318,7 @@ nnoremap gU gu
 
 " use alt-d to replace .
 " also require vscode setting setup to send alt-d to neovim
-nmap <M-x> . 
+" nmap <M-x> . 
 
 " when join, do not move cursour
 " not working for me since I remap
@@ -293,16 +343,27 @@ nnoremap <leader>v V
 " as long as you have padding space between block
 nnoremap <Leader>cp yap<S-}>p
 
-" Copy whole text in system register
-" copy all!
+" Copy all text in system register
 nnoremap ca :%y+<CR>
+
+
+" paste at current cursor (add one space)
+nnoremap <space>p a<space><esc>p
+
+" Do NOT yank with x/s 	
+nnoremap x "_x
+
+" super fast whole word/WORD selection.. 
+nno ee yiw 
+" nno e. yiW 
+" nno w, yaw 
+
+" cover all non-whitespace conseuctive word
+nno ww yaW
 
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P
-
-" Do NOT yank with x/s
-nnoremap x "_x
 
 " eaiser surrounding vim
 nmap ,` ysiw`
@@ -352,14 +413,8 @@ function! BetterJK(letter)
 endfunction
 
 
-" try use <leader> as prefix
-" nnoremap <leader>h g^
-" nnoremap <leader>l g$
-" vnoremap <leader>h g^
-" vnoremap <leader>l g$
-
 " I think maybe combo is faster
-nnoremap H g^
+nnoremap H g^ 
 nnoremap L g$
 vnoremap H g^
 vnoremap L g$
@@ -378,8 +433,8 @@ vnoremap L g$
 " find word in file under cursor
 "
 " Will remove below when I get used to use enter to cursor-search
-nmap <M-m> *
-vmap <M-m> *
+" nmap <M-m> *
+" vmap <M-m> *
 
 " Put <enter> to work ! Otherwise <enter> moves to the next line, which we can
 " already do by pressing the <j> key, which is a waste of keys!
@@ -399,9 +454,6 @@ nnoremap <leader>n :noh<cr>
 
 
  
-" after search, center, zz and unfolder zv
-" map n nzzzv
-" map N Nzzzv
 
 " Use backspace key for matching parens
 nnoremap <M-q> %
@@ -418,11 +470,13 @@ vnoremap K :m '<-2<CR>gv=gv
 " nnoremap <C-c>j J
 noremap gj J
 
-" no more go to insert mode keep hit <Cr>
-" add blank line above and below for ]sapce
-" also take count, like [count]<leader>[
-nnoremap <leader>]  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap <leader>[  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+" add blank line above and below
+" also take count, like [count]<leader>o
+nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+
+
+
 
 
 "}}}
@@ -455,8 +509,10 @@ let g:matchup_matchparen_insert_timeout = 0"}}}
 
 " autocommand setting ============={{{
 
-" nothing here
-
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END
 
 "}}}
 
@@ -484,7 +540,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " :call TabMessage("nmap <leader>") 
 " then you can use ctrl+o/i to back and forth the new opneing tab
 " or you don't need to go back, use 'leader q' to close the tab
-nnoremap <leader><leader>h :call TabMessage("")<Left><Left>
+nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
 
 
 "}}}

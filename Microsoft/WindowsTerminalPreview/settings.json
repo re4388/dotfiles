@@ -1,9 +1,33 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
+        // disable last tab, since I want to be able to use this in text-editor in terminal
+        { "command": null, "keys": "ctrl+tab" },
+        // {
+        //     "command" : "LastTab",
+        //     "keys" :
+        //     [
+        //         "alt+ctrl+tab"
+        //     ]
+        // },
+
         {
-            "command": 
+            "command":
+            {
+                "action": "prevTab"
+            },
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "command":
+            {
+                "action": "nextTab"
+            },
+            "keys": "ctrl+shift+j"
+        },
+        {
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -17,18 +41,20 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-    "profiles": 
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "profiles":
     {
         "defaults": {},
-        "list": 
+        "list":
         [
             {
-                "colorScheme": "Dracula",
+                "colorScheme": "OneDark",
                 "commandline": "powershell.exe",
+                "cursorColor": "#00FF00",
                 "cursorShape": "filledBox",
                 "experimental.retroTerminalEffect": false,
                 "fontFace": "Hack Nerd Font Mono",
+                "fontSize": 11,
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
@@ -63,9 +89,10 @@
             {
                 "bellStyle": "none",
                 "colorScheme": "OneDark",
-                "cursorShape": "filledBox",
+                "cursorColor": "#00FF00",
+                "cursorShape": "bar",
                 "fontFace": "Hack Nerd Font Mono",
-                "fontSize": 12,
+                "fontSize": 11,
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
                 "name": "Ubuntu-20.04",
@@ -75,15 +102,17 @@
             },
             {
                 "colorScheme": "Tango Dark",
+                "cursorShape": "bar",
+                "fontSize": 12,
                 "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Ubuntu-18.04",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "\\\\wsl$\\Ubuntu-18.04\\home\\re4388"
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",

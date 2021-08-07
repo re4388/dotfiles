@@ -55,7 +55,7 @@ export EDITOR=nvim;
 # binding auto suggest accept with ctrl + space
 # bindkey '^ ' autosuggest-accept
 
-bindkey '^f' autosuggest-accept
+bindkey '^j' autosuggest-accept
 
 # ===============
 # fzf

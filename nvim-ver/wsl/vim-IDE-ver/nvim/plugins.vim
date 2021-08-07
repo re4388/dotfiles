@@ -2,8 +2,6 @@
 call plug#begin('~/.config/plugged')
 
 
-
-
 " deno
 Plug 'vim-denops/denops.vim'
 set runtimepath^=~/dps-helloworld
@@ -51,7 +49,9 @@ Plug 'rakr/vim-one'
 
 "visual help
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'dstein64/nvim-scrollview'
+
 
 "Icon
 Plug 'kyazdani42/nvim-web-devicons'
@@ -119,9 +119,13 @@ Plug 'b3nj5m1n/kommentary'
 " Plug 'ThePrimeagen/vim-be-good'
 
 "Motion"
-Plug 'unblevable/quick-scope'
-Plug 'justinmk/vim-sneak'
-let g:sneak#s_next = 1
+" Plug 'unblevable/quick-scope'
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#s_next = 1
+
+" f for one word and then use f to go to the next one
+" s for two word and then use s to go to the next one
+Plug 'ggandor/lightspeed.nvim'
 
 "project management
 " Rooter changes the working directory to the project root  
