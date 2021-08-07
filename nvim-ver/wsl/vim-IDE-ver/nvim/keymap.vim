@@ -111,12 +111,11 @@ nmap <c-x> .
 " nmap
 
 
-
 nmap m <Plug>ReplaceWithRegisterOperator
-"need to remap mark `m` to gm
-" I seldom use H, M, L to move, so use it here.
-nnoremap M m
-xnoremap M m
+"need to remap mark `m`
+nnoremap <leader>m m
+xnoremap <leader>m m
+
 
 " Duplicate paragraph and put down
 nnoremap <Leader>cp yap<S-}>p
@@ -425,7 +424,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " then you can use ctrl+o/i to back and forth the new tab
 " or you don't need to go back, use 'leader q' to close the tab
 " nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
-nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
+nnoremap <leader>hh :call TabMessage("nmap")<Left><Left>
 
 
 """"""""""""""""""""""""""""""

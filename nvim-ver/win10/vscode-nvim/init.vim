@@ -343,6 +343,9 @@ nnoremap <leader>v V
 " as long as you have padding space between block
 nnoremap <Leader>cp yap<S-}>p
 
+" vsc don't work
+" nnoremap <Leader>l :.,+yank<Left><left><left><left>
+
 " Copy all text in system register
 nnoremap ca :%y+<CR>
 
@@ -376,6 +379,13 @@ nmap ,[ ysiw[
 " don't forget you can use S in visual mode...
 "
 
+" Emacs like movement in Insert/Command
+" not sure I am going to use this..?
+" noremap! <C-a> <Home>
+" noremap! <C-e> <End>
+" noremap! <C-f> <Right>
+" noremap! <C-b> <Left>
+" noremap! <C-d> <Del>
 
 " Disable dengerous/annoying mappings
 " ZZ - save and close Vim
@@ -487,8 +497,9 @@ nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 nmap m <Plug>ReplaceWithRegisterOperator
 "need to remap mark `m` to gm
 " I seldom use H, M, L to move, so use it here.
-nnoremap M m
-xnoremap M m
+nnoremap <leader>m m
+xnoremap <leader>m m
+" xnoremap M m
 
 
 
@@ -540,7 +551,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " :call TabMessage("nmap <leader>") 
 " then you can use ctrl+o/i to back and forth the new opneing tab
 " or you don't need to go back, use 'leader q' to close the tab
-nnoremap <leader><leader>h :call TabMessage("nmap")<Left><Left>
+nnoremap <leader>hh :call TabMessage("nmap")<Left><Left>
 
 
 "}}}
