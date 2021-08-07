@@ -9,12 +9,6 @@
       "command": "workbench.action.showCommands"
     },
     {
-      "key": ";",
-      "name": "vscode command",
-      "type": "command",
-      "command": "workbench.action.showCommands"
-    },
-    {
       "key": "p",
       "name": "project open in new window",
       "type": "command",
@@ -853,5 +847,16 @@
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 16,
   "security.workspace.trust.untrustedFiles": "open",
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#FFFF00",
+    "tab.unfocusedActiveBorder": "#000000",
+    "editorCursor.foreground": "#00ff00",
+    "terminalCursor.foreground": "#00ff00",
+    "editor.selectionHighlightBorder": "#FFFA",
+    "editor.selectionBackground": "#00ff00", // red hexadecimal code
+    // "editor.selectionHighlightBackground": "#fff", // white hex code
+    "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+    "editor.findMatchHighlightBackground": "#ff7b00a1" //Other SEARCH MATCHES
+  },
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
 }
