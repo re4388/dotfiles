@@ -9,6 +9,12 @@
       "command": "workbench.action.showCommands"
     },
     {
+      "key": ";",
+      "name": "vscode command",
+      "type": "command",
+      "command": "workbench.action.showCommands"
+    },
+    {
       "key": "p",
       "name": "project open in new window",
       "type": "command",
@@ -16,9 +22,21 @@
     },
     {
       "key": "a",
-      "name": "add project/note",
+      "name": "add",
       "type": "bindings",
       "bindings": [
+        {
+          "key": "c",
+          "name": "comment block toggle",
+          "type": "command",
+          "command": "editor.action.blockComment"
+        },
+        {
+          "key": "f",
+          "name": "new favorite",
+          "type": "command",
+          "command": "favorites.addToFavorites"
+        },
         {
           "key": "p",
           "name": "new project",
@@ -27,7 +45,7 @@
         },
         {
           "key": "n",
-          "name": "note",
+          "name": "new note",
           "type": "command",
           "command": "Notes.newNote"
         }
@@ -35,7 +53,7 @@
     },
 
     // kind of I can use this for a better view(side bar)
-    // than use gH(popup style)
+    // than use gr(popup style)
     {
       "key": "?",
       "name": "View All References",
@@ -75,16 +93,63 @@
       "command": "workbench.action.openGlobalKeybindingsFile"
     },
     {
-      "key": "c",
-      "name": "close all open window",
-      "type": "command",
-      "command": "workbench.action.closeAllEditors"
-    },
-    {
       "key": "b",
       "name": "Toggle SideBar visible",
       "type": "command",
-      "command": "workbench.action.toggleSidebarVisibility"
+      // "command": "workbench.action.toggleSidebarVisibility"
+      "command": "macros.toggleSideBarAndActivityBar"
+    },
+    {
+      "key": "t",
+      "name": "Terminal",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "move Bottom",
+          "type": "command",
+          "command": "macros.moveTerminalBottom",
+          // "when":"terminalFocus"
+        },
+        {
+          "key": "r",
+          "name": "move Right",
+          "type": "command",
+          "command": "macros.moveTerminalRight",
+          // "when":"terminalFocus"
+        }
+      ]
+    },
+    {
+      "key": "c",
+      "name": "Close",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "s",
+          "name": "Sidebar",
+          "type": "command",
+          "command": "workbench.action.toggleSidebarVisibility"
+        },
+        {
+          "key": "c",
+          "name": "activity bar",
+          "type": "command",
+          "command": "workbench.action.toggleActivityBarVisibility"
+        },
+        {
+          "key": "t",
+          "name": "Toggle terminal",
+          "type": "command",
+          "command": "workbench.action.togglePanel"
+        },
+        {
+          "key": "a",
+          "name": "close all open window",
+          "type": "command",
+          "command": "workbench.action.closeAllEditors"
+        }
+      ]
     },
     {
       "key": "f",
@@ -114,7 +179,7 @@
           "key": "o",
           "name": "open outlined sidebar",
           "type": "command",
-          "command": "outline.focus-files.focus"
+          "command": "outline.focus"
         },
         {
           "key": "u",
@@ -147,6 +212,12 @@
           "command": "Notes.listNotes"
         },
         {
+          "key": "f",
+          "name": "favorites side bar",
+          "type": "command",
+          "command": "favoritesActivity.focus"
+        },
+        {
           "key": "t",
           "name": "user task",
           "type": "command",
@@ -157,7 +228,13 @@
           "name": "Quokka TS",
           "type": "command",
           "command": "quokka.createFile"
-        }
+        },
+        {
+          "key": "k",
+          "name": "open keyboard(no json)",
+          "type": "command",
+          "command": "workbench.action.openGlobalKeybindings"
+        },
       ]
     },
     {
@@ -312,12 +389,6 @@
       "type": "command",
       "command": "vscode-neovim.send",
       "args": ":noh<CR>"
-    },
-    {
-      "key": "t",
-      "name": "Toggle terminal",
-      "type": "command",
-      "command": "workbench.action.togglePanel"
     }
   ],
   "postfix.languages": ["html", "vue", "python", "javascript", "typescript"],
@@ -325,7 +396,6 @@
   "editor.minimap.enabled": false,
   "editor.fontFamily": "Hack Nerd Font Mono, 'Courier New', monospace, 細明體",
   "editor.fontLigatures": true,
-  "editor.formatOnType": true,
   // "editor.cursorStyle": "block",
   "editor.renderIndentGuides": true,
   "editor.renderControlCharacters": false,
@@ -334,7 +404,6 @@
   "editor.accessibilitySupport": "off",
   "editor.foldingStrategy": "indentation",
   "editor.cursorSmoothCaretAnimation": false,
-  "editor.formatOnSave": true,
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "javascript.format.enable": false,
   "workbench.sideBar.location": "right",
@@ -402,13 +471,12 @@
   ],
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.inheritEnv": false,
-  "terminal.integrated.fontSize": 15,
   "explorer.confirmDragAndDrop": false,
   "git.enableSmartCommit": true,
-  "jenkins.pipeline.linter.connector.crumbUrl": "http://10.0.4.52:3080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)",
-  "jenkins.pipeline.linter.connector.url": "http://10.0.4.52:3080/pipeline-model-converter/validate",
-  "jenkins.pipeline.linter.connector.pass": "2aoxjgju",
-  "jenkins.pipeline.linter.connector.user": "re4388",
+  // "jenkins.pipeline.linter.connector.crumbUrl": "http://10.0.4.52:3080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)",
+  // "jenkins.pipeline.linter.connector.url": "http://10.0.4.52:3080/pipeline-model-converter/validate",
+  // "jenkins.pipeline.linter.connector.pass": "2aoxjgju",
+  // "jenkins.pipeline.linter.connector.user": "re4388",
   "files.eol": "\n",
   // "code-runner.runInTerminal": true,
   // "pyqt-integration.qtdesigner.path": "c:\\Users\\re438\\Anaconda3\\Lib\\site-packages\\pyqt5_tools\\Qt\\bin\\designer.exe",
@@ -481,10 +549,6 @@
   // "leetcode.hint.commentDescription": false,
   "files.trimTrailingWhitespace": true,
   "trailing-spaces.trimOnSave": true,
-  "sync.quietSync": true,
-  "sync.autoDownload": true,
-  "sync.autoUpload": true,
-  "sync.removeExtensions": false,
   "remote.SSH.remotePlatform": {
     "10.0.4.52": "linux"
   },
@@ -495,13 +559,6 @@
   },
   "python.terminal.activateEnvironment": false,
   "python.analysis.disabled": ["unresolved-import"],
-  "python.jediEnabled": true,
-  "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": [
-    "--max-line-length",
-    "120",
-    "--experimental"
-  ],
   "python.condaPath": "C:\\Users\\re438\\Anaconda3",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.experiments.enabled": false,
@@ -511,18 +568,40 @@
     "file:///c%3A/Users/tp2011002/.vscode/extensions/atlassian.atlascode-2.8.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
     "file:///toc.schema.json": "/toc\\.yml/i"
   },
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": [
+    "--max-line-length",
+    "120",
+    "--experimental"
+  ],
   "[python]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.formatOnPaste": false
   },
-  "[javascript]": {
+  "editor.defaultFormatter": null,
+  "[lua]": {
+    "editor.defaultFormatter": "Koihik.vscode-lua-format",
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
-    "editor.formatOnPaste": false
-    // "editor.formatOnSave": true
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
   },
-  "codemetrics.basics.DecorationModeEnabled": false,
+  "prettier.singleQuote": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
   "python.languageServer": "Jedi",
   "cSpell.userWords": [
     "Autosize",
@@ -540,6 +619,7 @@
     "Heera",
     "MUEN",
     "Mammo",
+    "Preprocess",
     "SLMB",
     "SPECT",
     "STUDYDIRECT",
@@ -612,25 +692,13 @@
     "uuidv",
     "vals",
     "viewports",
+    "wadors",
     "wadouri",
     "xstate",
     "youtube"
   ],
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  // "[dart]": {
-  //   "editor.formatOnSave": true,
-  //   "editor.formatOnType": true,
-  //   "editor.rulers": [80],
-  //   "editor.selectionHighlight": false,
-  //   "editor.suggest.snippetsPreventQuickSuggestions": false,
-  //   "editor.suggestSelection": "first",
-  //   "editor.tabCompletion": "onlySnippets",
-  //   "editor.wordBasedSuggestions": false
-  // },
-  "vscode_custom_css.imports": ["file:///C:/vscode/custom.css"],
-  "vscode_custom_css.policy": true,
-
   "editor.quickSuggestions": {
     "other": true, // set false and only use ctrl+ space to activiate
     "comments": true,
@@ -651,12 +719,10 @@
 
   // when use in Angular, maybe 5000 or turn off
   "files.autoSaveDelay": 5000,
-  "typescript.preferences.quoteStyle": "single",
-  "javascript.preferences.quoteStyle": "single",
+  // "typescript.preferences.quoteStyle": "single",
+  // "javascript.preferences.quoteStyle": "single",
   "yaml.format.singleQuote": true,
   // comment this out to let eslint to indent files, and not allow Prettier isn’t overriding it.
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.singleQuote": true,
   "[rust]": {
     "editor.defaultFormatter": "statiolake.vscode-rustfmt"
   },
@@ -700,7 +766,6 @@
   "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace, 細明體",
   "vsintellicode.features.python.deepLearning": "disabled",
   "debug.onTaskErrors": "debugAnyway",
-  "editor.fontSize": 16,
   "workbench.colorTheme": "Darcula Theme from IntelliJ",
   "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   "codetour.showMarkers": false,
@@ -713,183 +778,56 @@
     "jupyter-notebook": "left"
   },
   "redhat.telemetry.enabled": true,
-  "rust-analyzer.cargo.allFeatures": true,
-  "dashboard.projectData": null,
-  "rust-analyzer.checkOnSave.command": "clippy",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "errorLens.enabledDiagnosticLevels": [
-    "error",
-    // "warning",
-    // "info",
-    "hint"
-  ],
   "leetcode.workspaceFolder": "c:\\projects\\leetcode\\ts\\src",
-  // vim
-  "vim.incsearch": true,
-  // "vim.smartcase": false,
-  // this will allow * search case sensitive
-  "vim.ignorecase": false,
-  "vim.useCtrlKeys": true,
-  // "vim.enableNeovim": true,
-  // "vim.neovimPath": "",
-  "vim.hlsearch": true,
-  "vim.leader": "<Space>",
-  "vim.replaceWithRegister": true,
-  "vim.handleKeys": {
-    //"<C-a>": false,
-    //"<C-f>": false
-  },
-
-  //
-  "vim.normalModeKeyBindingsNonRecursive": [
-    // use h and l to go to line start and end
-    {
-      "before": ["<C-h>"],
-      "after": ["^"]
-    },
-    { "before": ["<C-l>"], "after": ["$"] },
-    // still use ctrl+a to select the all doc
-    // {
-    //   "before": ["<C-a>"],
-    //   "after": ["g", "g", "V", "G"]
-    // },
-    // fater vertical move
-    {
-      "before": ["<C-j>"],
-      "after": ["3", "j"]
-    },
-    {
-      "before": ["C-k"],
-      "after": ["3", "k"]
-    },
-    // allow indent and undent active in normal mode
-    {
-      "before": ["Tab"],
-      "commands": ["editor.action.indentLines"]
-    },
-    {
-      "before": ["<shift+tab>"],
-      "commands": ["editor.action.outdentLines"]
-    },
-    // mapping switch b/n screen, only left and right switch
-
-    // here we map redo and undo to vscode native due to hard to support
-    // https://stackoverflow.com/questions/47527162/vscode-vscodevim-undo-key-rebinding
-    {
-      "before": ["u"],
-      "after": [],
-      "commands": [
-        {
-          "command": "undo",
-          "args": []
-          // }
-        }
-      ]
-    },
-    {
-      "before": ["<C-r>"],
-      "after": [],
-      "commands": [
-        {
-          "command": "redo",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["leader", "h"],
-      "after": ["<C-w>", "h"]
-    },
-    {
-      "before": ["leader", "l"],
-      "after": ["<C-w>", "l"]
-    },
-    // to disable highlighted afer search done with simple keystroke
-    {
-      "before": ["<Leader>", "/"],
-      "commands": [":noh"]
-    },
-    // use leader key for some operations
-    {
-      "before": ["leader", "w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<Leader>", "p"],
-      "commands": ["workbench.action.showCommands"]
-    },
-    {
-      "before": ["<Leader>", "t"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
-    {
-      "before": ["g", "d"],
-      "after": [],
-      "commands": ["editor.action.revealDefinition"],
-      "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-    },
-    {
-      "before": ["leader", "r"],
-      "commands": ["editor.action.goToReferences"],
-      "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-    },
-    {
-      "before": ["<Leader>", "b"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-    {
-      "before": ["<Leader>", "f"],
-      "commands": ["workbench.explorer.fileView.focus"]
-    }
-  ],
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["j", "k"],
-      "after": ["<ESC>"]
-    }
-  ],
-  "vim.sneak": true,
-  "vim.easymotion": true,
-  "vim.useSystemClipboard": true,
-  // solve this next time..
-  "vim.neovimPath": "C:/tools/neovim/Neovim/bin/nvim.exe",
-  "vim.enableNeovim": true,
-  "vim.neovimConfigPath": "C:/tools/vs_vode_neovim_config/init.vim",
-  "vim.neovimUseConfigFile": true,
-  // setting for neo vim
-  "open-in-vim.useNeovim": true,
-  "snippet.openInNewEditor": false,
-  "snippet.verbose": true,
-  "snippet.defaultLanguage": "JavaScript",
-  "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init.vim",
+  // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init.vim",
+  // below i use mklink to replace above path to sync in different machine..
+  "vscode-neovim.neovimInitVimPaths.win32": "C:\\link\\init.vim",
+  // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init-test.vim",
+"vscode-neovim.textDecorationsAtTop":true,
+  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\Users\\re438\\scoop\\apps\\neovim\\0.5.0\\bin\\nvim.exe",
+  // below i use mklink to replace above path to sync in different machine..
+  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\link\\nvim.exe",
   "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\nvim-install\\nvim-win64\\Neovim\\bin\\nvim.exe",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
+  // here i use cmd mklink \D to link to "C:\\Users\\re438\\OneDrive - g.ntu.edu.tw\\vscode_note_ext"
+  "Notes.notesLocation": "C:\\link\\vscode_note_ext",
   "editor.scrollBeyondLastLine": false,
   "workbench.list.automaticKeyboardNavigation": false,
   "Lua.telemetry.enable": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": true,
   "editor.codeLens": false,
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
   "editor.lineNumbers": "off",
-  // "update.mode": "manual",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {
+    "toggleSideBarAndActivityBar": [
+      "workbench.action.toggleSidebarVisibility",
+      "workbench.action.toggleActivityBarVisibility",
+    ],
     "commentDown": [
       "editor.action.copyLinesDownAction",
       "cursorUp",
       "editor.action.addCommentLine",
       "cursorDown"
     ],
+    "moveTerminalRight": [
+      "workbench.action.positionPanelRight",
+      "workbench.action.terminal.focus",
+      // "workbench.action.focusActiveEditorGroup",
+    ],
+    "moveTerminalBottom": [
+      "workbench.action.positionPanelBottom",
+      "workbench.action.terminal.focus",
+      // "workbench.action.focusActiveEditorGroup",
+    ],
     "consoleLogDown": [
       "editor.action.addSelectionToNextFindMatch",
       "extension.clog"
     ]
   },
-  "Notes.notesLocation": "c:\\Users\\re438\\OneDrive - g.ntu.edu.tw\\vscode_note_ext",
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
       "source": "PowerShell",
@@ -911,23 +849,9 @@
     }
   },
   "workbench.startupEditor": "readme",
-  "window.zoomLevel": -1
-  // comment out unused setting
-  // "sync.gist": "15a5c108da48387f044f32a00dcca024",
-  // "eslint.validate": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   "html",
-  //   "vue",
-  //   "typescript",
-  //   "typescriptreact"
-  // ],
-  // "eslint.options": {
-  //   "extensinons": [".ts", ".js", ".tsx", ".jsx"]
-  // },
-  // "eslint.alwaysShowStatus": true,
-  // "eslint.format.enable": true,
-  // "[lua]": {
-  //   "editor.defaultFormatter": "gccfeli.vscode-lua"
-  // }
+  "window.zoomLevel": -1,
+  "terminal.integrated.fontSize": 15,
+  "editor.fontSize": 16,
+  "security.workspace.trust.untrustedFiles": "open",
+  "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
 }
