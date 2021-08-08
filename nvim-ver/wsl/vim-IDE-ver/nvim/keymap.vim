@@ -131,11 +131,12 @@ vnoremap <Leader>d YPgv
 
 " super fast whole word/WORD selection.. 
 nno ee yiw 
+nno ww yaW
+nmap cc miw
 " nno e. yiW 
 " nno w, yaw 
 
 " cover all non-whitespace conseuctive word
-nno ww yaW
 
 " Quit visual mode
 vnoremap v <Esc>
@@ -201,11 +202,17 @@ nnoremap : ;
 vnoremap : ;
 vnoremap ; :
 
-" add blank line above and below
-" also take count, like [count]<leader>o
+" add blank line above and below and take count, like [count]<leader>o
 nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
+ " Insert empty line above, repeatable
+ " noremap <silent> <Plug>EmptyLineAbove mmO<ESC>`m:call repeat#set("\<Plug>EmptyLineAbove")<CR>
+ " nmap <leader>O <Plug>EmptyLineAbove
+ "
+ "Insert empty line below, repeatable
+ " nnoremap <silent> <Plug>EmptyLineBelow mmo<ESC>`m:call repeat#set("\<Plug>EmptyLineBelow")<CR>
+ " nmap <leader>o <Plug>EmptyLineBelow
 
 " Copy whole text in system register
 " copy all!

@@ -13,7 +13,16 @@ colorscheme one
 
 :ab rtfm read the the fine manual
 
-
+" dd = true
+" - [] ddd
+" [X] foo
+" autocmd FileType vimwiki b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
+autocmd FileType vim let b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
+" autocmd FileType vim let b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
+" autocmd FileType vim let g:switch_custom_definitions =
+"     \ [
+"     \   ['foo', 'bar', 'baz']
+"     \ ]
 
 " vim-matchup ========={{{
 

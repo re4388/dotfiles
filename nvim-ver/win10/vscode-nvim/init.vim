@@ -146,6 +146,7 @@ if exists('g:vscode')
 
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+		" I change [[  and ]] to function jump usage in treesitter
 		" nnoremap [[ <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 		" nnoremap ]] <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
@@ -374,11 +375,13 @@ nnoremap x "_x
 
 " super fast whole word/WORD selection.. 
 nno ee yiw 
+nno ww yaW
+nmap cc miw
 " nno e. yiW 
 " nno w, yaw 
 
+
 " cover all non-whitespace conseuctive word
-nno ww yaW
 
 " paste last thing yanked, not deleted
 nmap ,p "0p
@@ -537,12 +540,16 @@ require'nvim-treesitter.configs'.setup {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+       -- use "o"bject refer to class, I use c to call below 
+        ["ao"] = "@class.outer",
+        ["io"] = "@class.inner",
+
         ["ii"] = "@conditional.inner",
         ["ai"] = "@conditional.outer",
+
         ["ic"] = "@call.inner",
         ["ac"] = "@call.outer",
+
         ["ip"] = "@parameter.inner",
         -- para outter no support
         -- Or you can define your own textobjects like this
@@ -557,7 +564,7 @@ require'nvim-treesitter.configs'.setup {
 				goto_previous_start = {
 					["[["] = "@function.outer",
 				},
-			},
+		},
   },
 }
 EOF
