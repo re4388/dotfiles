@@ -11,8 +11,8 @@ export HISTSIZE=10000		# save 10000 items in history
 # ===============
 
 #  export my_vimrc_plugin_folder=$HOME/.config/nvim/config_group
-export vrc=$HOME/.config/nvim/init.vim
-export vp=$HOME/.config/nvim
+export vp=$HOME/.config/nvim/init.vim
+# export vp=$HOME/.config/nvim
 export VIMCONFIG=~/.config/nvim
 
 alias v=nvim

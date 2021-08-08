@@ -13,7 +13,9 @@ let mapleader=" "
 call plug#begin(stdpath('config') . '/plugged')
 
 if exists('g:vscode')
+	" just not working, no hl...
 	" Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
+	" map f <Plug>(easymotion-bd-w)
 else
 	Plug 'vim-airline/vim-airline'
 	Plug 'morhetz/gruvbox'
@@ -21,7 +23,10 @@ else
 	Plug 'winston0410/commented.nvim'
 	" Plug 'easymotion/vim-easymotion'
 endif
+" map f <Plug>(easymotion-bd-w)
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 " text object
 Plug 'Julian/vim-textobj-variable-segment' " iv and av for fooBar, qq_bar, SeriesPreprocessBar
 Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mode, good to select more than one word
@@ -37,6 +42,7 @@ Plug 'wellle/targets.vim' " let you use ciq and use cib for both [ and {
 " like jump to close bracket even in the same line
 " but still there's some functionality not working in TS file
 Plug 'andymass/vim-matchup'
+Plug 'AndrewRadev/switch.vim'
 
 
 
@@ -56,6 +62,15 @@ Plug 'tpope/vim-repeat'
 " f for one word and then use f to go to the next one
 " s for two word and then use s to go to the next one
 Plug 'ggandor/lightspeed.nvim'
+" 
+"
+" Why I don't like clever-f?
+" - only how the hl after the the first hit, no as convenience as
+" QuickScope style => may just use QuickScope
+" Plug 'rhysd/clever-f.vim'
+" g:clever_f_smart_case = 1
+" g:clever_f_show_prompt =1 
+
 
 " Plug 'phaazon/hop.nvim'
 " nnoremap f <cmd>lua require'hop'.hint_words()<cr>
@@ -131,8 +146,8 @@ if exists('g:vscode')
 
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
-		nnoremap [[ <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
-		nnoremap ]] <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
+		" nnoremap [[ <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+		" nnoremap ]] <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
@@ -293,6 +308,7 @@ function! BreakHere()
 	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
 	call histdel("/", -1)
 endfunction
+
 
 
 nnoremap ; :
@@ -494,14 +510,57 @@ nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
 " nvim plugin setting ============={{{
 
+" AndrewRadev/switch.vim
+" test
+" if(a2 = 3 || a3 = 4)
+" flag = true
+let g:switch_mapping = "<BS>"
+
 nmap m <Plug>ReplaceWithRegisterOperator
-"need to remap mark `m` to gm
-" I seldom use H, M, L to move, so use it here.
+"need to remap mark `m`
 nnoremap <leader>m m
 xnoremap <leader>m m
-" xnoremap M m
 
 
+" ref:
+" https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
+" https://github.com/nvim-treesitter/nvim-treesitter-textobjects/blob/master/queries/javascript/textobjects.scm
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+      -- Automatically jump forward to textobj, similar to targets.vim 
+      lookahead = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ii"] = "@conditional.inner",
+        ["ai"] = "@conditional.outer",
+        ["ic"] = "@call.inner",
+        ["ac"] = "@call.outer",
+        ["ip"] = "@parameter.inner",
+        -- para outter no support
+        -- Or you can define your own textobjects like this
+      },
+    },
+		move = {
+				enable = true,
+				set_jumps = true, -- whether to set jumps in the jumplist
+				goto_next_start = {
+					["]]"] = "@function.outer",
+				},
+				goto_previous_start = {
+					["[["] = "@function.outer",
+				},
+			},
+  },
+}
+EOF
 
 " vim easymotion
 " map <Leader><Leader>s <Plug>(easymotion-prefix)

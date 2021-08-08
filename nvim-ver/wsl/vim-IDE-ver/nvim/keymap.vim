@@ -105,10 +105,14 @@ nnoremap U <C-r>
 nmap <c-x> . 
 " nmap ,, . 
 
-
 " nnoremap
 " nnoremap
 " nmap
+
+" test
+" if(a2 = 3 || a3 = 4)
+" flag = true
+let g:switch_mapping = "<BS>"
 
 
 nmap m <Plug>ReplaceWithRegisterOperator

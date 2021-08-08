@@ -45,7 +45,6 @@
         }
       ]
     },
-
     // kind of I can use this for a better view(side bar)
     // than use gr(popup style)
     {
@@ -385,7 +384,13 @@
       "args": ":noh<CR>"
     }
   ],
-  "postfix.languages": ["html", "vue", "python", "javascript", "typescript"],
+  "postfix.languages": [
+    "html",
+    "vue",
+    "python",
+    "javascript",
+    "typescript"
+  ],
   "editor.lineHeight": 25,
   "editor.minimap.enabled": false,
   "editor.fontFamily": "Hack Nerd Font Mono, 'Courier New', monospace, 細明體",
@@ -451,7 +456,6 @@
   "telemetry.enableTelemetry": false,
   "workbench.statusBar.visible": true,
   "breadcrumbs.enabled": true,
-
   "todohighlight.include": [
     "**/*.js",
     "**/*.jsx",
@@ -552,7 +556,9 @@
     "*.lua": "lua"
   },
   "python.terminal.activateEnvironment": false,
-  "python.analysis.disabled": ["unresolved-import"],
+  "python.analysis.disabled": [
+    "unresolved-import"
+  ],
   "python.condaPath": "C:\\Users\\re438\\Anaconda3",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.experiments.enabled": false,
@@ -707,10 +713,8 @@
   "editor.wordBasedSuggestions": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.suggestFontSize": 17,
-
   // when cursor hover, all words highlighted
   "editor.occurrencesHighlight": true,
-
   // when use in Angular, maybe 5000 or turn off
   "files.autoSaveDelay": 5000,
   // "typescript.preferences.quoteStyle": "single",
@@ -777,7 +781,7 @@
   // below i use mklink to replace above path to sync in different machine..
   "vscode-neovim.neovimInitVimPaths.win32": "C:\\link\\init.vim",
   // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init-test.vim",
-"vscode-neovim.textDecorationsAtTop":true,
+  "vscode-neovim.textDecorationsAtTop": true,
   // "vscode-neovim.neovimExecutablePaths.win32": "C:\\Users\\re438\\scoop\\apps\\neovim\\0.5.0\\bin\\nvim.exe",
   // below i use mklink to replace above path to sync in different machine..
   // "vscode-neovim.neovimExecutablePaths.win32": "C:\\link\\nvim.exe",
@@ -859,4 +863,7 @@
     "editor.findMatchHighlightBackground": "#ff7b00a1" //Other SEARCH MATCHES
   },
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true, // enable for all themes
+  }
 }

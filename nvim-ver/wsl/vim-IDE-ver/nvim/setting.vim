@@ -2,25 +2,17 @@
 " persistent undo
 set undofile " Maintain undo history between sessions
 
-"nvim_treesitter setting
-
-
-
 
 " FOLDING
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable            " no folding by default
 set foldmethod=marker       " fold based on ...
-set foldnestmax=10          " deepest fold is 10 levels
+set foldnestmax=10         " deepest fold is 10 levels
 set foldlevel=1             " fold one level at a time
 " ref: https://vim.fandom.com/wiki/Folding#Folding_methods
 
-
-
-
 " set t_Co=256          " Support 256 colors
-
 set clipboard=unnamed
 set autochdir
 set autoindent
@@ -33,8 +25,6 @@ set foldcolumn=1
 set foldenable
 set foldlevel=5
 set hidden            " Required to keep multiple buffers open multiple buffers
-
-
 set hlsearch            " " highlight matches
 set ignorecase          " ignore case when searching
 set smartcase           " no ignorecase if Uppercase char present
@@ -47,9 +37,6 @@ set nowrap            " Display long lines as just one line
 set nowritebackup      " This is recommended by coc
 " set number              " show line numbers
 set pumheight=10      " Makes popup menu smaller
-" set relativenumber
-"
-" TODO: waht is this?
 set scrolloff=5         " " start scrolling viewport 5 lines ahead of cursor
 set showcmd             " display incomplete commands
 set showmatch           " highlight matching [{()}]
@@ -67,27 +54,19 @@ set foldenable
 set foldmarker={,}
 set foldlevel=0
 set foldlevelstart=99
-
-
 set number
 set relativenumber
-
 " Turn on the Wild menu
 set wildmenu " turn on tab completion menu
-
 "TODO: what is this?
 " set wildmode=list:longest   " make tab completion work like shell
-
 "Always show current position
 set ruler
-
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-
 set whichwrap+=<,>,h,l
 
 """"""""""""""""""""""""""""""""
@@ -116,7 +95,6 @@ set expandtab "insert spaces when tab key is pressed
 
 
 " INDENT
-
 set smarttab " Be smart when using tabs
 set shiftwidth=2 " 1 indentation == 2 spaces
 set tabstop=2  " 1 tab == 2 spaces

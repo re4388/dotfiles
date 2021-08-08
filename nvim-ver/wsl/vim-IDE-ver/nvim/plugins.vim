@@ -3,25 +3,28 @@ call plug#begin('~/.config/plugged')
 
 
 " deno
-Plug 'vim-denops/denops.vim'
-set runtimepath^=~/dps-helloworld
+" Plug 'vim-denops/denops.vim'
+" set runtimepath^=~/dps-helloworld
 
-" TypeScript
+
+
 "------------------------ COC ------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" coc extensions
-let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
-      \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
-      \'coc-yank', 'coc-prettier','coc-marketplace',
-      \'coc-sumneko-lua', 'coc-denoland']
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" " coc extensions
+" let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
+"       \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
+"       \'coc-yank', 'coc-prettier','coc-marketplace',
+"       \'coc-sumneko-lua', 'coc-denoland']
 
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
+
+"------------------------ COC ------------------------
+
+
+
 Plug 'kevinoid/vim-jsonc'
-Plug 'yamatsum/nvim-cursorline'
-
 Plug 'junegunn/goyo.vim'
-
-
+Plug 'yamatsum/nvim-cursorline'
 Plug 'mhinz/vim-startify'
 
 " fooBar, qq_bar, SeriesPreprocessBar
@@ -61,28 +64,19 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'kana/vim-textobj-entire'
 " e
-" create your own text objects
-Plug 'kana/vim-textobj-user'
-" f in c, java and vim
-Plug 'kana/vim-textobj-function'
-" extended version of above
-Plug 'haya14busa/vim-textobj-function-syntax'
-" l 
-Plug 'kana/vim-textobj-line'
-" i
-Plug 'michaeljsmith/vim-indent-object'
-" %
-Plug 'andymass/vim-matchup'
-" q
-Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user' " create your own text objects
+Plug 'kana/vim-textobj-function' " f in c, java and vim
+Plug 'haya14busa/vim-textobj-function-syntax' " extended version of above
+Plug 'kana/vim-textobj-line' " l 
+" Plug 'michaeljsmith/vim-indent-object' " i
+Plug 'andymass/vim-matchup' " %
+Plug 'wellle/targets.vim' " q
 " I like this plugin, maybe oneday I will enable it when I do coding!
 " Plug 'mbbill/undotree'
 
 
 
-" doc in vim
-" try :DD js map
-Plug 'romainl/vim-devdocs'
+Plug 'romainl/vim-devdocs' " try :DD js map
 
 " fuzzy finder
 " Plug 'rking/ag.vim'
@@ -98,8 +92,7 @@ Plug 'nvim-telescope/telescope.nvim'
 
 
 
-"Explorer
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua' "Explorer
 " Plug 'scrooloose/nerdtree'
 " Plug 'kevinhwang91/rnvimr'
 
@@ -119,9 +112,14 @@ Plug 'b3nj5m1n/kommentary'
 " Plug 'ThePrimeagen/vim-be-good'
 
 "Motion"
-" Plug 'unblevable/quick-scope'
 " Plug 'justinmk/vim-sneak'
 " let g:sneak#s_next = 1
+
+" Plug 'unblevable/quick-scope'
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_max_chars=150
+" highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
 
 " f for one word and then use f to go to the next one
 " s for two word and then use s to go to the next one
@@ -134,8 +132,7 @@ Plug 'ggandor/lightspeed.nvim'
 " enable when I need
 " Plug 'vim-test/vim-test'
 
-" auto disbale highlight after search
-Plug 'romainl/vim-cool'
+Plug 'romainl/vim-cool' " auto disbale highlight after search
 
 " auto session
 " Plug 'rmagatti/auto-session'
@@ -146,6 +143,7 @@ Plug 'romainl/vim-cool'
 
 
 Plug 'vimwiki/vimwiki'
+Plug 'AndrewRadev/switch.vim'
 
 Plug '907th/vim-auto-save'
 
@@ -158,6 +156,8 @@ Plug 'cohama/lexima.vim'
 
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
 
 "Lsp
 Plug 'neovim/nvim-lspconfig'
