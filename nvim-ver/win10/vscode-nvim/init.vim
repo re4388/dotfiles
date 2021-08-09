@@ -540,9 +540,15 @@ require'nvim-treesitter.configs'.setup {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-       -- use "o"bject refer to class, I use c to call below 
-        ["ao"] = "@class.outer",
-        ["io"] = "@class.inner",
+
+       -- no idea which key to refer class, also, I seldom need to choose the whole class
+			 -- the current working project like to use class as a file
+       --  ["ao"] = "@class.outer",
+       --  ["io"] = "@class.inner",
+
+       -- use o refer to loop
+        ["ao"] = "@loop.outer",
+        ["io"] = "@loop.inner",
 
         ["ii"] = "@conditional.inner",
         ["ai"] = "@conditional.outer",
@@ -560,9 +566,15 @@ require'nvim-treesitter.configs'.setup {
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
 					["]]"] = "@function.outer",
+					["))"] = "@call.outer",
+					["}}"] = "@loop.outer",
+					[">>"] = "@conditional.outer",
 				},
 				goto_previous_start = {
 					["[["] = "@function.outer",
+					["(("] = "@call.outer",
+					["{{"] = "@loop.outer",
+					["<<"] = "@conditional.outer",
 				},
 		},
   },

@@ -847,7 +847,6 @@
     }
   },
   "workbench.startupEditor": "readme",
-  "window.zoomLevel": -1,
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 16,
   "security.workspace.trust.untrustedFiles": "open",
@@ -855,15 +854,18 @@
     "tab.activeBorder": "#FFFF00",
     "tab.unfocusedActiveBorder": "#000000",
     "editorCursor.foreground": "#00ff00",
-    "terminalCursor.foreground": "#00ff00",
+    "terminalCursor.fojeground": "#00ff00",
     "editor.selectionHighlightBorder": "#FFFA",
-    "editor.selectionBackground": "#00ff00", // red hexadecimal code
-    // "editor.selectionHighlightBackground": "#fff", // white hex code
-    "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
-    "editor.findMatchHighlightBackground": "#ff7b00a1" //Other SEARCH MATCHES
+    // "editor.selectionBackground": "#d5e3de",
+    "editor.selectionBackground": "#d5e3de",
+    // "editor.selectionHighlightBackground": "#fff",
+    // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+    "editor.findMatchBackground": "#BF883F", //Current SEARCH MATCH
+    "editor.findMatchHighlightBackground": "#3FA1BF" //Other SEARCH MATCHES
   },
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
   "editor.semanticTokenColorCustomizations": {
     "enabled": true, // enable for all themes
-  }
+  },
+  "window.zoomLevel": -1
 }
