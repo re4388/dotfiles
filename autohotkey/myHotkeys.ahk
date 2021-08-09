@@ -45,24 +45,34 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 
 
 ; ================================
-; hotstring
+; Hotstring
 ; ================================
 
-;win10
+
+;WSL
+::xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh"
+::ssss::./show.sh
+::xbashheader::{raw}#!/bin/bash
+; ::tmuxrc::~/.tmux.conf.local
+
+;Powershell
+::sss::show
+::fff::get-Bioclincal-repos
+::rrr::. $profile; show
+::ooo::open-profile
+::vvv::Open-VsCodeNvim-init
 ;edit git, edit npm
 ::egit::code "$env:USERPROFILE\.gitconfig"
 ::enpm::code "$env:USERPROFILE\.npmrc"
 ::xwsl::wsl -d Ubuntu-20.04
 
-;wsl
-; x like execute
-;::xbackup::bash ~/backup.sh
-;::xbk::bash /mnt/c/Users/re438/Dropbox/bash/bk-asus-wsl-v1-to-dotfiles.sh
-; ::xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh";bash ~/backup.sh
-::xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh"
 
-
-
+; Bioclinica
+::aaa::npm run serve:src:open:dev
+::lll::imageFileCacheAction
+::ccc::vfauto1.user@bioclinica.com
+::ddd::Pa$$w0rd
+::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
 
 
 F1::#d
@@ -75,33 +85,12 @@ F10::Volume_Up
 
 
 
-::aaa::npm run serve:src:open:dev
-
-; ::tmuxrc::~/.tmux.conf.local
-; ::wprc::xxxxtodoforWindowPreviewRC
-
-;bash
-::sss::./show.sh
-::xbashheader::{raw}#!/bin/bash
-
-;powershell
-::fff::get-Bioclincal-repos
-::rrr::. $profile; show
-::ooo::open-profile
-::vvv::Open-VsCodeNvim-init
 
 
-; bioclinica
 
-::lll::imageFileCacheAction
 
-::ccc::vfauto1.user@bioclinica.com
-::ddd::Pa$$w0rd
-::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
-;::ggg::
 
-; coding
-::mm!::/**
+
 
 ; alt + j, k , l for (), [], {}
 
