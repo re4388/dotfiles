@@ -51,17 +51,18 @@ Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
 " Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 
-" Plug 'justinmk/vim-sneak'
-" let g:sneak#s_next = 1
-" Plug 'unblevable/quick-scope'
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-" highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-" let g:qs_max_chars=150
+Plug 'justinmk/vim-sneak'
+let g:sneak#s_next = 1
+Plug 'unblevable/quick-scope'
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+let g:qs_max_chars=150
 
 " f for one word and then use f to go to the next one
 " s for two word and then use s to go to the next one
-Plug 'ggandor/lightspeed.nvim'
+" the s behavior is somehow unpredictable in vscode env
+" Plug 'ggandor/lightspeed.nvim'
 " 
 "
 " Why I don't like clever-f?
@@ -556,7 +557,12 @@ require'nvim-treesitter.configs'.setup {
         ["ic"] = "@call.inner",
         ["ac"] = "@call.outer",
 
-        ["ip"] = "@parameter.inner",
+				-- block seems mix with function and try-catch, but not statement block
+        -- ["ik"] = "@block.inner",
+        -- ["ak"] = "@block.outer",
+
+				-- use ib is more accurate
+        -- ["ip"] = "@parameter.inner",
         -- para outter no support
         -- Or you can define your own textobjects like this
       },

@@ -72,7 +72,8 @@ require'nvim-treesitter.configs'.setup {
         ["ai"] = "@conditional.outer",
         ["ic"] = "@call.inner",
         ["ac"] = "@call.outer",
-        ["ip"] = "@parameter.inner",
+				-- use ib is more accurate
+        -- ["ip"] = "@parameter.inner",
         -- para outter no support
         -- Or you can define your own textobjects like this
       },

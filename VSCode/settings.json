@@ -860,8 +860,8 @@
     "editor.selectionBackground": "#d5e3de",
     // "editor.selectionHighlightBackground": "#fff",
     // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
-    "editor.findMatchBackground": "#BF883F", //Current SEARCH MATCH
-    "editor.findMatchHighlightBackground": "#3FA1BF" //Other SEARCH MATCHES
+    "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+    // "editor.findMatchHighlightBackground": "#BF883F" //Other SEARCH MATCHES
   },
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
   "editor.semanticTokenColorCustomizations": {

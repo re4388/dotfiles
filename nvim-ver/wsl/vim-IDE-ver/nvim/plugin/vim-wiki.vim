@@ -8,7 +8,6 @@ let g:vimwiki_list = [
           \ 'syntax': 'markdown', 
           \ 'ext': '.md'}]
 
-
 " Automatically update links when enter Diary Index
 command! Diary VimwikiDiaryIndex
 augroup vimwikigroup
@@ -16,25 +15,25 @@ augroup vimwikigroup
     autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
 augroup end
 
-
-autocmd FileType vimwiki nnoremap <buffer> <Leader>gb <Plug>VimwikiGoBackLink
-" autocmd FileType vimwiki nnoremap <buffer> <bs> :VimwikiToggleListItem<cr>
-" autocmd FileType vimwiki b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
-
-
 " cover line to checkBox, lick <S-C-c> in simplenote
 function! Cover_line_to_checkBox()
  :VimwikiChangeSymbolTo -
  :VimwikiToggleListItem
 endfunction
 
-" gl- is to long..use leader b, box
-" autocmd FileType vimwiki nnoremap <buffer> <leader>b :call Cover_line_to_checkBox()<cr>
 autocmd FileType vimwiki nnoremap <buffer> <bs> :call Cover_line_to_checkBox()<cr>
+autocmd FileType vimwiki nnoremap <silent> <buffer> <leader>g :Goyo<cr>::ScrollViewDisable<cr>
 
- 
+" make leader-l (covertToList) repeatable 
 noremap <silent> <Plug>covertToList :VimwikiChangeSymbolTo -<CR>:call repeat#set("\<Plug>covertToList")<CR>
 autocmd FileType vimwiki nmap <buffer> <leader>l <Plug>covertToList
+
+
+" use a complex code to kind of disbale <bs>
+autocmd FileType vimwiki nnoremap <buffer> <Leader>gbb <Plug>VimwikiGoBackLink
+
+" ----- old code -------
+
 
 
 " :VimwikiChangeSymbolTo -<CR>
