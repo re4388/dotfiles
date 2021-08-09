@@ -9,14 +9,14 @@ call plug#begin('~/.config/plugged')
 
 
 "------------------------ COC ------------------------
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" " coc extensions
-" let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
-"       \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
-"       \'coc-yank', 'coc-prettier','coc-marketplace',
-"       \'coc-sumneko-lua', 'coc-denoland']
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" coc extensions
+let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
+      \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
+      \'coc-yank', 'coc-prettier','coc-marketplace',
+      \'coc-sumneko-lua', 'coc-denoland']
 
-" Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 
 "------------------------ COC ------------------------
 

@@ -147,8 +147,8 @@ if exists('g:vscode')
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
 		" I change [[  and ]] to function jump usage in treesitter
-		" nnoremap [[ <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
-		" nnoremap ]] <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
+		nnoremap <PageDown> <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+		nnoremap <PageUp> <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
