@@ -547,15 +547,15 @@ require'nvim-treesitter.configs'.setup {
        --  ["ao"] = "@class.outer",
        --  ["io"] = "@class.inner",
 
-       -- use o refer to loop
+       -- o for loop
         ["ao"] = "@loop.outer",
         ["io"] = "@loop.inner",
-
-        ["ii"] = "@conditional.inner",
-        ["ai"] = "@conditional.outer",
-
-        ["ic"] = "@call.inner",
-        ["ac"] = "@call.outer",
+       -- c for condition
+        ["ic"] = "@conditional.inner",
+        ["ac"] = "@conditional.outer",
+       -- i for invocation
+        ["ii"] = "@call.inner",
+        ["ai"] = "@call.outer",
 
 				-- block seems mix with function and try-catch, but not statement block
         -- ["ik"] = "@block.inner",

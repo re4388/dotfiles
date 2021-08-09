@@ -66,12 +66,17 @@ require'nvim-treesitter.configs'.setup {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["ii"] = "@conditional.inner",
-        ["ai"] = "@conditional.outer",
-        ["ic"] = "@call.inner",
-        ["ac"] = "@call.outer",
+      --  ["ac"] = "@class.outer",
+      --  ["ic"] = "@class.inner",
+       -- o for loop
+        ["ao"] = "@loop.outer",
+        ["io"] = "@loop.inner",
+       -- c for condition
+        ["ic"] = "@conditional.inner",
+        ["ac"] = "@conditional.outer",
+       -- i for invocation
+        ["ii"] = "@call.inner",
+        ["ai"] = "@call.outer",
 				-- use ib is more accurate
         -- ["ip"] = "@parameter.inner",
         -- para outter no support
