@@ -152,6 +152,8 @@ if exists('g:vscode')
 		nnoremap <PageDown> <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 		nnoremap <PageUp> <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
+		nnoremap <c-d> <Cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
+
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
 		xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
@@ -205,6 +207,7 @@ else
 		nnoremap <leader>q :q<cr>
 		nnoremap <leader>qq :qa<cr>
 
+		nnoremap <c-d> <Nop>
 
 		" just like vscode
 		nnoremap <M-m> <c-^>
@@ -487,12 +490,16 @@ nnoremap <leader>n :noh<cr>
 " sadly, this can't go well vscode.. QQ
 " nnoremap <leader><leader>s :g//#<Left><Left>
 
-
+"{ddd}
  
 
 " Use backspace key for matching parens
 nnoremap <M-q> %
 xnoremap <M-q> %
+
+nnoremap <c-u> %
+xnoremap <c-u> %
+
 
 
 " use mj mk, just don't use j and k as mark key

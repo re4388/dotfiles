@@ -967,57 +967,51 @@
   // like c-c h/l to go line start/end
   {
     "command": "vscode-neovim.send",
-    // the key sequence to activate the binding
     "key": "ctrl+c",
-    // don't activate during insert mode
     "when": "editorTextFocus && neovim.mode != insert",
-    // the input to send to neovim
     "args": "<C-c>"
   },
   // {
   //   "command": "vscode-neovim.send",
-  //   // the key sequence to activate the binding
-  //   "key": "alt+m",
-  //   // don't activate during insert mode
-  //   "when": "editorTextFocus && neovim.mode != insert",
-  //   // the input to send to neovim
-  //   "args": "<M-m>"
+  //   "key": "alt+q",
+  //   "when": "editortextfocus && neovim.mode != insert",
+  //   "args": "<m-q>"
+  // },
+  // {
+  //   "command": "vscode-neovim.send",
+  //   "key": "ctrl+u",
+  //   "when": "editortextfocus && neovim.mode != insert",
+  //   "args": "<C-u>"
   // },
   {
     "command": "vscode-neovim.send",
-    // the key sequence to activate the binding
-    "key": "alt+x",
-    // don't activate during insert mode
-    "when": "editorTextFocus && neovim.mode != insert",
-    // the input to send to neovim
-    "args": "<M-x>"
-  },
-  {
-    "command": "vscode-neovim.send",
-    // the key sequence to activate the binding
-    "key": "alt+q",
-    // don't activate during insert mode
-    "when": "editorTextFocus && neovim.mode != insert",
-    // the input to send to neovim
-    "args": "<M-q>"
-  },
-  {
-    "command": "vscode-neovim.send",
-    // the key sequence to activate the binding
     "key": "alt+n",
-    // don't activate during insert mode
     "when": "editorTextFocus && neovim.mode != insert",
-    // the input to send to neovim
     "args": "<M-n>"
   },
   {
     "command": "vscode-neovim.send",
-    // the key sequence to activate the binding
     "key": "enter",
-    // don't activate during insert mode
     "when": "editorTextFocus && neovim.mode != insert",
-    // the input to send to neovim
     "args": "<cr>"
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "alt+q",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<m-q>"
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "ctrl+d",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<c-d>"
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "ctrl+u",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<c-u>"
   },
   {
     "key": "ctrl+j",
@@ -1276,5 +1270,20 @@
 {
   "key": "alt+m",
   "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+},
+{
+  "key": "ctrl+u",
+  "command": "-deleteAllLeft",
+  "when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+},
+{
+  "key": "ctrl+u",
+  "command": "-cursorUndo",
+  "when": "textInputFocus"
+},
+{
+  "key": "alt+f12",
+  "command": "-editor.action.peekDefinition",
+  "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
 }
 ]
