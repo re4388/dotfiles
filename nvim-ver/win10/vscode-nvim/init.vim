@@ -136,8 +136,9 @@ if exists('g:vscode')
 		" nnoremap <leader>o <Cmd>call VSCodeNotify('workbench.action.tasks.runTask')<CR>
 
 		" toggle side bar
-		xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
-		nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
+		" use vsc alt+b
+		" xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
+		" nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 
 		" use leader c is way better then gcc XD
     xmap <leader>c  <Plug>VSCodeCommentary
@@ -304,13 +305,16 @@ map Y y$
 " Redo
 nnoremap U <C-r>
 
-" unjoin: opposite of J
-nnoremap <leader>j :<C-u>call BreakHere()<CR>
+
+
 function! BreakHere()
 	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
 	call histdel("/", -1)
 endfunction
 
+" join and break
+nnoremap <leader>j J
+nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 
 nnoremap ; :
@@ -376,7 +380,8 @@ nnoremap x "_x
 
 " super fast whole word/WORD selection.. 
 nno ee yiw 
-nno ww yaW
+" nno ww yaW
+nmap ww yiq
 nmap cc miw
 " nno e. yiW 
 " nno w, yaw 
@@ -490,18 +495,25 @@ nnoremap <M-q> %
 xnoremap <M-q> %
 
 
-" use shift j/k to move line down/up
-nnoremap J :m .+1<CR>==
-nnoremap K :m .-2<CR>==
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" use mj mk, just don't use j and k as mark key
+nnoremap mj :m .+1<CR>==
+nnoremap mk :m .-2<CR>==
+vnoremap mj :m '>+1<CR>gv=gv
+vnoremap mk :m '<-2<CR>gv=gv
+
+
+nnoremap J 10j
+nnoremap K 10k
+vnoremap J 10j
+vnoremap K 10k
+
 
 " had use J above, so I here remap join to ctrl+c prefix version
 " nnoremap <C-c>j J
-noremap gj J
+" noremap gj J
 
-" add blank line above and below
 " also take count, like [count]<leader>o
+" add blank line above and below
 nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 

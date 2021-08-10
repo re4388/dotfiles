@@ -129,9 +129,9 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" super fast whole word/WORD selection.. 
+" super fast selection for common use 
 nno ee yiw 
-nno ww yaW
+nmap ww yiq
 nmap cc miw
 " nno e. yiW 
 " nno w, yaw 
@@ -148,14 +148,21 @@ nnoremap <leader>v V
 inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<Tab>'   
 
 
-" use shift j/k to move line down/up
-nnoremap J :m .+1<CR>==
-nnoremap K :m .-2<CR>==
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+
+" use mj mk, just don't use j and k as mark key
+nnoremap mj :m .+1<CR>==
+nnoremap mk :m .-2<CR>==
+vnoremap mj :m '>+1<CR>gv=gv
+vnoremap mk :m '<-2<CR>gv=gv
+
+
+nnoremap J 10j
+nnoremap K 10k
+vnoremap J 10j
+vnoremap K 10k
 
 " had use J above, so I here remap join to ctrl+c prefix version
-nnoremap gj J
+" nnoremap gj J
 
 " reamp K to leader K, S-K can open man under cursor
 noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
@@ -182,7 +189,10 @@ function! BreakHere()
 	call histdel("/", -1)
 endfunction
 
-nnoremap <leader>j :<C-u>call BreakHere()<CR>
+
+" join and break
+nnoremap <leader>b :<C-u>call BreakHere()<CR>
+nnoremap <leader>j J
 
 
 " reverse visual mode u/U mapping

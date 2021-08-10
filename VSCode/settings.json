@@ -73,6 +73,12 @@
         }
       ]
     },
+        {
+          "key": "n",
+          "name": "npm script",
+          "type": "command",
+          "command": "npm-script.run"
+        },
     {
       "key": ".",
       "name": "setting(JSON)",
@@ -376,13 +382,13 @@
         }
       ]
     },
-    {
-      "key": "n",
-      "name": "No Highlight",
-      "type": "command",
-      "command": "vscode-neovim.send",
-      "args": ":noh<CR>"
-    }
+    // {
+    //   "key": "n",
+    //   "name": "No Highlight",
+    //   "type": "command",
+    //   "command": "vscode-neovim.send",
+    //   "args": ":noh<CR>"
+    // }
   ],
   "postfix.languages": [
     "html",
@@ -853,14 +859,20 @@
   "workbench.colorCustomizations": {
     "tab.activeBorder": "#FFFF00",
     "tab.unfocusedActiveBorder": "#000000",
+    "tab.activeBackground": "#42557b",
+    "tab.activeForeground": "#dcdcdc",
     "editorCursor.foreground": "#00ff00",
     "terminalCursor.fojeground": "#00ff00",
+    "editorCursor.background": "#ffffffc9",
     "editor.selectionHighlightBorder": "#FFFA",
     // "editor.selectionBackground": "#d5e3de",
-    "editor.selectionBackground": "#d5e3de",
+    // "editor.selectionBackground": "#d5e3de",
     // "editor.selectionHighlightBackground": "#fff",
     // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
-    "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
+    // "editor.findMatchBackground": "#457dff", //Current SEARCH MATCH
+    "editor.findMatchBorder": "#457dff",
+    // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
     // "editor.findMatchHighlightBackground": "#BF883F" //Other SEARCH MATCHES
   },
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
