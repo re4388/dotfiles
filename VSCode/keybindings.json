@@ -1304,5 +1304,26 @@
   "key": "ctrl+k f12",
   "command": "-editor.action.revealDefinitionAside",
   "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-}
+},
+{
+  "key": "ctrl+p",
+  "command": "-list.focusUp",
+  "when": "listFocus && !inputFocus"
+},
+{
+  "key": "ctrl+p",
+  "command": "-list.focusUp",
+  "when": "inReferenceSearchEditor && neovim.mode == 'normal'"
+},
+{
+  "key": "ctrl+p",
+  "command": "-list.focusUp",
+  "when": "listFocus && !inputFocus"
+},
+{
+  "key": "ctrl+p",
+  "command": "-list.focusUp",
+  "when": "inReferenceSearchEditor && neovim.mode == 'normal'"
+},
 ]
+

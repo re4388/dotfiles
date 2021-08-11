@@ -809,7 +809,7 @@
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {
@@ -862,6 +862,7 @@
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 16,
   "security.workspace.trust.untrustedFiles": "open",
+
   "workbench.colorCustomizations": {
     "tab.activeBorder": "#FFFF00",
     "tab.unfocusedActiveBorder": "#000000",
@@ -881,7 +882,6 @@
     // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
     // "editor.findMatchHighlightBackground": "#BF883F" //Other SEARCH MATCHES
   },
-
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
   "editor.semanticTokenColorCustomizations": {
     "enabled": true, // enable for all themes

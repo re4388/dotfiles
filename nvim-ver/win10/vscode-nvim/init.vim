@@ -375,9 +375,8 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap ca :%y+<CR>
 
 
-" paste on space after current cursor 
+" paste at current cursor (add one space)
 nnoremap <leader>p a<space><esc>p
-" paste on space before current cursor 
 nnoremap <c-p> i<c-r>0<space><esc>
 
 
