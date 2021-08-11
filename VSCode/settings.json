@@ -116,7 +116,13 @@
           "type": "command",
           "command": "macros.moveTerminalRight",
           // "when":"terminalFocus"
-        }
+        },
+        {
+          "key": "t",
+          "name": "Toggle terminal",
+          "type": "command",
+          "command": "workbench.action.togglePanel"
+        },
       ]
     },
     {
@@ -803,7 +809,7 @@
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {
@@ -879,5 +885,6 @@
   "editor.semanticTokenColorCustomizations": {
     "enabled": true, // enable for all themes
   },
-  "window.zoomLevel": -1
+  "window.zoomLevel": -1,
+  // "workbench.editor.revealIfOpen": true
 }

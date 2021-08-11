@@ -152,7 +152,7 @@ if exists('g:vscode')
 		nnoremap <PageDown> <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 		nnoremap <PageUp> <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
-		nnoremap <c-d> <Cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
+		nnoremap <c-d> <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
 
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
