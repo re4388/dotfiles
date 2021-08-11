@@ -232,8 +232,10 @@ nnoremap ca :%y+<CR>
 nmap ,p "0p
 nmap ,P "0P
 
-" paste at current cursor (add one space)
-nnoremap <space>p a<space><esc>p
+" paste on space after current cursor 
+nnoremap <leader>p a<space><esc>p
+" paste on space before current cursor 
+nnoremap <c-p> i<c-r>0<space><esc>
 
 " eaiser surrounding vim
 nmap ,` ysiw`

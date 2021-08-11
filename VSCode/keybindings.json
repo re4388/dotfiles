@@ -1001,6 +1001,12 @@
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<m-q>"
   },
+  {
+    "command": "vscode-neovim.send",
+    "key": "ctrl+p",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<c-p>"
+  },
 
   // https://stackoverflow.com/questions/54131613/how-to-open-go-to-definition-in-other-split-tab-for-same-file-in-vs-code
   // <c-d> to editor.action.revealDefinitionAside

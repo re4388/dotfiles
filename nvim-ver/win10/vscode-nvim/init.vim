@@ -375,8 +375,11 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap ca :%y+<CR>
 
 
-" paste at current cursor (add one space)
-nnoremap <space>p a<space><esc>p
+" paste on space after current cursor 
+nnoremap <leader>p a<space><esc>p
+" paste on space before current cursor 
+nnoremap <c-p> i<c-r>0<space><esc>
+
 
 " Do NOT yank with x/s 	
 nnoremap x "_x
@@ -388,6 +391,7 @@ nmap ww yiq
 nmap cc miw
 " nno e. yiW 
 " nno w, yaw 
+
 
 
 " cover all non-whitespace conseuctive word
