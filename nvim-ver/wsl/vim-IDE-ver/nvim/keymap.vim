@@ -27,16 +27,14 @@ nmap <M-n> /
 nnoremap <leader>n :noh<cr>
 
 
-" seach word under cusor in current buffer
-" remove below when I get used to use enter to search
-nmap <M-m> *
-vmap <M-m> *
 
+" note: enter to use my pinkey finger to touch..too far
+" we don't want to jump to next when I use *, below script will be a 'no move under cursor search'
+" below only work for <cr> as trigger key
+" nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
-" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
-" already do by pressing the <j> key, which is a waste of keys!
-" Be useful <enter> key!:
-nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
+nnoremap <silent> <m-m> :keepjumps normal! mi*`i<CR>
+
 
 " after search, center, zz and unfolder zv
 map n nzzzv
@@ -235,7 +233,7 @@ nmap ,P "0P
 " paste on space after current cursor 
 nnoremap <leader>p a<space><esc>p
 " paste on space before current cursor 
-nnoremap <c-p> i<c-r>0<space><esc>
+nnoremap <leader>pp i<c-r>0<space><esc>
 
 " eaiser surrounding vim
 nmap ,` ysiw`
@@ -282,7 +280,8 @@ nnoremap ZQ <Nop>
 """"""""""""""""""""""""""""""
 
 " just like vscode
-nnoremap <M-m> <c-^>
+nnoremap B  <c-^>
+
 " nnoremap <C-tab> <c-^>
 
 nnoremap <silent> <Tab> :bn<CR>

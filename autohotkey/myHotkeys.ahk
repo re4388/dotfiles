@@ -65,7 +65,7 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 ::egit::code "$env:USERPROFILE\.gitconfig"
 ::enpm::code "$env:USERPROFILE\.npmrc"
 ::xwsl::wsl -d Ubuntu-20.04
-
+::zzz::node C:\projects\puppeteer\src\puppet\scripts\checkPackage.js
 
 ; Bioclinica
 ::aaa::npm run serve:src:open:dev
@@ -79,18 +79,13 @@ F1::#d
 ;f2 need to reserve to edit file name in vscode
 ;F3::Browser_Back
 ;F4::!a
-F8::Volume_Mute
-F9::Volume_Down
-F10::Volume_Up
+; F8::Volume_Mute
+; F9::Volume_Down
+; F10::Volume_Up
 
-
-
-
-
-
-
-
-
+^+Right::Send, {Volume_Up}
+^+Left::Send, {Volume_Down}
+^+Down::Send, {Volume_Mute}
 
 ; alt + j, k , l for (), [], {}
 
@@ -145,8 +140,6 @@ SendInput %CurrentDateTime%
     Return
 
 
-
-
 ; try to replace 全半形切換 to nothing in 自然輸入法
 +Space::
 
@@ -155,7 +148,6 @@ SendInput %CurrentDateTime%
 ; Open...something
 ; ================================
 
-; ANOTHER CAPSLOCK TRY
 ; CHANGE CAPSLOCK TO CTRL AND ALSO ENABLE ALL ORIGINAL CTRL + X COMBO
 ; https://gist.github.com/yyolk/fddf44b973e6008f0667fc4b3346cbda
 ; https://gist.github.com/sedm0784/4443120
@@ -265,6 +257,47 @@ g_ControlRepeatDetected := false
 
 
 
+; ctrl + shift + g => open chrome and search stuff you selected
+; ref: https://dilpreet.dev/blog/autohotkey-for-developers/
++^g::
+OpenHighlighted()
+return
+
+OpenHighlighted()
+{
+  MyClipboard := "" ; Clears variable
+
+
+  Send, {ctrl down}c{ctrl up} ; More secure way to Copy things
+  sleep, 50 ; Delay
+  MyClipboard := RegexReplace( clipboard, "^\s+|\s+$" ) ; Trim additional spaces and line return
+  sleep, 50
+  MyStripped := StrReplace(MyClipboard, " ", "") ; Removes every spaces in the string.
+
+
+  StringLeft, OutputVarUrl, MyStripped, 8 ; Takes the 8 firsts characters
+  StringLeft, OutputVarLocal, MyStripped, 3 ; Takes the 3 first characters
+  sleep, 50
+
+  ; it will auto-detect if the selected line prefix with http and just use this as target and run it
+  ; and it it is prefix with file folder, like C:/, it will open the folder
+  ; o.w, it will use google to search the term
+  ;
+  ; NOTE: this auto-detect is not working in current vscode-neovim
+  ; since when you select, it work differently when selecting in notepad
+  if (OutputVarUrl == "http://" || OutputVarUrl == "https://")
+    Desc := "URL", Target := MyStripped
+  else if (OutputVarLocal == "C:/" || OutputVarLocal == "C:\" || OutputVarLocal == "Z:/" || OutputVarLocal == "Z:\" || OutputVarLocal == "R:/" || OutputVarLocal == "R:\" ||)
+    Desc := "Windows", Target := MyClipboard
+  else
+    Desc := "GoogleSearch", Target := "http://www.google.com/search?q=" MyClipboard
+
+
+  ;TrayTip,, %Desc%: "%MyClipboard%" ;
+  Sleep,50
+  Run, %Target%
+  Return
+}
 
 
 
@@ -401,41 +434,3 @@ LWin & 7::switchDesktopByNumber(7)
 LWin & 8::switchDesktopByNumber(8)
 LWin & 9::switchDesktopByNumber(9)
 
-
-
-; another way to ref: https://dilpreet.dev/blog/autohotkey-for-developers/
-; use current hl and search it via chrome google
-+^g::
-OpenHighlighted()
-return
-
-OpenHighlighted()
-{
-  MyClipboard := "" ; Clears variable
-
-
-  Send, {ctrl down}c{ctrl up} ; More secure way to Copy things
-  sleep, 50 ; Delay
-  MyClipboard := RegexReplace( clipboard, "^\s+|\s+$" ) ; Trim additional spaces and line return
-  sleep, 50
-  MyStripped := StrReplace(MyClipboard, " ", "") ; Removes every spaces in the string.
-
-
-  StringLeft, OutputVarUrl, MyStripped, 8 ; Takes the 8 firsts characters
-  StringLeft, OutputVarLocal, MyStripped, 3 ; Takes the 3 first characters
-  sleep, 50
-
-
-  if (OutputVarUrl == "http://" || OutputVarUrl == "https://")
-    Desc := "URL", Target := MyStripped
-  else if (OutputVarLocal == "C:/" || OutputVarLocal == "C:\" || OutputVarLocal == "Z:/" || OutputVarLocal == "Z:\" || OutputVarLocal == "R:/" || OutputVarLocal == "R:\" ||)
-    Desc := "Windows", Target := MyClipboard
-  else
-    Desc := "GoogleSearch", Target := "http://www.google.com/search?q=" MyClipboard
-
-
-  ;TrayTip,, %Desc%: "%MyClipboard%" ;
-  Sleep,50
-  Run, %Target%
-  Return
-}

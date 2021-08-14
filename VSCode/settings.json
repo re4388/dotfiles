@@ -3,6 +3,12 @@
   "whichkey.delay": 0,
   "whichkey.bindings": [
     {
+      "key": "z",
+      "name": "Zen Mode Toggle",
+      "type": "command",
+      "command": "workbench.action.toggleZenMode"
+    },
+    {
       "key": ";",
       "name": "vscode command",
       "type": "command",
@@ -48,6 +54,12 @@
     // kind of I can use this for a better view(side bar)
     // than use gr(popup style)
     {
+    "key": "s",
+    "name": "Script/Task",
+    "type": "command",
+    "command": "workbench.action.tasks.runTask"
+    },
+    {
       "key": "?",
       "name": "View All References",
       "type": "command",
@@ -61,13 +73,13 @@
       "bindings": [
         {
           "key": "t",
-          "name": "task",
+          "name": "Script/Task",
           "type": "command",
           "command": "workbench.action.tasks.runTask"
         },
         {
           "key": "n",
-          "name": "npm script",
+          "name": "Npm script",
           "type": "command",
           "command": "npm-script.run"
         }
@@ -75,7 +87,7 @@
     },
         {
           "key": "n",
-          "name": "npm script",
+          "name": "Npm script",
           "type": "command",
           "command": "npm-script.run"
         },
@@ -90,6 +102,12 @@
       "name": "keyboard(JSON)",
       "type": "command",
       "command": "workbench.action.openGlobalKeybindingsFile"
+    },
+    {
+      "key": "m",
+      "name": "Toggle terminal",
+      "type": "command",
+      "command": "workbench.action.togglePanel"
     },
     {
       "key": "b",
@@ -809,7 +827,7 @@
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "off",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {
@@ -887,5 +905,6 @@
     "enabled": true, // enable for all themes
   },
   "window.zoomLevel": -1,
+  "aws.profile": "profile:default",
   // "workbench.editor.revealIfOpen": true
 }

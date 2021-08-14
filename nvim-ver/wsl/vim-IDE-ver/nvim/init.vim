@@ -13,16 +13,30 @@ colorscheme one
 
 :ab rtfm read the the fine manual
 
-" dd = true
-" - [] ddd
-" [X] foo
-" autocmd FileType vimwiki b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
-autocmd FileType vim let b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
-" autocmd FileType vim let b:switch_custom_definitions = [['[ ]', '[.]', '[X]']]
-" autocmd FileType vim let g:switch_custom_definitions =
-"     \ [
-"     \   ['foo', 'bar', 'baz']
-"     \ ]
+" use <C-K> and type f2...to f7 to try out
+" f2: <F26>
+" f3 :<F27>
+" f4 :<F28>
+" f5: <F29>
+" f6: <F30>
+" f7: <F31>
+
+nmap <f26> yiw 
+nmap <c-f4> yiw 
+nmap <c-f5> yiw 
+nmap <c-f6> yiw 
+
+
+
+" setting for Plug 'b3nj5m1n/kommentary' ========={{{
+
+nmap b <Plug>kommentary_motion_default
+xmap b <Plug>kommentary_visual_default
+nmap bb <Plug>kommentary_line_default
+
+
+"}}}
+
 
 " vim-matchup ========={{{
 

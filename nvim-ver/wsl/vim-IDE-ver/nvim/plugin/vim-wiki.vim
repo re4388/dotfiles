@@ -22,7 +22,9 @@ function! Cover_line_to_checkBox()
 endfunction
 
 autocmd FileType vimwiki nnoremap <buffer> <bs> :call Cover_line_to_checkBox()<cr>
-autocmd FileType vimwiki nnoremap <silent> <buffer> <leader>g :Goyo<cr>::ScrollViewDisable<cr>
+
+" go into zen mode
+autocmd FileType vimwiki nnoremap <silent> <buffer> <leader>z :Goyo<cr>::ScrollViewDisable<cr>
 
 " make leader-l (covertToList) repeatable 
 noremap <silent> <Plug>covertToList :VimwikiChangeSymbolTo -<CR>:call repeat#set("\<Plug>covertToList")<CR>

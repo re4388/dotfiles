@@ -20,7 +20,8 @@ else
 	Plug 'vim-airline/vim-airline'
 	Plug 'morhetz/gruvbox'
   Plug 'romainl/vim-cool'
-	Plug 'winston0410/commented.nvim'
+	" Plug 'winston0410/commented.nvim'
+	Plug 'b3nj5m1n/kommentary'
 	" Plug 'easymotion/vim-easymotion'
 endif
 " map f <Plug>(easymotion-bd-w)
@@ -129,6 +130,23 @@ if exists('g:vscode')
 		xnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 		nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 
+		" leader c is faster then gc
+    " xmap <leader>c  <Plug>VSCodeCommentary
+    " nmap <leader>c  <Plug>VSCodeCommentary
+    " omap <leader>c  <Plug>VSCodeCommentary
+    " nmap <leader>cc <Plug>VSCodeCommentaryLine
+
+		" I seldom use b and heavily use commment..so here we are..
+    xmap b  <Plug>VSCodeCommentary
+    nmap b  <Plug>VSCodeCommentary
+    omap b  <Plug>VSCodeCommentary
+    nmap bb <Plug>VSCodeCommentaryLine
+
+    nmap <leader>hh <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    nmap <leader>ll <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+
+    nmap <leader>z <Cmd>call VSCodeNotify('workbench.action.toggleZenMode')<CR>
+
 		" o refer to :so, like run task in vscode
 		" change to add space via leader o, I use this way more often
 		" and run task and use which key combo or use last command in vsc
@@ -140,11 +158,6 @@ if exists('g:vscode')
 		" xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 		" nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 
-		" use leader c is way better then gcc XD
-    xmap <leader>c  <Plug>VSCodeCommentary
-    nmap <leader>c  <Plug>VSCodeCommentary
-    omap <leader>c  <Plug>VSCodeCommentary
-    nmap <leader>cc <Plug>VSCodeCommentaryLine
 
 		" quick fix
 		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
@@ -189,6 +202,14 @@ if exists('g:vscode')
 else
 
 	  " neovim only ============{{{
+		"
+		nmap b <Plug>kommentary_motion_default
+		xmap b <Plug>kommentary_visual_default
+		nmap bb <Plug>kommentary_line_default
+
+
+		" Return to last edit position when opening files (You want this!)
+		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 		
 		if (has("termguicolors"))
  				set termguicolors
@@ -198,7 +219,7 @@ else
 		colorscheme gruvbox
     
 		" comment plugin only for neovim
-    lua require('commented').setup()
+    " lua require('commented').setup()
 
 		" use leader and w to save
 		nnoremap <leader>w :w<cr>:so %<cr>
@@ -210,28 +231,20 @@ else
 		nnoremap <c-d> <Nop>
 
 		" just like vscode
-		nnoremap <M-m> <c-^>
+		nnoremap B <c-^>
 		
 
 		" Simulate same TAB behavior in VSCode
 		nmap <Tab> :tabnext<CR>
 		nmap <S-Tab> :tabprev<CR>
 
-		" put this into file in auto load place
-		augroup auto_fold_init_vim
-			au!
-			au Filetype vim setlocal foldlevel=0 foldmethod=marker
-		augroup END
-		
-		" Put <enter> to work too! Otherwise <enter> moves to the next line, which we can
-		" already do by pressing the <j> key, which is a waste of keys!
-		" Be useful <enter> key!:
-    " nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
-		"
-		"
-		"
+		" AUTO FOLD
+		" augroup auto_fold_init_vim
+			" au!
+			" au Filetype vim setlocal foldlevel=0 foldmethod=marker
+		" augroup END
 
-		nno <c-tab> <c-^>
+		" nno <c-tab> <c-^>
 
 
 		" after search, center, zz and unfolder zv
@@ -376,18 +389,38 @@ nnoremap ca :%y+<CR>
 
 
 " paste at current cursor (add one space)
+
 nnoremap <leader>p a<space><esc>p
-nnoremap <c-p> i<c-r>0<space><esc>
+nnoremap <c-p> <nop>
+nnoremap M <nop>
+nnoremap <leader>pp i<c-r>0<space><esc>
 
 
 " Do NOT yank with x/s 	
 nnoremap x "_x
 
+
+
+" test1   `test2`   test2
+
+
 " super fast whole word/WORD selection.. 
-nno ee yiw 
-" nno ww yaW
+nnoremap ee yiw 
+" need to use namp, since m is remap
 nmap ww yiq
-nmap cc miw
+nmap cc miw 
+
+" try other mapping...
+" leader is always a little slowet than ee, ww, cc...
+" however, ee, www will disable me to move fast with w and e..
+" but remember you can still have fast move in VISUAL mode with w and e
+" nmap ff yiw 
+" nmap <leader>y yiw 
+" nmap <leader>s yiq
+" nmap <leader>r miw
+
+
+" nno ww yaW
 " nno e. yiW 
 " nno w, yaw 
 
@@ -468,19 +501,12 @@ vnoremap L g$
 " ========================
 
 
-" currently, vscode sometimes don't update the cursor
-" so I need to use vscode native search
-" here in neovim, also use alt+m to active the word under cursor search
-" find word in file under cursor
-"
-" Will remove below when I get used to use enter to cursor-search
-" nmap <M-m> *
-" vmap <M-m> *
+" note: enter to use my pinkey finger to touch..too far
+" we don't want to jump to next when I use *, below script will be a 'no move under cursor search'
+" below only work for <cr> as trigger key
+" nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
-" Put <enter> to work ! Otherwise <enter> moves to the next line, which we can
-" already do by pressing the <j> key, which is a waste of keys!
-" Be useful <enter> key!:
-nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
+nnoremap <silent> <m-m> :keepjumps normal! mi*`i<CR>
 
 " easier to type
 nmap <M-n> /
@@ -657,7 +683,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " :call TabMessage("nmap <leader>") 
 " then you can use ctrl+o/i to back and forth the new opneing tab
 " or you don't need to go back, use 'leader q' to close the tab
-nnoremap <leader>hh :call TabMessage("nmap")<Left><Left>
+nnoremap zh :call TabMessage("nmap")<Left><Left>
 
 
 "}}}
