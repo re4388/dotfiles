@@ -125,6 +125,10 @@ if exists('g:vscode')
 		nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
 		xnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 		nnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+		
+	  " back to previous opened file	
+		nnoremap B <Cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>
+
 
 		" open npm script
 		xnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
@@ -137,10 +141,14 @@ if exists('g:vscode')
     " nmap <leader>cc <Plug>VSCodeCommentaryLine
 
 		" I seldom use b and heavily use commment..so here we are..
-    xmap b  <Plug>VSCodeCommentary
-    nmap b  <Plug>VSCodeCommentary
-    omap b  <Plug>VSCodeCommentary
-    nmap bb <Plug>VSCodeCommentaryLine
+    " xmap b  <Plug>VSCodeCommentary
+    " nmap b  <Plug>VSCodeCommentary
+    " omap b  <Plug>VSCodeCommentary
+    " nmap bb <Plug>VSCodeCommentaryLine
+    xmap gj  <Plug>VSCodeCommentary
+    nmap gj  <Plug>VSCodeCommentary
+    omap gj  <Plug>VSCodeCommentary
+    nmap gjj <Plug>VSCodeCommentaryLine
 
     nmap <leader>hh <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     nmap <leader>ll <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
@@ -200,12 +208,11 @@ if exists('g:vscode')
 "}}}
 
 else
-
 	  " neovim only ============{{{
 		"
-		nmap b <Plug>kommentary_motion_default
-		xmap b <Plug>kommentary_visual_default
-		nmap bb <Plug>kommentary_line_default
+		nmap gj <Plug>kommentary_motion_default
+		xmap gj <Plug>kommentary_visual_default
+		nmap gjj <Plug>kommentary_line_default
 
 
 		" Return to last edit position when opening files (You want this!)
@@ -403,12 +410,15 @@ nnoremap x "_x
 
 " test1   `test2`   test2
 
-
 " super fast whole word/WORD selection.. 
-nnoremap ee yiw 
+" nnoremap ee yiw 
+nnoremap gh yiw 
 " need to use namp, since m is remap
-nmap ww yiq
-nmap cc miw 
+" nmap ww yiq
+nmap gn yiq
+nmap cc miw<esc>
+" nno cc miw 
+" nnoremap gt gg 
 
 " try other mapping...
 " leader is always a little slowet than ee, ww, cc...

@@ -30,10 +30,9 @@ nmap <c-f6> yiw
 
 " setting for Plug 'b3nj5m1n/kommentary' ========={{{
 
-nmap b <Plug>kommentary_motion_default
-xmap b <Plug>kommentary_visual_default
-nmap bb <Plug>kommentary_line_default
-
+nmap gj <Plug>kommentary_motion_default
+xmap gj <Plug>kommentary_visual_default
+nmap gjj <Plug>kommentary_line_default
 
 "}}}
 

@@ -127,13 +127,15 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" super fast selection for common use 
-nno ee yiw 
-nmap ww yiq
-nmap cc miw
-" nno e. yiW 
-" nno w, yaw 
-
+" super fast whole word/WORD selection.. 
+" nnoremap ee yiw 
+nnoremap gh yiw 
+" need to use namp, since m is remap
+" nmap ww yiq
+nmap gn yiq
+nmap cc miw<esc>
+" nno cc miw 
+" nnoremap gt gg 
 " cover all non-whitespace conseuctive word
 
 " Quit visual mode
