@@ -1010,6 +1010,14 @@
     "args": "<c-p>"
   },
 
+  // go previous file
+  {
+    "command": "vscode-neovim.send",
+    "key": "shift + b",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<s-b>"
+  },
+
   // https://stackoverflow.com/questions/54131613/how-to-open-go-to-definition-in-other-split-tab-for-same-file-in-vs-code
   // <c-d> to editor.action.revealDefinitionAside
   {
@@ -1342,10 +1350,6 @@
   "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
 },
 {
-  "key": "shift+b",
-  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-},
-{
   "key": "alt+-",
   "command": "ahk++.debug",
   "when": "editorLangId == 'ahk'"
@@ -1374,6 +1378,9 @@
   "key": "ctrl+f9",
   "command": "-ahk++.run",
   "when": "editorLangId == 'ahk'"
+},
+{
+  "key": "alt+0",
+  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
 }
 ]
-

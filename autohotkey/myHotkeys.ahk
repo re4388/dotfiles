@@ -3,8 +3,18 @@
 ;  !  alt
 ;  ^  ctrl
 
+;Alt & 3::AltTab
 
+; close win10 window, alt+f4
+Alt & 4::!F4
 
+F1::#d
+;F2 for rename
+;screenshot
+F3::+!s
+
+;for chinese typing
+F9::Down
 ; Msgbox, %A_ComputerName%
 
 ; Note:
@@ -75,7 +85,7 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 ::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
 
 
-F1::#d
+; F1::#d
 ;f2 need to reserve to edit file name in vscode
 ;F3::Browser_Back
 ;F4::!a
@@ -259,6 +269,7 @@ g_ControlRepeatDetected := false
 
 ; ctrl + shift + g => open chrome and search stuff you selected
 ; ref: https://dilpreet.dev/blog/autohotkey-for-developers/
+f7::
 +^g::
 OpenHighlighted()
 return
