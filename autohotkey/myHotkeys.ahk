@@ -3,7 +3,9 @@
 ;  !  alt
 ;  ^  ctrl
 
-;Alt & 3::AltTab
+Alt & 3::
+Send {LWin down}
+
 
 ; close win10 window, alt+f4
 Alt & 4::!F4

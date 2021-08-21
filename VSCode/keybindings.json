@@ -1121,23 +1121,23 @@
     "key": "alt+5",
     "command": "-workbench.action.openEditorAtIndex5"
   },
-  {
-    "key": "alt+2",
-    "command": "workbench.action.terminal.sendSequence",
-    // RUN CURRENT FILE WITH TS-NODE
-    // "args": { "text": "node '${file}'\u000D" }
-    "args": { "text": "ts-node '${file}'\u000D" }
-    // "args": { "text": "ls \u000D" }
-  },
-  {
-  "key": "alt+1",
-  "command": "workbench.action.terminal.sendSequence",
-  //  RUN LAST COMMAND
-  // \u001b is an escape sequence to indicate the following characters have special meaning
-  // [A is an up arrow. See, e.g., xterm function keys:
-  // https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
-  "args": { "text": "\u001b[A\u000d" }
-},
+//   {
+//     "key": "alt+2",
+//     "command": "workbench.action.terminal.sendSequence",
+//     // RUN CURRENT FILE WITH TS-NODE
+//     // "args": { "text": "node '${file}'\u000D" }
+//     "args": { "text": "ts-node '${file}'\u000D" }
+//     // "args": { "text": "ls \u000D" }
+//   },
+//   {
+//   "key": "alt+1",
+//   "command": "workbench.action.terminal.sendSequence",
+//   //  RUN LAST COMMAND
+//   // \u001b is an escape sequence to indicate the following characters have special meaning
+//   // [A is an up arrow. See, e.g., xterm function keys:
+//   // https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
+//   "args": { "text": "\u001b[A\u000d" }
+// },
 {
   "key": "ctrl+d",
   "command": "workbench.action.terminal.scrollDownPage",
