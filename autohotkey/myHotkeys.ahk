@@ -21,19 +21,15 @@ Alt & 0:: ; press control+r to reload
   return
 
 
+; Alt & 1 => use in vscode which key activation
 Alt & 2::WinMinimize, A
 Alt & 3::WinMaximize, A
-
-; close win10 window, alt+f4
-Alt & 4::!F4
+Alt & 4::!F4 ; close win10 window, alt+f4
 
 F1::#d
 ;F2 for rename
-;screenshot
-F3::+!s
+F3::+!s ;screenshot
 
-;for chinese typing
-F9::Down
 ; Msgbox, %A_ComputerName%
 
 ; Note:
@@ -58,7 +54,6 @@ F9::Down
 ^+z::
   msgBox, hello world %computername%
 
-
 ; ================================
 ; variable define
 ; ================================
@@ -71,7 +66,21 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
   ; Msgbox, %A_OSVersion%
 }
 
+; if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
+;   autoHotkey_Path = "C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk"
+;   vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+;   OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+;   ; OneDriveTmpNotepad_fn = "tmp.txt"
+;   ; Msgbox, %A_OSVersion%
+; }
 
+; if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
+;   autoHotkey_Path = "C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk"
+;   vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+;   OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+;   ; OneDriveTmpNotepad_fn = "tmp.txt"
+;   ; Msgbox, %A_OSVersion%
+; }
 
 ; ================================
 ; Hotstring
@@ -117,7 +126,6 @@ if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
 ^+Down::Send, {Volume_Mute}
 
 ; alt + j, k , l for (), [], {}
-
 !j::
 Send,(
 return
@@ -159,7 +167,7 @@ SendInput %CurrentDateTime%
 ^+a::Run,%vscode_path% %autoHotkey_Path%
 
 ; press ctrl+shift+n to open my tmp.txt in Onedrive
-^+n::
+^+t::
     ; myPath := "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
     ; myPath := %OneDriveTmpNotepad_path%
     ; SplitPath, myPath,,,,fName

@@ -906,5 +906,10 @@
   },
   "window.zoomLevel": -1,
   "aws.profile": "profile:default",
-  // "workbench.editor.revealIfOpen": true
+
+  // if you want to let certain command works when your cursor in the integratedTerminal, put that command in thie array
+  "terminal.integrated.commandsToSkipShell": [
+    "whichkey.show"
+    ]
+
 }

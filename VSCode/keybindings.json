@@ -1083,10 +1083,6 @@
     "command": "-workbench.action.openEditorAtIndex6"
   },
   {
-    "key": "alt+`",
-    "command": "workbench.action.closePanel"
-  },
-  {
     "key": "ctrl+alt+f",
     "command": "-workbench.view.extension.favorites-explorer",
     "when": "editorTextFocus"
@@ -1323,10 +1319,6 @@
   "command": "-workbench.action.focusEighthEditorGroup"
 },
 {
-  "key": "ctrl+9",
-  "command": "whichkey.show"
-},
-{
   "key": "ctrl+m",
   "command": "-markdown.extension.editing.toggleMath",
   "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
@@ -1350,11 +1342,6 @@
   "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
 },
 {
-  "key": "alt+-",
-  "command": "ahk++.debug",
-  "when": "editorLangId == 'ahk'"
-},
-{
   "key": "f9",
   "command": "-ahk++.debug",
   "when": "editorLangId == 'ahk'"
@@ -1370,11 +1357,6 @@
   "when": "editorLangId == 'ahk'"
 },
 {
-  "key": "alt+=",
-  "command": "ahk++.run",
-  "when": "editorLangId == 'ahk'"
-},
-{
   "key": "ctrl+f9",
   "command": "-ahk++.run",
   "when": "editorLangId == 'ahk'"
@@ -1382,5 +1364,13 @@
 {
   "key": "alt+0",
   "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+},
+{
+  "key": "alt+1",
+  "command": "whichkey.show"
+},
+{
+  "key": "f1",
+  "command": "-workbench.action.showCommands"
 }
 ]
