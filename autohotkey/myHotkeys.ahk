@@ -3,9 +3,16 @@
 ;  !  alt
 ;  ^  ctrl
 
-Alt & 3::
-Send {LWin down}
+Alt & 0:: ; press control+r to reload
+  Msgbox, Do you want to reload this script?
+  ifMsgBox, Yes
+    sleep 100
+    reload, C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk
+  return
 
+; ^Up::WinMaximize, A
+
+Alt & 3::WinMinimize, A
 
 ; close win10 window, alt+f4
 Alt & 4::!F4

@@ -141,14 +141,15 @@ if exists('g:vscode')
     " nmap <leader>cc <Plug>VSCodeCommentaryLine
 
 		" I seldom use b and heavily use commment..so here we are..
-    " xmap b  <Plug>VSCodeCommentary
-    " nmap b  <Plug>VSCodeCommentary
-    " omap b  <Plug>VSCodeCommentary
-    " nmap bb <Plug>VSCodeCommentaryLine
-    xmap gj  <Plug>VSCodeCommentary
-    nmap gj  <Plug>VSCodeCommentary
-    omap gj  <Plug>VSCodeCommentary
-    nmap gjj <Plug>VSCodeCommentaryLine
+    xmap b  <Plug>VSCodeCommentary
+    nmap b  <Plug>VSCodeCommentary
+    omap b  <Plug>VSCodeCommentary
+    nmap bb <Plug>VSCodeCommentaryLine
+
+    " xmap gj  <Plug>VSCodeCommentary
+    " nmap gj  <Plug>VSCodeCommentary
+    " omap gj  <Plug>VSCodeCommentary
+    " nmap gjj <Plug>VSCodeCommentaryLine
 
     nmap <leader>hh <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     nmap <leader>ll <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
@@ -209,10 +210,15 @@ if exists('g:vscode')
 
 else
 	  " neovim only ============{{{
-		"
-		nmap gj <Plug>kommentary_motion_default
-		xmap gj <Plug>kommentary_visual_default
-		nmap gjj <Plug>kommentary_line_default
+		
+		" nmap gj <Plug>kommentary_motion_default
+		" xmap gj <Plug>kommentary_visual_default
+		" nmap gjj <Plug>kommentary_line_default
+
+		nmap b <Plug>kommentary_motion_default
+		xmap b <Plug>kommentary_visual_default
+		nmap bb <Plug>kommentary_line_default
+
 
 
 		" Return to last edit position when opening files (You want this!)
