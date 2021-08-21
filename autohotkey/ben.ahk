@@ -4,27 +4,27 @@
 ;  ^  ctrl
 ;  #  window key
 
-; may need to use symlk in below path...
+; Retrieves an environment variable and stores its value in OutputVar.
+; EnvGet, OutputVar, username
+
+^+z::
+  msgBox, hello world %computername%-%username%
+  return
+
 Alt & 0:: ; press control+r to reload
   Msgbox, Do you want to reload this script?
   ifMsgBox, Yes
     sleep 100
 
-    ; still need to manual toggle below link if you don't use the symlink...
+    ; require all pc put config in below link and the same name, ben.ahk
     ; asus link
-    if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
-      reload, C:\ahk\ben.ahk
-    }
+    reload, C:\ahk\ben.ahk
 
     ; wits link
-    if (A_ComputerName  = "XXXXXXX") {
-      reload, C:\ahk\ben.ahk
-    }
+    ; if (A_ComputerName  = "XXXXXXX") {
+    ;   reload, C:\ahk\ben.ahk
+    ; }
 
-    ; swift link
-    if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
-      reload, C:\ahk\ben.ahk
-    }
   return
 
 
@@ -54,45 +54,30 @@ F3::+!s ;screenshot
 ; k, same as above
 
 
-
-; ================================
-; debug code
-; ================================
-
-^+z::
-  msgBox, hello world %computername%
-
-; ================================
-; variable define
-; ================================
+^+a::
+  ; Run, %vscode_path %autoHotkey_Path
+  Run, "C:\Users\%A_UserName%\AppData\Local\Programs\Microsoft VS Code\Code.exe" "C:\ahk\ben.ahk"
+  ; return is required for multi-line commmand
+  return
 
 ; ASUS
 if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
-  autoHotkey_Path = "C:\ahk\ben.ahk"
-  vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-  OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-  ; OneDriveTmpNotepad_fn = "tmp.txt"
-  ; Msgbox, %A_OSVersion%
+  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
 }
 
 
-;WITS
-; if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
-;   autoHotkey_Path = "C:\ahk\ben.ahk"
-;   vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-;   OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-;   ; OneDriveTmpNotepad_fn = "tmp.txt"
-;   ; Msgbox, %A_OSVersion%
-; }
+; WITS
+if (A_ComputerName  = "XXXXXXXXX") {
+  ; autoHotkey_Path = "C:\ahk\ben.ahk"
+  ; vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+  OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+}
 
 
 ; Swift
 if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
-  autoHotkey_Path = "C:\ahk\ben.ahk"
-  vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-  OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
   ; OneDriveTmpNotepad_fn = "tmp.txt"
-  ; Msgbox, %A_OSVersion%
 }
 
 ; ================================
@@ -172,12 +157,7 @@ SendInput %CurrentDateTime%
 !Up::Send {PgUp}
 !Down::Send {PgDn}
 
-; ================================
-; Open something
-; ================================
 
-; press ctrl+shift+a to edit autohotkey
-^+a::Run,%vscode_path% %autoHotkey_Path%
 
 ; press ctrl+shift+n to open my tmp.txt in Onedrive
 ^+t::

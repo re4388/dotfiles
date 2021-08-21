@@ -34,7 +34,7 @@ c.url.searchengines["ji"] = "https://jira.imgdev.bioclinica.com/secure/QuickSear
 c.completion.open_categories = ["quickmarks", "searchengines", "history"]
 
 c.zoom.default = "135%"
-# config.unbind('b')
+config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key and no idea how to go back
 # config.bind('ba', 'bookmark-add')
 # config.bind('bl', 'bookmark-list')
 # config.bind('bd', 'bookmark-del')
