@@ -2,17 +2,27 @@
 ;  +  shift
 ;  !  alt
 ;  ^  ctrl
+;  #  window key
 
+
+; may need to use symlk in below path...
 Alt & 0:: ; press control+r to reload
   Msgbox, Do you want to reload this script?
   ifMsgBox, Yes
     sleep 100
+
+    ; still need to manual toggle below link if you don't use the symlink...
+    ; asus link
     reload, C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk
+    ; wits link
+    ; reload, C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk
+    ; swift link
+    ; reload, C:\Users\re438\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\myHotkeys.ahk
   return
 
-; ^Up::WinMaximize, A
 
-Alt & 3::WinMinimize, A
+Alt & 2::WinMinimize, A
+Alt & 3::WinMaximize, A
 
 ; close win10 window, alt+f4
 Alt & 4::!F4
