@@ -1372,5 +1372,9 @@
 {
   "key": "f1",
   "command": "-workbench.action.showCommands"
+},
+{
+  "key": "alt+2",
+  "command": "workbench.action.togglePanel"
 }
 ]

@@ -29,7 +29,8 @@ Alt & 0:: ; press control+r to reload
 
 
 ; Alt & 1 => use in vscode which key activation
-Alt & 2::WinMinimize, A
+; Alt & 2 => toggle vscode terminal
+; Alt & 2::WinMinimize, A => I think I don't need to minimize it....
 Alt & 3::WinMaximize, A
 Alt & 4::!F4 ; close win10 window, alt+f4
 
