@@ -1365,11 +1365,11 @@
   "command": "-workbench.action.showCommands"
 },
 {
-  "key": "alt+2",
+  "key": "alt+3",
   "command": "workbench.action.togglePanel"
 },
 {
-  "key": "alt+0",
+  "key": "alt+2",
   "command": "workbench.view.extension.joplin-note"
 },
 {

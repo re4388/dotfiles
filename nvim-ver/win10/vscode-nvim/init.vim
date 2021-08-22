@@ -414,15 +414,21 @@ nnoremap x "_x
 
 
 
-" test1   `test2`   test2
 
-" super fast whole word/WORD selection.. 
+" apple   `banana`   "test2'est'
+" =========================
+" Super Fast c/p.. 
+" ========================
 " nnoremap ee yiw 
-nnoremap gh yiw 
+" nnoremap gh yiw 
+nnoremap qj yiw 
 " need to use namp, since m is remap
 " nmap ww yiq
-nmap gn yiq
-nmap cc miw<esc>
+" nmap gn yiq
+nmap qq yiq
+" nmap cc miw<esc>
+nmap qk miw<esc>
+" cc is still a good maping, waiting to be use..
 " nno cc miw 
 " nnoremap gt gg 
 
@@ -435,10 +441,11 @@ nmap cc miw<esc>
 " nmap <leader>s yiq
 " nmap <leader>r miw
 
-
 " nno ww yaW
 " nno e. yiW 
 " nno w, yaw 
+" =================================
+
 
 
 

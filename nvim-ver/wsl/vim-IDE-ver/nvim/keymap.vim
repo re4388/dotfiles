@@ -127,14 +127,41 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" super fast whole word/WORD selection.. 
+" apple   `banana`   "test2'est'
+" =========================
+" Super Fast c/p.. 
+" ========================
 " nnoremap ee yiw 
-nnoremap gh yiw 
+" nnoremap gh yiw 
+nnoremap qj yiw 
 " need to use namp, since m is remap
 " nmap ww yiq
-nmap gn yiq
-nmap cc miw<esc>
+" nmap gn yiq
+nmap qq yiq
+" nmap cc miw<esc>
+nmap qk miw<esc>
+" cc is still a good maping, waiting to be use..
 " nno cc miw 
+" nnoremap gt gg 
+
+" try other mapping...
+" leader is always a little slowet than ee, ww, cc...
+" however, ee, www will disable me to move fast with w and e..
+" but remember you can still have fast move in VISUAL mode with w and e
+" nmap ff yiw 
+" nmap <leader>y yiw 
+" nmap <leader>s yiq
+" nmap <leader>r miw
+
+" nno ww yaW
+" nno e. yiW 
+" nno w, yaw 
+" =================================
+
+
+
+
+
 " nnoremap gt gg 
 " cover all non-whitespace conseuctive word
 
