@@ -11,20 +11,11 @@
   msgBox, hello world %computername%-%username%
   return
 
-Alt & 0:: ; press control+r to reload
+^+r:: ; press control+r to reload
   Msgbox, Do you want to reload this script?
   ifMsgBox, Yes
     sleep 100
-
-    ; require all pc put config in below link and the same name, ben.ahk
-    ; asus link
-    reload, C:\ahk\ben.ahk
-
-    ; wits link
-    ; if (A_ComputerName  = "XXXXXXX") {
-    ;   reload, C:\ahk\ben.ahk
-    ; }
-
+    reload, C:\ahk\ben.ahk ; require all pc put config in below link and the same name, ben.ahk
   return
 
 

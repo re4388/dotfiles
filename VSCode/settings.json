@@ -21,6 +21,55 @@
       "command": "projectManager.listProjectsNewWindow"
     },
     {
+      "key": "j",
+      "name": "Joplin",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "add/create Note",
+          "type": "command",
+          "command": "joplinNote.createNote"
+        },
+        {
+          "key": "f",
+          "name": "create folder",
+          "type": "command",
+          "command": "joplinNote.createFolder"
+        },
+        {
+          "key": "r",
+          "name": "refresh",
+          "type": "command",
+          "command": "joplinNote.refreshNoteList"
+        },
+        {
+          "key": "p",
+          "name": "paste note",
+          "type": "command",
+          "command": "joplinNote.paste"
+        },
+        {
+          "key": "x",
+          "name": "cut note",
+          "type": "command",
+          "command": "joplinNote.cut"
+        },
+        {
+          "key": "s",
+          "name": "search",
+          "type": "command",
+          "command": "joplinNote.search"
+        },
+        {
+          "key": "d",
+          "name": "delete note",
+          "type": "command",
+          "command": "joplinNote.remove"
+        }
+      ]
+    },
+    {
       "key": "a",
       "name": "add",
       "type": "bindings",
@@ -910,6 +959,7 @@
   // if you want to let certain command works when your cursor in the integratedTerminal, put that command in thie array
   "terminal.integrated.commandsToSkipShell": [
     "whichkey.show"
-    ]
+    ],
+    "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb"
 
 }

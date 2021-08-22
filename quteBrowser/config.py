@@ -40,8 +40,8 @@ config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key 
 # config.bind('bd', 'bookmark-del')
 # config.bind('aa', 'set-cmd-text -s :quickmark-add {url} "{title}')
 
-config.bind('aa', 'set-cmd-text -s :quickmark-load')
-config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
+# config.bind('aa', 'set-cmd-text -s :quickmark-load')
+# config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
 
 config.bind('cs', 'config-source')
 config.bind('<Shift-Tab>', 'tab-prev')
@@ -61,12 +61,12 @@ config.bind("<Ctrl-p>", "fake-key <Up>", "command")
 # config.bind("<Ctrl-u>", "fake-key <Shift-Home><Delete>", "insert")
 
 c.bindings.commands['insert'] = {
-    '<ctrl-f>': '<Right>',
-    '<ctrl-b>': '<Left>',
-    '<ctrl-e>': '<End>',
-    '<ctrl-a>': '<Home>',
+    '<ctrl-e>': 'fake-key <End>',
+    '<ctrl-a>': 'fake-key <Home>',
     '<ctrl-j>': 'fake-key <Down>',
     '<ctrl-k>': 'fake-key <Up>',
+    '<ctrl-f>': 'fake-key <Right>',
+    '<ctrl-b>': 'fake-key <Left>',
     '<ctrl-h>': 'fake-key <backspace>',
     '<ctrl-w>': 'fake-key <ctrl-backspace>',
     '<ctrl-u>': 'fake-key <Shift-Home><Delete>',

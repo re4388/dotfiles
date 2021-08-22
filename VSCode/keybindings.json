@@ -1347,11 +1347,6 @@
   "when": "editorLangId == 'ahk'"
 },
 {
-  "key": "alt+0",
-  "command": "ahk++.compile",
-  "when": "editorLangId == 'ahk'"
-},
-{
   "key": "ctrl+shift+f9",
   "command": "-ahk++.compile",
   "when": "editorLangId == 'ahk'"
@@ -1360,10 +1355,6 @@
   "key": "ctrl+f9",
   "command": "-ahk++.run",
   "when": "editorLangId == 'ahk'"
-},
-{
-  "key": "alt+0",
-  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
 },
 {
   "key": "alt+1",
@@ -1376,5 +1367,13 @@
 {
   "key": "alt+2",
   "command": "workbench.action.togglePanel"
+},
+{
+  "key": "alt+0",
+  "command": "workbench.view.extension.joplin-note"
+},
+{
+  "key": "ctrl+j ctrl+j",
+  "command": "-workbench.view.extension.joplin-note"
 }
 ]
