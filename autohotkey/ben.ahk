@@ -25,9 +25,7 @@
 Alt & 4::!F4 ; close win10 window, alt+f4
 Alt & 5::WinMaximize, A
 
-F1::#d
-;F2 for rename
-F3::+!s ;screenshot
+
 
 ; Msgbox, %A_ComputerName%
 
@@ -101,18 +99,25 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ::ddd::Pa$$w0rd
 ::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
 
+F1::#d
+;F2 for rename
+F3::+!s ;screenshot
+;F4 => below, search google
+DetectHiddenWindows, On
+;previous song
+F5::PostMessage, 0x319,, 0xC0000,, ahk_exe Spotify.exe
+;play/pause
+F6::PostMessage, 0x319,, 0xE0000,, ahk_exe Spotify.exe
+;next song
+F7::PostMessage, 0x319,, 0xB0000,, ahk_exe Spotify.exe
+F8::Volume_Mute
+F9::Volume_Down
+F10::Volume_Up
 
-; F1::#d
-;f2 need to reserve to edit file name in vscode
-;F3::Browser_Back
-;F4::!a
-; F8::Volume_Mute
-; F9::Volume_Down
-; F10::Volume_Up
 
-^+Right::Send, {Volume_Up}
-^+Left::Send, {Volume_Down}
-^+Down::Send, {Volume_Mute}
+;^+Right::Send, {Volume_Up}
+;^+Left::Send, {Volume_Down}
+;^+Down::Send, {Volume_Mute}
 
 ; alt + j, k , l for (), [], {}
 !j::
@@ -280,7 +285,7 @@ g_ControlRepeatDetected := false
 
 ; ctrl + shift + g => open chrome and search stuff you selected
 ; ref: https://dilpreet.dev/blog/autohotkey-for-developers/
-f7::
+f4::
 +^g::
 OpenHighlighted()
 return

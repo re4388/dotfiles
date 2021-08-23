@@ -1,11 +1,10 @@
-
 from qutebrowser.api import interceptor
 
 
 # Some useful shortcut
 # Ctrl + d when a link in history is highlighted
 # use m to add web page into quickMark
-# ================== Youtube Add Blocking ======================= {{{
+# ================== Youtube Add Blocking =======================
 def filter_yt(info: interceptor.Request):
     """Block the given request if necessary."""
     url = info.request_url
@@ -16,21 +15,21 @@ def filter_yt(info: interceptor.Request):
     ):
         info.block()
 
-
 interceptor.register(filter_yt)
-# }}}
-# =================== Launch Qutebrowser from Dmenu ====== {{{
+# ================================================================
 
 
+# ==================  start page and search engine =======================
 
-c.tabs.position = "top"
-c.url.start_pages = ["https://www.qutebrowser.org/"]
-
+c.url.start_pages = ["https://news.google.com/topstories?hl=zh-TW&gl=TW&ceid=TW:zh-Hant"]
 # c.url.searchengines["g"] = "https://www.google.com/search?q={}"
 c.url.searchengines["DEFAULT"] = "https://www.google.com/search?q={}"
-c.url.searchengines["ji"] = "https://jira.imgdev.bioclinica.com/secure/QuickSearch.jspa?searchString={}"
+c.url.searchengines["j"] = "https://jira.imgdev.bioclinica.com/secure/QuickSearch.jspa?searchString={}"
+c.url.searchengines["y"] = "https://www.youtube.com/results?search_query={}"
 
-# c.url.searchengines = {"DEFAULT": "https://google.com/search?q={}", "ji": "https://jira.imgdev.bioclinica.com/secure/QuickSearch.jspa?searchString={}"}
+# ================================================================
+
+c.tabs.position = "top"
 c.completion.open_categories = ["quickmarks", "searchengines", "history"]
 
 c.zoom.default = "135%"
@@ -43,14 +42,15 @@ config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key 
 # config.bind('aa', 'set-cmd-text -s :quickmark-load')
 # config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
 
-config.bind('cs', 'config-source')
+config.bind('ww', 'config-source')
 config.bind('<Shift-Tab>', 'tab-prev')
 config.bind('<Tab>', 'tab-next')
 config.bind('<alt-n>', 'set-cmd-text /')
-# ====================== Special Format Yanking =========== {{{
-# config.unbind('<alt-c>')
+
+# ====================== Special Format Yanking ===========
 config.bind("<alt-c>", "yank inline [{title}]({url})")
-# }}}
+#==========================================================
+
 config.bind(';', 'set-cmd-text :')
 
 config.bind('<Ctrl-o>', 'back')
@@ -84,6 +84,7 @@ c.bindings.commands['insert'] = {
 
 
 
+ # ====================== font setting ====================================
 font_size = 13
 c.fonts.hints = f'{font_size + 2}pt Hack Nerd Font Mono'
 c.fonts.statusbar = f'{font_size}pt Hack Nerd Font Mono'
@@ -95,6 +96,7 @@ c.fonts.completion.entry = f'{font_size}pt Hack Nerd Font Mono'
 c.fonts.completion.category = f'{font_size}pt Hack Nerd Font Mono'
 
 
+ # ---------------------------------------------------------------------------
 
 
 
