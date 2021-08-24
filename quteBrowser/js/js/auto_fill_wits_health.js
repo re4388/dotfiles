@@ -18,8 +18,10 @@ async function autoCheckNoProblem(sleepInMs) {
   return new Promise((resolve) => setTimeout(resolve, sleepInMs));
 }
 
+// btn btn-primary btn-block
 async function clickSubmit(sleepInMs) {
-  document.querySelectorAll("button[type='submit']")[0].click();
+  // document.querySelectorAll("button[type='submit']")[0].click();
+  document.querySelectorAll(".btn-primary button[type='submit'"])[0].click();
   return new Promise((resolve) => setTimeout(resolve, sleepInMs));
 }
 
