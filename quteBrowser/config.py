@@ -39,6 +39,8 @@ config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key 
 # config.bind('aa', 'set-cmd-text -s :quickmark-load')
 # config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
 config.bind('x1', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js\\auto_fill_wits_health.js')
+config.bind('x2', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js\\standup.js')
+# config.bind('x3', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js_with_nodeModule\\index.js')
 # "C:\Users\tp2011002\AppData\Roaming\qutebrowser\config\js\auto_fill_wits_health.js"
 
 config.bind('<f12>', 'devtools')
