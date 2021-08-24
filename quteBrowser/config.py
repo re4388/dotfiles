@@ -35,14 +35,13 @@ c.completion.open_categories = ["quickmarks", "searchengines", "history"]
 
 c.zoom.default = "135%"
 config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key and no idea how to go back
-# config.bind('ba', 'bookmark-add')
-# config.bind('bl', 'bookmark-list')
-# config.bind('bd', 'bookmark-del')
 # config.bind('aa', 'set-cmd-text -s :quickmark-add {url} "{title}')
-
 # config.bind('aa', 'set-cmd-text -s :quickmark-load')
 # config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
+config.bind('x1', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js\\auto_fill_wits_health.js')
+# "C:\Users\tp2011002\AppData\Roaming\qutebrowser\config\js\auto_fill_wits_health.js"
 
+config.bind('<f12>', 'devtools')
 config.bind('ww', 'config-source')
 config.bind('<Shift-Tab>', 'tab-prev')
 config.bind('<Tab>', 'tab-next')
