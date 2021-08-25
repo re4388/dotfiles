@@ -118,6 +118,8 @@ nmap m <Plug>ReplaceWithRegisterOperator
 nnoremap <leader>m m
 xnoremap <leader>m m
 
+" break into next paragraph
+nnoremap M i<Cr><Cr><Esc>J
 
 " Duplicate paragraph and put down
 nnoremap <Leader>cp yap<S-}>p

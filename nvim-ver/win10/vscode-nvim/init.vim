@@ -296,7 +296,6 @@ else
 		nnoremap ! :!
 
 
-
     set relativenumber
     set ruler
     set syntax
@@ -405,7 +404,10 @@ nnoremap ca :%y+<CR>
 
 nnoremap <leader>p a<space><esc>p
 nnoremap <c-p> <nop>
-nnoremap M <nop>
+
+" break into next paragraph
+nnoremap M i<Cr><Cr><Esc>J
+
 nnoremap <leader>pp i<c-r>0<space><esc>
 
 
@@ -483,6 +485,7 @@ nnoremap ZQ <Nop>
 " ========================
 " easier to move
 " ========================
+
 
 " Treat long lines as break lines (useful when moving around in them)
 vnoremap j gj
