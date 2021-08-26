@@ -20,11 +20,15 @@ QTEXTPATH=`wslpath $6`
 
 # below here, I use a heredoc to create a Hugo leaf bundle
 echo ${QURL}
-echo QTITLE
-echo QSELECTED
-echo QCOMMANDLINE
-echo QHTMLPATH
-echo QTEXTPATH
+echo ${QTITLE}
+echo ${QSELECTED}
+echo ${QCOMMANDLINE}
+echo ${QHTMLPATH}
+echo ${QTEXTPATH}
+
+input_file=~/advice_db.txt
+shuf -n 1 $input_file | cowsay
+
 ```
 
 remember to use `chmod +x qb.sh`
