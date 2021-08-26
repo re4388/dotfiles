@@ -49,6 +49,7 @@ script2_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\
 config.bind('x1', f'set-cmd-text -s :jseval --file {script1_path}')
 config.bind('x2', f'set-cmd-text -s :jseval --file {script2_path}')
 
+config.bind(',qenv', 'spawn -u -o "qb-env.cmd"')
 
 config.bind('<f12>', 'devtools')
 config.bind('ww', 'config-source')
