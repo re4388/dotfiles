@@ -93,6 +93,8 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ::zzz::node C:\projects\puppeteer\src\puppet\scripts\checkPackage.js
 
 ; Bioclinica
+::buser::ben.hu
+::bpass::2Aoxjgju!
 ::aaa::npm run serve:src:open:dev
 ::lll::imageFileCacheAction
 ::ccc::vfauto1.user@bioclinica.com

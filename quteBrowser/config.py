@@ -35,7 +35,8 @@ c.url.searchengines["y"] = "https://www.youtube.com/results?search_query={}"
 # ================================================================
 
 c.tabs.position = "top"
-c.completion.open_categories = ["quickmarks", "searchengines", "history"]
+# c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
+c.completion.open_categories = ["quickmarks", "searchengines", "history", "filesystem"]
 
 c.zoom.default = "135%"
 config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key and no idea how to go back
