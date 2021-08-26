@@ -1,4 +1,8 @@
+import os
+
 from qutebrowser.api import interceptor
+
+user_name = os.getenv('username')
 
 # test from wits
 
@@ -38,10 +42,12 @@ config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key 
 # config.bind('aa', 'set-cmd-text -s :quickmark-add {url} "{title}')
 # config.bind('aa', 'set-cmd-text -s :quickmark-load')
 # config.bind('ab', 'set-cmd-text :open {http//www.google.com}')
-config.bind('x1', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js\\auto_fill_wits_health.js')
-config.bind('x2', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js\\standup.js')
-# config.bind('x3', 'set-cmd-text -s :jseval --file C:\\Users\\tp2011002\\AppData\\Roaming\\qutebrowser\\config\\js_with_nodeModule\\index.js')
-# "C:\Users\tp2011002\AppData\Roaming\qutebrowser\config\js\auto_fill_wits_health.js"
+
+script1_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\js\\standup.js'
+script2_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\js\\auto_fill_wits_health.js'
+config.bind('x1', f'set-cmd-text -s :jseval --file {script1_path}')
+config.bind('x2', f'set-cmd-text -s :jseval --file {script2_path}')
+
 
 config.bind('<f12>', 'devtools')
 config.bind('ww', 'config-source')

@@ -15,7 +15,12 @@ continue.
 `;
 
 // TODO this shall be auto-gen from above text
-const issues = 'RAI-3114 RAI-790 RAI-2873';
+// const issues = 'RAI-3114 RAI-790 RAI-2873';
+const regexForTicket = /RAI-\d+/gm;
+const doneTicketArray = doneText.match(regexForTicket);
+const todoTicketArray = todoText.match(regexForTicket);
+const allTicket = [...new Set([...doneTicketArray, ...todoTicketArray])];
+const allTicketString = allTicket.toString().replace(/,/g, ' ');
 
 async function createStandupButton() {
   document.querySelector('#scrumstandup-standup-button-link').click();
@@ -64,7 +69,7 @@ async function run() {
   // await createStandupButtonDropDown();
   await inputDone(doneText);
   await inputTodo(todoText);
-  await linkedIssue(issues);
+  await linkedIssue(allTicketString);
   // await clickSave();
 }
 
