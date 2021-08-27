@@ -51,6 +51,7 @@ config.bind('x2', f'set-cmd-text -s :jseval --file {script2_path}')
 
 config.bind(',qenv', 'spawn -u -o "qb-env.cmd"')
 config.bind(',t', 'spawn -u -o wsl.cmd')
+config.bind(',j', 'spawn -u -o git_bash.cmd')
 
 config.bind('<f12>', 'devtools')
 config.bind('ww', 'config-source')
