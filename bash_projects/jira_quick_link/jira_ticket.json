@@ -1,0 +1,13 @@
+{
+  "RAI_790":{
+    "ticketNum": "790",
+    "PR_Id": "153",
+    "docTitle": ".Performance+Metrics+vRAI1.0",
+    "repo": "view-webapp",
+    "ticketFullName": "RAI-3114-remove-unused-properties-in-dev-console"
+  },
+  "RAI_3114":{
+    "ticketNum": "3114"
+  }
+
+}
