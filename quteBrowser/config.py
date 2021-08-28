@@ -95,7 +95,6 @@ c.bindings.commands['insert'] = {
 }
 
 
-
  # ====================== font setting ====================================
 font_size = 13
 c.fonts.hints = f'{font_size + 2}pt Hack Nerd Font Mono'

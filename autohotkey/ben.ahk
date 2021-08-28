@@ -100,6 +100,7 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ::ccc::vfauto1.user@bioclinica.com
 ::ddd::Pa$$w0rd
 ::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
+::jjj::wsl /home/re4388/projects/dotfiles/bash_projects/jira_quick_link/jira_board.sh
 
 F1::#d
 ;F2 for rename
