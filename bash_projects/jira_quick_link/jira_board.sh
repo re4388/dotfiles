@@ -3,28 +3,28 @@
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
-
+json_path=~/projects/dotfiles/bash_projects/jira_quick_link/jira_ticket.json
 
 ####### main ########
 
 function main(){
-  if [ ! -z ${1} ];then
-    # below line enable pipe in shell script
-    shopt -s lastpipe
-    cat jira_ticket.json | jq -r " .RAI_${1}.ticketNum" | read ticketNum
-    cat jira_ticket.json | jq -r " .RAI_${1}.PR_Id" | read PR_Id
-    cat jira_ticket.json | jq -r " .RAI_${1}.docTitle" | read docTitle
-    cat jira_ticket.json | jq -r " .RAI_${1}.repo" | read repo
-    cat jira_ticket.json | jq -r " .RAI_${1}.ticketFullName" | read ticketFullName
-  elif [ "${1}" = "show" ];then
+  if [ "${1}" = "show" ];then
     echo "Supported Ticket:"
-    cat jira_ticket.json | jq  '[ .[].ticketNum ]'
+    cat ${json_path} | jq . 
     exit 0
   elif [ "${1}" = "-h" ] || [ -z ${1} ];then
     echo "Accept argument: 'show', '<ticket-number>'"
     exit 0
+  elif [ ! -z ${1} ];then
+    # below line enable pipe in shell script
+    shopt -s lastpipe
+    cat ${json_path} | jq -r " .RAI_${1}.ticketNum" | read ticketNum
+    cat ${json_path} | jq -r " .RAI_${1}.PR_Id" | read PR_Id
+    cat ${json_path} | jq -r " .RAI_${1}.docTitle" | read docTitle
+    cat ${json_path} | jq -r " .RAI_${1}.repo" | read repo
+    cat ${json_path} | jq -r " .RAI_${1}.ticketFullName" | read ticketFullName
   else
-    echo "not implemented"
+    echo "something wrong"
     exit 1
   fi
 }
