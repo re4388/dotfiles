@@ -7,9 +7,9 @@ set undofile " Maintain undo history between sessions
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable            " no folding by default
-set foldmethod=marker       " fold based on ...
-set foldnestmax=10         " deepest fold is 10 levels
-set foldlevel=1             " fold one level at a time
+" set foldmethod=marker       " fold based on ...
+" set foldnestmax=10         " deepest fold is 10 levels
+" set foldlevel=1             " fold one level at a time
 " ref: https://vim.fandom.com/wiki/Folding#Folding_methods
 
 " set t_Co=256          " Support 256 colors
@@ -22,7 +22,7 @@ set conceallevel=0    " So that I can see `` in markdown files
 set cursorline         " Enable highlighting of the current line
 " set fileencoding=utf-8 " The encoding written to file
 set foldcolumn=1
-set foldenable
+" set foldenable
 set foldlevel=5
 set hidden            " Required to keep multiple buffers open multiple buffers
 set hlsearch            " " highlight matches

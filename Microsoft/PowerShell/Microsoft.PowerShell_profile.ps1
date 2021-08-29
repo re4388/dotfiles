@@ -150,6 +150,7 @@ function show {
     Write-Output "- Reload config & show:            . `$profile               (ahk:rrr)"
     Write-Output "- Utility:                         get-Bioclincal-repo      (ahk:fff)"
     Write-Output "- Edit vscode neovim init:                                  (ahk:vvv)"
+    Write-Output "- Show Jira related ticket:                                 (ahk:jjj)"
     Write-Output "- Check global npm packages:       npm list -g --depth 0"
     Write-Output "- Change acc b/n GitHub &Bucket:   change_repo_acc"
     Write-Output "- `$vp                              neovim init.vim path"
