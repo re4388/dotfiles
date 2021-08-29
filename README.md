@@ -1,2 +1,2 @@
 # dotfiles
-my dotfiles, always updating!
+my dotfiles. Always getting better!
