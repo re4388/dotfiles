@@ -72,7 +72,7 @@ function bk_ahk(){
 # you need to in win10, cmd.exe run: setx WSLENV USERPROFILE/up to make wsl see $USERPROFILE
 # shopt -s lastpipe
 # echo $USERPROFILE | awk -F'/' '{print $5}' | read current_machine_usr_name
-echo $laptop
+# echo $laptop
 current_laptop=$laptop
 
 
