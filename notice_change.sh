@@ -99,7 +99,6 @@ if grep -q @@ "$File"; then
     ;;
     * )
         echo No Op!
-        exit 1
         echo 'no update for this time, quit...'
     ;;
   esac
