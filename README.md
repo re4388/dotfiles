@@ -1,2 +1,2 @@
 # dotfiles
-my dotfiles, always change!
+my dotfiles, always updating!
