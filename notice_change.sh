@@ -6,30 +6,7 @@ swift_user_name=re438
 asus_user_name=re438
 wits_user_name=tp2011002
 local_dotfiles_path=~/projects/dotfiles
-
-function check_if_machine_correct(){
-  if [ "$current_machine_usr_name" = "${1}" ]; then
-    echo "The machine is match!"
-  else
-    echo "The machine is NOT match!"
-    exit 1
-  fi
-}
-
-
-function confirm_before_overwrite_local(){
-  read -p "this will overwrite the current machine setting! (y/n)? " answer
-  case ${answer:0:1} in
-    y|Y )
-        echo Continue...
-    ;;
-    * )
-        echo No Op!
-        exit 1
-        echo 'no show'
-    ;;
-  esac
-}
+current_laptop=$laptop
 
 
 function git_pull(){
@@ -41,7 +18,6 @@ function open_lazygit(){
 }
 
 function update_ahk(){
-    confirm_before_overwrite_local
 		cp ${local_dotfiles_path}/autohotkey/ben.ahk /mnt/c/ahk/ben.ahk
 }
 
@@ -51,23 +27,18 @@ function bk_wsl_vim(){
 }
 
 function update_win10_vim(){ 
-    confirm_before_overwrite_local
     cp ${local_dotfiles_path}/nvim-ver/win10/vscode-nvim/init.vim /mnt/c/Users/${1}/AppData/Local/nvim/
 }
 
 function update_wsl_vim(){
-    confirm_before_overwrite_local
     cp -rf ${local_dotfiles_path}/nvim-ver/wsl/vim-IDE-ver/nvim ~/.config/
 }
 
 function bk_win10_vim(){
-    check_if_machine_correct ${1} 
     cp "/mnt/c/Users/${1}/AppData/Local/nvim/init.vim" "${local_dotfiles_path}/nvim-ver/win10/vscode-nvim/"
 }
 
 function updateQuteBrowser(){
-    check_if_machine_correct ${1} 
-    confirm_before_overwrite_local
     cp "${local_dotfiles_path}/quteBrowser/config.py" "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/config.py"
     cp "${local_dotfiles_path}/quteBrowser/quickmarks" "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/quickmarks"
     # note: when use cp -rf, it copy over the "js" folder into taget path, so the target path shall be at the parent path 
@@ -77,7 +48,6 @@ function updateQuteBrowser(){
 }
 
 function bkQuteBrowser(){
-    check_if_machine_correct ${1} 
     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/config.py" "${local_dotfiles_path}/quteBrowser"
     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/quickmarks" "${local_dotfiles_path}/quteBrowser"
     # note: when use cp -rf, it copy over the "js" folder into taget path, so the target path shall be at the parent path 
@@ -91,12 +61,6 @@ function bk_ahk(){
     sudo cp "/mnt/c/ahk/ben.ahk" "${local_dotfiles_path}/autohotkey/"
 }
 
-# below 3 lines is to get the win10 user name,
-# you need to in win10, cmd.exe run: setx WSLENV USERPROFILE/up to make wsl see $USERPROFILE
-# shopt -s lastpipe
-# echo $USERPROFILE | awk -F'/' '{print $5}' | read current_machine_usr_name
-# echo $laptop
-current_laptop=$laptop
 
 
 cd ${local_dotfiles_path} 1>/dev/null
