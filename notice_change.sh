@@ -70,16 +70,22 @@ git diff ...origin/main > $File
 # cat $File
 
 if grep -q @@ "$File"; then
+  echo ''
+  echo ''
   echo 'Dotfiles have changes! Do you want to update from dotfiles?'
   read -p "Update? this will overwrite the current files! (y/n)? " answer
   case ${answer:0:1} in
     y|Y )
-        echo Continue...
+        echo Begin to update...
         if [ "${laptop}" = "swift" ]; then
           git_pull
           update_ahk
           updateQuteBrowser $swift_user_name
           update_win10_vim $swift_user_name
+        elif [ "${laptop}" = "wits" ];then
+          echo 'no implement now'
+        elif [ "${laptop}" = "wits" ];then
+          echo 'no implement now'
         else
           echo 'no implement now'
         fi
