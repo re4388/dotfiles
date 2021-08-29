@@ -88,7 +88,7 @@ if grep -q @@ "$File"; then
   case ${answer:0:1} in
     y|Y )
         echo Continue...
-        if [ "$current_machine_usr_name" = "${current_laptop}" ]; then
+        if [ "${laptop}" = "swift" ]; then
           git_pull
           update_ahk
           updateQuteBrowser $swift_user_name
