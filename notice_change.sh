@@ -76,12 +76,14 @@ if grep -q @@ "$File"; then
   read -p "Update? this will overwrite the current files! (y/n)? " answer
   case ${answer:0:1} in
     y|Y )
-        echo Begin to update...
+        echo Begin to check laptop...
         if [ "${laptop}" = "swift" ]; then
+          echo Begin to update...
           git_pull
           update_ahk
           updateQuteBrowser $swift_user_name
           update_win10_vim $swift_user_name
+          echo update complete!
         elif [ "${laptop}" = "wits" ];then
           echo 'no implement now'
         elif [ "${laptop}" = "wits" ];then
