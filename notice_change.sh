@@ -7,6 +7,29 @@ asus_user_name=re438
 wits_user_name=tp2011002
 local_dotfiles_path=~/projects/dotfiles
 
+function check_if_machine_correct(){
+  if [ "$current_machine_usr_name" = "${1}" ]; then
+    echo "The machine is match!"
+  else
+    echo "The machine is NOT match!"
+    exit 1
+  fi
+}
+
+
+function confirm_before_overwrite_local(){
+  read -p "this will overwrite the current machine setting! (y/n)? " answer
+  case ${answer:0:1} in
+    y|Y )
+        echo Continue...
+    ;;
+    * )
+        echo No Op!
+        exit 1
+        echo 'no show'
+    ;;
+  esac
+}
 
 
 function git_pull(){
