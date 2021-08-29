@@ -90,7 +90,6 @@ if grep -q @@ "$File"; then
           updateQuteBrowser $asus_user_name
           update_win10_vim $asus_user_name
           echo update complete!
-          echo 'no implement now'
         elif [ "${laptop}" = "wits" ];then
           echo Begin to update...
           git_pull
@@ -98,7 +97,6 @@ if grep -q @@ "$File"; then
           updateQuteBrowser $wits_user_name
           update_win10_vim $wits_user_name
           echo update complete!
-          echo 'not implement yet'
         else
           echo 'not implement yet'
         fi
