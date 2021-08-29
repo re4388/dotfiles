@@ -46,12 +46,15 @@ config.unbind('gf') #unbind gf => view source, I always mistakenly hit this key 
 
 script1_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\js\\standup.js'
 script2_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\js\\auto_fill_wits_health.js'
+# push_to_notion_path = f'C:\\Users\\{user_name}\\AppData\\Roaming\\qutebrowser\\config\\js\\push_to_notion.js'
 config.bind('x1', f'set-cmd-text -s :jseval --file {script1_path}')
 config.bind('x2', f'set-cmd-text -s :jseval --file {script2_path}')
 
 config.bind(',qenv', 'spawn -u -o "qb-env.cmd"')
 config.bind(',t', 'spawn -u -o wsl.cmd')
 config.bind(',j', 'spawn -u -o git_bash.cmd')
+config.bind(',n', 'spawn -u -o invokeWslNotion.cmd')
+# config.bind(',n', f'set-cmd-text -s :jseval --file {push_to_notion_path}')
 
 config.bind('<f12>', 'devtools')
 config.bind('ww', 'config-source')

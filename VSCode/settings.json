@@ -929,7 +929,6 @@
   "terminal.integrated.fontSize": 15,
   "editor.fontSize": 16,
   "security.workspace.trust.untrustedFiles": "open",
-
   "workbench.colorCustomizations": {
     "tab.activeBorder": "#FFFF00",
     "tab.unfocusedActiveBorder": "#000000",
@@ -960,6 +959,6 @@
   "terminal.integrated.commandsToSkipShell": [
     "whichkey.show"
     ],
-    "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb"
+  "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb"
 
 }

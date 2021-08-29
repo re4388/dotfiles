@@ -1,38 +1,32 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
-        // disable last tab, since I want to be able to use this in text-editor in terminal
-        { "command": null, "keys": "ctrl+tab" },
-        // {
-        //     "command" : "LastTab",
-        //     "keys" :
-        //     [
-        //         "alt+ctrl+tab"
-        //     ]
-        // },
-
         {
-            "command":
+            "command": "unbound",
+            "keys": "ctrl+tab"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": 
             {
                 "action": "prevTab"
             },
             "keys": "ctrl+shift+k"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "nextTab"
             },
             "keys": "ctrl+shift+j"
-        },
-        {
-            "command":
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
         },
         {
             "command": "paste",
@@ -42,10 +36,10 @@
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "profiles":
+    "profiles": 
     {
         "defaults": {},
-        "list":
+        "list": 
         [
             {
                 "colorScheme": "OneDark",
@@ -112,7 +106,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
