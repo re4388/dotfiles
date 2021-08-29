@@ -7,6 +7,8 @@ asus_user_name=re438
 wits_user_name=tp2011002
 local_dotfiles_path=~/projects/dotfiles
 
+
+
 function git_pull(){
     cd ${local_dotfiles_path} && git pull && cd -
 }
@@ -68,10 +70,10 @@ function bk_ahk(){
 
 # below 3 lines is to get the win10 user name,
 # you need to in win10, cmd.exe run: setx WSLENV USERPROFILE/up to make wsl see $USERPROFILE
-shopt -s lastpipe
-echo $USERPROFILE | awk -F'/' '{print $5}' | read current_machine_usr_name
-echo $current_machine_usr_name
-
+# shopt -s lastpipe
+# echo $USERPROFILE | awk -F'/' '{print $5}' | read current_machine_usr_name
+echo $laptop
+current_laptop=$laptop
 
 
 cd ${local_dotfiles_path} 1>/dev/null
@@ -86,7 +88,7 @@ if grep -q @@ "$File"; then
   case ${answer:0:1} in
     y|Y )
         echo Continue...
-        if [ "$current_machine_usr_name" = "${swift_user_name}" ]; then
+        if [ "$current_machine_usr_name" = "${current_laptop}" ]; then
           git_pull
           update_ahk
           updateQuteBrowser $swift_user_name
