@@ -1,7 +1,6 @@
 #!/bin/bash
 
 File=tmp
-local_dotfiles_path=~/projects/dotfiles
 swift_user_name=re438
 asus_user_name=re438
 wits_user_name=tp2011002
@@ -84,17 +83,16 @@ if grep -q @@ "$File"; then
           updateQuteBrowser $swift_user_name
           update_win10_vim $swift_user_name
           echo update complete!
-        elif [ "${laptop}" = "wits" ];then
+        elif [ "${laptop}" = "asus" ];then
           echo 'no implement now'
         elif [ "${laptop}" = "wits" ];then
-          echo 'no implement now'
+          echo 'not implement yet'
         else
-          echo 'no implement now'
+          echo 'not implement yet'
         fi
     ;;
     * )
-        echo No Op!
-        echo 'no update for this time, quit...'
+        echo 'No update for this time, quit...'
     ;;
   esac
 fi
