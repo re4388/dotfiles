@@ -1,6 +1,5 @@
-
 #!/bin/bash
-
+set -e
 
 # prerequiste:
 # the laptop need to have $laptop env ready to use
@@ -10,15 +9,18 @@
 # ```
 
 
-
+swift_user_name=re438
+asus_user_name=re438
+wits_user_name=tp2011002
 local_dotfiles_path=~/projects/dotfiles
 
 if [ ! -d "${local_dotfiles_path}" ]; then
   echo "Directory ${local_dotfiles_path} DOES NOT exists."
   exit 1
 else
-  echo "conti.."
+  echo "${local_dotfiles_path} exists"
 fi
+
 
 
 
@@ -32,20 +34,17 @@ function bk_wsl_vim(){
 
 
 function bk_win10_vim(){
-    check_if_machine_correct ${1} 
     cp "/mnt/c/Users/${1}/AppData/Local/nvim/init.vim" "${local_dotfiles_path}/nvim-ver/win10/vscode-nvim/"
 }
 
 
 function bkQuteBrowser(){
-    check_if_machine_correct ${1} 
     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/config.py" "${local_dotfiles_path}/quteBrowser"
     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/quickmarks" "${local_dotfiles_path}/quteBrowser"
     # note: when use cp -rf, it copy over the "js" folder into taget path, so the target path shall be at the parent path 
     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/js" "${local_dotfiles_path}/quteBrowser"
     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/greasemonkey" "${local_dotfiles_path}/quteBrowser"
     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/userscripts" "${local_dotfiles_path}/quteBrowser"
-
 }
 
 function bk_ahk(){
@@ -75,7 +74,7 @@ function bk_misc(){
 }
 
 function main(){
-    echo Begin to check laptop...
+
     if [ "${laptop}" = "swift" ]; then
       echo 'not implement yet'
     elif [ "${laptop}" = "asus" ];then
