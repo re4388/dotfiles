@@ -1,13 +1,34 @@
 {
   "RAI_790":{
+    "project_name": "VF",
     "ticketNum": "790",
-    "PR_Id": "153",
-    "docTitle": ".Performance+Metrics+vRAI1.0",
-    "repo": "view-webapp",
-    "ticketFullName": "RAI-3114-remove-unused-properties-in-dev-console"
+    "PR_Id": "103",
+    "docTitle": "xxxxxxxxxxx",
+    "ticketFullName": "RAI_790-cxxxxxxxxxx",
+    "repo": "view-webapp"
+  },
+  "RAI_2875":{
+    "ticketFullName": "RAI-2875-npm-packages-upgrade-shared-repository-2-lambda-proxy-integration-ts",
+    "project_name": "AI",
+    "ticketNum": "2875",
+    "repo": "lambda-proxy-integration-ts",
+    "PR_Id": "10",
+    "docTitle": ".NPM+Packages+Upgrade+Guide+vv1.2"
   },
   "RAI_3114":{
-    "ticketNum": "3114"
+    "ticketFullName": "RAI-3114-remove-unused-properties-in-dev-console",
+    "project_name": "VF",
+    "ticketNum": "3114",
+    "repo": "view-webapp",
+    "PR_Id": "611",
+    "docTitle": ".Preprocess+database%28dynamodb%29+access+pattern+vRAI1.0"
+  },
+  "RAI_2880":{
+    "ticketFullName": "RAI-2880-npm-packages-upgrade-viewfinder-readai-repository-4-view-webapp",
+    "project_name": "VF",
+    "ticketNum": "2880",
+    "repo": "view-webapp",
+    "PR_Id": "621",
+    "docTitle": ".NPM+Packages+Upgrade+Guide+vv1.2"
   }
-
 }

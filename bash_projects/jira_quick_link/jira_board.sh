@@ -23,6 +23,7 @@ function main(){
     cat ${json_path} | jq -r " .RAI_${1}.docTitle" | read docTitle
     cat ${json_path} | jq -r " .RAI_${1}.repo" | read repo
     cat ${json_path} | jq -r " .RAI_${1}.ticketFullName" | read ticketFullName
+    cat ${json_path} | jq -r " .RAI_${1}.project_name" | read project_name
   else
     echo "something wrong"
     exit 1
@@ -40,7 +41,8 @@ fi
 
 
 if [ ${PR_Id} != null ]; then
-  PR_url="https://stash.imgdev.bioclinica.com/projects/VF/repos/view-service/pull-requests/$PR_Id/overview"
+  # project_name could be VF or AI
+  PR_url="https://stash.imgdev.bioclinica.com/projects/${project_name}/repos/${repo}/pull-requests/$PR_Id/overview"
   PR_title=stash
 fi
 
