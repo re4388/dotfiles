@@ -5,6 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM=xterm-256color
 export HISTCONTROL=erasedups	# when adding an item to history, delete itentical commands upstream
 export HISTSIZE=10000		# save 10000 items in history
+export laptop=asus
 
 # ===============
 # vim 
@@ -125,4 +126,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 
-source ~/projects/dotfiles/notice_change.sh
+bash ~/projects/dotfiles/notice_change.sh

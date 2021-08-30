@@ -92,6 +92,7 @@ endfunction
 """"""""""""""""""""""""""""""
 " Fast edit 
 """"""""""""""""""""""""""""""
+nnoremap <cr> >> 
 inoremap jk <esc>
 " align Y to D, C
 map Y y$
