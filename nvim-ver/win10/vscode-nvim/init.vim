@@ -404,6 +404,7 @@ nnoremap ca :%y+<CR>
 
 nnoremap <leader>p a<space><esc>p
 nnoremap <c-p> <nop>
+nnoremap <cr> >> 
 
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
