@@ -876,7 +876,7 @@
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {

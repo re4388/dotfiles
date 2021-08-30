@@ -26,6 +26,11 @@ Alt & 4::!F4 ; close win10 window, alt+f4
 Alt & 5::WinMaximize, A
 
 
+^+b:: ; press control+r to reload
+  SendMode Input
+  Run, ms-settings:bluetooth
+  return
+
 
 ; Msgbox, %A_ComputerName%
 
