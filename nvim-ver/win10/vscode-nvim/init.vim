@@ -325,6 +325,11 @@ set clipboard=unnamed
 " fast edit
 " ========================
 
+
+"use enter to fast indent current line
+"multiline indent still use V-line mode
+nnoremap <cr> >> 
+
 inoremap jk <esc>
 
 " align Y to D, C
@@ -404,7 +409,6 @@ nnoremap ca :%y+<CR>
 
 nnoremap <leader>p a<space><esc>p
 nnoremap <c-p> <nop>
-nnoremap <cr> >> 
 
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
