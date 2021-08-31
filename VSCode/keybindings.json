@@ -1383,5 +1383,9 @@
 {
   "key": "ctrl+k ctrl+t",
   "command": "-workbench.action.selectTheme"
+},
+{
+  "key": "alt+=",
+  "command": "settingsOnFire.toggleSettings"
 }
 ]
