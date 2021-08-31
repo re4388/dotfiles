@@ -1,2 +1,2 @@
 # dotfiles
-my dotfiles. Always getting better~ !!
+Always getting better~ !!
