@@ -89,6 +89,7 @@ if grep -q @@ "$File"; then
           update_ahk
           updateQuteBrowser $asus_user_name
           update_win10_vim $asus_user_name
+          update_wsl_vim
           echo update complete!
         elif [ "${laptop}" = "wits" ];then
           echo Begin to update...
@@ -96,6 +97,7 @@ if grep -q @@ "$File"; then
           update_ahk
           updateQuteBrowser $wits_user_name
           update_win10_vim $wits_user_name
+          update_wsl_vim
           echo update complete!
         else
           echo 'not implement yet'
