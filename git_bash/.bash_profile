@@ -11,13 +11,13 @@ alias v='nvim'
 set -o noclobber
 
 ## Make Backspace and other things work in VS Code's & IntelliJ's terminals
-export TERM=cygwin
-export TERM=xterm
-export TERM=xterm-256color
+# export TERM=cygwin
+# export TERM=xterm
+# export TERM=xterm-256color
 ## NOTE: All 3 of the above TERM settings work for me
 
 # Set the base PS1
-export PS1="\t: \W$ "
+# export PS1="\t: \W$ "
 
 # Source the git bash completion file
 if [ -f ~/.git-completion.bash ]; then
@@ -26,8 +26,8 @@ if [ -f ~/.git-completion.bash ]; then
     PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 fi
 
-export PS1
 
+# export PS1
 
 # Launch Zsh
 if [ -t 1 ]; then

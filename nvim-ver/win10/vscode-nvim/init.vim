@@ -52,8 +52,9 @@ Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
 " Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 
-Plug 'justinmk/vim-sneak'
-let g:sneak#s_next = 1
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#s_next = 1
+
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -141,10 +142,10 @@ if exists('g:vscode')
     " nmap <leader>cc <Plug>VSCodeCommentaryLine
 
 		" I seldom use b and heavily use commment..so here we are..
-    xmap b  <Plug>VSCodeCommentary
-    nmap b  <Plug>VSCodeCommentary
-    omap b  <Plug>VSCodeCommentary
-    nmap bb <Plug>VSCodeCommentaryLine
+    xmap s  <Plug>VSCodeCommentary
+    nmap s  <Plug>VSCodeCommentary
+    omap s  <Plug>VSCodeCommentary
+    nmap ss <Plug>VSCodeCommentaryLine
 
     " xmap gj  <Plug>VSCodeCommentary
     " nmap gj  <Plug>VSCodeCommentary
@@ -215,9 +216,9 @@ else
 		" xmap gj <Plug>kommentary_visual_default
 		" nmap gjj <Plug>kommentary_line_default
 
-		nmap b <Plug>kommentary_motion_default
-		xmap b <Plug>kommentary_visual_default
-		nmap bb <Plug>kommentary_line_default
+		nmap s <Plug>kommentary_motion_default
+		xmap s <Plug>kommentary_visual_default
+		nmap ss <Plug>kommentary_line_default
 
 
 
@@ -235,7 +236,8 @@ else
     " lua require('commented').setup()
 
 		" use leader and w to save
-		nnoremap <leader>w :w<cr>:so %<cr>
+		nnoremap <leader>w :w<cr>
+		nnoremap <leader>ww :w<cr>:so %<cr>
 		" the counterpart is npm script in vscode
 		" nnoremap <leader>r :so %<cr>
 		nnoremap <leader>q :q<cr>
