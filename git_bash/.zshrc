@@ -1,22 +1,22 @@
-export ZSH="/c/Users/re438/.oh-my-zsh"
-
-## Make Backspace and other things work in VS Code's & IntelliJ's terminals
+export ZSH=$HOME/.oh-my-zsh
+export laptop=asus_git_bash
+## cygwin is window-quasi-posix system
+## Must use this term to make terminal work with zsh 
 export TERM=cygwin
-export TERM=xterm
-export TERM=xterm-256color
-## NOTE: All 3 of the above TERM settings work for me
 
 ZSH_THEME="ys"
 RPROMPT="%{$fg[green]%}[%D{%c}]"
-# ZSH_THEME="robbyrussell"
 
 plugins=(
 				git
-				# zsh-autosuggestions
-				# zsh-syntax-highlighting
-				# zsh-completions
+				zsh-autosuggestions
+				zsh-syntax-highlighting
+				zsh-completions
 				)
 
 alias v=nvim
-source $ZSH/oh-my-zsh.sh
+alias so=source
+alias ll='ls -a'
+alias ..='cd ..'
 
+source $ZSH/oh-my-zsh.sh

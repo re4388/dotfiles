@@ -112,8 +112,8 @@ Plug 'b3nj5m1n/kommentary'
 " Plug 'ThePrimeagen/vim-be-good'
 
 "Motion"
-Plug 'justinmk/vim-sneak'
-let g:sneak#s_next = 1
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#s_next = 1
 
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

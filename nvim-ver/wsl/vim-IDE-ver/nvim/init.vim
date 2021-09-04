@@ -34,9 +34,9 @@ nmap <c-f6> yiw
 " xmap gj <Plug>kommentary_visual_default
 " nmap gjj <Plug>kommentary_line_default
 
-nmap b <Plug>kommentary_motion_default
-xmap b <Plug>kommentary_visual_default
-nmap bb <Plug>kommentary_line_default
+nmap s <Plug>kommentary_motion_default
+xmap s <Plug>kommentary_visual_default
+nmap ss <Plug>kommentary_line_default
 
 "}}}
 

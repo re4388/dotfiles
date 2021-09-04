@@ -4,9 +4,10 @@
 " (r)eload config
 " nnoremap <leader>r :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
 " nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>w :w<CR>:source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>ww :w<CR>:source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>w :w<CR>
 
-nnoremap <silent> <leader>q :bd<CR> 
+  nnoremap <silent> <leader>q :bd<CR> 
 nnoremap <silent> <Leader>qq  :qa!<CR>
 
 " nnoremap <M-u> :Format<CR>

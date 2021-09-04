@@ -6,6 +6,8 @@ Set-Alias -Name v -Value nvim
 Set-Alias -Name lg -Value lazygit
 
 $time = (Get-Date).ToString("yyyy_MMdd_HHmm")
+
+## tip: get all env in powershell: `Get-ChildItem env:`
 $vp = "${env:userprofile}\AppData\Local\nvim\init.vim"
 $workspace = "C:\link\ws\"
 
@@ -141,6 +143,12 @@ Set-PSReadLineKeyHandler -Key "Ctrl+j" -Function ForwardWord
 Set-PSReadLineOption -EditMode Emacs
 
 
+
+function run_git_bash {
+    Write-Output 'still trying'
+    # "C:\Program Files\Git\bin\sh.exe" -l  "/C/Users/${env:USERNAME}/bin/git_clone_repo.sh"
+    # cmd /c '"C:\Program Files\Git\bin\sh.exe" --login' "./bin/git_clone_repo.sh"
+}
 
 # show all self-hand command
 function show {
