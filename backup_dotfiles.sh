@@ -52,30 +52,37 @@ function bk_ahk(){
 }
 
 
+# I can run below command to get all extension in txt file. Not use often, just put here for future use when needed, can reconsider to remove
+# powershell.exe -File "C:\Users\re438\AppData\scripts\get-vsce-ext-list.ps1" > ~/projects/dotfiles/VSCode/win-vsc-ext.txt
+# vscode shall sync itself, so, here is for source control prupose
+# vscode setting and key-mapping json:
+function bk_vscode_setting(){
+    cp /mnt/c/Users/${1}/AppData/Roaming/Code/User/settings.json ~/projects/dotfiles/VSCode/
+    cp /mnt/c/Users/${1}/AppData/Roaming/Code/User/keybindings.json ~/projects/dotfiles/VSCode/
+    cp /mnt/c/Users/${1}/AppData/scripts/get-vsce-ext-list.ps1 ~/projects/dotfiles/VSCode/
+}
 
-function bk_misc(){
-    # ps1
-    cp /mnt/c/Users/re438/OneDrive/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 ~/projects/dotfiles/Microsoft/PowerShell/
+function bk_powershell_config(){
+    cp /mnt/c/Users/${1}/OneDrive/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 ~/projects/dotfiles/Microsoft/PowerShell/
+}
 
-    # zsh
+function bk_wsl_zshrc(){
     cp ~/.zshrc ~/projects/dotfiles/zsh/
+}
 
-    # window-terminal
-    cp /mnt/c/Users/re438/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json ~/projects/dotfiles/Microsoft/WindowsTerminalPreview/
+function bk_win10_git_bash(){
+    sudo cp -rf /mnt/c/Users/${1}/bin ~/projects/dotfiles/git_bash/
+    cp /mnt/c/Users/${1}/.zshrc ~/projects/dotfiles/git_bash/
+    cp /mnt/c/Users/${1}/.bash_profile ~/projects/dotfiles/git_bash/
+}
 
-    # vscode setting and key-mapping json:
-    # vscode shall sync itself, so, here is for source control prupose
-
-    # run below command to get all extension in list, not use often, just put here for future use when needed, can reconsider to remove
-    # powershell.exe -File "C:\Users\re438\AppData\scripts\get-vsce-ext-list.ps1" > ~/projects/dotfiles/VSCode/win-vsc-ext.txt
-    cp /mnt/c/Users/re438/AppData/Roaming/Code/User/settings.json ~/projects/dotfiles/VSCode/
-    cp /mnt/c/Users/re438/AppData/Roaming/Code/User/keybindings.json ~/projects/dotfiles/VSCode/
-    cp /mnt/c/Users/re438/AppData/scripts/get-vsce-ext-list.ps1 ~/projects/dotfiles/VSCode/
+function bk_window_terminal_preview_config(){
+    cp /mnt/c/Users/${1}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json ~/projects/dotfiles/Microsoft/WindowsTerminalPreview/
 }
 
 function main(){
 
-    if [ "${laptop}" = "swift" ]; then
+    if [ "${laptop}" = "swift" ];then
       echo 'not implement yet'
     elif [ "${laptop}" = "asus" ];then
       echo Begin to backup...
@@ -83,7 +90,13 @@ function main(){
       bk_wsl_vim
       bk_ahk
       bkQuteBrowser $asus_user_name
-      bk_misc
+
+      bk_wsl_zshrc
+      bk_vscode_setting $asus_user_name
+      bk_powershell_config $asus_user_name
+      bk_window_terminal_preview_config $asus_user_name
+      bk_win10_git_bash $asus_user_name
+
       open_lazygit
     elif [ "${laptop}" = "wits" ];then
       echo Begin to backup...
