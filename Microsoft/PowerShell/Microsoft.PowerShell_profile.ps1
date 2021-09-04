@@ -1,4 +1,5 @@
 using namespace System.Management.Automation.Host
+
 Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
 
 Set-Alias -Name v -Value nvim
@@ -135,7 +136,7 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 # auto-suggestion
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
+Set-PSReadLineKeyHandler -Key "Ctrl+j" -Function ForwardWord
 # alow Ctrl + A, Ctrl -E, Ctrl -P, Ctrl-N work well as linux
 Set-PSReadLineOption -EditMode Emacs
 
@@ -148,11 +149,13 @@ function show {
     Write-Output ""
     Write-Output "- Open Profile with Vscode:        open-profile             (ahk:ooo)"
     Write-Output "- Reload config & show:            . `$profile               (ahk:rrr)"
-    Write-Output "- Utility:                         get-Bioclincal-repo      (ahk:fff)"
-    Write-Output "- Edit vscode neovim init:                                  (ahk:vvv)"
+    Write-Output ""
+    Write-Output " == Scripts == "
+    Write-Output ""
+    Write-Output "- get-Bioclincal-repo:                                      (ahk:fff)"
     Write-Output "- Show Jira related ticket:                                 (ahk:jjj)"
-    Write-Output "- Check global npm packages:       npm list -g --depth 0"
     Write-Output "- Change acc b/n GitHub &Bucket:   change_repo_acc"
+    Write-Output "- Check global npm packages:       npm list -g --depth 0"
     Write-Output "- `$vp                              neovim init.vim path"
     Write-Output "- `$ws                              c:/projects"
     Write-Output ""

@@ -54,6 +54,12 @@
                 "name": "Windows PowerShell"
             },
             {
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe -li",
+                "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "Git Bash",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
                 "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": true,
@@ -103,6 +109,12 @@
                 "name": "Ubuntu-18.04",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "\\\\wsl$\\Ubuntu-18.04\\home\\re4388"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": true,
+                "name": "Git Bash",
+                "source": "Git"
             }
         ]
     },
