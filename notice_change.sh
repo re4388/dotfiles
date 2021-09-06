@@ -61,6 +61,7 @@ if grep -q @@ "$File"; then
           update_ahk
           updateQuteBrowser $swift_user_name
           update_win10_vim $swift_user_name
+          update_wsl_vim
           echo update complete!
         elif [ "${laptop}" = "asus" ];then
           echo Begin to update...
