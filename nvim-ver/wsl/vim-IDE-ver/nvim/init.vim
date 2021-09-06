@@ -11,7 +11,11 @@ source ~/.config/nvim/keymap.vim
 lua require("lsp-config")
 colorscheme one
 
+"============= abbr =============
+
 :ab rtfm read the the fine manual
+
+"=============  functional key try out =============
 
 " use <C-K> and type f2...to f7 to try out
 " f2: <F26>
@@ -27,32 +31,24 @@ nmap <c-f5> yiw
 nmap <c-f6> yiw 
 
 
-
-" setting for Plug 'b3nj5m1n/kommentary' ========={{{
-
-" nmap gj <Plug>kommentary_motion_default
-" xmap gj <Plug>kommentary_visual_default
-" nmap gjj <Plug>kommentary_line_default
+"============= b3nj5m1n/kommentary =============
 
 nmap s <Plug>kommentary_motion_default
 xmap s <Plug>kommentary_visual_default
 nmap ss <Plug>kommentary_line_default
 
-"}}}
 
+"============= vim-matchup =============
 
-" vim-matchup ========={{{
 
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0
 
-"}}}
 
+"============= autosave plugin =============
 
-" auto save plugin setting ========={{{
-" ===================================
 
 " dsiable autosave gloablly
 let g:auto_save = 0
@@ -62,11 +58,9 @@ augroup ft_markdown
   au FileType markdown let b:auto_save = 1
   au FileType vimwiki let b:auto_save = 1
 augroup END
-"}}}
 
 
-" treesitter setting ========={{{
-" ===================================
+"============= treesitter =============
 
 " ref:
 " https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
@@ -120,11 +114,9 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-"}}}
 
 
-" autocmd ============={{{
-" =============================
+"============= autocommand =============
 " set folding stgy for vim file
 "
 " augroup auto_fold_init_vim
@@ -144,7 +136,7 @@ augroup END
 " \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'}}}
 
 
-" POC ============={{{
+"============= POC =============
 
 
 " let b:match_ignorecase=0
@@ -155,4 +147,3 @@ augroup END
 "      \  '<\@<=\([^ \t>/]\+\)\%(\s\+[^>]*\%([^/]>\|$\)\|>\|$\):<\@<=/\1>,'.
 "      \  '<\@<=\%([^ \t>/]\+\)\%(\s\+[^/>]*\|$\):/>'.
 "      \  '\<if\>::\<else\>'
-"}}}
