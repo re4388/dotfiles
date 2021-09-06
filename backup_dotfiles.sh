@@ -1,4 +1,4 @@
-#!/bin/bash
+  #!/bin/bash
 set -e
 
 # prerequiste:
@@ -83,7 +83,7 @@ function bk_window_terminal_preview_config(){
 function main(){
 
     if [ "${laptop}" = "swift" ];then
-      echo 'not implement yet'
+      echo 'no plan to backup from swift laptop for now'
     elif [ "${laptop}" = "asus" ];then
       echo Begin to backup...
       bk_win10_vim $asus_user_name
@@ -104,6 +104,7 @@ function main(){
       bk_wsl_vim $wits_user_name 
       bk_ahk
       bkQuteBrowser $wits_user_name
+      bk_win10_git_bash $wits_user_name
       open_lazygit
     else
       echo 'no this laptop or export laptop=<laptop_name>is not set in env'
