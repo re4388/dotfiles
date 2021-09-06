@@ -1,5 +1,5 @@
-  #!/bin/bash
-set -e
+#!/bin/bash
+# set -e
 
 # prerequiste:
 # the laptop need to have $laptop env ready to use
@@ -20,8 +20,6 @@ if [ ! -d "${local_dotfiles_path}" ]; then
 else
   echo "${local_dotfiles_path} exists"
 fi
-
-
 
 
 function open_lazygit(){
@@ -81,30 +79,32 @@ function bk_window_terminal_preview_config(){
 }
 
 function main(){
-
     if [ "${laptop}" = "swift" ];then
-      echo 'no plan to backup from swift laptop for now'
+      echo "no plan to backup from swift laptop for now"
+
     elif [ "${laptop}" = "asus" ];then
       echo Begin to backup...
       bk_win10_vim $asus_user_name
+      bkQuteBrowser $asus_user_name
+      bk_win10_git_bash $asus_user_name
       bk_wsl_vim
       bk_ahk
-      bkQuteBrowser $asus_user_name
 
       bk_wsl_zshrc
       bk_vscode_setting $asus_user_name
       bk_powershell_config $asus_user_name
       bk_window_terminal_preview_config $asus_user_name
-      bk_win10_git_bash $asus_user_name
 
       open_lazygit
+
     elif [ "${laptop}" = "wits" ];then
       echo Begin to backup...
       bk_win10_vim $wits_user_name
-      bk_wsl_vim $wits_user_name 
-      bk_ahk
       bkQuteBrowser $wits_user_name
       bk_win10_git_bash $wits_user_name
+      bk_wsl_vim
+      bk_ahk
+
       open_lazygit
     else
       echo 'no this laptop or export laptop=<laptop_name>is not set in env'
@@ -113,7 +113,6 @@ function main(){
 
 
 main
-
 
 
 
