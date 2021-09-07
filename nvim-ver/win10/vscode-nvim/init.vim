@@ -348,8 +348,14 @@ function! BreakHere()
 endfunction
 
 " join and break
-nnoremap <leader>j J
-nnoremap <leader>b :<C-u>call BreakHere()<CR>
+" nnoremap <leader>j J
+" nnoremap <leader>b :<C-u>call BreakHere()<CR>
+
+" join and break
+nnoremap qj J
+" d => down
+nnoremap qd :<C-u>call BreakHere()<CR>
+
 
 
 nnoremap ; :
@@ -387,12 +393,13 @@ nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
 
-" Quit visual mode
+" QUIT VISUAL MODE
 vnoremap v <Esc>
 
 
 " use leade v for faster go to visual line mode
-nnoremap <leader>v V
+" nnoremap <leader>v V
+nnoremap qv V
 
 
 " Duplicate paragraph and put down
@@ -409,13 +416,17 @@ nnoremap ca :%y+<CR>
 
 " paste at current cursor (add one space)
 
-nnoremap <leader>p a<space><esc>p
 nnoremap <c-p> <nop>
 
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-nnoremap <leader>pp i<c-r>0<space><esc>
+" nnoremap <leader>p a<space><esc>p
+" nnoremap <leader>pp i<c-r>0<space><esc>
+
+nnoremap qp a<space><esc>p
+nnoremap qpp i<c-r>0<space><esc>
+
 
 
 " Do NOT yank with x/s 	
@@ -430,13 +441,15 @@ nnoremap x "_x
 " ========================
 " nnoremap ee yiw 
 " nnoremap gh yiw 
-nnoremap qj yiw 
+nnoremap qq yiw 
+nmap cc miw<esc>
+
+nnoremap qh daw 
+nmap qk yiq
 " need to use namp, since m is remap
 " nmap ww yiq
 " nmap gn yiq
-nmap qq yiq
 " nmap cc miw<esc>
-nmap qk miw<esc>
 " cc is still a good maping, waiting to be use..
 " nno cc miw 
 " nnoremap gt gg 
@@ -465,13 +478,24 @@ nmap ,p "0p
 nmap ,P "0P
 
 " eaiser surrounding vim
-nmap ,` ysiw`
-nmap ," ysiw"
-nmap ,' ysiw'
-nmap ,b ysiwb 
-nmap ,B ysiwB
-nmap ,t ysiw<
-nmap ,[ ysiw[
+" nmap ,` ysiw`
+" nmap ," ysiw"
+" nmap ,' ysiw'
+" nmap ,b ysiwb 
+" nmap ,B ysiwB
+" nmap ,t ysiw<
+" nmap ,[ ysiw[
+" don't forget you can use S in visual mode...
+"
+
+" eaiser surrounding vim
+nmap q` ysiw`
+nmap q" ysiw"
+nmap q' ysiw'
+nmap qb ysiwb 
+nmap qB ysiwB
+nmap qt ysiw<
+nmap q[ ysiw[
 " don't forget you can use S in visual mode...
 "
 
@@ -583,8 +607,15 @@ vnoremap K 10k
 
 " also take count, like [count]<leader>o
 " add blank line above and below
-nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+" nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+" nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+
+nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+
+
+
+
 
 
 

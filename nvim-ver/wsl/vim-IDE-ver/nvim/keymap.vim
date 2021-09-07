@@ -135,15 +135,21 @@ vnoremap <Leader>d YPgv
 " =========================
 " Super Fast c/p.. 
 " ========================
+nnoremap qq yiw 
+nmap cc miw<esc>
+
+nnoremap qh daw 
+nmap qk yiq
+
 " nnoremap ee yiw 
 " nnoremap gh yiw 
-nnoremap qj yiw 
+" nnoremap qj yiw 
 " need to use namp, since m is remap
 " nmap ww yiq
 " nmap gn yiq
-nmap qq yiq
+" nmap qq yiq
 " nmap cc miw<esc>
-nmap qk miw<esc>
+" nmap qk miw<esc>
 " cc is still a good maping, waiting to be use..
 " nno cc miw 
 " nnoremap gt gg 
@@ -171,8 +177,8 @@ nmap qk miw<esc>
 
 " Quit visual mode
 vnoremap v <Esc>
-nnoremap <leader>v V 
-
+" nnoremap <leader>v V 
+nnoremap qv V
 " tab out
 " https://www.reddit.com/r/vim/comments/6ga90i/tabbing_out_of_brackets_and_quotes/
 " inoremap <expr> <Tab> search('\%#[]>)}]', 'n') ? '<Right>' : '<Tab>'   
@@ -222,9 +228,10 @@ endfunction
 
 
 " join and break
-nnoremap <leader>b :<C-u>call BreakHere()<CR>
-nnoremap <leader>j J
-
+" nnoremap <leader>b :<C-u>call BreakHere()<CR>
+" nnoremap <leader>j J
+nnoremap qj J
+nnoremap qd :<C-u>call BreakHere()<CR>
 
 " reverse visual mode u/U mapping
 " I usually change from lower to upper
@@ -244,8 +251,11 @@ vnoremap : ;
 vnoremap ; :
 
 " add blank line above and below and take count, like [count]<leader>o
-nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+" nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+"
+" nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
  " Insert empty line above, repeatable
  " noremap <silent> <Plug>EmptyLineAbove mmO<ESC>`m:call repeat#set("\<Plug>EmptyLineAbove")<CR>
@@ -264,25 +274,34 @@ nmap ,p "0p
 nmap ,P "0P
 
 " paste on space after current cursor 
-nnoremap <leader>p a<space><esc>p
+" nnoremap <leader>p a<space><esc>p
 " paste on space before current cursor 
-nnoremap <leader>pp i<c-r>0<space><esc>
+" nnoremap <leader>pp i<c-r>0<space><esc>
+nnoremap qp a<space><esc>p
+nnoremap qpp i<c-r>0<space><esc>
 
 " eaiser surrounding vim
-nmap ,` ysiw`
-nmap ," ysiw"
-nmap ,' ysiw'
-nmap ,b ysiwb 
-nmap ,B ysiwB
-nmap ,t ysiw<
-nmap ,[ ysiw[
+" nmap ,` ysiw`
+" nmap ," ysiw"
+" nmap ,' ysiw'
+" nmap ,b ysiwb 
+" nmap ,B ysiwB
+" nmap ,t ysiw<
+" nmap ,[ ysiw[
+nmap q` ysiw`
+nmap q" ysiw"
+nmap q' ysiw'
+nmap qb ysiwb 
+nmap qB ysiwB
+nmap qt ysiw<
+nmap q[ ysiw[
 " don't forget you can use S in visual mode...
 
 " super fast whole word/WORD selection.. 
-nno e, yiw 
-nno e. yiW 
-nno w, yaw 
-nno w. yaW
+" nno e, yiw 
+" nno e. yiW 
+" nno w, yaw 
+" nno w. yaW
 
 " Do NOT yank with x/s
 nnoremap x "_x
