@@ -1,5 +1,4 @@
-{
-  "whichkey.sortOrder": "alphabetically",
+{ "whichkey.sortOrder": "alphabetically",
   "whichkey.delay": 0,
   "whichkey.bindings": [
     {
@@ -150,7 +149,10 @@
       "key": ".",
       "name": "setting(JSON)",
       "type": "command",
-      "command": "workbench.action.openSettingsJson"
+      "command": "workbench.action.openSettingsJson",
+      "args": {
+        "openToSide": true
+      }
     },
     {
       "key": "k",
@@ -946,7 +948,6 @@
   "terminal.integrated.commandsToSkipShell": [
     "whichkey.show"
     ],
-  // "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
   "settingsOnFire.toggle": {
     "joplineToken": {
       "on": {
@@ -979,4 +980,5 @@
     // "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
     // "editor.findMatchHighlightBackground": "#BF883F" //Other SEARCH MATCHES
   },
+  "editor.bracketPairColorization.enabled": true,
 }
