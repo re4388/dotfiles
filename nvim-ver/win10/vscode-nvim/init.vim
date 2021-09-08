@@ -198,8 +198,8 @@ if exists('g:vscode')
 		nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
 
 		xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
-
 		" use space as which key, but this way is slow.. 
+
 		" nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 		" xnoremap <silent> <Space> :<C-u>call <SID>openWhichKeyInVisualMode()<CR>
 
@@ -347,14 +347,7 @@ function! BreakHere()
 	call histdel("/", -1)
 endfunction
 
-" join and break
-" nnoremap <leader>j J
-" nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
-" join and break
-nnoremap qj J
-" d => down
-nnoremap qd :<C-u>call BreakHere()<CR>
 
 
 
@@ -397,9 +390,6 @@ vnoremap <Leader>d YPgv
 vnoremap v <Esc>
 
 
-" use leade v for faster go to visual line mode
-" nnoremap <leader>v V
-nnoremap qv V
 
 
 " Duplicate paragraph and put down
@@ -421,51 +411,53 @@ nnoremap <c-p> <nop>
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-" nnoremap <leader>p a<space><esc>p
-" nnoremap <leader>pp i<c-r>0<space><esc>
-
-nnoremap qp a<space><esc>p
-nnoremap qpp i<c-r>0<space><esc>
-
-
 
 " Do NOT yank with x/s 	
 nnoremap x "_x
 
 
-
-
 " apple   `banana`   "test2'est'
 " =========================
-" Super Fast c/p.. 
+" Super Fast Area, Q prefix
 " ========================
-" nnoremap ee yiw 
-" nnoremap gh yiw 
 nnoremap qq yiw 
 nmap cc miw<esc>
 
 nnoremap qh daw 
-nmap qk yiq
+" s => string
+nmap qs yiq
 " need to use namp, since m is remap
-" nmap ww yiq
-" nmap gn yiq
-" nmap cc miw<esc>
-" cc is still a good maping, waiting to be use..
-" nno cc miw 
-" nnoremap gt gg 
 
-" try other mapping...
-" leader is always a little slowet than ee, ww, cc...
-" however, ee, www will disable me to move fast with w and e..
-" but remember you can still have fast move in VISUAL mode with w and e
-" nmap ff yiw 
-" nmap <leader>y yiw 
-" nmap <leader>s yiq
-" nmap <leader>r miw
+" visual line mode
+nnoremap qv V
 
-" nno ww yaW
-" nno e. yiW 
-" nno w, yaw 
+" Add blank line above and below
+" also take count, like [count]<leader>o
+nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
+
+" paste on begin and end
+nnoremap qp a<space><esc>p
+nnoremap qpp i<c-r>0<space><esc>
+
+" join and break (d => down)
+nnoremap qj J
+nnoremap qd :<C-u>call BreakHere()<CR>
+
+" eaiser surrounding vim
+" don't forget you can use S in visual mode...
+nmap q` ysiw`
+nmap q" ysiw"
+nmap q' ysiw'
+nmap qb ysiwb 
+nmap qB ysiwB
+nmap qt ysiw<
+nmap q[ ysiw[
+
+" m is being used for ReplaceWithRegisterOperator
+"need to remap mark `m`
+nnoremap qm m
+xnoremap qm m
 " =================================
 
 
@@ -477,27 +469,7 @@ nmap qk yiq
 nmap ,p "0p
 nmap ,P "0P
 
-" eaiser surrounding vim
-" nmap ,` ysiw`
-" nmap ," ysiw"
-" nmap ,' ysiw'
-" nmap ,b ysiwb 
-" nmap ,B ysiwB
-" nmap ,t ysiw<
-" nmap ,[ ysiw[
-" don't forget you can use S in visual mode...
-"
 
-" eaiser surrounding vim
-nmap q` ysiw`
-nmap q" ysiw"
-nmap q' ysiw'
-nmap qb ysiwb 
-nmap qB ysiwB
-nmap qt ysiw<
-nmap q[ ysiw[
-" don't forget you can use S in visual mode...
-"
 
 " Emacs like movement in Insert/Command
 " not sure I am going to use this..?
@@ -605,13 +577,6 @@ vnoremap K 10k
 " nnoremap <C-c>j J
 " noremap gj J
 
-" also take count, like [count]<leader>o
-" add blank line above and below
-" nnoremap <leader>o  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-" nnoremap <leader>O  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
-
-nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
 
 
@@ -633,9 +598,7 @@ nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 let g:switch_mapping = "<BS>"
 
 nmap m <Plug>ReplaceWithRegisterOperator
-"need to remap mark `m`
-nnoremap <leader>m m
-xnoremap <leader>m m
+
 
 
 " ref:
