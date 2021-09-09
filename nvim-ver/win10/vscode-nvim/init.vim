@@ -440,9 +440,6 @@ nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 nnoremap qp a<space><esc>p
 nnoremap qpp i<c-r>0<space><esc>
 
-" join and break (d => down)
-nnoremap qj J
-nnoremap qd :<C-u>call BreakHere()<CR>
 
 " eaiser surrounding vim
 " don't forget you can use S in visual mode...
@@ -458,10 +455,17 @@ nmap q[ ysiw[
 "need to remap mark `m`
 nnoremap qm m
 xnoremap qm m
+
+" Use backspace key for matching parens
+" j is jump
+nnoremap qj %
+xnoremap qj %
 " =================================
 
 
-
+" join and break (d => down)
+nnoremap <leader>j J
+nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 " cover all non-whitespace conseuctive word
 
@@ -551,12 +555,6 @@ nnoremap <leader>n :noh<cr>
 "{ddd}
  
 
-" Use backspace key for matching parens
-nnoremap <M-q> %
-xnoremap <M-q> %
-
-nnoremap <c-u> %
-xnoremap <c-u> %
 
 
 

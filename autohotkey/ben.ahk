@@ -293,7 +293,6 @@ g_ControlRepeatDetected := false
 
 ; ctrl + shift + g => open chrome and search stuff you selected
 ; ref: https://dilpreet.dev/blog/autohotkey-for-developers/
-f4::
 +^g::
 OpenHighlighted()
 return
