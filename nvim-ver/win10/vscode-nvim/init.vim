@@ -429,7 +429,8 @@ nmap qs yiq
 " need to use namp, since m is remap
 
 " visual line mode
-nnoremap qv V
+" nnoremap qv V
+nnoremap vv V
 
 " Add blank line above and below
 " also take count, like [count]<leader>o
