@@ -132,7 +132,9 @@ vnoremap <Leader>d YPgv
 nnoremap qq yiw 
 nmap cc miw<esc>
 
-nnoremap qh daw 
+"d refer to delete
+nnoremap qd daw 
+
 " s => string
 nmap qs yiq
 " need to use namp, since m is remap

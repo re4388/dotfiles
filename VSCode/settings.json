@@ -542,7 +542,7 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "telemetry.enableTelemetry": false,
   "workbench.statusBar.visible": true,
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "todohighlight.include": [
     "**/*.js",
     "**/*.jsx",

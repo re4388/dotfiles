@@ -412,7 +412,7 @@ nnoremap <c-p> <nop>
 nnoremap M i<Cr><Cr><Esc>J
 
 
-" Do NOT yank with x/s 	
+" alter the default x behavior, change to not to yank with x 	
 nnoremap x "_x
 
 
@@ -423,13 +423,13 @@ nnoremap x "_x
 nnoremap qq yiw 
 nmap cc miw<esc>
 
-nnoremap qh daw 
+"d refer to delete
+nnoremap qd daw 
 " s => string
 nmap qs yiq
 " need to use namp, since m is remap
 
 " visual line mode
-" nnoremap qv V
 nnoremap vv V
 
 " Add blank line above and below
