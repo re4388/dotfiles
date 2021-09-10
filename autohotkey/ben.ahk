@@ -19,9 +19,9 @@
   return
 
 
-; Alt & 1 => use in vscode which key activation
-; Alt & 2 => vscode:toggle vscode terminal
-; Alt & 3 => vscode:toggle Jopline sidebar
+; Alt & 1 => vscode which key
+; Alt & 2 => Jopline sidebar
+; Alt & 3 => vscode terminal
 Alt & 4::!F4 ; close win10 window, alt+f4
 Alt & 5::WinMaximize, A
 

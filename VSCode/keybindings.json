@@ -1388,5 +1388,63 @@
 {
   "key": "alt+=",
   "command": "settingsOnFire.toggleSettings"
+},
+{
+  "key": "ctrl+shift+g g",
+  "command": "-workbench.view.scm",
+  "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+},
+{
+  "key": "ctrl+shift+g",
+  "command": "-workbench.view.scm",
+  "when": "workbench.scm.active"
+},
+{
+  "key": "alt+,",
+  "command": "workbench.scm.focus"
+},
+{
+  "key": "alt+,",
+  "command": "-gitlens.diffWithPrevious",
+  "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /tracked/"
+},
+{
+  "key": "alt+,",
+  "command": "-gitlens.diffWithPreviousInDiffLeft",
+  "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /tracked/"
+},
+{
+  "key": "alt+,",
+  "command": "-gitlens.diffWithPreviousInDiffRight",
+  "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /tracked/"
+},
+{
+  "key": "alt+,",
+  "command": "-gitlens.key.alt+,",
+  "when": "gitlens:key:,"
+},
+{
+  "key": "alt+.",
+  "command": "-gitlens.diffWithNext",
+  "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /revision/"
+},
+{
+  "key": "alt+.",
+  "command": "-gitlens.diffWithNextInDiffLeft",
+  "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /revision/"
+},
+{
+  "key": "alt+.",
+  "command": "-gitlens.diffWithNextInDiffRight",
+  "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'alternate' && gitlens:activeFileStatus =~ /revision/"
+},
+{
+  "key": "alt+.",
+  "command": "-gitlens.key.alt+.",
+  "when": "gitlens:key:."
+},
+{
+  "key": "alt+.",
+  "command": "unsaved-files.focus"
 }
 ]
