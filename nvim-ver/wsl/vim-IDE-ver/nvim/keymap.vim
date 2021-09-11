@@ -170,11 +170,16 @@ nnoremap qm m
 xnoremap qm m
 
 " Use backspace key for matching parens
-" j is jump
-nnoremap qj %
-xnoremap qj %
+" n is "n"ext bracket
+nnoremap qn %
+xnoremap qn %
 " =================================
 
+" move current line up and down
+nnoremap qj :m .+1<CR>==
+nnoremap qk :m .-2<CR>==
+vnoremap qj :m '>+1<CR>gv=gv
+vnoremap qk :m '<-2<CR>gv=gv
 
 
 " join and break (d => down)
@@ -194,11 +199,6 @@ inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<
 
 
 
-" use mj mk, just don't use j and k as mark key
-nnoremap mj :m .+1<CR>==
-nnoremap mk :m .-2<CR>==
-vnoremap mj :m '>+1<CR>gv=gv
-vnoremap mk :m '<-2<CR>gv=gv
 
 
 nnoremap J 10j
