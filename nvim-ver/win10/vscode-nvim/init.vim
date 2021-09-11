@@ -90,32 +90,34 @@ call plug#end() "}}}
 
 " vscode helper ============={{{
 
-function! s:openVSCodeCommandsInVisualMode()
-    normal! gv
-    let visualmode = visualmode()
-    if visualmode == "V"
-        let startLine = line("v")
-        let endLine = line(".")
-        call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
-    else
-        let startPos = getpos("v")
-        let endPos = getpos(".")
-        call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
-    endif
-endfunction
 
-function! s:vscodeCommentary(...) abort
-    if !a:0
-        let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
-        return 'g@'
-    elseif a:0 > 1
-        let [line1, line2] = [a:1, a:2]
-    else
-        let [line1, line2] = [line("'["), line("']")]
-    endif
+" function! s:openVSCodeCommandsInVisualMode()
+"     normal! gv
+"     let visualmode = visualmode()
+"     if visualmode == "V"
+"         let startLine = line("v")
+"         let endLine = line(".")
+"         call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
+"     else
+"         let startPos = getpos("v")
+"         let endPos = getpos(".")
+"         call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+"     endif
+" endfunction
 
-    call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
-endfunction"}}}
+
+" function! s:vscodeCommentary(...) abort
+"     if !a:0
+"         let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
+"         return 'g@'
+"     elseif a:0 > 1
+"         let [line1, line2] = [a:1, a:2]
+"     else
+"         let [line1, line2] = [line("'["), line("']")]
+"     endif
+
+"     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
+" endfunction"}}}
 
 if exists('g:vscode')
 		
@@ -135,22 +137,10 @@ if exists('g:vscode')
 		xnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 		nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 
-		" leader c is faster then gc
-    " xmap <leader>c  <Plug>VSCodeCommentary
-    " nmap <leader>c  <Plug>VSCodeCommentary
-    " omap <leader>c  <Plug>VSCodeCommentary
-    " nmap <leader>cc <Plug>VSCodeCommentaryLine
-
-		" I seldom use b and heavily use commment..so here we are..
     xmap s  <Plug>VSCodeCommentary
     nmap s  <Plug>VSCodeCommentary
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
-
-    " xmap gj  <Plug>VSCodeCommentary
-    " nmap gj  <Plug>VSCodeCommentary
-    " omap gj  <Plug>VSCodeCommentary
-    " nmap gjj <Plug>VSCodeCommentaryLine
 
     nmap <leader>hh <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     nmap <leader>ll <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
@@ -191,14 +181,13 @@ if exists('g:vscode')
 		nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
 
 		"remap to gr for comment ppl use, gH is the vscode neovim binding
-		nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
+		" nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
 
 		" Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
-		xnoremap <expr> <C-/> <SID>vscodeCommentary()
-		nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
+		" xnoremap <expr> <C-/> <SID>vscodeCommentary()
+		" nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
 
-		xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
-		" use space as which key, but this way is slow.. 
+		" xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
 
 		" nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 		" xnoremap <silent> <Space> :<C-u>call <SID>openWhichKeyInVisualMode()<CR>
@@ -211,10 +200,6 @@ if exists('g:vscode')
 
 else
 	  " neovim only ============{{{
-		
-		" nmap gj <Plug>kommentary_motion_default
-		" xmap gj <Plug>kommentary_visual_default
-		" nmap gjj <Plug>kommentary_line_default
 
 		nmap s <Plug>kommentary_motion_default
 		xmap s <Plug>kommentary_visual_default
@@ -232,9 +217,6 @@ else
 		" colorscheme tender
 		colorscheme gruvbox
     
-		" comment plugin only for neovim
-    " lua require('commented').setup()
-
 		" use leader and w to save
 		nnoremap <leader>w :w<cr>
 		nnoremap <leader>ww :w<cr>:so %<cr>
@@ -245,7 +227,7 @@ else
 
 		nnoremap <c-d> <Nop>
 
-		" just like vscode
+		" go back to previous tab just like vscode
 		nnoremap B <c-^>
 		
 
@@ -339,13 +321,6 @@ map Y y$
 
 " Redo
 nnoremap U <C-r>
-
-
-
-function! BreakHere()
-	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-	call histdel("/", -1)
-endfunction
 
 
 
@@ -458,9 +433,15 @@ nnoremap qm m
 xnoremap qm m
 
 " Use backspace key for matching parens
-" j is jump
-nnoremap qj %
-xnoremap qj %
+" n is "n"ext bracket
+nnoremap qn %
+xnoremap qn %
+
+" move current line up and down
+nnoremap qj :m .+1<CR>==
+nnoremap qk :m .-2<CR>==
+vnoremap qj :m '>+1<CR>gv=gv
+vnoremap qk :m '<-2<CR>gv=gv
 " =================================
 
 
@@ -468,13 +449,16 @@ xnoremap qj %
 nnoremap <leader>j J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
+function! BreakHere()
+	s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+	call histdel("/", -1)
+endfunction
+
 " cover all non-whitespace conseuctive word
 
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P
-
-
 
 " Emacs like movement in Insert/Command
 " not sure I am going to use this..?
@@ -559,13 +543,6 @@ nnoremap <leader>n :noh<cr>
 
 
 
-" use mj mk, just don't use j and k as mark key
-nnoremap mj :m .+1<CR>==
-nnoremap mk :m .-2<CR>==
-vnoremap mj :m '>+1<CR>gv=gv
-vnoremap mk :m '<-2<CR>gv=gv
-
-
 nnoremap J 10j
 nnoremap K 10k
 vnoremap J 10j
@@ -575,13 +552,6 @@ vnoremap K 10k
 " had use J above, so I here remap join to ctrl+c prefix version
 " nnoremap <C-c>j J
 " noremap gj J
-
-
-
-
-
-
-
 
 
 
