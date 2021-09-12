@@ -2,7 +2,7 @@
   {
     "key": "ctrl+home",
     "command": "cursorTop",
-    "when": "textInputFocus"
+    // "when": "textInputFocus"
   },
 
   {
