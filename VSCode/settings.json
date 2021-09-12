@@ -2,10 +2,10 @@
   "whichkey.delay": 0,
   "whichkey.bindings": [
     {
-      "key": "z",
-      "name": "Zen Mode Toggle",
+      "key": "w",
+      "name": "reopen window",
       "type": "command",
-      "command": "workbench.action.toggleZenMode"
+      "command": "workbench.action.reloadWindow"
     },
     {
       "key": ";",
@@ -131,17 +131,11 @@
           "type": "command",
           "command": "workbench.action.tasks.runTask"
         },
-        {
-          "key": "n",
-          "name": "Npm script",
-          "type": "command",
-          "command": "npm-script.run"
-        }
       ]
     },
         {
           "key": "n",
-          "name": "Npm script",
+          "name": "NPM script",
           "type": "command",
           "command": "npm-script.run"
         },
@@ -161,12 +155,6 @@
       "command": "workbench.action.openGlobalKeybindingsFile"
     },
     {
-      "key": "m",
-      "name": "Toggle terminal",
-      "type": "command",
-      "command": "workbench.action.togglePanel"
-    },
-    {
       "key": "b",
       "name": "Toggle SideBar visible",
       "type": "command",
@@ -175,7 +163,7 @@
     },
     {
       "key": "t",
-      "name": "Terminal",
+      "name": "Terminal Panel Moving",
       "type": "bindings",
       "bindings": [
         {
@@ -191,12 +179,6 @@
           "type": "command",
           "command": "macros.moveTerminalRight",
           // "when":"terminalFocus"
-        },
-        {
-          "key": "t",
-          "name": "Toggle terminal",
-          "type": "command",
-          "command": "workbench.action.togglePanel"
         },
       ]
     },
@@ -216,12 +198,6 @@
           "name": "activity bar",
           "type": "command",
           "command": "workbench.action.toggleActivityBarVisibility"
-        },
-        {
-          "key": "t",
-          "name": "Toggle terminal",
-          "type": "command",
-          "command": "workbench.action.togglePanel"
         },
         {
           "key": "a",
@@ -316,18 +292,6 @@
           "command": "workbench.action.openGlobalKeybindings"
         },
       ]
-    },
-    {
-      "key": "v",
-      "name": "Split Vertical",
-      "type": "command",
-      "command": "workbench.action.splitEditor"
-    },
-    {
-      "key": "h",
-      "name": "Split Horizontal",
-      "type": "command",
-      "command": "workbench.action.splitEditorDown"
     },
     {
       "key": "l",
@@ -986,4 +950,33 @@
   "javascript.inlayHints.parameterTypes.enabled": true,
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
 }
