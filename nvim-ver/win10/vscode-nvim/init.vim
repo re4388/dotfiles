@@ -1,4 +1,4 @@
-echom "load nvim-for-win and vscode"
+echom "load win10 Nvim"
 
 " something better put at beginning ========{{{
 
@@ -133,17 +133,18 @@ if exists('g:vscode')
 		nnoremap B <Cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>
 
 
-		" open npm script
-		xnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
-		nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
+		" open npm script 
+		" comment for now, I use alt+1 and then use `n` to activie npm script
+		" xnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
+		" nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 
     xmap s  <Plug>VSCodeCommentary
     nmap s  <Plug>VSCodeCommentary
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    nmap <leader>hh <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    nmap <leader>ll <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
 
     nmap <leader>z <Cmd>call VSCodeNotify('workbench.action.toggleZenMode')<CR>
 
@@ -323,9 +324,6 @@ map Y y$
 nnoremap U <C-r>
 
 
-
-
-
 nnoremap ; :
 nnoremap : ;
 vnoremap : ;
@@ -365,8 +363,6 @@ vnoremap <Leader>d YPgv
 vnoremap v <Esc>
 
 
-
-
 " Duplicate paragraph and put down
 " this is very useful to copy the whole block down and modify it!
 " as long as you have padding space between block
@@ -378,18 +374,13 @@ nnoremap <Leader>cp yap<S-}>p
 " Copy all text in system register
 nnoremap ca :%y+<CR>
 
-
-" paste at current cursor (add one space)
-
 nnoremap <c-p> <nop>
 
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-
 " alter the default x behavior, change to not to yank with x 	
 nnoremap x "_x
-
 
 " apple   `banana`   "test2'est'
 " =========================
@@ -505,25 +496,17 @@ function! BetterJK(letter)
 endfunction
 
 
-" I think maybe combo is faster
 nnoremap H g^ 
 nnoremap L g$
 vnoremap H g^
 vnoremap L g$
 
 
-
-
 " ========================
 " eaier to search
 " ========================
 
-
-" note: enter to use my pinkey finger to touch..too far
-" we don't want to jump to next when I use *, below script will be a 'no move under cursor search'
-" below only work for <cr> as trigger key
-" nnoremap <silent> <cr> :let searchTerm = '\v<'.expand("<cword>").'>' <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
-
+" search word under curor with no jump to the next one
 nnoremap <silent> <m-m> :keepjumps normal! mi*`i<CR>
 
 " easier to type
@@ -540,18 +523,11 @@ nnoremap <leader>n :noh<cr>
 "{ddd}
  
 
-
-
-
 nnoremap J 10j
 nnoremap K 10k
 vnoremap J 10j
 vnoremap K 10k
 
-
-" had use J above, so I here remap join to ctrl+c prefix version
-" nnoremap <C-c>j J
-" noremap gj J
 
 
 
@@ -657,8 +633,7 @@ augroup END
 
 " useful function ============={{{
 "
-" handy stuff to check ex-mode output
-" this will redirect ex-mode output to empty buffer in new tab
+" Redirect ex-mode output to empty buffer in new tab
 function! TabMessage(cmd)
   redir => message
   silent execute a:cmd
