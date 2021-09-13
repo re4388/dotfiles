@@ -390,7 +390,7 @@ nnoremap qq yiw
 nmap cc miw<esc>
 
 "d refer to delete
-nnoremap qd daw 
+nmap qd daw 
 " s => string
 nmap qs yiq
 " need to use namp, since m is remap
