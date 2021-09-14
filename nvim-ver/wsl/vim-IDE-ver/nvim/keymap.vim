@@ -48,11 +48,6 @@ map N Nzzzv
 
 
 
-" I think maybe combo is faster
-nnoremap H g^
-nnoremap L g$
-vnoremap H g^
-vnoremap L g$
 
 
 " Treat long lines as break lines (useful when moving around in them)
@@ -180,6 +175,19 @@ nnoremap qj :m .+1<CR>==
 nnoremap qk :m .-2<CR>==
 vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
+
+" try qh and ql
+nnoremap qh g^ 
+nnoremap ql g$
+vnoremap qh g^
+vnoremap ql g$
+" =================================
+
+" if qh and ql work ok, I can remove below
+nnoremap H g^ 
+nnoremap L g$
+vnoremap H g^
+vnoremap L g$
 
 
 " join and break (d => down)

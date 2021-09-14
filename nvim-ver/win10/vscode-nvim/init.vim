@@ -433,8 +433,19 @@ nnoremap qj :m .+1<CR>==
 nnoremap qk :m .-2<CR>==
 vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
+
+" try qh and ql
+nnoremap qh g^ 
+nnoremap ql g$
+vnoremap qh g^
+vnoremap ql g$
 " =================================
 
+" if qh and ql work ok, I can remove below
+nnoremap H g^ 
+nnoremap L g$
+vnoremap H g^
+vnoremap L g$
 
 " join and break (d => down)
 nnoremap <leader>j J
@@ -496,10 +507,6 @@ function! BetterJK(letter)
 endfunction
 
 
-nnoremap H g^ 
-nnoremap L g$
-vnoremap H g^
-vnoremap L g$
 
 
 " ========================
