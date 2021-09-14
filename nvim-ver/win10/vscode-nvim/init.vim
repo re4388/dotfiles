@@ -434,16 +434,17 @@ nnoremap qk :m .-2<CR>==
 vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
 
-" try qh and ql
-nnoremap qh g^ 
+" try qh and ql, I add h after g^ cuz it will no go to first no-blank chr,
+" need to add h to offset it... no idea for now
+nnoremap qh g^h
 nnoremap ql g$
 vnoremap qh g^
 vnoremap ql g$
 " =================================
 
 " if qh and ql work ok, I can remove below
-nnoremap H g^ 
-nnoremap L g$
+nnoremap H g^h 
+nnoremap L gh
 vnoremap H g^
 vnoremap L g$
 
