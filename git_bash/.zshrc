@@ -1,7 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-export laptop=wits_git_bash
-
-
+export laptop=asus_git_bash
 ## cygwin is window-quasi-posix system
 ## Must use this term to make terminal work with zsh 
 export TERM=cygwin
@@ -20,12 +18,5 @@ alias v=nvim
 alias so=source
 alias ll='ls -a'
 alias ..='cd ..'
-
-
-
-# binding auto suggest accept with ctrl + space
-# bindkey '^ ' autosuggest-accept
-bindkey '^j' autosuggest-accept
-
 
 source $ZSH/oh-my-zsh.sh

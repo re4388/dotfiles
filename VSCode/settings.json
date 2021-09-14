@@ -912,19 +912,6 @@
   "terminal.integrated.commandsToSkipShell": [
     "whichkey.show"
     ],
-  "settingsOnFire.toggle": {
-    "joplineToken": {
-      "on": {
-        "_label": "ASUS",
-        "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
-      },
-      "off": {
-        "_label": "WITS",
-        "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
-      }
-    }
-  },
-  "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
   "workbench.colorCustomizations": {
     "tab.activeBorder": "#FFFF00",
     "tab.unfocusedActiveBorder": "#000000",
@@ -979,4 +966,17 @@
     "!Split",
     "!Split sequence"
   ],
+  "settingsOnFire.toggle": {
+    "joplineToken": {
+      "on": {
+        "_label": "ASUS",
+        "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
+      },
+      "off": {
+        "_label": "WITS",
+        "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
+      }
+    }
+  },
+  "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
 }
