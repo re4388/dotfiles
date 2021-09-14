@@ -436,17 +436,18 @@ vnoremap qk :m '<-2<CR>gv=gv
 
 " try qh and ql, I add h after g^ cuz it will no go to first no-blank chr,
 " need to add h to offset it... no idea for now
-nnoremap qh g^h
+" seems work now? so I remove h again..
+nnoremap qh g^
 nnoremap ql g$
 vnoremap qh g^
 vnoremap ql g$
 " =================================
 
 " if qh and ql work ok, I can remove below
-nnoremap H g^h 
-nnoremap L gh
-vnoremap H g^
-vnoremap L g$
+" nnoremap H g^ 
+" nnoremap L gh
+" vnoremap H g^
+" vnoremap L g$
 
 " join and break (d => down)
 nnoremap <leader>j J

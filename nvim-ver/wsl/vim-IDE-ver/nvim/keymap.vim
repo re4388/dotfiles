@@ -177,17 +177,17 @@ vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
 
 " try qh and ql
-nnoremap qh g^h 
+nnoremap qh g^ 
 nnoremap ql g$
 vnoremap qh g^
 vnoremap ql g$
 " =================================
 
 " if qh and ql work ok, I can remove below
-nnoremap H g^h 
-nnoremap L g$
-vnoremap H g^
-vnoremap L g$
+" nnoremap H g^ 
+" nnoremap L g$
+" vnoremap H g^
+" vnoremap L g$
 
 
 " join and break (d => down)
