@@ -143,11 +143,11 @@ nnoremap vv V
 nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
-" paste on space after current cursor 
-" paste on space before current cursor 
-nnoremap qp a<space><esc>p
-nnoremap qpp i<c-r>0<space><esc>
 
+" paste on begin and end
+" mm and `m is to mark and allow the cursour no move
+nnoremap qp mmA<space><esc>p`m
+nnoremap qpp mmI<c-r>0<space><esc>`m
 
 " eaiser surrounding vim
 " don't forget you can use S in visual mode...

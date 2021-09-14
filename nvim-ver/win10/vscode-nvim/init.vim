@@ -398,14 +398,15 @@ nmap qs yiq
 " visual line mode
 nnoremap vv V
 
-" Add blank line above and below
+" Add blank line above and below nnoremap
 " also take count, like [count]<leader>o
 nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
 " paste on begin and end
-nnoremap qp a<space><esc>p
-nnoremap qpp i<c-r>0<space><esc>
+" mm and `m is to mark and allow the cursour no move
+nnoremap qp mmA<space><esc>p`m
+nnoremap qpp mmI<c-r>0<space><esc>`m
 
 
 " eaiser surrounding vim
@@ -434,9 +435,6 @@ nnoremap qk :m .-2<CR>==
 vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
 
-" try qh and ql, I add h after g^ cuz it will no go to first no-blank chr,
-" need to add h to offset it... no idea for now
-" seems work now? so I remove h again..
 nnoremap qh g^
 nnoremap ql g$
 vnoremap qh g^
