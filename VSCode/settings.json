@@ -2,8 +2,8 @@
   "whichkey.delay": 0,
   "whichkey.bindings": [
     {
-      "key": "w",
-      "name": "reopen window",
+      "key": "r",
+      "name": "reload vscode window",
       "type": "command",
       "command": "workbench.action.reloadWindow"
     },
@@ -121,24 +121,11 @@
       "when": "editorHasReferenceProvider"
     },
     {
-      "key": "r",
-      "name": "Run",
-      "type": "bindings",
-      "bindings": [
-        {
-          "key": "t",
-          "name": "Script/Task",
-          "type": "command",
-          "command": "workbench.action.tasks.runTask"
-        },
-      ]
+      "key": "n",
+      "name": "NPM script",
+      "type": "command",
+      "command": "npm-script.run"
     },
-        {
-          "key": "n",
-          "name": "NPM script",
-          "type": "command",
-          "command": "npm-script.run"
-        },
     {
       "key": ".",
       "name": "setting(JSON)",
@@ -905,7 +892,6 @@
   "editor.semanticTokenColorCustomizations": {
     "enabled": true, // enable for all themes
   },
-  "window.zoomLevel": -1,
   "aws.profile": "profile:default",
 
   // if you want to let certain command works when your cursor in the integratedTerminal, put that command in thie array
@@ -978,5 +964,6 @@
       }
     }
   },
-  "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
+  "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
+  "window.zoomLevel": 1,
 }

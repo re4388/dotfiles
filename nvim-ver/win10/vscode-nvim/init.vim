@@ -385,6 +385,8 @@ nnoremap x "_x
 " apple   `banana`   "test2'est'
 " =========================
 " Super Fast Area, Q prefix
+" left non-use Q prefix (for macro)
+" c, f, 
 " ========================
 nnoremap qq yiw 
 nmap cc miw<esc>
@@ -403,10 +405,10 @@ nnoremap vv V
 nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
-" paste on begin and end
+" paste on begin(i) and end(a)
 " mm and `m is to mark and allow the cursour no move
-nnoremap qp mmA<space><esc>p`m
-nnoremap qpp mmI<c-r>0<space><esc>`m
+nnoremap qa mmA<space><esc>p`m
+nnoremap qi mmI<c-r>0<space><esc>`m
 
 
 " eaiser surrounding vim
