@@ -123,6 +123,8 @@ vnoremap <Leader>d YPgv
 " apple   `banana`   "test2'est'
 " =========================
 " Super Fast Area, Q prefix
+" left non-use Q prefix (for macro)
+" c, f,.... 
 " ========================
 nnoremap qq yiw 
 nmap cc miw<esc>
@@ -146,8 +148,8 @@ nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
 " paste on begin and end
 " mm and `m is to mark and allow the cursour no move
-nnoremap qp mmA<space><esc>p`m
-nnoremap qpp mmI<c-r>0<space><esc>`m
+nnoremap qa mmA<space><esc>p`m
+nnoremap qi mmI<c-r>0<space><esc>`m
 
 " eaiser surrounding vim
 " don't forget you can use S in visual mode...
