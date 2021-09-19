@@ -382,6 +382,7 @@ nnoremap M i<Cr><Cr><Esc>J
 " alter the default x behavior, change to not to yank with x 	
 nnoremap x "_x
 
+
 " apple   `banana`   "test2'est'
 " =========================
 " Super Fast Area, Q prefix
@@ -390,6 +391,7 @@ nnoremap x "_x
 " ========================
 nnoremap qq yiw 
 nmap cc miw<esc>
+
 
 "d refer to delete
 nmap qd daw 
