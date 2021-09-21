@@ -143,8 +143,8 @@ if exists('g:vscode')
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    " nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    " nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
 
     nmap <leader>z <Cmd>call VSCodeNotify('workbench.action.toggleZenMode')<CR>
 
@@ -447,6 +447,9 @@ nnoremap qh g^
 nnoremap ql g$
 vnoremap qh g^
 vnoremap ql g$
+
+nnoremap <leader>l mmI- <esc>`m 
+
 " =================================
 
 " if qh and ql work ok, I can remove below

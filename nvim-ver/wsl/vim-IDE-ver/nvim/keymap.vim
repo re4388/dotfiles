@@ -170,6 +170,7 @@ xnoremap qm m
 nnoremap qn %
 xnoremap qn %
 " =================================
+nnoremap <leader>l mmI- <esc>`m 
 
 " move current line up and down
 nnoremap qj :m .+1<CR>==
