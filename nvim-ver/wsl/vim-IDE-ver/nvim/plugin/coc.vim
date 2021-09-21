@@ -87,7 +87,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <silent> <PageDown> <Plug>(coc-diagnostic-next)
 nmap <silent> <PageUp> <Plug>(coc-diagnostic-prev)
 nmap <leader>rn <Plug>(coc-rename)
-nmap z= <Plug>(coc-fix-current)
+nmap qf <Plug>(coc-fix-current)
 
 " GoTo code navigation.
 nmap <silent> <M-d> <Plug>(coc-definition)

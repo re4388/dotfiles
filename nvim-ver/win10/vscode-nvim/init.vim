@@ -161,7 +161,7 @@ if exists('g:vscode')
 
 
 		" quick fix
-		nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+		nnoremap qf <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
 		" I change [[  and ]] to function jump usage in treesitter
 		nnoremap <PageDown> <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 		nnoremap <PageUp> <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
@@ -415,7 +415,6 @@ nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 " mm and `m is to mark and allow the cursour no move
 nnoremap qa mmA<space><esc>p`m
 nnoremap qi mmI<c-r>0<space><esc>`m
-
 
 " eaiser surrounding vim
 " don't forget you can use S in visual mode...
