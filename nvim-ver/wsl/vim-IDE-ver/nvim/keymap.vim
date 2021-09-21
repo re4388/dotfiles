@@ -129,9 +129,8 @@ vnoremap <Leader>d YPgv
 nnoremap qq yiw 
 nmap cc miw<esc>
 
-"d refer to delete
-nnoremap qd daw 
-
+"to aovid recursive to some unknow reason, I need to use esc to stop
+nmap qd daw<esc>
 " s => string
 nmap qs yiq
 " need to use namp, since m is remap
