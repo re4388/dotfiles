@@ -379,8 +379,9 @@ nnoremap <c-p> <nop>
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-" alter the default x behavior, change to not to yank with x 	
-nnoremap x "_x
+" alter the default x behavior, change to not to yank with x x "_x
+
+"
 
 
 " apple   `banana`   "test2'est'
@@ -390,11 +391,14 @@ nnoremap x "_x
 " c, f, 
 " ========================
 nnoremap qq yiw 
+
 nmap cc miw<esc>
 
 
 "d refer to delete
-nmap qd daw 
+"to aovid recursive to some unknow reason, I need to use esc to stop
+nmap qd daw<esc>
+
 " s => string
 nmap qs yiq
 " need to use namp, since m is remap
