@@ -7,10 +7,18 @@
 ; Retrieves an environment variable and stores its value in OutputVar.
 ; EnvGet, OutputVar, username
 
+; o for option
+^+o::
+  ; msgBox, hello world %computername%-%username%
+  click, right
+  return
+
+; i for information
 ^+i::
   msgBox, hello world %computername%-%username%
   return
 
+; r for reload
 ^+r:: ; press control+r to reload
   Msgbox, Do you want to reload this script?
   ifMsgBox, Yes
@@ -18,6 +26,18 @@
     reload, C:\ahk\ben.ahk ; require all pc put config in below link and the same name, ben.ahk
   return
 
+; b for open bluetooth
+^+b:: ; press control+r to reload
+  SendMode Input
+  Run, ms-settings:bluetooth
+  return
+
+; a for autohotkey config open
+^+a::
+  ; Run, %vscode_path %autoHotkey_Path
+  Run, "C:\Users\%A_UserName%\AppData\Local\Programs\Microsoft VS Code\Code.exe" "C:\ahk\ben.ahk"
+  ; return is required for multi-line commmand
+  return
 
 ; Alt & 1 => vscode which key
 ; Alt & 2 => Jopline sidebar
@@ -25,11 +45,6 @@
 Alt & 4::!F4 ; close win10 window, alt+f4
 Alt & 5::WinMaximize, A
 
-
-^+b:: ; press control+r to reload
-  SendMode Input
-  Run, ms-settings:bluetooth
-  return
 
 
 ; Msgbox, %A_ComputerName%
@@ -48,11 +63,6 @@ Alt & 5::WinMaximize, A
 ; k, same as above
 
 
-^+a::
-  ; Run, %vscode_path %autoHotkey_Path
-  Run, "C:\Users\%A_UserName%\AppData\Local\Programs\Microsoft VS Code\Code.exe" "C:\ahk\ben.ahk"
-  ; return is required for multi-line commmand
-  return
 
 ; ASUS
 if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
