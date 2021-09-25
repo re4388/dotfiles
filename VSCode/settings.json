@@ -87,6 +87,12 @@
         },
         {
           "key": "f",
+          "name": "new file",
+          "type": "command",
+          "command": "explorer.newFile"
+        },
+        {
+          "key": "a",
           "name": "new favorite",
           "type": "command",
           "command": "favorites.addToFavorites"
@@ -493,7 +499,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "telemetry.enableTelemetry": false,
   "workbench.statusBar.visible": true,
-  "breadcrumbs.enabled": false,
   "todohighlight.include": [
     "**/*.js",
     "**/*.jsx",
@@ -918,11 +923,6 @@
     // "editor.findMatchHighlightBackground": "#BF883F" //Other SEARCH MATCHES
   },
   "editor.bracketPairColorization.enabled": true,
-  "javascript.inlayHints.enumMemberValues.enabled": true,
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "javascript.inlayHints.variableTypes.enabled": true,
   "yaml.customTags": [
     "!And",
     "!And sequence",
@@ -966,4 +966,6 @@
   },
   "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
   "window.zoomLevel": -1,
+  "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
 }
