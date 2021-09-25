@@ -275,6 +275,8 @@ vnoremap ; :
 " copy all!
 nnoremap ca :%y+<CR>
 
+" clear down
+nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P
