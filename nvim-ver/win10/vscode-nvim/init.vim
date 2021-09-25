@@ -52,8 +52,10 @@ Plug 'tpope/vim-surround' "not consistent for adding (e.g. ysiw')
 " Plug 'machakann/vim-sandwich'  " use sa iw '   sd'  sr'
 Plug 'tpope/vim-repeat'
 
-" Plug 'justinmk/vim-sneak'
-" let g:sneak#s_next = 1
+Plug 'justinmk/vim-sneak'
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+let g:sneak#s_next = 1
 
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

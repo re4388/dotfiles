@@ -150,8 +150,10 @@ Plug 'b3nj5m1n/kommentary'
 
 "----------- Motion-------------
 ""
-" Plug 'justinmk/vim-sneak'
-" let g:sneak#s_next = 1
+Plug 'justinmk/vim-sneak'
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+let g:sneak#s_next = 1
 Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_max_chars=150
