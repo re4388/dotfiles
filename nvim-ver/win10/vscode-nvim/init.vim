@@ -373,8 +373,8 @@ nnoremap <Leader>cp yap<S-}>p
 " vsc don't work
 " nnoremap <Leader>l :.,+yank<Left><left><left><left>
 
-" Copy all text in system register
-nnoremap ca :%y+<CR>
+" clear down
+nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
 
 nnoremap <c-p> <nop>
 
