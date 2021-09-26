@@ -276,15 +276,24 @@ vnoremap ; :
 nnoremap ca :%y+<CR>
 
 " clear down
-nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
+" nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
+
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P
 
 
-
-" Do NOT yank with x/s
+" Do NOT yank with x and d
 nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+" if you want to cut, add c
+nnoremap cd d
+nnoremap cD D
+vnoremap cd d
+
 
 " Disable dengerous/annoying mappings
 " ZZ - save and close Vim
