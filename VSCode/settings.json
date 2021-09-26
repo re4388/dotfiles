@@ -622,7 +622,7 @@
     "editor.tabSize": 4,
     "editor.formatOnPaste": false
   },
-  "editor.defaultFormatter": null,
+  "editor.defaultFormatter": "stringham.move-ts",
   "[lua]": {
     "editor.defaultFormatter": "Koihik.vscode-lua-format",
     "editor.insertSpaces": true,
@@ -743,9 +743,9 @@
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.quickSuggestions": {
-    "other": true, // set false and only use ctrl+ space to activiate
-    "comments": true,
-    "strings": true
+    "other": false,        // set false and only use ctrl+ space to activiate
+    "comments": false,     // set false and only use ctrl+ space to activiate
+    "strings": false       // set false and only use ctrl+ space to activiate
   },
   "editor.acceptSuggestionOnCommitCharacter": false, // if we want to use . or ; to accept suggesiton
   "editor.acceptSuggestionOnEnter": "on",

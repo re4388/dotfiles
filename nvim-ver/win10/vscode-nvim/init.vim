@@ -374,16 +374,28 @@ nnoremap <Leader>cp yap<S-}>p
 " nnoremap <Leader>l :.,+yank<Left><left><left><left>
 
 " clear down
-nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
+" nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
 
 nnoremap <c-p> <nop>
 
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-" alter the default x behavior, change to not to yank with x x "_x
 
-"
+" Do NOT yank with x and d
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+" if you want to cut, add c
+nnoremap cd d
+nnoremap cD D
+vnoremap cd d
+" nnoremap cd "_d
+" xnoremap cd "_d
+
+
 
 
 " apple   `banana`   "test2'est'

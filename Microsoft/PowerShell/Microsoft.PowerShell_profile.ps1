@@ -172,6 +172,7 @@ function show {
     Write-Output "git cn    = git commit --no-verify -m"
     Write-Output "git a     = git add ."
     Write-Output "git s     = git status"
+    Write-Output "git undo  = git reset --soft head^"
     Write-Output "*****"
 }
 
