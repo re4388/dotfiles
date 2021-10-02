@@ -154,11 +154,11 @@ Plug 'justinmk/vim-sneak'
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 let g:sneak#s_next = 1
-Plug 'unblevable/quick-scope'
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:qs_max_chars=150
-highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
+" Plug 'unblevable/quick-scope'
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_max_chars=150
+" highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
 
 " f for one word and then use f to go to the next one
 " s for two word and then use s to go to the next one
@@ -210,8 +210,8 @@ Plug 'cohama/lexima.vim'
 
 "----------- Treesitter -------
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+" Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 "----------- Treesitter -------
 

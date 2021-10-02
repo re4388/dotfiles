@@ -62,58 +62,7 @@ augroup END
 
 "============= treesitter =============
 
-" ref:
-" https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
-" https://github.com/nvim-treesitter/nvim-treesitter-textobjects/blob/master/queries/javascript/textobjects.scm
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  textobjects = {
-    select = {
-      enable = true,
-      -- Automatically jump forward to textobj, similar to targets.vim 
-      lookahead = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-      --  ["ac"] = "@class.outer",
-      --  ["ic"] = "@class.inner",
-       -- o for loop
-        ["ao"] = "@loop.outer",
-        ["io"] = "@loop.inner",
-       -- c for condition
-        ["ic"] = "@conditional.inner",
-        ["ac"] = "@conditional.outer",
-       -- i for invocation
-        ["ii"] = "@call.inner",
-        ["ai"] = "@call.outer",
-				-- use ib is more accurate
-        -- ["ip"] = "@parameter.inner",
-        -- para outter no support
-        -- Or you can define your own textobjects like this
-      },
-    },
-		move = {
-				enable = true,
-				set_jumps = true, -- whether to set jumps in the jumplist
-				goto_next_start = {
-					["]]"] = "@function.outer",
-					["))"] = "@call.outer",
-					["}}"] = "@loop.outer",
-					[">>"] = "@conditional.outer",
-				},
-				goto_previous_start = {
-					["[["] = "@function.outer",
-					["(("] = "@call.outer",
-					["{{"] = "@loop.outer",
-					["<<"] = "@conditional.outer",
-				},
-			},
-  },
-}
-EOF
-
+" removed, no use now
 
 
 "============= autocommand =============

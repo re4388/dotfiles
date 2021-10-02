@@ -137,9 +137,9 @@
       "name": "setting(JSON)",
       "type": "command",
       "command": "workbench.action.openSettingsJson",
-      "args": {
-        "openToSide": true
-      }
+      // "args": {
+      //   "openToSide": true
+      // }
     },
     {
       "key": "k",

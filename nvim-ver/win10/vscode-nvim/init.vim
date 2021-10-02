@@ -1,4 +1,4 @@
-echom "load win10 Nvim"
+echom "Load WIN10 NVIM"
 
 " something better put at beginning ========{{{
 
@@ -26,8 +26,9 @@ else
 endif
 " map f <Plug>(easymotion-bd-w)
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+" Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
 " text object
 Plug 'Julian/vim-textobj-variable-segment' " iv and av for fooBar, qq_bar, SeriesPreprocessBar
 Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mode, good to select more than one word
@@ -57,11 +58,12 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 let g:sneak#s_next = 1
 
-Plug 'unblevable/quick-scope'
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-let g:qs_max_chars=150
+" use Sneak to replace f
+" Plug 'unblevable/quick-scope'
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+" let g:qs_max_chars=150
 
 " f for one word and then use f to go to the next one
 " s for two word and then use s to go to the next one
@@ -392,10 +394,6 @@ vnoremap d "_d
 nnoremap cd d
 nnoremap cD D
 vnoremap cd d
-" nnoremap cd "_d
-" xnoremap cd "_d
-
-
 
 
 " apple   `banana`   "test2'est'
@@ -577,66 +575,6 @@ nmap m <Plug>ReplaceWithRegisterOperator
 
 
 
-" ref:
-" https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
-" https://github.com/nvim-treesitter/nvim-treesitter-textobjects/blob/master/queries/javascript/textobjects.scm
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  textobjects = {
-    select = {
-      enable = true,
-      -- Automatically jump forward to textobj, similar to targets.vim 
-      lookahead = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-
-       -- no idea which key to refer class, also, I seldom need to choose the whole class
-			 -- the current working project like to use class as a file
-       --  ["ao"] = "@class.outer",
-       --  ["io"] = "@class.inner",
-
-       -- o for loop
-        ["ao"] = "@loop.outer",
-        ["io"] = "@loop.inner",
-       -- c for condition
-        ["ic"] = "@conditional.inner",
-        ["ac"] = "@conditional.outer",
-       -- i for invocation
-        ["ii"] = "@call.inner",
-        ["ai"] = "@call.outer",
-
-				-- block seems mix with function and try-catch, but not statement block
-        -- ["ik"] = "@block.inner",
-        -- ["ak"] = "@block.outer",
-
-				-- use ib is more accurate
-        -- ["ip"] = "@parameter.inner",
-        -- para outter no support
-        -- Or you can define your own textobjects like this
-      },
-    },
-		move = {
-				enable = true,
-				set_jumps = true, -- whether to set jumps in the jumplist
-				goto_next_start = {
-					["]]"] = "@function.outer",
-					["))"] = "@call.outer",
-					["}}"] = "@loop.outer",
-					[">>"] = "@conditional.outer",
-				},
-				goto_previous_start = {
-					["[["] = "@function.outer",
-					["(("] = "@call.outer",
-					["{{"] = "@loop.outer",
-					["<<"] = "@conditional.outer",
-				},
-		},
-  },
-}
-EOF
 
 " vim easymotion
 " map <Leader><Leader>s <Plug>(easymotion-prefix)
