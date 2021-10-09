@@ -562,10 +562,10 @@ nnoremap <leader>n :noh<cr>
 "{ddd}
  
 
-nnoremap J 10j
-nnoremap K 10k
-vnoremap J 10j
-vnoremap K 10k
+nnoremap J 10gj
+nnoremap K 10gk
+vnoremap J 10gj
+vnoremap K 10gk
 
 
 
