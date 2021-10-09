@@ -127,6 +127,12 @@ if exists('g:vscode')
 		
 		" vscode only ============={{{
 		
+		" use vscode to move up and down for jump over folded lines!
+		" https://github.com/asvetliakov/vscode-neovim/issues/58
+		nnoremap gj :call VSCodeCall('cursorDown')<Cr>
+		nnoremap gk :call VSCodeCall('cursorUp')<Cr>
+		
+		
 		" file save and quit
 		xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
 		nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.files.save')<CR>
@@ -136,6 +142,7 @@ if exists('g:vscode')
 	  " back to previous opened file	
 		nnoremap B <Cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>
 
+		
 
 		" open npm script 
 		" comment for now, I use alt+1 and then use `n` to activie npm script
@@ -504,29 +511,32 @@ nnoremap ZQ <Nop>
 
 
 " Treat long lines as break lines (useful when moving around in them)
-vnoremap j gj
-vnoremap k gk
+vmap j gj
+vmap k gk
 
-nnoremap j <cmd>call BetterJK('j')<CR>
-nnoremap k <cmd>call BetterJK('k')<CR>
+nmap j gj
+nmap k gk
+
+" nnoremap j <cmd>call BetterJK('j')<CR>
+" nnoremap k <cmd>call BetterJK('k')<CR>
 
 
-function! BetterJK(letter)
-  let jump_count = v:count
+" function! BetterJK(letter)
+"   let jump_count = v:count
 
-"  For wrapped lines, does gj/gk
-  if jump_count == 0
-    call execute(printf('normal! g%s', a:letter))
-    return
-  endif
+" "  For wrapped lines, does gj/gk
+"   if jump_count == 0
+"     call execute(printf('normal! g%s', a:letter))
+"     return
+"   endif
 
-"  For large jumps, adds a spot on the jump list
-  if jump_count > 5
-    call execute("normal! m'")
-  endif
+" "  For large jumps, adds a spot on the jump list
+"   if jump_count > 5
+"     call execute("normal! m'")
+"   endif
 
-  call execute(printf('normal! %d%s', jump_count, a:letter))
-endfunction
+"   call execute(printf('normal! %d%s', jump_count, a:letter))
+" endfunction
 
 
 
