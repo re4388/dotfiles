@@ -108,14 +108,19 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ::zzz::node C:\projects\puppeteer\src\puppet\scripts\checkPackage.js
 
 ; Bioclinica
-::buser::ben.hu
-::bpass::2Aoxjgju!
 ::aaa::npm run serve:src:open:dev
-::lll::imageFileCacheAction
 ::ccc::vfauto1.user@bioclinica.com
 ::ddd::Pa$$w0rd
-::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
-::jjj::wsl /home/re4388/projects/dotfiles/bash_projects/jira_quick_link/jira_board.sh
+::qqqc::localStorage.setItem('DiskCacheMaximumSize', '0')
+::qqqp::localStorage.setItem('imageFileCacheAction', 'purge')
+::qqqs::localStorage.setItem('imageFileCacheAction', 'store')
+::ddd::Pa$$w0rd
+;::buser::ben.hu
+;::bpass::2Aoxjgju!
+;::lll::imageFileCacheAction
+
+;::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
+;::jjj::wsl /home/re4388/projects/dotfiles/bash_projects/jira_quick_link/jira_board.sh
 
 F1::#d
 ;F2 for rename
