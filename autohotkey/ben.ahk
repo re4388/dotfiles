@@ -111,9 +111,10 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ::aaa::npm run serve:src:open:dev
 ::ccc::vfauto1.user@bioclinica.com
 ::ddd::Pa$$w0rd
-::qqqc::localStorage.setItem('DiskCacheMaximumSize', '0')
-::qqqp::localStorage.setItem('imageFileCacheAction', 'purge')
-::qqqs::localStorage.setItem('imageFileCacheAction', 'store')
+;execure chrome purge store, clean IndexDB 
+::xchromc::localStorage.setItem('DiskCacheMaximumSize', '0')
+::xchromp::localStorage.setItem('imageFileCacheAction', 'purge')
+::xchroms::localStorage.setItem('imageFileCacheAction', 'store')
 ::ddd::Pa$$w0rd
 ;::buser::ben.hu
 ;::bpass::2Aoxjgju!
