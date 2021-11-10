@@ -369,22 +369,18 @@ nnoremap gU gu
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
+" Duplicate paragraph and put down
+" memonic: cp: copy paragraph
+" this is very useful to copy the whole block down and modify it!
+" as long as you have padding space between block
+nnoremap <Leader>cp yap<S-}>p
+
 
 " QUIT VISUAL MODE
 vnoremap v <Esc>
 
 
-" Duplicate paragraph and put down
-" this is very useful to copy the whole block down and modify it!
-" as long as you have padding space between block
-nnoremap <Leader>cp yap<S-}>p
-
-" vsc don't work
-" nnoremap <Leader>l :.,+yank<Left><left><left><left>
-
-" clear down
-" nnoremap cd mmA<cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><cr><esc>`m
-
+" noop, nop
 nnoremap <c-p> <nop>
 
 " break into next paragraph
@@ -397,7 +393,7 @@ nnoremap d "_d
 nnoremap D "_D
 vnoremap d "_d
 
-" if you want to cut, add c
+" if you want to cut, add c as prefix
 nnoremap cd d
 nnoremap cD D
 vnoremap cd d
@@ -409,8 +405,10 @@ vnoremap cd d
 " left non-use Q prefix (for macro)
 " c, f, 
 " ========================
-nnoremap qq yiw 
 
+" yank inner word
+nnoremap qq yiw 
+" replace `m` inner word
 nmap cc miw<esc>
 
 
@@ -419,23 +417,27 @@ nmap cc miw<esc>
 nmap qd daw<esc>
 
 " s => string
-nmap qs yiq
+" yank inner quote
 " need to use namp, since m is remap
+nmap qs yiq
+
 
 " visual line mode
 nnoremap vv V
+
 
 " Add blank line above and below nnoremap
 " also take count, like [count]<leader>o
 nnoremap qo  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap qO  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>
 
+
 " paste on begin(i) and end(a)
 " mm and `m is to mark and allow the cursour no move
 nnoremap qa mmA<space><esc>p`m
 nnoremap qi mmI<c-r>0<space><esc>`m
 
-" eaiser surrounding vim
+" Surrounding vim shortcut
 " don't forget you can use S in visual mode...
 nmap q` ysiw`
 nmap q" ysiw"
@@ -461,11 +463,13 @@ nnoremap qk :m .-2<CR>==
 vnoremap qj :m '>+1<CR>gv=gv
 vnoremap qk :m '<-2<CR>gv=gv
 
+" move cursor at begin and end of the current line
 nnoremap qh g^
 nnoremap ql g$
 vnoremap qh g^
 vnoremap ql g$
 
+" add - at the begin of the current line
 nnoremap <leader>l mmI- <esc>`m 
 
 " =================================
