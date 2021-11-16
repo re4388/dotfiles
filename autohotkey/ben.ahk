@@ -4,6 +4,22 @@
 ;  ^  ctrl
 ;  #  window key
 
+
+#IfWinActive ahk_class Chrome_WidgetWin_1 ahk_exe Notion.exe
+!w::
+   send,^p
+   return
+^o::
+   send,^[
+   return
+^i::
+   send,^]
+   return
+#IfWinActive  ; This puts subsequent remappings and hotkeys in effect for all windows.
+
+
+
+
 ; Retrieves an environment variable and stores its value in OutputVar.
 ; EnvGet, OutputVar, username
 
