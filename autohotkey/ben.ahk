@@ -6,7 +6,7 @@
 
 
 #IfWinActive ahk_class Chrome_WidgetWin_1 ahk_exe Notion.exe
-!w::
+!e::
    send,^p
    return
 ^o::
