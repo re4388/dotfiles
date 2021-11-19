@@ -154,8 +154,8 @@ if exists('g:vscode')
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    " nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    " nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
 
     nmap <leader>z <Cmd>call VSCodeNotify('workbench.action.toggleZenMode')<CR>
 
@@ -470,7 +470,7 @@ vnoremap qh g^
 vnoremap ql g$
 
 " add - at the begin of the current line
-nnoremap <leader>l mmI- <esc>`m 
+nnoremap <leader>p mmI- <esc>`m 
 
 " =================================
 
