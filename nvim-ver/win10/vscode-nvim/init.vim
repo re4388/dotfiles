@@ -140,7 +140,9 @@ if exists('g:vscode')
 		nnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 		
 	  " back to previous opened file	
-		nnoremap B <Cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>
+		" no need to have this, since we don't to send from vscode to neovim and
+		" use vscode binding, we can directly binding over there
+		" nnoremap B <Cmd>call VSCodeNotify('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')<CR>
 
 		
 
@@ -177,7 +179,8 @@ if exists('g:vscode')
 		nnoremap <PageDown> <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
 		nnoremap <PageUp> <Cmd>call VSCodeNotify('editor.action.marker.prevInFiles')<CR>
 
-		nnoremap <c-d> <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
+		" no need to map to here to call vscode, c-d can directly map it to vscode
+		" nnoremap <c-d> <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
 
 		" window navigation, overwrite the default vscode-neovim binding
 		nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
@@ -380,7 +383,7 @@ nnoremap <Leader>cp yap<S-}>p
 vnoremap v <Esc>
 
 
-" noop, nop
+" inside vscode, we switch b/n two files
 nnoremap <c-p> <nop>
 
 " break into next paragraph
@@ -550,7 +553,7 @@ nmap k gk
 " ========================
 
 " search word under curor with no jump to the next one
-nnoremap <silent> <m-m> :keepjumps normal! mi*`i<CR>
+nnoremap <silent> <M-m> :keepjumps normal! mi*`i<CR>
 
 " easier to type
 nmap <M-n> /

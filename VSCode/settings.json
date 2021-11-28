@@ -1,4 +1,5 @@
-{ "whichkey.sortOrder": "alphabetically",
+{
+  "whichkey.sortOrder": "alphabetically",
   "whichkey.delay": 0,
   "whichkey.bindings": [
     {
@@ -18,6 +19,19 @@
       "name": "project open in new window",
       "type": "command",
       "command": "projectManager.listProjectsNewWindow"
+    },
+    {
+      "key": "x",
+      "name": "execute",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "p",
+          "name": "execute python file in terminal",
+          "type": "command",
+          "command": "python.execInTerminal"
+        }
+      ]
     },
     {
       "key": "j",
@@ -114,10 +128,10 @@
     // kind of I can use this for a better view(side bar)
     // than use gr(popup style)
     {
-    "key": "s",
-    "name": "Script/Task",
-    "type": "command",
-    "command": "workbench.action.tasks.runTask"
+      "key": "s",
+      "name": "Script/Task",
+      "type": "command",
+      "command": "workbench.action.tasks.runTask"
     },
     {
       "key": "?",
@@ -136,7 +150,7 @@
       "key": ".",
       "name": "setting(JSON)",
       "type": "command",
-      "command": "workbench.action.openSettingsJson",
+      "command": "workbench.action.openSettingsJson"
       // "args": {
       //   "openToSide": true
       // }
@@ -163,16 +177,16 @@
           "key": "b",
           "name": "move Bottom",
           "type": "command",
-          "command": "macros.moveTerminalBottom",
+          "command": "macros.moveTerminalBottom"
           // "when":"terminalFocus"
         },
         {
           "key": "r",
           "name": "move Right",
           "type": "command",
-          "command": "macros.moveTerminalRight",
+          "command": "macros.moveTerminalRight"
           // "when":"terminalFocus"
-        },
+        }
       ]
     },
     {
@@ -283,7 +297,7 @@
           "name": "open keyboard(no json)",
           "type": "command",
           "command": "workbench.action.openGlobalKeybindings"
-        },
+        }
       ]
     },
     {
@@ -419,7 +433,7 @@
           "command": "workbench.action.showAllSymbols"
         }
       ]
-    },
+    }
     // {
     //   "key": "n",
     //   "name": "No Highlight",
@@ -428,13 +442,7 @@
     //   "args": ":noh<CR>"
     // }
   ],
-  "postfix.languages": [
-    "html",
-    "vue",
-    "python",
-    "javascript",
-    "typescript"
-  ],
+  "postfix.languages": ["html", "vue", "python", "javascript", "typescript"],
   "editor.lineHeight": 25,
   "editor.minimap.enabled": false,
   "editor.fontFamily": "Hack Nerd Font Mono, 'Courier New', monospace, 細明體",
@@ -451,10 +459,6 @@
   "javascript.format.enable": false,
   "workbench.sideBar.location": "right",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-    "source.fixAll.eslint": true
-  },
   "javascript.validate.enable": false,
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -599,9 +603,7 @@
     "*.lua": "lua"
   },
   "python.terminal.activateEnvironment": false,
-  "python.analysis.disabled": [
-    "unresolved-import"
-  ],
+  "python.analysis.disabled": ["unresolved-import"],
   "python.condaPath": "C:\\Users\\re438\\Anaconda3",
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   "python.experiments.enabled": false,
@@ -611,18 +613,49 @@
     "file:///c%3A/Users/tp2011002/.vscode/extensions/atlassian.atlascode-2.8.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
     "file:///toc.schema.json": "/toc\\.yml/i"
   },
-  "python.formatting.provider": "autopep8",
+  // "python.formatting.provider": "autopep8",
+  "python.formatting.provider": "black",
   "python.formatting.autopep8Args": [
     "--max-line-length",
-    "120",
+    "88",
     "--experimental"
   ],
   "[python]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "editor.formatOnPaste": false
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "ms-python.python"
   },
+  "python.linting.enabled":true,
+  "python.linting.lintOnSave":true,
+  "python.linting.maxNumberOfProblems":30,
+  "python.linting.ignorePatterns":[".vscode/*.py", "**/site-packages/**/*.py"],
+  // "python.languageServer": "Jedi",
+  // "python.jediEnabled": false, // I tried both true and false
+  // "python.analysis.memory.keepLibraryLocalVariables": true,
+  // "python.analysis.useImportHeuristic": true,
+  // "python.analysis.autoImportCompletions": true,
+  // "python.analysis.autoSearchPaths":true ,
+  // "python.analysis.memory.keepLibraryAst": true,
+  "editor.codeActionsOnSave": {
+    // "source.organizeImports": true,
+    // "source.fixAll.eslint": true
+  },
+  // eslint => "dbaeumer.vscode-eslint"
+  // prettier => "esbenp.prettier-vscode"
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
   "[lua]": {
     "editor.defaultFormatter": "Koihik.vscode-lua-format",
     "editor.insertSpaces": true,
@@ -631,8 +664,15 @@
     "editor.formatOnSave": true
   },
   "prettier.singleQuote": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.formatOnPaste": false,
@@ -645,7 +685,6 @@
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true
   },
-  "python.languageServer": "Jedi",
   "cSpell.userWords": [
     "apikey",
     "Autosize",
@@ -744,9 +783,9 @@
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.quickSuggestions": {
-    "other": false,        // set false and only use ctrl+ space to activiate
-    "comments": false,     // set false and only use ctrl+ space to activiate
-    "strings": false       // set false and only use ctrl+ space to activiate
+    "other": false, // set false and only use ctrl+ space to activiate
+    "comments": false, // set false and only use ctrl+ space to activiate
+    "strings": false // set false and only use ctrl+ space to activiate
   },
   "editor.acceptSuggestionOnCommitCharacter": false, // if we want to use . or ; to accept suggesiton
   "editor.acceptSuggestionOnEnter": "on",
@@ -768,7 +807,6 @@
   "[rust]": {
     "editor.defaultFormatter": "statiolake.vscode-rustfmt"
   },
-  "prettier.useEditorConfig": false,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.decorations.badges": true,
   "jestrunner.codeLensSelector": "**/*.{test,spec,jest}.{js,jsx,ts,tsx}",
@@ -806,7 +844,7 @@
   "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
   "php.validate.executablePath": "c:/PHP7/php.exe",
   "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace, 細明體",
-  "vsintellicode.features.python.deepLearning": "disabled",
+  // "vsintellicode.features.python.deepLearning": "disabled",
   "debug.onTaskErrors": "debugAnyway",
   "workbench.colorTheme": "Darcula Theme from IntelliJ",
   "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -819,7 +857,7 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "redhat.telemetry.enabled": true,
+  "redhat.telemetry.enabled": false,
   "leetcode.workspaceFolder": "c:\\projects\\leetcode\\ts\\src",
   // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init.vim",
   // below i use mklink to replace above path to sync in different machine..
@@ -841,13 +879,12 @@
   "toggle.settingTitle": "editor.lineNumbers",
   "toggle.settingState1": "on",
   "toggle.settingState2": "off",
-  "editor.lineNumbers": "on",
   "update.mode": "manual",
   "gitlens.codeLens.enabled": false,
   "macros": {
     "toggleSideBarAndActivityBar": [
       "workbench.action.toggleSidebarVisibility",
-      "workbench.action.toggleActivityBarVisibility",
+      "workbench.action.toggleActivityBarVisibility"
     ],
     "commentDown": [
       "editor.action.copyLinesDownAction",
@@ -857,12 +894,12 @@
     ],
     "moveTerminalRight": [
       "workbench.action.positionPanelRight",
-      "workbench.action.terminal.focus",
+      "workbench.action.terminal.focus"
       // "workbench.action.focusActiveEditorGroup",
     ],
     "moveTerminalBottom": [
       "workbench.action.positionPanelBottom",
-      "workbench.action.terminal.focus",
+      "workbench.action.terminal.focus"
       // "workbench.action.focusActiveEditorGroup",
     ],
     "consoleLogDown": [
@@ -896,14 +933,12 @@
   "security.workspace.trust.untrustedFiles": "open",
   "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
   "editor.semanticTokenColorCustomizations": {
-    "enabled": true, // enable for all themes
+    "enabled": true // enable for all themes
   },
   "aws.profile": "profile:default",
 
   // if you want to let certain command works when your cursor in the integratedTerminal, put that command in thie array
-  "terminal.integrated.commandsToSkipShell": [
-    "whichkey.show"
-    ],
+  "terminal.integrated.commandsToSkipShell": ["whichkey.show"],
   "editor.bracketPairColorization.enabled": true,
   "yaml.customTags": [
     "!And",
@@ -938,29 +973,25 @@
     "joplineToken": {
       "on": {
         "_label": "ASUS",
-        "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
+        "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb"
       },
       "off": {
         "_label": "WITS",
-        "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c",
+        "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c"
       }
     }
   },
   "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
-  "window.zoomLevel": -1,
   "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
   "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
   "vscode-neovim.neovimInitVimPaths.linux": "/home/re4388/.config/nvim/init.vim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "workbench.colorCustomizations": {
-    "tab.activeBorder": "#FFFF00",
-    "tab.unfocusedActiveBorder": "#000000",
-    "tab.activeBackground": "#42557b",
-    "tab.activeForeground": "#dcdcdc",
-    "editorCursor.foreground": "#00ff00",
-    "terminalCursor.fojeground": "#00ff00",
-    "editorCursor.background": "#ffffffc9",
-    "editor.selectionHighlightBorder": "#FFFA",
-    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
-  }
+  "rest-client.enableTelemetry": false,
+  "window.zoomLevel": -1,
+  "go.formatTool": "gofmt",
+  "cmake.autoSelectActiveFolder": false,
+  "clang-format.executable": "C:\\Program Files\\nodejs\\clang-format.cmd",
+  "editor.lineNumbers": "off",
+  "tabnine.experimentalAutoImports": true,
+
 }

@@ -14,7 +14,7 @@ export laptop=asus
 #  export my_vimrc_plugin_folder=$HOME/.config/nvim/config_group
 export vp=$HOME/.config/nvim/init.vim
 # export vp=$HOME/.config/nvim
-export VIMCONFIG=~/.config/nvim
+  export VIMCONFIG=~/.config/nvim
 
 alias v=nvim
 #  alias weather='curl htt://wttr.in/New Taipei?1q'
@@ -127,3 +127,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 bash ~/projects/dotfiles/notice_change.sh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv virtualenv-init -)"
+# Optional
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(pyenv init --path)"
