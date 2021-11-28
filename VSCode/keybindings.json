@@ -960,6 +960,9 @@
     "command": "-console.log.wrap.down.prefix",
     "when": "editorTextFocus"
   },
+  ///////////////////////////////////////////////////////////////////////////
+  /////////////// Begin of vscode send to neovim //////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   // I use c-c as prefix
   // like c-c h/l to go line start/end
   {
@@ -980,59 +983,46 @@
   //   "when": "editortextfocus && neovim.mode != insert",
   //   "args": "<C-u>"
   // },
+
+  // we send alt+m to neovim backend (remapping as M-m, neovim repr and define the behavior in nvim/init.vim)
+  // M-m for select word under curor entering into search mode via nelstrom/vim-visual-star-search
   {
     "command": "vscode-neovim.send",
     "key": "alt+m",
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<M-m>"
   },
+  // enter search mode, default vim binding is `/`
   {
     "command": "vscode-neovim.send",
     "key": "alt+n",
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<M-n>"
   },
+  // mapping vscode enter to neovim <cr>, they are the same thing
   {
     "command": "vscode-neovim.send",
     "key": "enter",
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<cr>"
   },
-  {
-    "command": "vscode-neovim.send",
-    "key": "alt+q",
-    "when": "editorTextFocus && neovim.mode != insert",
-    "args": "<m-q>"
-  },
-  {
-    "command": "vscode-neovim.send",
-    "key": "ctrl+p",
-    "when": "editorTextFocus && neovim.mode != insert",
-    "args": "<c-p>"
-  },
-
-  // go previous file
-  {
-    "command": "vscode-neovim.send",
-    "key": "shift + b",
-    "when": "editorTextFocus && neovim.mode != insert",
-    "args": "<s-b>"
-  },
-
-  // https://stackoverflow.com/questions/54131613/how-to-open-go-to-definition-in-other-split-tab-for-same-file-in-vs-code
-  // <c-d> to editor.action.revealDefinitionAside
-  {
-    "command": "vscode-neovim.send",
-    "key": "ctrl+d",
-    "when": "editorTextFocus && neovim.mode != insert",
-    "args": "<c-d>"
-  },
+  // {
+  //   "command": "vscode-neovim.send",
+  //   "key": "alt+q",
+  //   "when": "editorTextFocus && neovim.mode != insert",
+  //   "args": "<m-q>"
+  // },
+  // I think this is also not utilize
   {
     "command": "vscode-neovim.send",
     "key": "ctrl+u",
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<c-u>"
   },
+  ///////////////////////////////////////////////////////////////////////////
+  /////////////// end of vscode send to neovim //////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+
   {
     "key": "ctrl+j",
     "command": "selectNextQuickFix",
@@ -1241,10 +1231,6 @@
   "when": "isDevelopment"
 },
 {
-  "key": "numpad_add",
-  "command": "editor.debug.action.conditionalBreakpoint"
-},
-{
   "key": "alt+e",
   "command": "workbench.action.quickOpen"
 },
@@ -1260,11 +1246,6 @@
   "key": "shift+f3",
   "command": "-editor.action.previousMatchFindAction",
   "when": "editorFocus"
-},
-{
-  "key": "alt+numpad_add",
-  "command": "actions.find",
-  "when": "editorFocus || editorIsOpen"
 },
 {
   "key": "ctrl+f",
@@ -1378,10 +1359,6 @@
   "command": "-workbench.view.extension.joplin-note"
 },
 {
-  "key": "alt+0",
-  "command": "workbench.action.selectTheme"
-},
-{
   "key": "ctrl+k ctrl+t",
   "command": "-workbench.action.selectTheme"
 },
@@ -1398,10 +1375,6 @@
   "key": "ctrl+shift+g",
   "command": "-workbench.view.scm",
   "when": "workbench.scm.active"
-},
-{
-  "key": "alt+,",
-  "command": "workbench.scm.focus"
 },
 {
   "key": "alt+,",
@@ -1446,5 +1419,53 @@
 {
   "key": "alt+.",
   "command": "unsaved-files.focus"
+},
+{
+  "key": "alt+i",
+  "command": "editor.action.triggerSuggest",
+  "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+},
+{
+  "key": "f4",
+  "command": "-references-view.next",
+  "when": "reference-list.hasResult && references-view.canNavigate"
+},
+{
+  "key": "shift+f4",
+  "command": "-references-view.prev",
+  "when": "reference-list.hasResult && references-view.canNavigate"
+},
+{
+  "key": "f12",
+  "command": "-goToNextReference",
+  "when": "inReferenceSearchEditor || referenceSearchVisible"
+},
+{
+  "key": "shift+f12",
+  "command": "-goToPreviousReference",
+  "when": "inReferenceSearchEditor || referenceSearchVisible"
+},
+{
+  "key": "ctrl+d",
+  "command": "editor.action.revealDefinitionAside"
+},
+{
+  "key": "ctrl+p",
+  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+},
+{
+  "key": "f4",
+  "command": "-goToNextReference",
+  "when": "inReferenceSearchEditor || referenceSearchVisible"
+},
+{
+  "key": "alt+,",
+  "command": "search.action.focusNextSearchResult",
+  "when": "hasSearchResult || inSearchEditor"
+},
+{
+  "key": "alt+.",
+  "command": "search.action.focusPreviousSearchResult",
+  "when": "hasSearchResult || inSearchEditor"
 }
 ]
