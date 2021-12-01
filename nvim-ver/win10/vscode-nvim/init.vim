@@ -460,11 +460,6 @@ xnoremap qm m
 nnoremap qn %
 xnoremap qn %
 
-" move current line up and down
-nnoremap qj :m .+1<CR>==
-nnoremap qk :m .-2<CR>==
-vnoremap qj :m '>+1<CR>gv=gv
-vnoremap qk :m '<-2<CR>gv=gv
 
 " move cursor at begin and end of the current line
 nnoremap qh g^
@@ -569,11 +564,35 @@ nnoremap <leader>n :noh<cr>
 "{ddd}
  
 
-nnoremap J 10gj
-nnoremap K 10gk
-vnoremap J 10gj
-vnoremap K 10gk
+" nnoremap J 10gj
+" nnoremap K 10gk
+" vnoremap J 10gj
+" vnoremap K 10gk
 
+" update to qj/qk to align the logic to qh and qk (line end/begin)
+" better memonic and also use same q prefix to faster typing a bit?
+" shift J/K instead related to other kind of op, shift up and down (also
+" good for memonic)
+nnoremap qj 10gj
+nnoremap qk 10gk
+vnoremap qj 10gj
+vnoremap qk 10gk
+
+
+" can NOT use viscode hotkey if I want to 
+" move visual select line(s)
+" move current line up and down
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" use vscode native hotkey
+" move current line up and down
+" nnoremap qj :m .+1<CR>==
+" nnoremap qk :m .-2<CR>==
+" vnoremap qj :m '>+1<CR>gv=gv
+" vnoremap qk :m '<-2<CR>gv=gv
 
 
 
