@@ -173,10 +173,20 @@ xnoremap qn %
 nnoremap <leader>l mmI- <esc>`m 
 
 " move current line up and down
-nnoremap qj :m .+1<CR>==
-nnoremap qk :m .-2<CR>==
-vnoremap qj :m '>+1<CR>gv=gv
-vnoremap qk :m '<-2<CR>gv=gv
+nnoremap qj 10gj
+nnoremap qk 10gk
+vnoremap qj 10gj
+vnoremap qk 10gk
+
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" move current line up and down
+" nnoremap qj :m .+1<CR>==
+" nnoremap qk :m .-2<CR>==
+" vnoremap qj :m '>+1<CR>gv=gv
+" vnoremap qk :m '<-2<CR>gv=gv
 
 " try qh and ql
 nnoremap qh g^ 
@@ -210,11 +220,6 @@ inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<
 
 
 
-
-nnoremap J 10j
-nnoremap K 10k
-vnoremap J 10j
-vnoremap K 10k
 
 " had use J above, so I here remap join to ctrl+c prefix version
 " nnoremap gj J
