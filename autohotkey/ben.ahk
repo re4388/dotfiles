@@ -106,7 +106,7 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 
 
 ;WSL
-::xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh"
+;xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh"
 ::ssss::./show.sh
 ::xbashheader::{raw}#!/bin/bash
 ; ::tmuxrc::~/.tmux.conf.local
