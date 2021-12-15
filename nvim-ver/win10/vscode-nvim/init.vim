@@ -573,10 +573,10 @@ nnoremap <leader>n :noh<cr>
 " better memonic and also use same q prefix to faster typing a bit?
 " shift J/K instead related to other kind of op, shift up and down (also
 " good for memonic)
-nnoremap qj 10gj
-nnoremap qk 10gk
-vnoremap qj 10gj
-vnoremap qk 10gk
+nnoremap qj 20gj
+nnoremap qk 20gk
+vnoremap qj 20gj
+vnoremap qk 20gk
 
 
 " can NOT use viscode hotkey if I want to 
