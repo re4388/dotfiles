@@ -31,6 +31,14 @@
         {
             "command": "paste",
             "keys": "ctrl+v"
+        },
+        {
+            "command": "scrollDown",
+            "keys": "ctrl+j"
+        },
+        {
+            "command": "scrollUp",
+            "keys": "ctrl+k"
         }
     ],
     "copyFormatting": "none",
