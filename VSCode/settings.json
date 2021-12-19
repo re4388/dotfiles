@@ -156,6 +156,12 @@
       // }
     },
     {
+      "key": "l",
+      "name": "toggle aboulate line number",
+      "type": "command",
+      "command": "extension.toggle"
+    },
+    {
       "key": "k",
       "name": "keyboard(JSON)",
       "type": "command",
@@ -300,140 +306,140 @@
         }
       ]
     },
-    {
-      "key": "l",
-      "name": "LSP...",
-      "type": "bindings",
-      "bindings": [
-        {
-          "key": ";",
-          "name": "Refactor",
-          "type": "command",
-          "command": "editor.action.refactor",
-          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-        },
-        {
-          "key": "a",
-          "name": "Auto Fix",
-          "type": "command",
-          "command": "editor.action.autoFix",
-          "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
-        },
-        {
-          "key": "d",
-          "name": "Definition",
-          "type": "command",
-          "command": "editor.action.revealDefinition",
-          "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-        },
-        {
-          "key": "D",
-          "name": "Declaration",
-          "type": "command",
-          "command": "editor.action.revealDeclaration"
-        },
-        {
-          "key": "e",
-          "name": "Errors",
-          "type": "command",
-          "command": "workbench.actions.view.problems"
-        },
-        {
-          "key": "f",
-          "name": "Format",
-          "type": "command",
-          "command": "editor.action.formatDocument",
-          "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-        },
-        {
-          "key": "i",
-          "name": "Implementation",
-          "type": "command",
-          "command": "editor.action.goToImplementation",
-          "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
-        },
-        {
-          "key": "l",
-          "name": "Code Lens",
-          "type": "command",
-          "command": "codelens.showLensesInCurrentLine"
-        },
-        {
-          "key": "n",
-          "name": "Next Problem",
-          "type": "command",
-          "command": "editor.action.marker.next",
-          "when": "editorFocus"
-        },
-        {
-          "key": "N",
-          "name": "Next Problem (Proj)",
-          "type": "command",
-          "command": "editor.action.marker.nextInFiles",
-          "when": "editorFocus"
-        },
-        {
-          "key": "o",
-          "name": "Outline",
-          "type": "command",
-          "command": "outline.focus"
-        },
-        {
-          "key": "p",
-          "name": "Prev Problem",
-          "type": "command",
-          "command": "editor.action.marker.prevInFiles",
-          "when": "editorFocus"
-        },
-        {
-          "key": "P",
-          "name": "Prev Problem (Proj)",
-          "type": "command",
-          "command": "editor.action.marker.prev",
-          "when": "editorFocus"
-        },
-        {
-          "key": "q",
-          "name": "Quick Fix",
-          "type": "command",
-          "command": "editor.action.quickFix",
-          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-        },
-        {
-          "key": "r",
-          "name": "References",
-          "type": "command",
-          "command": "editor.action.goToReferences",
-          "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-        },
-        {
-          "key": "R",
-          "name": "Rename",
-          "type": "command",
-          "command": "editor.action.rename",
-          "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-        },
-        {
-          "key": "v",
-          "name": "View All References",
-          "type": "command",
-          "command": "references-view.find",
-          "when": "editorHasReferenceProvider"
-        },
-        {
-          "key": "s",
-          "name": "Go To Symbol",
-          "type": "command",
-          "command": "workbench.action.gotoSymbol"
-        },
-        {
-          "key": "S",
-          "name": "Show All Symbols",
-          "type": "command",
-          "command": "workbench.action.showAllSymbols"
-        }
-      ]
-    }
+    // {
+    //   "key": "l",
+    //   "name": "LSP...",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": ";",
+    //       "name": "Refactor",
+    //       "type": "command",
+    //       "command": "editor.action.refactor",
+    //       "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    //     },
+    //     {
+    //       "key": "a",
+    //       "name": "Auto Fix",
+    //       "type": "command",
+    //       "command": "editor.action.autoFix",
+    //       "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
+    //     },
+    //     {
+    //       "key": "d",
+    //       "name": "Definition",
+    //       "type": "command",
+    //       "command": "editor.action.revealDefinition",
+    //       "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    //     },
+    //     {
+    //       "key": "D",
+    //       "name": "Declaration",
+    //       "type": "command",
+    //       "command": "editor.action.revealDeclaration"
+    //     },
+    //     {
+    //       "key": "e",
+    //       "name": "Errors",
+    //       "type": "command",
+    //       "command": "workbench.actions.view.problems"
+    //     },
+    //     {
+    //       "key": "f",
+    //       "name": "Format",
+    //       "type": "command",
+    //       "command": "editor.action.formatDocument",
+    //       "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    //     },
+    //     {
+    //       "key": "i",
+    //       "name": "Implementation",
+    //       "type": "command",
+    //       "command": "editor.action.goToImplementation",
+    //       "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+    //     },
+    //     {
+    //       "key": "l",
+    //       "name": "Code Lens",
+    //       "type": "command",
+    //       "command": "codelens.showLensesInCurrentLine"
+    //     },
+    //     {
+    //       "key": "n",
+    //       "name": "Next Problem",
+    //       "type": "command",
+    //       "command": "editor.action.marker.next",
+    //       "when": "editorFocus"
+    //     },
+    //     {
+    //       "key": "N",
+    //       "name": "Next Problem (Proj)",
+    //       "type": "command",
+    //       "command": "editor.action.marker.nextInFiles",
+    //       "when": "editorFocus"
+    //     },
+    //     {
+    //       "key": "o",
+    //       "name": "Outline",
+    //       "type": "command",
+    //       "command": "outline.focus"
+    //     },
+    //     {
+    //       "key": "p",
+    //       "name": "Prev Problem",
+    //       "type": "command",
+    //       "command": "editor.action.marker.prevInFiles",
+    //       "when": "editorFocus"
+    //     },
+    //     {
+    //       "key": "P",
+    //       "name": "Prev Problem (Proj)",
+    //       "type": "command",
+    //       "command": "editor.action.marker.prev",
+    //       "when": "editorFocus"
+    //     },
+    //     {
+    //       "key": "q",
+    //       "name": "Quick Fix",
+    //       "type": "command",
+    //       "command": "editor.action.quickFix",
+    //       "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    //     },
+    //     {
+    //       "key": "r",
+    //       "name": "References",
+    //       "type": "command",
+    //       "command": "editor.action.goToReferences",
+    //       "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    //     },
+    //     {
+    //       "key": "R",
+    //       "name": "Rename",
+    //       "type": "command",
+    //       "command": "editor.action.rename",
+    //       "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    //     },
+    //     {
+    //       "key": "v",
+    //       "name": "View All References",
+    //       "type": "command",
+    //       "command": "references-view.find",
+    //       "when": "editorHasReferenceProvider"
+    //     },
+    //     {
+    //       "key": "s",
+    //       "name": "Go To Symbol",
+    //       "type": "command",
+    //       "command": "workbench.action.gotoSymbol"
+    //     },
+    //     {
+    //       "key": "S",
+    //       "name": "Show All Symbols",
+    //       "type": "command",
+    //       "command": "workbench.action.showAllSymbols"
+    //     }
+    //   ]
+    // }
     // {
     //   "key": "n",
     //   "name": "No Highlight",
@@ -454,7 +460,6 @@
   "editor.wrappingIndent": "indent",
   "editor.accessibilitySupport": "off",
   "editor.foldingStrategy": "indentation",
-  "editor.cursorSmoothCaretAnimation": false,
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "javascript.format.enable": false,
   "workbench.sideBar.location": "right",
@@ -630,7 +635,11 @@
   "python.linting.lintOnSave":true,
   "python.linting.maxNumberOfProblems":30,
   "python.linting.ignorePatterns":[".vscode/*.py", "**/site-packages/**/*.py"],
-  // "python.languageServer": "Jedi",
+  "python.languageServer": "Pylance",
+
+  // below seems good but maybe not sutiable for current view-service-py code
+  // "python.analysis.typeCheckingMode":"basic",
+
   // "python.jediEnabled": false, // I tried both true and false
   // "python.analysis.memory.keepLibraryLocalVariables": true,
   // "python.analysis.useImportHeuristic": true,
@@ -691,6 +700,7 @@
     "bioclinica",
     "BIOPACS",
     "boto",
+    "botocore",
     "CFMN",
     "chrono",
     "combinator",
@@ -716,6 +726,7 @@
     "gcloud",
     "Heera",
     "ifps",
+    "Incompleted",
     "inversify",
     "joinhandles",
     "keycodes",
@@ -993,5 +1004,7 @@
   "clang-format.executable": "C:\\Program Files\\nodejs\\clang-format.cmd",
   "editor.lineNumbers": "off",
   "tabnine.experimentalAutoImports": true,
-
+  // setting toogle (I use it for toggle line number)
+  "toggle.iconEnabled": false,
+  "toggle.showStatusbarPrimary": false
 }
