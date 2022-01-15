@@ -22,16 +22,17 @@
     },
     {
       "key": "x",
-      "name": "execute",
+      "name": "execute python file in terminal",
       "type": "bindings",
-      "bindings": [
-        {
-          "key": "p",
-          "name": "execute python file in terminal",
-          "type": "command",
-          "command": "python.execInTerminal"
-        }
-      ]
+      "command": "python.execInTerminal"
+      // "bindings": [
+      //   {
+      //     "key": "p",
+      //     "name": "execute python file in terminal",
+      //     "type": "command",
+      //     "command": "python.execInTerminal"
+      //   }
+      // ]
     },
     {
       "key": "j",
@@ -1006,5 +1007,16 @@
   "tabnine.experimentalAutoImports": true,
   // setting toogle (I use it for toggle line number)
   "toggle.iconEnabled": false,
-  "toggle.showStatusbarPrimary": false
+  "toggle.showStatusbarPrimary": false,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#FFFF00",
+    "tab.unfocusedActiveBorder": "#000000",
+    "tab.activeBackground": "#42557b",
+    "tab.activeForeground": "#dcdcdc",
+    "editorCursor.foreground": "#00ff00",
+    "terminalCursor.fojeground": "#00ff00",
+    "editorCursor.background": "#ffffffc9",
+    "editor.selectionHighlightBorder": "#FFFA",
+    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
+  }
 }
