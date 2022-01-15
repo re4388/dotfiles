@@ -112,7 +112,7 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 ; ::tmuxrc::~/.tmux.conf.local
 
 ;Powershell
-::sss::show
+::sss::gcc -m32 -fno-stack-protector -no-pie -fcf-protection=none -z execstack a1.c -o a1
 ::fff::get-Bioclincal-repos
 ::rrr::. $profile; show
 ::ooo::open-profile
@@ -141,7 +141,7 @@ if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
 
 F1::#d
 ;F2 for rename
-F3::+!s ;screenshot
+;F3::+!s ;screenshot
 ;F4 => below, search google
 DetectHiddenWindows, On
 ;previous song

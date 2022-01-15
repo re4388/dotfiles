@@ -135,3 +135,5 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export PATH="$HOME/.poetry/bin:$PATH"
 eval "$(pyenv init --path)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

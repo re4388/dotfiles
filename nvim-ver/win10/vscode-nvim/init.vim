@@ -156,11 +156,14 @@ if exists('g:vscode')
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    " nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    " nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    nmap <leader>k <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
+    nmap <leader>j <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
 
-    nmap H <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    nmap L <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    " nmap H <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    " nmap L <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+
 
     nmap <leader>z <Cmd>call VSCodeNotify('workbench.action.toggleZenMode')<CR>
 
@@ -481,8 +484,8 @@ nnoremap <leader>p mmI- <esc>`m
 " vnoremap H g^
 " vnoremap L g$
 
-" join and break (d => down)
-nnoremap <leader>j J
+" combine and break (d => down)
+nnoremap <leader>c J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 function! BreakHere()
@@ -589,6 +592,7 @@ nnoremap J :m .+1<CR>==
 nnoremap K :m .-2<CR>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
 
 " use vscode native hotkey
 " move current line up and down

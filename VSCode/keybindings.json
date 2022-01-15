@@ -928,7 +928,7 @@
       // open Search Panel with current workspace as the `files to include`
       // "filesToInclude": "${workspaceFolder}",
       // "filesToExclude": "*.md, *.mmd, *.auto.test, *.spec.ts, *.jest.ts",
-      "filesToExclude": "*.md, *.mmd",
+      "filesToExclude": "*.md, *.mmd, *.jest.ts, *.test.ts",
       "triggerSearch": true
     }
   },
@@ -949,11 +949,6 @@
   {
     "key": "alt+c",
     "command": "macros.consoleLogDown"
-  },
-  {
-    "key": "alt+c",
-    "command": "console.log.wrap.down.prefix",
-    "when": "editorTextFocus"
   },
   {
     "key": "ctrl+alt+w ctrl+alt+down",
@@ -1116,15 +1111,15 @@
 //     "args": { "text": "ts-node '${file}'\u000D" }
 //     // "args": { "text": "ls \u000D" }
 //   },
-//   {
-//   "key": "alt+1",
-//   "command": "workbench.action.terminal.sendSequence",
-//   //  RUN LAST COMMAND
-//   // \u001b is an escape sequence to indicate the following characters have special meaning
-//   // [A is an up arrow. See, e.g., xterm function keys:
-//   // https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
-//   "args": { "text": "\u001b[A\u000d" }
-// },
+  {
+  "key": "alt+9",
+  "command": "workbench.action.terminal.sendSequence",
+  //  RUN LAST COMMAND
+  // \u001b is an escape sequence to indicate the following characters have special meaning
+  // [A is an up arrow. See, e.g., xterm function keys:
+  // https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
+  "args": { "text": "\u001b[A\u000d" }
+},
 {
   "key": "ctrl+d",
   "command": "workbench.action.terminal.scrollDownPage",
@@ -1451,7 +1446,8 @@
 },
 {
   "key": "ctrl+p",
-  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+  "when": "!terminalFocus "
 },
 {
   "key": "f4",
@@ -1467,5 +1463,15 @@
   "key": "alt+.",
   "command": "search.action.focusPreviousSearchResult",
   "when": "hasSearchResult || inSearchEditor"
+},
+{
+  "key": "alt+c",
+  "command": "print-it.PrintIt",
+  "when": "editorTextFocus"
+},
+{
+  "key": "alt+[",
+  "command": "-print-it.PrintIt",
+  "when": "editorTextFocus"
 }
 ]
