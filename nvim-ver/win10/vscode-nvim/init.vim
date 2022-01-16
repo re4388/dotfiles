@@ -156,10 +156,10 @@ if exists('g:vscode')
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
-    nmap <leader>k <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
-    nmap <leader>j <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
+    " nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    " nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    " nmap <leader>k <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
+    " nmap <leader>j <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
 
     " nmap H <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     " nmap L <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
@@ -588,10 +588,10 @@ vnoremap qk 20gk
 " can NOT use viscode hotkey if I want to 
 " move visual select line(s)
 " move current line up and down
-nnoremap J :m .+1<CR>==
-nnoremap K :m .-2<CR>==
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 
 
 " use vscode native hotkey

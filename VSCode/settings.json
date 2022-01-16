@@ -1003,7 +1003,7 @@
   "go.formatTool": "gofmt",
   "cmake.autoSelectActiveFolder": false,
   "clang-format.executable": "C:\\Program Files\\nodejs\\clang-format.cmd",
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "tabnine.experimentalAutoImports": true,
   // setting toogle (I use it for toggle line number)
   "toggle.iconEnabled": false,

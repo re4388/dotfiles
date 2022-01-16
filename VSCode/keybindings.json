@@ -493,7 +493,7 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
+    "when": "inQuickOpen && !terminalFocus"
   },
   {
     "key": "ctrl+k",
@@ -856,8 +856,9 @@
     "when": "editorTextFocus && editorLangId == 'http'"
   },
   {
-    "key": "ctrl+left",
-    "command": "workbench.action.decreaseViewWidth"
+    "key": "shift+l",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "!terminalFocus"
   },
   {
     "key": "alt+u",
@@ -883,16 +884,14 @@
     "command": "-workbench.action.focusLeftGroup"
   },
   {
-    "key": "ctrl+right",
-    "command": "workbench.action.increaseViewWidth"
+    "key": "shift+h",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "!terminalFocus"
   },
   {
-    "key": "ctrl+down",
-    "command": "workbench.action.increaseViewHeight"
-  },
-  {
-    "key": "ctrl+up",
-    "command": "workbench.action.decreaseViewHeight"
+    "key": "shift+k",
+    "command": "workbench.action.decreaseViewHeight",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+.",
@@ -1074,12 +1073,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+j",
-    "command": "workbench.action.terminal.scrollDown",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "ctrl+k",
+    "key": "ctrl+u",
     "command": "workbench.action.terminal.scrollUp",
     "when": "terminalFocus && terminalProcessSupported"
   },
@@ -1112,33 +1106,14 @@
 //     // "args": { "text": "ls \u000D" }
 //   },
   {
-  "key": "alt+9",
-  "command": "workbench.action.terminal.sendSequence",
-  //  RUN LAST COMMAND
-  // \u001b is an escape sequence to indicate the following characters have special meaning
-  // [A is an up arrow. See, e.g., xterm function keys:
-  // https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
-  "args": { "text": "\u001b[A\u000d" }
-},
-{
-  "key": "ctrl+d",
-  "command": "workbench.action.terminal.scrollDownPage",
-  "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
-},
-{
-  "key": "ctrl+u",
-  "command": "workbench.action.terminal.scrollUpPage",
-  "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
-},
-{
-  "key": "ctrl+up",
+  "key": "shift+k",
   "command": "workbench.action.terminal.resizePaneUp",
   "when": "terminalFocus"
 },
 {
-  "key": "ctrl+down",
+  "key": "shift+j",
   "command": "workbench.action.terminal.resizePaneDown",
-  "when": " terminalFocus"
+  "when": "terminalFocus"
 },
 {
   "key": "ctrl+left",
@@ -1473,5 +1448,29 @@
   "key": "alt+[",
   "command": "-print-it.PrintIt",
   "when": "editorTextFocus"
+},
+{
+  "key": "alt+9",
+  "command": "terminalHere.create"
+},
+{
+  "key": "ctrl+p",
+  "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+  "when": "inFilesPicker && inQuickOpen"
+},
+{
+  "key": "shift+j",
+  "command": "workbench.action.increaseViewHeight",
+  "when": "!terminalFocus"
+},
+{
+  "key": "ctrl+d",
+  "command": "workbench.action.terminal.scrollDown",
+  "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+},
+{
+  "key": "ctrl+alt+pagedown",
+  "command": "-workbench.action.terminal.scrollDown",
+  "when": "terminalFocus && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
 }
 ]
