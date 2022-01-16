@@ -53,10 +53,6 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=nvim;
 export EDITOR=nvim;
 
-# binding auto suggest accept with ctrl + space
-# bindkey '^ ' autosuggest-accept
-
-bindkey '^j' autosuggest-accept
 
 # ===============
 # fzf
@@ -137,3 +133,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 eval "$(pyenv init --path)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# binding auto suggest accept with ctrl + space
+# bindkey '^ ' autosuggest-accept
+
+bindkey '^j' autosuggest-accept
