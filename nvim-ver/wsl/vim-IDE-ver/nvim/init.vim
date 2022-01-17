@@ -609,7 +609,7 @@ vnoremap ql g$
 
 
 
-" use a as append
+" use a as make in one "L""ne
 " join and break (d => down)
 " I use shift J to shift stuff
 nnoremap <leader>a J
@@ -790,10 +790,19 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 
 "resize
-nnoremap <C-Left> :vertical resize +2<cr>
-nnoremap <C-Right> :vertical resize -2<cr>
-nnoremap <C-Up> :resize -2<cr>
-nnoremap <C-Down> :resize +2<cr>
+" nnoremap <C-Left> :vertical resize +2<cr>
+" nnoremap <C-Right> :vertical resize -2<cr>
+" nnoremap <C-Up> :resize -2<cr>
+" nnoremap <C-Down> :resize +2<cr>
+
+"resize
+nnoremap <S-l> :vertical resize +2<cr>
+nnoremap <S-h> :vertical resize -2<cr>
+nnoremap <S-k> :resize -2<cr>
+nnoremap <S-j> :resize +2<cr>
+
+
+
 
 
 
