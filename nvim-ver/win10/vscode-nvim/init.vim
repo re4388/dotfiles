@@ -485,7 +485,7 @@ nnoremap <leader>p mmI- <esc>`m
 " vnoremap L g$
 
 " combine and break (d => down)
-nnoremap <leader>c J
+nnoremap <leader>a J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 function! BreakHere()

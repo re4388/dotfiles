@@ -576,7 +576,7 @@ xnoremap qm m
 nnoremap qn %
 xnoremap qn %
 " =================================
-nnoremap <leader>l mmI- <esc>`m 
+" nnoremap <leader>l mmI- <esc>`m 
 
 " move current line up and down
 nnoremap qj 20gj
@@ -608,10 +608,11 @@ vnoremap ql g$
 " vnoremap L g$
 
 
+
+" use a as append
 " join and break (d => down)
-" use c as combine
 " I use shift J to shift stuff
-nnoremap <leader>c J
+nnoremap <leader>a J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 
@@ -633,7 +634,7 @@ inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<
 " nnoremap gj J
 
 " reamp K to leader K, S-K can open man under cursor
-noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
+" noremap <leader>k :execute "tab h " . expand("<cword>")<cr>
 
 
 " depend on current comment plugins
