@@ -584,10 +584,10 @@ nnoremap qk 20gk
 vnoremap qj 20gj
 vnoremap qk 20gk
 
-nnoremap J :m .+1<CR>==
-nnoremap K :m .-2<CR>==
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 " move current line up and down
 " nnoremap qj :m .+1<CR>==
 " nnoremap qk :m .-2<CR>==
@@ -609,7 +609,9 @@ vnoremap ql g$
 
 
 " join and break (d => down)
-nnoremap <leader>j J
+" use c as combine
+" I use shift J to shift stuff
+nnoremap <leader>c J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 
