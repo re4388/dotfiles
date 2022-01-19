@@ -4,20 +4,106 @@
 ;  ^  ctrl
 ;  #  window key
 
+; ================================
+; Hotstring
+; ================================
+
+; Bioclinica
+::ahkaaa::npm run serve:src:open:dev
+
+; gcc
+::ahkgcc::gcc -m32 -fno-stack-protector -no-pie -z execstack a1.c -o a1
+::ahkaslr::cat /proc/sys/kernel/randomize_va_space
+
+;Powershell
+::ahkfff::get-Bioclincal-repos
+::ahkrrr::. $profile; show
+::ahkooo::open-profile
+
+
+;git
+::ahkstash::git stash --include-untracked
+
+::ahkttt::
+FormatTime, TimeString,, yyyy_MM_dd_hh_mm
+send %TimeString%
+return
+
+
+
+
+
+
+; ==========================================
+; predefine variable for different computer
+; ==========================================
+
+
+; ASUS
+if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
+  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+}
+
+
+; WITS
+if (A_ComputerName  = "XXXXXXXXX") {
+  ; autoHotkey_Path = "C:\ahk\ben.ahk"
+  ; vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+  OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+}
+
+
+; Swift
+if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
+  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+  ; OneDriveTmpNotepad_fn = "tmp.txt"
+}
+
+
+
+; ================================
+; Notion specific hotkey added
+; ================================
+
 
 #IfWinActive ahk_class Chrome_WidgetWin_1 ahk_exe Notion.exe
+
+; use alt+e to open recently page, same shortcut in vscode
 !e::
    send,^p
    return
+
+; use alt+o to go back to history
 ^o::
    send,^[
    return
+
+; use alt+i to go forward to history
 ^i::
    send,^]
    return
+
 #IfWinActive  ; This puts subsequent remappings and hotkeys in effect for all windows.
 
 
+; ================================
+; AHK debug hotkey
+; ================================
+
+; Msgbox, %A_ComputerName%
+
+; Note:
+; I would like try to use ctrl+shift+key for autohotkey global hotkey..
+; this is not a easy reach to type in coding since far from home-row
+; so I probably not use this Combo when coding, so might a good idea to use this for global key like autohotkey
+
+; letter I had use for ctrl+shift Combo
+; z,debug
+; a, autohotkey file opened in vscode
+; g, google in highlighted/text in clipboard
+; n, opne tmp.txt
+; j, no use, reverse to tab switch for window terminal preview
+; k, same as above
 
 
 ; Retrieves an environment variable and stores its value in OutputVar.
@@ -42,11 +128,6 @@
     reload, C:\ahk\ben.ahk ; require all pc put config in below link and the same name, ben.ahk
   return
 
-; b for open bluetooth
-^+b:: ; press control+r to reload
-  SendMode Input
-  Run, ms-settings:bluetooth
-  return
 
 ; a for autohotkey config open
 ^+a::
@@ -55,6 +136,13 @@
   ; return is required for multi-line commmand
   return
 
+
+; ================================
+; Alt + number key
+; ================================
+
+
+; below three alt+1/2/3 => just use vscode to control them!
 ; Alt & 1 => vscode which key
 ; Alt & 2 => Jopline sidebar
 ; Alt & 3 => vscode terminal
@@ -63,81 +151,66 @@ Alt & 5::WinMaximize, A
 
 
 
-; Msgbox, %A_ComputerName%
-
-; Note:
-; I would like try to use ctrl+shift+key for autohotkey global hotkey..
-; this is not a easy reach to type in coding since far from home-row
-; so I probably not use this Combo when coding, so might a good idea to use this for global key like autohotkey
-
-; letter I had use for ctrl+shift Combo
-; z,debug
-; a, autohotkey file opened in vscode
-; g, google in highlighted/text in clipboard
-; n, opne tmp.txt
-; j, no use, reverse to tab switch for window terminal preview
-; k, same as above
 
 
-
-; ASUS
-if (A_ComputerName  = "LAPTOP-UO6DJS4G") {
-  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-}
-
-
-; WITS
-if (A_ComputerName  = "XXXXXXXXX") {
-  ; autoHotkey_Path = "C:\ahk\ben.ahk"
-  ; vscode_path = "C:\Users\re438\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-  OneDriveTmpNotepad_path = "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-}
-
-
-; Swift
-if (A_ComputerName  = "LAPTOP-Q5UL0L1G") {
-  OneDriveTmpNotepad_path = "C:\Users\%A_UserName%\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-  ; OneDriveTmpNotepad_fn = "tmp.txt"
-}
 
 ; ================================
-; Hotstring
+; Bluetooth shorcut
 ; ================================
 
+
+; b for open bluetooth
+^+b:: ; press control+r to reload
+  SendMode Input
+  Run, ms-settings:bluetooth
+  return
+
+
+
+
+
+
+; ================================
+; Hotstring  = current diactivate
+; ================================
 
 ;WSL
 ;xxx::bash "/mnt/c/Users/re438/OneDrive - g.ntu.edu.tw/bash/bk-asus-wsl-v1-to-dotfiles.sh"
-::ssss::./show.sh
-::xbashheader::{raw}#!/bin/bash
-; ::tmuxrc::~/.tmux.conf.local
+;::ssss::./show.sh
+;::xbashheader::{raw}#!/bin/bash
+;::tmuxrc::~/.tmux.conf.local
 
 ;Powershell
-::sss::gcc -m32 -fno-stack-protector -no-pie -fcf-protection=none -z execstack a1.c -o a1
-::fff::get-Bioclincal-repos
-::rrr::. $profile; show
-::ooo::open-profile
-::vvv::Open-VsCodeNvim-init
+
+;::vvv::Open-VsCodeNvim-init
 ;edit git, edit npm
-::egit::code "$env:USERPROFILE\.gitconfig"
-::enpm::code "$env:USERPROFILE\.npmrc"
-::xwsl::wsl -d Ubuntu-20.04
-::zzz::node C:\projects\puppeteer\src\puppet\scripts\checkPackage.js
+;::egit::code "$env:USERPROFILE\.gitconfig"
+;::enpm::code "$env:USERPROFILE\.npmrc"
+;::xwsl::wsl -d Ubuntu-20.04
+;::zzz::node C:\projects\puppeteer\src\puppet\scripts\checkPackage.js
 
 ; Bioclinica
-::aaa::npm run serve:src:open:dev
-::ccc::vfauto1.user@bioclinica.com
-::ddd::Pa$$w0rd
-;execure chrome purge store, clean IndexDB 
-::xchromc::localStorage.setItem('DiskCacheMaximumSize', '0')
-::xchromp::localStorage.setItem('imageFileCacheAction', 'purge')
-::xchroms::localStorage.setItem('imageFileCacheAction', 'store')
-::ddd::Pa$$w0rd
+;::ccc::vfauto1.user@bioclinica.com
+;execure chrome purge store, clean IndexDB
+;::xchromc::localStorage.setItem('DiskCacheMaximumSize', '0')
+;::xchromp::localStorage.setItem('imageFileCacheAction', 'purge')
+;::xchroms::localStorage.setItem('imageFileCacheAction', 'store')
+;::ddd::Pa$$w0rd
 ;::buser::ben.hu
 ;::bpass::2Aoxjgju!
 ;::lll::imageFileCacheAction
 
 ;::eee::http://localhost:4200/?system-collection-id-pairs=sd-ex1000000011951294
 ;::jjj::wsl /home/re4388/projects/dotfiles/bash_projects/jira_quick_link/jira_board.sh
+
+
+
+
+; ================================
+; F - Functional key
+; ================================
+
+
 
 F1::#d
 ;F2 for rename
@@ -155,9 +228,21 @@ F9::Volume_Down
 F10::Volume_Up
 
 
+; ================================
+; Volume control
+; ================================
+
+
+
 ;^+Right::Send, {Volume_Up}
 ;^+Left::Send, {Volume_Down}
 ;^+Down::Send, {Volume_Mute}
+
+
+; ================================
+; Code helper
+; ================================
+
 
 ; alt + j, k , l for (), [], {}
 !j::
@@ -176,18 +261,10 @@ return
 Send, {Raw}j
 return
 
-;git
-::git-stash::git stash --include-untracked
-
-; ttt => 20200829
-:R*?:ttt::
-FormatTime, CurrentDateTime,, yyyy_MM_dd_hh_mm
-SendInput %CurrentDateTime%
 
 
-
-; ENABLE use alt + arrow key to go line end and begin in every place
-; like notion or simplenote
+; alt + arrow key to go line end and begin in every place
+; make notion or simplenote edit faster
 !Left::Send {Home}
 !Right::Send {End}
 !Up::Send {PgUp}
@@ -195,15 +272,13 @@ SendInput %CurrentDateTime%
 
 
 
-; press ctrl+shift+n to open my tmp.txt in Onedrive
-^+t::
-    ; myPath := "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
-    ; myPath := %OneDriveTmpNotepad_path%
-    ; SplitPath, myPath,,,,fName
-    Run,"notepad.exe" %OneDriveTmpNotepad_path%
-    If WinExist("tmp.txt")
-        WinActivate
-    Return
+
+
+
+
+; ================================
+; Other
+; ================================
 
 
 ; try to replace 全半形切換 to nothing in 自然輸入法
@@ -213,6 +288,34 @@ SendInput %CurrentDateTime%
 ; ================================
 ; Open...something
 ; ================================
+
+
+; press ctrl+shift+n to open my tmp.txt in Onedrive
+; working code if uncomment
+; ^+t::
+;     Run,"notepad.exe" %OneDriveTmpNotepad_path%
+;     If WinExist("tmp.txt")
+;         WinActivate
+;     Return
+
+; trail and error code k
+; ^+t::
+    ; myPath := "C:\Users\re438\OneDrive - g.ntu.edu.tw\notepad-backup\tmp.txt"
+    ; myPath := %OneDriveTmpNotepad_path%
+    ; SplitPath, myPath,,,,fName
+    ; Run,"notepad.exe" %OneDriveTmpNotepad_path%
+    ; If WinExist("tmp.txt")
+    ;     WinActivate
+    ; Return
+
+
+
+
+; ================================
+; CAPSLOCK replace Ctrl
+; ================================
+
+
 
 ; CHANGE CAPSLOCK TO CTRL AND ALSO ENABLE ALL ORIGINAL CTRL + X COMBO
 ; https://gist.github.com/yyolk/fddf44b973e6008f0667fc4b3346cbda
@@ -322,8 +425,14 @@ g_ControlRepeatDetected := false
     return
 
 
+; ================================
+; Chrome
+; ================================
 
-; ctrl + shift + g => open chrome and search stuff you selected
+
+
+; open chrome and search stuff you selected
+; ctrl + shift + z
 ; ref: https://dilpreet.dev/blog/autohotkey-for-developers/
 +^z::
 OpenHighlighted()
@@ -366,7 +475,9 @@ OpenHighlighted()
 }
 
 
-
+; ================================
+; VIRTUAL DESKTOP
+; ================================
 
 
 ; ENABLE USE WIN + NUMNBER KEY TO SWITCH VIRTUAL DESKTOP
