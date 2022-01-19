@@ -11,9 +11,10 @@
 ; Bioclinica
 ::ahkaaa::npm run serve:src:open:dev
 
-; gcc
+; exploit
 ::ahkgcc::gcc -m32 -fno-stack-protector -no-pie -z execstack a1.c -o a1
 ::ahkaslr::cat /proc/sys/kernel/randomize_va_space
+::ahkintel::set disassembly-flavor intel
 
 ;Powershell
 ::ahkfff::get-Bioclincal-repos
