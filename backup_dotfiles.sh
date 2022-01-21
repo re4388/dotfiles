@@ -104,6 +104,7 @@ function main(){
       bk_win10_git_bash $wits_user_name
       bk_wsl_vim
       bk_ahk
+      bk_wsl_zshrc
 
       open_lazygit
     else
