@@ -1,13 +1,13 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
             "command": "unbound",
             "keys": "ctrl+tab"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -15,14 +15,14 @@
             "keys": "ctrl+c"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "prevTab"
             },
             "keys": "ctrl+shift+k"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "nextTab"
             },
@@ -31,29 +31,29 @@
         {
             "command": "paste",
             "keys": "ctrl+v"
-        },
-        {
-            "command": 
-            {
-                "action": "scrollDown"
-            },
-            "keys": "ctrl+d"
-        },
-        {
-            "command": 
-            {
-                "action": "scrollUp"
-            },
-            "keys": "ctrl+u"
         }
+        // {
+        //     "command":
+        //     {
+        //         "action": "scrollDown"
+        //     },
+        //     "keys": "ctrl+d"
+        // },
+        // {
+        //     "command":
+        //     {
+        //         "action": "scrollUp"
+        //     },
+        //     "keys": "ctrl+u"
+        // }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "profiles": 
+    "profiles":
     {
         "defaults": {},
-        "list": 
+        "list":
         [
             {
                 "colorScheme": "OneDark",
@@ -61,7 +61,7 @@
                 "cursorColor": "#00FF00",
                 "cursorShape": "filledBox",
                 "experimental.retroTerminalEffect": false,
-                "font": 
+                "font":
                 {
                     "face": "Hack Nerd Font Mono",
                     "size": 11
@@ -84,7 +84,7 @@
             },
             {
                 "colorScheme": "UbuntuLegit",
-                "font": 
+                "font":
                 {
                     "face": "Hack Nerd Font Mono"
                 },
@@ -105,7 +105,7 @@
                 "colorScheme": "OneDark",
                 "cursorColor": "#00FF00",
                 "cursorShape": "bar",
-                "font": 
+                "font":
                 {
                     "face": "Hack Nerd Font Mono",
                     "size": 11
@@ -120,7 +120,7 @@
             {
                 "colorScheme": "Tango Dark",
                 "cursorShape": "bar",
-                "font": 
+                "font":
                 {
                     "size": 12
                 },
@@ -138,7 +138,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",

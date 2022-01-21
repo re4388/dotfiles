@@ -1,9 +1,19 @@
+"######################################################
+"#
+"# prelogue
+"#
+"######################################################
 echom "load wsl-v1-init.vim"
+
 let g:mapleader = "\<Space>"
 
 
-"---------------------- PLIUGIN -------------------------
 
+"######################################################
+"#
+"#    plugin 
+"#
+"######################################################
 
 call plug#begin('~/.config/plugged')
 
@@ -11,19 +21,23 @@ call plug#begin('~/.config/plugged')
 " Plug 'vim-denops/denops.vim'
 " set runtimepath^=~/dps-helloworld
 
-"---------------------- nvim-ver unique -------------------------
 
-"----------- COC -------------
+
+"----------------------------------------------------------
+"----------- COC ------------------------------------------
+"----------------------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
 let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
       \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
-      \'coc-yank', 'coc-prettier', 'coc-marketplace',
+      \'coc-yank', 'coc-prettier', 'coc-marketplace', 'coc-jedi',
       \'coc-sumneko-lua', 'coc-denoland']
 
 Plug 'leafgarland/typescript-vim'
 
-"----------- COC -------------
+"----------------------------------------------------------
+"----------- COC ------------------------------------------
+"----------------------------------------------------------
 
 Plug 'kevinoid/vim-jsonc'
 Plug 'junegunn/goyo.vim'
@@ -35,14 +49,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " auto disbale highlight after search
 Plug 'romainl/vim-cool' 
-
-
-
-
-"---------------------- nvim-ver unique -------------------------
-
-
-
 
 Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mode
 
@@ -62,7 +68,8 @@ Plug 'folke/tokyonight.nvim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rakr/vim-one'
-"----------- theme -------------
+
+
 
 "visual help
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -75,7 +82,6 @@ Plug 'dstein64/nvim-scrollview'
 
 " Plug 'romgrk/barbar.nvim'
 
-"----------- Buffer -------------
 
 
 
@@ -95,9 +101,6 @@ Plug 'andymass/vim-matchup' " %
 Plug 'wellle/targets.vim' " q
 " I like this plugin, maybe oneday I will enable it when I do coding!
 " Plug 'mbbill/undotree'
-
-"----------- text objects -------------
-
 Plug 'romainl/vim-devdocs' " try :DD js map
 
 
@@ -115,20 +118,17 @@ Plug 'nvim-telescope/telescope.nvim'
 " try to use this, seems faster
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-"----------- Fuzzy Finder -------------
 
 
 "----------- Explorer -------------
 Plug 'kyazdani42/nvim-tree.lua' "
 " Plug 'scrooloose/nerdtree'
 " Plug 'kevinhwang91/rnvimr'
-"----------- Explorer -------------
 
 
 
 "----------- Operator -------------
 
-"
 Plug 'vim-scripts/ReplaceWithRegister'
 " Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-surround'
@@ -139,7 +139,6 @@ Plug 'tpope/vim-repeat'
 Plug 'b3nj5m1n/kommentary'
 " Plug 'rhysd/accelerated-jk'
 
-"----------- Operator -------------
 
 
 
@@ -196,8 +195,6 @@ Plug 'tjdevries/astronauta.nvim'
 " Plug 'vim-test/vim-test'
 
 "----------- test utils -------
-
-
 
 
 Plug 'vimwiki/vimwiki'
@@ -276,6 +273,13 @@ Plug 'radenling/vim-dispatch-neovim'
 call plug#end()
 
 
+"######################################################
+"#
+"#    setting
+"#
+"######################################################
+
+
 " persistent undo
 set undofile " Maintain undo history between sessions
 
@@ -346,9 +350,14 @@ set t_vb=
 set tm=500
 set whichwrap+=<,>,h,l
 
+
+
+""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""
 " => Colors and Fonts
 """"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+
 " Enable syntax highlighting
 " syntax enable 
 
@@ -401,10 +410,18 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:
 
 
 
+"######################################################
+"#
+"#    hotkey
+"#
+"######################################################
 
 
 
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " File mgmt
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " (r)eload config
@@ -422,8 +439,13 @@ nnoremap <silent> <Leader>qq  :qa!<CR>
 " TODO: change to other later...
 " nnoremap <leader>o :so %<CR>
 
+
+
+
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 " Search 
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " easier to type
@@ -448,8 +470,12 @@ map n nzzzv
 map N Nzzzv
 
 
+
+
 """"""""""""""""""""""""""""""
-" move
+""""""""""""""""""""""""""""""
+" Move
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 
@@ -488,8 +514,13 @@ endfunction
 " nnoremap <silent> gj :let _=&lazyredraw<CR>:set lazyredraw<CR>/\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
 " nnoremap <silent> gk :let _=&lazyredraw<CR>:set lazyredraw<CR>?\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
 
+
+
+
 """"""""""""""""""""""""""""""
-" Fast edit 
+""""""""""""""""""""""""""""""
+" Edit
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 nnoremap <cr> >> 
 inoremap jk <esc>
@@ -526,12 +557,21 @@ nnoremap <Leader>cp yap<S-}>p
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" apple   `banana`   "test2'est'
+
+
 " =========================
-" Super Fast Area, Q prefix
-" left non-use Q prefix (for macro)
-" c, f,.... 
+" =========================
+" Fast eid
+" =========================
+" use q ===================
+" =========================
+" q is the default macro prefix..
+" if I want to use macro..
+" I can still have many to use, like c, f 
 " ========================
+" ========================
+
+
 nnoremap qq yiw 
 nmap cc miw<esc>
 
@@ -627,9 +667,6 @@ vnoremap v <Esc>
 inoremap <expr> <Tab> getline('.')[col('.')-1] =~? '[]>)}''"`]' ? '<Right>' : '<Tab>'   
 
 
-
-
-
 " had use J above, so I here remap join to ctrl+c prefix version
 " nnoremap gj J
 
@@ -715,8 +752,12 @@ vnoremap cd d
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
+
+
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 "  remove all arrow key
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 "" remove all arrow key to faster my learning
@@ -731,7 +772,9 @@ nnoremap ZQ <Nop>
 
 
 """"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " Tab mgmt 
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " just like vscode
@@ -742,8 +785,12 @@ nnoremap B  <c-^>
 nnoremap <silent> <Tab> :bn<CR>
 nnoremap <silent> <S-Tab> :bp<CR>
 
+
+
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 " Terminal Mode
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " nnoremap <M-y> :te<CR>
@@ -780,7 +827,9 @@ au TermOpen * call TerminalOptions()
 
 
 """"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " windown mgmt 
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " easier to change panel
@@ -808,8 +857,11 @@ nnoremap <S-j> :resize +2<cr>
 
 
 """""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 " => ex-mode 
 """"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+
 
 " Quick command mod
 " nnoremap <CR> :
@@ -863,6 +915,14 @@ nnoremap <leader>x :exe getline(".")<CR>
 vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 
 
+
+
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" Some advance shorcut
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+
 " https://gist.github.com/romainl/047aca21e338df7ccf771f96858edb86
 " <key> + pattern + <CR> + digits + <CR> to jump to global search result
 function! CCR()
@@ -914,7 +974,9 @@ nnoremap <leader>hh :call TabMessage("nmap")<Left><Left>
 
 
 """"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " => Misc 
+""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
 " Return to last edit position when opening files (You want this!)
@@ -937,9 +999,6 @@ cnoremap %:H %:h
 cnoremap %:Q %:q
 
 
-
-
-
 " Plugin need to put first
 " source ~/.config/nvim/plugins.vim
 " source ~/.config/nvim/setting.vim
@@ -950,11 +1009,17 @@ cnoremap %:Q %:q
 " lua require("lsp-config")
 colorscheme one
 
+"================================
 "============= abbr =============
+"================================
+
 
 :ab rtfm read the the fine manual
 
+"================================
 "=============  functional key try out =============
+"================================
+
 
 " use <C-K> and type f2...to f7 to try out
 " f2: <F26>
@@ -964,21 +1029,25 @@ colorscheme one
 " f6: <F30>
 " f7: <F31>
 
-nmap <f26> yiw 
-nmap <c-f4> yiw 
-nmap <c-f5> yiw 
-nmap <c-f6> yiw 
+" nmap <f26> yiw 
+" nmap <c-f4> yiw 
+" nmap <c-f5> yiw 
+" nmap <c-f6> yiw 
 
 
+"================================
 "============= b3nj5m1n/kommentary =============
+"================================
+
 
 nmap s <Plug>kommentary_motion_default
 xmap s <Plug>kommentary_visual_default
 nmap ss <Plug>kommentary_line_default
 
 
+"================================
 "============= vim-matchup =============
-
+"================================
 
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
@@ -986,8 +1055,9 @@ let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0
 
 
-"============= autosave plugin =============
-
+"================================
+"============= autosave plugin ==
+"================================
 
 " dsiable autosave gloablly
 let g:auto_save = 0
@@ -999,12 +1069,15 @@ augroup ft_markdown
 augroup END
 
 
-"============= treesitter =============
-
+"================================
+"============= treesitter =======
+"================================
 " removed, no use now
 
 
-"============= autocommand =============
+"================================
+"============= autocommand ======
+"================================
 " set folding stgy for vim file
 "
 " augroup auto_fold_init_vim
@@ -1023,9 +1096,9 @@ augroup END
 " let b:match_words = '\<if\>:\<endif\>,'
 " \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'}}}
 
-
+"================================
 "============= POC =============
-
+"================================
 
 " let b:match_ignorecase=0
 "     let b:match_words =

@@ -104,7 +104,11 @@ function main(){
       bk_win10_git_bash $wits_user_name
       bk_wsl_vim
       bk_ahk
-      bk_wsl_zshrc
+      # !!! Attention!!!
+      # the zshrc is still coupleing to computer, so I don't want to sync them automatically
+      # For now, I only want to update the zshrc from ASUS to WITS
+      # if I want to sync from WITS to ASUS, just manually copy and paste via simplenote or notion
+      # bk_wsl_zshrc
 
       open_lazygit
     else
