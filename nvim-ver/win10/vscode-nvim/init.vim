@@ -156,10 +156,10 @@ if exists('g:vscode')
     omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
-    " nmap <leader>l <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-    " nmap <leader>h <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
-    " nmap <leader>k <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
-    " nmap <leader>j <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
+    nmap L <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+    nmap H <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+    nmap K <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
+    nmap J <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
 
     " nmap H <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     " nmap L <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
