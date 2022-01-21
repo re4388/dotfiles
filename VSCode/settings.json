@@ -636,7 +636,7 @@
   "python.linting.lintOnSave":true,
   "python.linting.maxNumberOfProblems":30,
   "python.linting.ignorePatterns":[".vscode/*.py", "**/site-packages/**/*.py"],
-  "python.languageServer": "Pylance",
+  "python.languageServer": "Jedi",
 
   // below seems good but maybe not sutiable for current view-service-py code
   // "python.analysis.typeCheckingMode":"basic",
@@ -1003,7 +1003,7 @@
   "go.formatTool": "gofmt",
   "cmake.autoSelectActiveFolder": false,
   "clang-format.executable": "C:\\Program Files\\nodejs\\clang-format.cmd",
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "off",
   "tabnine.experimentalAutoImports": true,
   // setting toogle (I use it for toggle line number)
   "toggle.iconEnabled": false,
