@@ -1,4 +1,5 @@
-echom "Load WIN10 NVIM"
+" echom "Load WIN10 NVIM"
+" echo "Load WIN10 NVIM"
 
 " something better put at beginning ========{{{
 
