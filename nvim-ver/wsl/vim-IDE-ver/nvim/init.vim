@@ -3,10 +3,9 @@
 "# prelogue
 "#
 "######################################################
-echom "load wsl-v1-init.vim"
+" echom "load wsl-v1-init.vim"
 
 let g:mapleader = "\<Space>"
-
 
 
 "######################################################
@@ -34,12 +33,12 @@ let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
       \'coc-sumneko-lua', 'coc-denoland']
 
 Plug 'leafgarland/typescript-vim'
-
-"----------------------------------------------------------
-"----------- COC ------------------------------------------
-"----------------------------------------------------------
-
 Plug 'kevinoid/vim-jsonc'
+
+"----------------------------------------------------------
+"----------- appearance ------------------------------------------
+"----------------------------------------------------------
+" zen mode
 Plug 'junegunn/goyo.vim'
 Plug 'yamatsum/nvim-cursorline'
 Plug 'mhinz/vim-startify'
@@ -60,6 +59,8 @@ Plug 'nelstrom/vim-visual-star-search' " enable *(M-m in my keymap) in visual mo
 Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
+
+
 
 "----------- theme -------------
 Plug 'jacoborus/tender.vim'
@@ -84,7 +85,6 @@ Plug 'dstein64/nvim-scrollview'
 
 
 
-
 "----------- text objects -------------
 
 " fooBar, qq_bar, SeriesPreprocessBar
@@ -99,6 +99,11 @@ Plug 'kana/vim-textobj-line' " l
 " Plug 'michaeljsmith/vim-indent-object' " i
 Plug 'andymass/vim-matchup' " %
 Plug 'wellle/targets.vim' " q
+
+
+
+"----------- doc -------------
+
 " I like this plugin, maybe oneday I will enable it when I do coding!
 " Plug 'mbbill/undotree'
 Plug 'romainl/vim-devdocs' " try :DD js map
@@ -114,6 +119,7 @@ Plug 'romainl/vim-devdocs' " try :DD js map
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-project.nvim'
 
 " try to use this, seems faster
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
@@ -121,7 +127,7 @@ Plug 'nvim-telescope/telescope.nvim'
 
 
 "----------- Explorer -------------
-Plug 'kyazdani42/nvim-tree.lua' "
+Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'scrooloose/nerdtree'
 " Plug 'kevinhwang91/rnvimr'
 
@@ -138,9 +144,6 @@ Plug 'tpope/vim-repeat'
 " Plug 'winston0410/commented.nvim'
 Plug 'b3nj5m1n/kommentary'
 " Plug 'rhysd/accelerated-jk'
-
-
-
 
 
 "----------- Game -------------
@@ -194,13 +197,12 @@ Plug 'tjdevries/astronauta.nvim'
 " enable when I need
 " Plug 'vim-test/vim-test'
 
-"----------- test utils -------
 
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
+" this let me use backspace to switch between true/false
 Plug 'AndrewRadev/switch.vim'
-
-Plug '907th/vim-auto-save'
+" Plug '907th/vim-auto-save'
 
 " Autocompletion related
 " Plug 'hrsh7th/nvim-compe'
@@ -214,7 +216,6 @@ Plug 'cohama/lexima.vim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
 " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
-"----------- Treesitter -------
 
 "----------- Lsp -----------------
 Plug 'neovim/nvim-lspconfig'
@@ -225,7 +226,6 @@ Plug 'kabouzeid/nvim-lspinstall'
 " not working...don't know why... 
 " Plug 'RishabhRD/popfix'
 " Plug 'RishabhRD/nvim-lsputils'
-"----------- Lsp -----------------
 
 
 " forget what it is..
@@ -249,7 +249,6 @@ Plug 'radenling/vim-dispatch-neovim'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 
-"----------- Snippet -----------------
 
 
 
@@ -259,7 +258,6 @@ Plug 'radenling/vim-dispatch-neovim'
 " Floting terminal 
 " Plug 'numtostr/FTerm.nvim'
 
-"----------- Formatter -----------------
 
 
 
@@ -288,6 +286,9 @@ set undofile " Maintain undo history between sessions
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable            " no folding by default
+" set foldenable
+" set foldmarker={,}
+" set foldlevelstart=99
 " set foldmethod=marker       " fold based on ...
 " set foldnestmax=10         " deepest fold is 10 levels
 " set foldlevel=1             " fold one level at a time
@@ -302,9 +303,9 @@ set cmdheight=1       " More space for displaying messages
 set conceallevel=0    " So that I can see `` in markdown files
 set cursorline         " Enable highlighting of the current line
 " set fileencoding=utf-8 " The encoding written to file
-set foldcolumn=1
+" set foldcolumn=1
 " set foldenable
-set foldlevel=5
+" set foldlevel=5
 set hidden            " Required to keep multiple buffers open multiple buffers
 set hlsearch            " " highlight matches
 set ignorecase          " ignore case when searching
@@ -331,10 +332,6 @@ set ttimeoutlen=10    " small value for quick control sequence sending, set high
 set updatetime=300     " Faster completion
 
 " not sure below config work, follow vim-better-default"
-set foldenable
-set foldmarker={,}
-set foldlevel=0
-set foldlevelstart=99
 set number
 set relativenumber
 " Turn on the Wild menu
@@ -474,7 +471,7 @@ map N Nzzzv
 
 """"""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
-" Move
+" Move, Motion
 """"""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
@@ -515,6 +512,10 @@ endfunction
 " nnoremap <silent> gk :let _=&lazyredraw<CR>:set lazyredraw<CR>?\%<C-R>=virtcol(".")<CR>v\S<CR>:nohl<CR>:let &lazyredraw=_<CR>
 
 
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 
 
 """"""""""""""""""""""""""""""
@@ -624,10 +625,6 @@ nnoremap qk 20gk
 vnoremap qj 20gj
 vnoremap qk 20gk
 
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
-vnoremap <leader>j :m '>+1<CR>gv=gv
-vnoremap <leader>k :m '<-2<CR>gv=gv
 " move current line up and down
 " nnoremap qj :m .+1<CR>==
 " nnoremap qk :m .-2<CR>==
@@ -681,7 +678,7 @@ function! s:commentLineDown()
   :execute "normal \<Plug>kommentary_line_default"
 endfunction
 
-nnoremap <M-p> :call <SID>commentLineDown()<cr>
+" nnoremap <M-p> :call <SID>commentLineDown()<cr>
 
 
 
@@ -794,7 +791,7 @@ nnoremap <silent> <S-Tab> :bp<CR>
 """"""""""""""""""""""""""""""
 
 " nnoremap <M-y> :te<CR>
-nnoremap <M-y> <Esc>:sp \| te<CR>
+" nnoremap <M-y> <Esc>:sp \| te<CR>
 
 " use same way to switch between terminal
 tnoremap <C-h> <C-\><C-n><C-w>h
@@ -867,7 +864,7 @@ nnoremap <S-j> :resize +2<cr>
 " nnoremap <CR> :
 
 " Run the last command
-nnoremap <m-1> :<up><esc>
+" nnoremap <m-1> :<up><esc>
 
 
 
@@ -1045,14 +1042,63 @@ xmap s <Plug>kommentary_visual_default
 nmap ss <Plug>kommentary_line_default
 
 
-"================================
-"============= vim-matchup =============
-"================================
+"=======================================
+"=             scrollbar  init
+"=======================================
+
+augroup ScrollbarInit
+  autocmd!
+  autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+augroup end
+
+"=======================================
+"=             vim-matchup             =
+"=======================================
 
 let g:matchup_motion_override_Npercent = 0
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0
+
+"=======================================
+"             startify                 =
+"=======================================
+
+
+let g:startify_lists = [
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ ]
+      " \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      " \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      " \ { 'type': 'commands',  'header': ['   Commands']       },
+
+
+
+let g:startify_custom_header = [
+      \ '#     #                         #######              ',
+      \ '#     #   ##   #    # ######    #       #    # #    #',
+      \ '#     #  #  #  #    # #         #       #    # ##   #',
+      \ '####### #    # #    # #####     #####   #    # # #  #',
+      \ '#     # ###### #    # #         #       #    # #  # #',
+      \ '#     # #    #  #  #  #         #       #    # #   ##',
+      \ '#     # #    #   ##   ######    #        ####  #    #',
+      \ ]
+
+" let s:footer = ['ddd'|cowsay]
+" let g:startify_custom_footer = s:footer
+" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
+" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
+
+" function! s:center(lines) abort
+  " let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+  " let centered_lines = map(copy(a:lines),
+        " \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+  " return centered_lines
+" endfunction
+
 
 
 "================================
@@ -1095,6 +1141,511 @@ augroup END
 " autocmd FileType typescript let b:match_words = '\<if\>::\<else\>'
 " let b:match_words = '\<if\>:\<endif\>,'
 " \ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'}}}
+
+"================================
+"============= nvim-tree ======
+"================================
+
+
+let g:nvim_tree_side = 'right' "left by default
+let g:nvim_tree_width = 40 "30 by default, can be width_in_columns or 'width_in_percent%'
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_gitignore = 1 "0 by default
+let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ] "empty by default, don't auto open tree on specific filetypes.
+let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
+let g:nvim_tree_auto_resize = 1 "1 by default, will resize the tree to its saved width when opening a file
+let g:nvim_tree_disable_netrw = 0 "1 by default, disables netrw
+let g:nvim_tree_hijack_netrw = 0 "1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+let g:nvim_tree_disable_window_picker = 1 "0 by default, will disable the window picker.
+let g:nvim_tree_hijack_cursor = 1 "1 by default, when moving cursor in the tree, will position the cursor at the start of the file on the current line
+let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+let g:nvim_tree_update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+let g:nvim_tree_window_picker_exclude = {
+    \   'filetype': [
+    \     'packer',
+    \     'qf'
+    \   ],
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
+" Dictionary of buffer option names mapped to a list of option values that
+" indicates to the window picker that the buffer's window should not be
+" selectable.
+let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath.
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   },
+    \   'lsp': {
+    \     'hint': "",
+    \     'info': "",
+    \     'warning': "",
+    \     'error': "",
+    \   }
+    \ }
+
+nnoremap <M-f> :NvimTreeToggle<CR>
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen and NvimTreeClose are also available if you need them
+
+set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+lua <<EOF
+    local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+    -- default mappings
+    vim.g.nvim_tree_bindings = {
+      { key = {"<CR>", "o","l", "<2-LeftMouse>"}, cb = tree_cb("edit") },
+      { key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
+      { key = "<C-v>",                        cb = tree_cb("vsplit") },
+      { key = "<C-x>",                        cb = tree_cb("split") },
+      { key = "<C-t>",                        cb = tree_cb("tabnew") },
+      { key = "<",                            cb = tree_cb("prev_sibling") },
+      { key = ">",                            cb = tree_cb("next_sibling") },
+      { key = "P",                            cb = tree_cb("parent_node") },
+      { key = "<BS>",                         cb = tree_cb("close_node") },
+      { key = "<S-CR>",                       cb = tree_cb("close_node") },
+      { key = "<Tab>",                        cb = tree_cb("preview") },
+      { key = "K",                            cb = tree_cb("first_sibling") },
+      { key = "J",                            cb = tree_cb("last_sibling") },
+      { key = "I",                            cb = tree_cb("toggle_ignored") },
+      { key = "H",                            cb = tree_cb("toggle_dotfiles") },
+      { key = "R",                            cb = tree_cb("refresh") },
+      { key = "a",                            cb = tree_cb("create") },
+      { key = "d",                            cb = tree_cb("remove") },
+      { key = "r",                            cb = tree_cb("rename") },
+      { key = "<C-r>",                        cb = tree_cb("full_rename") },
+      { key = "x",                            cb = tree_cb("cut") },
+      { key = "c",                            cb = tree_cb("copy") },
+      { key = "p",                            cb = tree_cb("paste") },
+      { key = "y",                            cb = tree_cb("copy_name") },
+      { key = "Y",                            cb = tree_cb("copy_path") },
+      { key = "gy",                           cb = tree_cb("copy_absolute_path") },
+      { key = "[c",                           cb = tree_cb("prev_git_item") },
+      { key = "]c",                           cb = tree_cb("next_git_item") },
+      { key = "-",                            cb = tree_cb("dir_up") },
+      { key = "q",                            cb = tree_cb("close") },
+      { key = "g?",                           cb = tree_cb("toggle_help") },
+    }
+EOF
+
+"================================
+"============= vim wiki =========
+"================================
+
+" diable table mapping to allow I use tab as popup menu in hrsh7th-nvim-compe
+let g:vimwiki_table_mappings=0
+
+" set default vimwiki syntax to md
+let g:vimwiki_list = [
+          \ {'path': '/home/re4388/link/vimwiki/',
+          \ 'syntax': 'markdown', 
+          \ 'ext': '.md'}]
+
+" Automatically update links when enter Diary Index
+command! Diary VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+augroup end
+
+" cover line to checkBox, lick <S-C-c> in simplenote
+function! Cover_line_to_checkBox()
+ :VimwikiChangeSymbolTo -
+ :VimwikiToggleListItem
+endfunction
+
+autocmd FileType vimwiki nnoremap <buffer> <bs> :call Cover_line_to_checkBox()<cr>
+
+" go into zen mode
+autocmd FileType vimwiki nnoremap <silent> <buffer> <leader>z :Goyo<cr>::ScrollViewDisable<cr>
+
+" make leader-l (covertToList) repeatable 
+noremap <silent> <Plug>covertToList :VimwikiChangeSymbolTo -<CR>:call repeat#set("\<Plug>covertToList")<CR>
+autocmd FileType vimwiki nmap <buffer> <leader>l <Plug>covertToList
+
+
+" use a complex code to kind of disbale <bs>
+autocmd FileType vimwiki nnoremap <buffer> <Leader>gbb <Plug>VimwikiGoBackLink
+
+" ----- old code -------
+
+" :VimwikiChangeSymbolTo -<CR>
+ 
+" nnoremap <silent> <Plug>repatableForConvertToList :VimwikiChangeSymbolTo -
+" \:call repeat#set("\<Plug>:VimwikiChangeSymbolTo -")<CR>
+" autocmd FileType vimwiki nnoremap <buffer> gl- <Plug>repatableForConvertToList
+
+
+" ex1
+" noremap <silent> <Plug>EmptyLineAbove mmO<ESC>`m:call repeat#set("\<Plug>EmptyLineAbove")<CR>
+" nmap <leader>O <Plug>EmptyLineAbove
+
+"ex2
+" nnoremap <silent> <Plug>TransposeCharacters xp:call repeat#set("\<Plug>TransposeCharacters")<CR>
+" nmap cp <Plug>TransposeCharacters
+
+
+"================================
+"============= efm =============
+"================================
+
+" below is lua lang, need to move into below lua to enable
+" require "lspconfig".efm.setup {
+"     init_options = {documentFormatting = true},
+"     settings = {
+"         rootMarkers = {".git/"},
+"         languages = {
+"             lua = {
+"                 {formatCommand = "lua-format -i", formatStdin = true}
+"             }
+"         }
+"     }
+" }
+
+lua << EOF
+
+EOF
+
+"==============================================
+"============= telescope config ===============
+"==============================================
+
+" nnoremap <M-w> <cmd>Telescope live_grep<cr>
+" https://github.com/nvim-telescope/telescope.nvim#pickers
+" nnoremap <M-e> <cmd>lua require('telescope.builtin').oldfiles()<cr>
+
+
+" nnoremap <leader><leader>h <cmd>lua require('telescope.builtin').help_tags()<cr>
+" nnoremap <leader><leader>tt <cmd>lua require('telescope.builtin').colorscheme()<cr>
+" nnoremap <leader><leader>mm <cmd>lua require('telescope.builtin').keymaps()<cr>
+
+
+" change to toggle exploer in kyazdani42/nvim-tree.lua
+" nnoremap <M-f> <cmd>Telescope file_browser<cr>
+" nnoremap <M-p> <cmd>lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>
+
+" require'telescope'.extensions.project.project{}
+
+" on project setting, see: https://github.com/nvim-telescope/telescope-project.nvim
+
+" Lists files in your current working directory, respects .gitignore
+nnoremap <M-e> <cmd>lua require('telescope.builtin').find_files()<cr>
+
+
+" Searches for the string under your cursor in your current working directory
+" nnoremap <M-w> <cmd>lua require('telescope.builtin').grep_string()<cr>
+
+
+" Search for a string in your current working directory and get results live as you type (respecting .gitignore)
+nnoremap <M-w> <cmd>lua require('telescope.builtin').live_grep()<cr>
+
+" vim.api.nvim_set_keymap(
+"     'n',
+"     '<M-p>',
+"     ":lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>",
+"     {noremap = true, silent = true}
+" )
+" require'telescope'.load_extension('project')
+
+
+
+" layout_strategy = "horizontal",
+
+
+lua << EOF
+local actions = require('telescope.actions')
+require('telescope').setup{
+  defaults = {
+    layout_strategy = "vertical",
+    layout_config = {
+      horizontal = {
+        preview_width = 120
+        }
+    },
+    mappings = {
+      i = {
+        ["q"] = actions.close,
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+      },
+      n = {
+        ["q"] = actions.close,
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+      },
+    },
+  }
+}
+EOF
+
+
+
+"==============================================
+"============= coc config =====================
+"==============================================
+
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+set hidden " TextEdit might fail if hidden is not set.
+set nobackup " Some servers have issues with backup files, see #649.
+set nowritebackup
+set cmdheight=2 " Give more space for displaying messages.
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=number " Recently vim can merge signcolumn and number column into one
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+" inoremap <silent><expr> <C-j>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<C-j>" :
+      " \ coc#refresh()
+" inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+" https://vi.stackexchange.com/questions/24892/unmap-c-n-c-p-in-completion-menu-to-use-as-previous-next-snippet-placeho
+let g:coc_snippet_next = ''
+let g:coc_snippet_prev = ''
+inoremap <expr> <C-j>
+   \ pumvisible() ? "\<c-n>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
+   \ "\<c-j>"
+inoremap <expr> <C-k>
+   \ pumvisible() ? "\<c-p>" :
+   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
+   \ "\<c-k>"
+
+" inoremap <expr> <C-j>
+   " \ pumvisible() ? "\<c-n>" :
+   " \ "\<c-j>"
+" inoremap <expr> <C-k>
+   " \ pumvisible() ? "\<c-p>" :
+   " \ "\<c-k>"
+
+
+" https://github.com/neoclide/coc-snippets
+" inoremap <silent><expr> <TAB>
+      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
+
+" function! s:check_back_space() abort
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" let g:coc_snippet_next = '<tab>'
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+"
+nmap <silent> <PageDown> <Plug>(coc-diagnostic-next)
+nmap <silent> <PageUp> <Plug>(coc-diagnostic-prev)
+nmap <leader>rn <Plug>(coc-rename)
+nmap qf <Plug>(coc-fix-current)
+
+" GoTo code navigation.
+nmap <silent> <M-d> <Plug>(coc-definition)
+nmap <silent> <M-r> <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> <M-h> :call <SID>show_documentation()<CR>
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+nnoremap <silent> <M-u> :Format<Cr>
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" nnoremap <silent> <M-u> :Prettier<cr>
+
+autocmd FileType markdown let b:coc_suggest_disable = 1
+
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+" nmap <leader>ac  <Plug>(coc-codeaction)
+
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+" Formatting selected code.
+" xmap <M-u>  <Plug>(coc-format-selected)
+" nmap <M-u>  <Plug>(coc-format-selected)
+
+
+
+" Mappings for CoCList
+" Show all diagnostics.
+" nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
+" Manage extensionsj
+" nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
+" Show commands.
+" nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+" nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+" nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+" nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
+" Do default action for previous item.
+" nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+" nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
+
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+"
+" Use treesitter to replace below
+" xmap if <Plug>(coc-funcobj-i)
+" omap if <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap af <Plug>(coc-funcobj-a)
+" xmap ic <Plug>(coc-classobj-i)
+" omap ic <Plug>(coc-classobj-i)
+" xmap ac <Plug>(coc-classobj-a)
+" omap ac <Plug>(coc-classobj-a)
+
+" if has('nvim-0.4.0') || has('patch-8.2.0750')
+  " nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  " inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  " inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  " vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" endif
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" if has('nvim-0.4.0') || has('patch-8.2.0750')
+  " nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  " inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  " inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  " vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" endif
 
 "================================
 "============= POC =============
