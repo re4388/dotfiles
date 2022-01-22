@@ -115,6 +115,17 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # export BASHMARKS_PREFIX="bm"
 
 
+# pyenv setup
+export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv virtualenv-init -)"
+# Optional
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(pyenv init --path)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 
 ######################################################
@@ -170,21 +181,9 @@ function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort
 #     xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" |
 #     xmlstarlet unesc | fmt -80 | iconv -t US
 # }
-
 #  exportf taocl
 
 
-# pyenv setup
-export PATH="$HOME/.pyenv/bin:$PATH"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv virtualenv-init -)"
-# Optional
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="$HOME/.poetry/bin:$PATH"
-eval "$(pyenv init --path)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 
 ######################################################
