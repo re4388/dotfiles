@@ -18,6 +18,8 @@ if exists('g:vscode')
 	" Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
 	" map f <Plug>(easymotion-bd-w)
 else
+	" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+	" Plug 'kyazdani42/nvim-tree.lua'
 	Plug 'vim-airline/vim-airline'
 	Plug 'morhetz/gruvbox'
   Plug 'romainl/vim-cool'
@@ -222,6 +224,11 @@ if exists('g:vscode')
 
 else
 	  " neovim only ============{{{
+		"
+
+
+		" nmap <leader><leader>f :NvimTreeToggle<CR>
+		" nmap <M-f> :NvimTreeToggle<CR>
 
 		nmap s <Plug>kommentary_motion_default
 		xmap s <Plug>kommentary_visual_default
