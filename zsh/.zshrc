@@ -8,17 +8,7 @@ export laptop=asus
 
 ######################################################
 #
-#    sync dotfiles across computers
-#
-######################################################
-
-
-bash ~/projects/dotfiles/notice_change.sh
-
-
-######################################################
-#
-#    env exports
+#    env exports - ENV Need to put at TOP!! --
 #
 ######################################################
 
@@ -31,11 +21,9 @@ export HISTSIZE=10000		# save 10000 items in history
 
 
 # nvim
-export vrc=$HOME/.config/nvim/init.vim
-export vp=$HOME/.config/nvim
+# export vrc=$HOME/.config/nvim/init.vim
+# export vp=$HOME/.config/nvim
 export VIMCONFIG=~/.config/nvim
-
-
 export VISUAL=nvim;
 export EDITOR=nvim;
 
@@ -44,14 +32,12 @@ export EDITOR=nvim;
 export DENO_INSTALL="/home/re4388/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-
 ######################################################
 #
 #    zsh and oh-my-zsh
 #
 ######################################################
 
-source $ZSH/oh-my-zsh.sh
 
 
 ZSH_THEME="ys"
@@ -64,6 +50,19 @@ plugins=(
   zsh-syntax-highlighting
   autojump
 )
+
+######################################################
+#
+#    sync dotfiles across computers
+#
+######################################################
+
+
+bash ~/projects/dotfiles/notice_change.sh
+
+
+
+
 
 
 
@@ -81,6 +80,7 @@ alias ll='ls -a'
 alias ..='cd ..'
 alias treeless='tree -C | less -R'	# -C outputs colour, -R makes less understand color
 alias lg='lazygit'
+alias fd=fdfind
 
 
 ######################################################
@@ -115,16 +115,6 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # export BASHMARKS_PREFIX="bm"
 
 
-# pyenv setup
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv virtualenv-init -)"
-# Optional
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="$HOME/.poetry/bin:$PATH"
-eval "$(pyenv init --path)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 
 ######################################################
@@ -184,4 +174,24 @@ function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort
 #  exportf taocl
 
 
+# pyenv setup
+export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv virtualenv-init -)"
+# Optional
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(pyenv init --path)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+######################################################
+#
+#    source  == need at the bottom ==
+#
+######################################################
+
+source $ZSH/oh-my-zsh.sh
 
