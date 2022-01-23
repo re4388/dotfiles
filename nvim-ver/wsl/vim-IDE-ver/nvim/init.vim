@@ -1,4 +1,5 @@
 
+
 let g:mapleader = "\<Space>"
 
 
@@ -19,16 +20,16 @@ call plug#begin('~/.config/plugged')
 "----------------------------------------------------------
 "----------- COC ------------------------------------------
 "----------------------------------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" coc extensions
-let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
-      \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
-      \'coc-yank', 'coc-prettier', 'coc-marketplace', 'coc-jedi',
-      \'coc-sumneko-lua', 'coc-denoland']
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'leafgarland/typescript-vim'
-Plug 'kevinoid/vim-jsonc'
+" " coc extensions
+" let g:coc_global_extensions = ['coc-eslint', 'coc-snippets', 'coc-tsserver',
+"       \ 'coc-emmet', 'coc-css', 'coc-html', 'coc-json',
+"       \'coc-yank', 'coc-prettier', 'coc-marketplace', 'coc-jedi',
+"       \'coc-sumneko-lua', 'coc-denoland', 'coc-clangd']
 
+" Plug 'leafgarland/typescript-vim'
+" Plug 'kevinoid/vim-jsonc'
 "----------------------------------------------------------
 "----------- appearance ------------------------------------------
 "----------------------------------------------------------
@@ -76,6 +77,7 @@ Plug 'dstein64/nvim-scrollview'
 "----------- Buffer -------------
 
 " Plug 'romgrk/barbar.nvim'
+Plug 'tpope/vim-fugitive'
 
 
 
@@ -214,6 +216,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "----------- Lsp -----------------
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+
 " Plug 'glepnir/lspsaga.nvim'
 " Plug 'folke/lua-dev.nvim'
 " Plug 'onsails/lspkind-nvim'
@@ -256,7 +261,7 @@ Plug 'radenling/vim-dispatch-neovim'
 
 
 " show key
-" Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key'
 
 
 " Plug 'abecodes/tabout.nvim'
@@ -327,7 +332,7 @@ set updatetime=300     " Faster completion
 
 " not sure below config work, follow vim-better-default"
 set number
-set relativenumber
+" set relativenumber
 " Turn on the Wild menu
 set wildmenu " turn on tab completion menu
 "TODO: what is this?
@@ -408,11 +413,49 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:
 "######################################################
 
 
+""""""""""""""""""""""""""""""
+"
+" which key
+"
+""""""""""""""""""""""""""""""
+
+
+" setting config
+
+" use space as which key trigger key
+" call which_key#register('<Space>', "g:which_key_map")
+" nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+" vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
+" use m-1 as which key trigger key, also make it act like space
+nnoremap <silent> <m-1>      :<c-u>WhichKey '<Space>'<CR>
+
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+
+
+" one level example
+nnoremap <silent> <leader>l :set relativenumber!<CR>
+let g:which_key_map.l = { 'name' : 'toogle line numer' }
+let g:which_key_map.l = 'toggle line numer'
+
+
+
+" two level example
+" Create menus based on existing mappings
+" let g:which_key_map.s = { 'name' : '+setting' }
+" nnoremap <silent> <leader>sl :set relativenumber!<CR>
+" let g:which_key_map.s.l = 'toggle line numer'
+
+" nmap <m-1> daw<esc>
+
+
 
 """"""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
+"
 " File mgmt
-""""""""""""""""""""""""""""""
+"
 """"""""""""""""""""""""""""""
 
 " (r)eload config
@@ -1062,7 +1105,6 @@ let g:matchup_matchparen_insert_timeout = 0
 "             startify                 =
 "=======================================
 
-
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']            },
       \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
@@ -1083,19 +1125,6 @@ let g:startify_custom_header = [
       \ '#     # #    #   ##   ######    #        ####  #    #',
       \ ]
 
-" let s:footer = ['ddd'|cowsay]
-" let g:startify_custom_footer = s:footer
-" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
-" let g:startify_custom_footer =  startify#pad(split(system('~/projects/advice/art-of-cli.sh'), '\n'))
-
-" function! s:center(lines) abort
-  " let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
-  " let centered_lines = map(copy(a:lines),
-        " \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
-  " return centered_lines
-" endfunction
-
-
 
 "================================
 "============= autosave plugin ==
@@ -1114,7 +1143,7 @@ augroup END
 "================================
 "============= treesitter =======
 "================================
-" removed, no use now
+" removed, no use its specific config
 
 
 "================================
@@ -1141,7 +1170,7 @@ augroup END
 
 
 "================================
-"============= vim wiki =========
+"             vim wiki 
 "================================
 
 " diable table mapping to allow I use tab as popup menu in hrsh7th-nvim-compe
@@ -1179,27 +1208,11 @@ autocmd FileType vimwiki nmap <buffer> <leader>l <Plug>covertToList
 " use a complex code to kind of disbale <bs>
 autocmd FileType vimwiki nnoremap <buffer> <Leader>gbb <Plug>VimwikiGoBackLink
 
-" ----- old code -------
-
-" :VimwikiChangeSymbolTo -<CR>
- 
-" nnoremap <silent> <Plug>repatableForConvertToList :VimwikiChangeSymbolTo -
-" \:call repeat#set("\<Plug>:VimwikiChangeSymbolTo -")<CR>
-" autocmd FileType vimwiki nnoremap <buffer> gl- <Plug>repatableForConvertToList
-
-
-" ex1
-" noremap <silent> <Plug>EmptyLineAbove mmO<ESC>`m:call repeat#set("\<Plug>EmptyLineAbove")<CR>
-" nmap <leader>O <Plug>EmptyLineAbove
-
-"ex2
-" nnoremap <silent> <Plug>TransposeCharacters xp:call repeat#set("\<Plug>TransposeCharacters")<CR>
-" nmap cp <Plug>TransposeCharacters
-
 
 "================================
-"============= lsp =============
+"               lsp 
 "================================
+
 
 lua << EOF
  -- require'lspconfig'.pyright.setup{}
@@ -1208,6 +1221,7 @@ require'lspconfig'.bashls.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.vimls.setup{}
 require'lspconfig'.tsserver.setup{}
+--  require'lspconfig'.angularls.setup{}
 EOF
 
 
@@ -1226,6 +1240,7 @@ local servers = {
   "clangd",
   "vimls",
   "bashls",
+  -- "angularls",
   -- "pyright",
 }
 
@@ -1236,10 +1251,11 @@ for _, name in pairs(servers) do
     server:install()
   end
 end
-
-
-
 EOF
+
+
+
+
 
 "==============================================
 "=              nvim-tree, exploer
@@ -1328,13 +1344,14 @@ highlight NvimTreeFolderIcon guibg=blue
 
 lua << EOF
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+-- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
-  open_on_setup       = false,
+  open_on_setup       = true,
   ignore_ft_on_setup  = {},
   auto_close          = false,
-  open_on_tab         = false,
+  open_on_tab         = true,
   hijack_cursor       = false,
   update_cwd          = false,
   update_to_buf_dir   = {
@@ -1404,23 +1421,6 @@ EOF
 "============= telescope config ===============
 "==============================================
 
-" nnoremap <M-w> <cmd>Telescope live_grep<cr>
-" https://github.com/nvim-telescope/telescope.nvim#pickers
-" nnoremap <M-e> <cmd>lua require('telescope.builtin').oldfiles()<cr>
-
-
-" nnoremap <leader><leader>h <cmd>lua require('telescope.builtin').help_tags()<cr>
-" nnoremap <leader><leader>tt <cmd>lua require('telescope.builtin').colorscheme()<cr>
-" nnoremap <leader><leader>mm <cmd>lua require('telescope.builtin').keymaps()<cr>
-
-
-" change to toggle exploer in kyazdani42/nvim-tree.lua
-" nnoremap <M-f> <cmd>Telescope file_browser<cr>
-" nnoremap <M-p> <cmd>lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>
-
-" require'telescope'.extensions.project.project{}
-
-" on project setting, see: https://github.com/nvim-telescope/telescope-project.nvim
 
 " Lists files in your current working directory, respects .gitignore
 nnoremap <M-e> <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -1436,13 +1436,8 @@ nnoremap <M-w> <cmd>lua require('telescope.builtin').live_grep()<cr>
 
 " use native LSP to display the reference
 nnoremap <M-r> <cmd>lua require('telescope.builtin').lsp_references()<cr>
-nnoremap <M-p> <cmd>lua require('telescope.builtin').treesitter()<cr>
-
-" builtin.treesitter
-
-
-" layout_strategy = "horizontal",
-
+nnoremap <M-d> <cmd>lua require('telescope.builtin').lsp_definitions()<cr>
+" nnoremap <M-p> <cmd>lua require('telescope.builtin').treesitter()<cr>
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -1450,10 +1445,21 @@ require('telescope').setup{
   defaults = {
     layout_strategy = "vertical",
     layout_config = {
-      horizontal = {
-        preview_width = 120
-        }
+      vertical = { width = 0.8},
+      center = { width = 0.99 },
+      horizontal = { width = 0.99 },
+      flex = { width = 0.99 },
+      cursor = { width = 0.99 },
+      bottom_pane = { width = 0.99 },
+      -- other layout configuration here
+      -- other layout configuration here
     },
+  },
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+    }
+  },
     mappings = {
       i = {
         ["q"] = actions.close,
@@ -1467,239 +1473,11 @@ require('telescope').setup{
       },
     },
   }
-}
 EOF
 
-
-
 "==============================================
-"============= coc config =====================
+"                  coc config 
 "==============================================
 
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-set hidden " TextEdit might fail if hidden is not set.
-set nobackup " Some servers have issues with backup files, see #649.
-set nowritebackup
-set cmdheight=2 " Give more space for displaying messages.
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-set shortmess+=c " Don't pass messages to |ins-completion-menu|.
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=number " Recently vim can merge signcolumn and number column into one
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-" inoremap <silent><expr> <C-j>
-      " \ pumvisible() ? "\<C-n>" :
-      " \ <SID>check_back_space() ? "\<C-j>" :
-      " \ coc#refresh()
-" inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" inoremap <silent><expr> <TAB>
-      " \ pumvisible() ? "\<C-n>" :
-      " \ <SID>check_back_space() ? "\<TAB>" :
-      " \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 
-" https://vi.stackexchange.com/questions/24892/unmap-c-n-c-p-in-completion-menu-to-use-as-previous-next-snippet-placeho
-let g:coc_snippet_next = ''
-let g:coc_snippet_prev = ''
-inoremap <expr> <C-j>
-   \ pumvisible() ? "\<c-n>" :
-   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
-   \ "\<c-j>"
-inoremap <expr> <C-k>
-   \ pumvisible() ? "\<c-p>" :
-   \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
-   \ "\<c-k>"
-
-" inoremap <expr> <C-j>
-   " \ pumvisible() ? "\<c-n>" :
-   " \ "\<c-j>"
-" inoremap <expr> <C-k>
-   " \ pumvisible() ? "\<c-p>" :
-   " \ "\<c-k>"
-
-
-" https://github.com/neoclide/coc-snippets
-" inoremap <silent><expr> <TAB>
-      " \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      " \ <SID>check_back_space() ? "\<TAB>" :
-      " \ coc#refresh()
-
-" function! s:check_back_space() abort
-  " let col = col('.') - 1
-  " return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-
-" let g:coc_snippet_next = '<tab>'
-
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-"
-nmap <silent> <PageDown> <Plug>(coc-diagnostic-next)
-nmap <silent> <PageUp> <Plug>(coc-diagnostic-prev)
-nmap <leader>rn <Plug>(coc-rename)
-nmap qf <Plug>(coc-fix-current)
-
-" GoTo code navigation.
-nmap <silent> <M-d> <Plug>(coc-definition)
-" nmap <silent> <M-r> <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> <M-h> :call <SID>show_documentation()<CR>
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-nnoremap <silent> <M-u> :Format<Cr>
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" nnoremap <silent> <M-u> :Prettier<cr>
-
-autocmd FileType markdown let b:coc_suggest_disable = 1
-
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-" nmap <silent> <C-s> <Plug>(coc-range-select)
-" xmap <silent> <C-s> <Plug>(coc-range-select)
-
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-" nmap <leader>ac  <Plug>(coc-codeaction)
-
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-" Formatting selected code.
-" xmap <M-u>  <Plug>(coc-format-selected)
-" nmap <M-u>  <Plug>(coc-format-selected)
-
-
-
-" Mappings for CoCList
-" Show all diagnostics.
-" nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
-" Manage extensionsj
-" nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
-" Show commands.
-" nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-" nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-" nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-" nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
-" Do default action for previous item.
-" nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-" nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
-
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-"
-" Use treesitter to replace below
-" xmap if <Plug>(coc-funcobj-i)
-" omap if <Plug>(coc-funcobj-i)
-" xmap af <Plug>(coc-funcobj-a)
-" omap af <Plug>(coc-funcobj-a)
-" xmap ic <Plug>(coc-classobj-i)
-" omap ic <Plug>(coc-classobj-i)
-" xmap ac <Plug>(coc-classobj-a)
-" omap ac <Plug>(coc-classobj-a)
-
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-  " nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  " inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  " inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  " vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-  " nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  " inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  " inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  " vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
-
-"================================
-"============= POC =============
-"================================
-
-" let b:match_ignorecase=0
-"     let b:match_words =
-"      \  '<:>,' .
-"      \  '<\@<=!--:-->,'.
-"      \  '<\@<=?\k\+:?>,'.
-"      \  '<\@<=\([^ \t>/]\+\)\%(\s\+[^>]*\%([^/]>\|$\)\|>\|$\):<\@<=/\1>,'.
-"      \  '<\@<=\%([^ \t>/]\+\)\%(\s\+[^/>]*\|$\):/>'.
-"      \  '\<if\>::\<else\>'
