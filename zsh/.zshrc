@@ -63,10 +63,6 @@ bash ~/projects/dotfiles/notice_change.sh
 
 
 
-
-
-
-
 ######################################################
 #
 #    alias

@@ -1,15 +1,23 @@
 " echom "Load WIN10 NVIM"
 " echo "Load WIN10 NVIM"
 
-" something better put at beginning ========{{{
+
+"######################################################
+"#
+"#    Something better put at beginning ========
+"#
+"######################################################
+
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-"}}}
 
-" Plugins ============={{{
-" Plugins shall put at begin!
+"######################################################
+"#
+"#    plugin shall put at begin!
+"#
+"######################################################
 
 call plug#begin(stdpath('config') . '/plugged')
 
@@ -126,6 +134,13 @@ call plug#end() "}}}
 "     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
 " endfunction"}}}
 
+
+"######################################################
+"#
+"#    VSCode hotkey
+"#
+"######################################################
+
 if exists('g:vscode')
 		
 		" vscode only ============={{{
@@ -223,7 +238,12 @@ if exists('g:vscode')
 "}}}
 
 else
-	  " neovim only ============{{{
+
+		"######################################################
+		"#
+		"#    nvim only hotkey
+		"#
+		"######################################################
 		"
 
 
@@ -325,19 +345,24 @@ else
 
 endif
 
-" Share General Setting ========={{{
+"######################################################
+"#
+"#    Below are VSCode and Nvim share config
+"#
+"######################################################
+
 
 set ttimeout          " for key codes
 set ttimeoutlen=10    " unnoticeable small value, set higher for slow machine, see :h ttimeout
 set clipboard=unnamed
 "}}}
 
-" Share key mapping ============={{{
 
+" ========================
 " ========================
 " fast edit
 " ========================
-
+" ========================
 
 "use enter to fast indent current line
 "multiline indent still use V-line mode
@@ -416,12 +441,11 @@ nnoremap cD D
 vnoremap cd d
 
 
-" apple   `banana`   "test2'est'
-" =========================
-" Super Fast Area, Q prefix
-" left non-use Q prefix (for macro)
-" c, f, 
-" ========================
+" ==================================
+" ==================================
+" Q-prefix /  unconventional hotkey
+" ==================================
+" ==================================
 
 " yank inner word
 nnoremap qq yiw 
@@ -521,9 +545,13 @@ nmap ,P "0P
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
+
+
 " ========================
-" easier to move
 " ========================
+" faster move
+" =======================
+" =======================
 
 
 " Treat long lines as break lines (useful when moving around in them)
@@ -601,7 +629,6 @@ nnoremap <leader>k :m .-2<CR>==
 vnoremap <leader>j :m '>+1<CR>gv=gv
 vnoremap <leader>k :m '<-2<CR>gv=gv
 
-
 " use vscode native hotkey
 " move current line up and down
 " nnoremap qj :m .+1<CR>==
@@ -611,10 +638,13 @@ vnoremap <leader>k :m '<-2<CR>gv=gv
 
 
 
-"}}}
 
+" ========================
+" ========================
+" plugin setting
+" =======================
+" =======================
 
-" nvim plugin setting ============={{{
 
 " AndrewRadev/switch.vim
 " test
@@ -642,17 +672,26 @@ let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_timeout = 0
 let g:matchup_matchparen_insert_timeout = 0"}}}
 
-" autocommand setting ============={{{
+
+" ========================
+" ========================
+" autocommand
+" =======================
+" =======================
 
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END
 
-"}}}
 
-" useful function ============={{{
-"
+" ========================
+" ========================
+" useful function
+" =======================
+" =======================
+
+
 " Redirect ex-mode output to empty buffer in new tab
 function! TabMessage(cmd)
   redir => message
@@ -668,6 +707,8 @@ function! TabMessage(cmd)
   endif
 endfunction
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+
 
 " example, just fill in namp or namp <leader>
 " :call TabMessage("nmap") 
