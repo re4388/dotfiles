@@ -759,7 +759,7 @@
     "command": "-extension.vim_shift+tab",
     "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
   },
-  // below are for neovim
+  // below two setting are for neovim to make jk/jj Custom escape keys workh
   {
     "command": "vscode-neovim.compositeEscape1",
     "key": "j",
@@ -1397,10 +1397,6 @@
   "when": "inReferenceSearchEditor || referenceSearchVisible"
 },
 {
-  "key": "ctrl+d",
-  "command": "editor.action.revealDefinitionAside"
-},
-{
   "key": "f4",
   "command": "-goToNextReference",
   "when": "inReferenceSearchEditor || referenceSearchVisible"
@@ -1448,5 +1444,9 @@
   "key": "alt+y",
   "command": "terminal.focus",
   "when": "!terminalFocus"
+},
+{
+  "key": "ctrl+d",
+  "command": "editor.action.revealDefinitionAside"
 }
 ]
