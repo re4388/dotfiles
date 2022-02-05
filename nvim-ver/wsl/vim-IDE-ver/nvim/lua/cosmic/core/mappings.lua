@@ -30,11 +30,11 @@ end
 -- map('n', '<leader>td', ':tabclose<cr>')
 
 -- resize with arrows
--- map('n', '<C-Up>', ':resize -2<CR>')
--- map('n', '<C-Down>', ':resize +2<CR>')
+map('n', '<C-Up>', ':resize -2<CR>')
+map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<s-h>', ':vertical resize -2<CR>')
--- map('n', '<c-left>', ':vertical resize -2<CR>')
 map('n', '<s-l>', ':vertical resize +2<CR>')
+-- map('n', '<c-left>', ':vertical resize -2<CR>')
 -- map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 
@@ -231,8 +231,23 @@ vim.cmd([[
     let g:matchup_matchparen_insert_timeout = 0
     nnoremap qn %
     xnoremap qn %
-
 ]])
+
+-- terminal commmand
+vim.cmd([[
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+]])
+
+
+
+
+
+
 
 
 
