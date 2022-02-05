@@ -1021,5 +1021,6 @@
   "editor.cursorBlinking": "solid",
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
-  "window.zoomLevel": -1
+  "window.zoomLevel": -1,
+  "workbench.sideBar.location": "right"
 }
