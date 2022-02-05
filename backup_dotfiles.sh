@@ -36,14 +36,14 @@ function bk_win10_vim(){
 }
 
 
-function bkQuteBrowser(){
-    sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/config.py" "${local_dotfiles_path}/quteBrowser"
-    sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/quickmarks" "${local_dotfiles_path}/quteBrowser"
-    # note: when use cp -rf, it copy over the "js" folder into taget path, so the target path shall be at the parent path 
-    sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/js" "${local_dotfiles_path}/quteBrowser"
-    sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/greasemonkey" "${local_dotfiles_path}/quteBrowser"
-    sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/userscripts" "${local_dotfiles_path}/quteBrowser"
-}
+# function bkQuteBrowser(){
+#     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/config.py" "${local_dotfiles_path}/quteBrowser"
+#     sudo cp "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/quickmarks" "${local_dotfiles_path}/quteBrowser"
+#     # note: when use cp -rf, it copy over the "js" folder into taget path, so the target path shall be at the parent path
+#     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/js" "${local_dotfiles_path}/quteBrowser"
+#     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/greasemonkey" "${local_dotfiles_path}/quteBrowser"
+#     sudo cp -rf "/mnt/c/Users/${1}/AppData/Roaming/qutebrowser/config/userscripts" "${local_dotfiles_path}/quteBrowser"
+# }
 
 function bk_ahk(){
     sudo cp "/mnt/c/ahk/ben.ahk" "${local_dotfiles_path}/autohotkey/"
@@ -85,7 +85,7 @@ function main(){
     elif [ "${laptop}" = "asus" ];then
       echo Begin to backup...
       bk_win10_vim $asus_user_name
-      bkQuteBrowser $asus_user_name
+      # bkQuteBrowser $asus_user_name
       bk_win10_git_bash $asus_user_name
       bk_wsl_vim
       bk_ahk
@@ -100,7 +100,7 @@ function main(){
     elif [ "${laptop}" = "wits" ];then
       echo Begin to backup...
       bk_win10_vim $wits_user_name
-      bkQuteBrowser $wits_user_name
+      # bkQuteBrowser $wits_user_name
       bk_win10_git_bash $wits_user_name
       bk_wsl_vim
       bk_ahk
