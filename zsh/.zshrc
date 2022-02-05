@@ -189,4 +189,4 @@ function find_big_files() { find "${1-.}" -size +10000k -exec du -h {} \; | sort
 ######################################################
 
 source $ZSH/oh-my-zsh.sh
-
+source $HOME/.cargo/env

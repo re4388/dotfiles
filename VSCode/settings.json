@@ -463,7 +463,6 @@
   "editor.foldingStrategy": "indentation",
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "javascript.format.enable": false,
-  "workbench.sideBar.location": "right",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
   "javascript.validate.enable": false,
   "files.watcherExclude": {
@@ -601,7 +600,8 @@
   "files.trimTrailingWhitespace": true,
   "trailing-spaces.trimOnSave": true,
   "remote.SSH.remotePlatform": {
-    "10.0.4.52": "linux"
+    "10.0.4.52": "linux",
+    "192.168.56.1": "linux"
   },
   "files.associations": {
     "*.py": "python",
@@ -1012,10 +1012,14 @@
     "tab.unfocusedActiveBorder": "#000000",
     "tab.activeBackground": "#42557b",
     "tab.activeForeground": "#dcdcdc",
-    "editorCursor.foreground": "#00ff00",
+    // "editorCursor.foreground": "#00ff00",
     "terminalCursor.fojeground": "#00ff00",
     "editorCursor.background": "#ffffffc9",
     "editor.selectionHighlightBorder": "#FFFA",
     "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
-  }
+  },
+  "editor.cursorBlinking": "solid",
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "window.zoomLevel": -1
 }
