@@ -170,14 +170,13 @@ if exists('g:vscode')
 		" nnoremap <leader>r <Cmd>call VSCodeNotify('npm-script.run')<CR>
 
     xmap s  <Plug>VSCodeCommentary
-    nmap s  <Plug>VSCodeCommentary
-    omap s  <Plug>VSCodeCommentary
+    nmap s  <Plug>VSCodeCommentary omap s  <Plug>VSCodeCommentary
     nmap ss <Plug>VSCodeCommentaryLine
 
     nmap L <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     nmap H <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
-    nmap K <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
-    nmap J <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
+    " nmap K <Cmd>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
+    " nmap J <Cmd>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
 
     " nmap H <Cmd>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
     " nmap L <Cmd>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
@@ -428,12 +427,13 @@ nnoremap <c-p> <nop>
 " break into next paragraph
 nnoremap M i<Cr><Cr><Esc>J
 
-
-" Do NOT yank with x and d
+" do to backhole for below action
 nnoremap x "_x
 nnoremap d "_d
 nnoremap D "_D
+nnoremap C "_C
 vnoremap d "_d
+
 
 " if you want to cut, add c as prefix
 nnoremap cd d
@@ -517,7 +517,7 @@ nnoremap <leader>p mmI- <esc>`m
 " vnoremap L g$
 
 " combine and break (d => down)
-nnoremap <leader>a J
+nnoremap <leader>j J
 nnoremap <leader>b :<C-u>call BreakHere()<CR>
 
 function! BreakHere()
@@ -624,10 +624,10 @@ vnoremap qk 20gk
 " can NOT use viscode hotkey if I want to 
 " move visual select line(s)
 " move current line up and down
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
-vnoremap <leader>j :m '>+1<CR>gv=gv
-vnoremap <leader>k :m '<-2<CR>gv=gv
+" nnoremap <leader>j :m .+1<CR>==
+" nnoremap <leader>k :m .-2<CR>==
+" vnoremap <leader>j :m '>+1<CR>gv=gv
+" vnoremap <leader>k :m '<-2<CR>gv=gv
 
 " use vscode native hotkey
 " move current line up and down
@@ -637,6 +637,10 @@ vnoremap <leader>k :m '<-2<CR>gv=gv
 " vnoremap qk :m '<-2<CR>gv=gv
 
 
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 
 " ========================
