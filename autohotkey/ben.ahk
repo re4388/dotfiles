@@ -10,6 +10,7 @@
 
 ; Bioclinica
 ::ahkaaa::npm run serve:src:open:dev
+::ahkuuu::http://localhost:4200/?system-collection-id-pairs=bp-99999VF-tp-1,bp-99999VF-tp-6
 
 ; exploit
 ::ahkgcc::gcc -m32 -fno-stack-protector -no-pie -z execstack a1.c -o a1

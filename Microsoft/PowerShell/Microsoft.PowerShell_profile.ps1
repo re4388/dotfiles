@@ -29,19 +29,21 @@ Set-Alias open-profile Edit-ProfileFile
 function change_repo_acc {
     [CmdletBinding()]
 
-    $show = [ChoiceDescription]::new('&show', 'show')
-    $Bitbucket = [ChoiceDescription]::new('&Bitbucket', 'Bitbucket')
-    $GitHub = [ChoiceDescription]::new('&GitHub', 'GitHub')
-    $quit = [ChoiceDescription]::new('&quit', 'Quit')
+    $op_1 = [ChoiceDescription]::new('&show', 'show')
+    $op_2 = [ChoiceDescription]::new('&Bitbucket', 'Bitbucket')
+    $op_3 = [ChoiceDescription]::new('&GitHub', 'GitHub')
+    $op_4 = [ChoiceDescription]::new('&ERT_GitLab', 'GitLab')
+    $op_5 = [ChoiceDescription]::new('&quit', 'Quit')
 
-    $options = [ChoiceDescription[]]($show, $Bitbucket, $GitHub, $quit )
+    $options = [ChoiceDescription[]]($op_1, $op_2, $op_3, $op_4, $op_5 )
     $result = $host.ui.PromptForChoice($Title, $Question, $options, 0)
 
     switch ($result) {
         0 { show_current_version_control_account }
         1 { switch_to_Bioclical_GitBucket }
         2 { switch_to_GitHub }
-        3 { "Quit" }
+        3 { switch_to_GitLab }
+        4 { "Quit" }
     }
 }
 
@@ -58,6 +60,12 @@ function switch_to_Bioclical_GitBucket {
 function switch_to_GitHub {
     git config --global user.name "re4388"
     git config --global user.email "re4388@gmail.com"
+    show_current_version_control_account
+}
+
+function switch_to_GitLab {
+    git config --global user.name "ben.hu"
+    git config --global user.email "ben.hu@ert.com"
     show_current_version_control_account
 }
 
