@@ -1,7 +1,67 @@
 {
+  "macros.list": {
+    "commentDown": [
+      "editor.action.copyLinesDownAction",
+      "cursorUp",
+      "editor.action.addCommentLine",
+      "cursorDown"
+    ]
+  },
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+  "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace, 細明體",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
+  },
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.commandsToSkipShell": [
+    "whichkey.show"
+  ],
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#FFFF00",
+    "tab.unfocusedActiveBorder": "#000000",
+    "tab.activeBackground": "#42557b",
+    "tab.activeForeground": "#dcdcdc",
+    "editorCursor.foreground": "#00ff00",
+    "terminalCursor.fojeground": "#00ff00",
+    "editorCursor.background": "#ffffffc9",
+    "editor.selectionHighlightBorder": "#FFFA",
+    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
+  },
+  "workbench.sideBar.location": "right",
+  "editor.fontFamily": "Hack Nerd Font , 'Courier New', monospace, 細明體",
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "redhat.telemetry.enabled": false,
+  "workbench.iconTheme": "vscode-great-icons",
   "whichkey.sortOrder": "alphabetically",
   "whichkey.delay": 0,
   "whichkey.bindings": [
+    {
+      "key": "l",
+      "name": "go to line",
+      "type": "command",
+      "command": "workbench.action.gotoLine"
+    },
     {
       "key": "r",
       "name": "reload vscode window",
@@ -34,59 +94,72 @@
       //   }
       // ]
     },
+    // {
+    //   "key": "j",
+    //   "name": "Joplin",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "t",
+    //       "name": "toogle between ASUS/Swift",
+    //       "type": "command",
+    //       "command": "settingsOnFire.toggleSettings"
+    //     },
+    //     {
+    //       "key": "a",
+    //       "name": "add/create Note",
+    //       "type": "command",
+    //       "command": "joplinNote.createNote"
+    //     },
+    //     {
+    //       "key": "f",
+    //       "name": "create folder",
+    //       "type": "command",
+    //       "command": "joplinNote.createFolder"
+    //     },
+    //     {
+    //       "key": "r",
+    //       "name": "refresh",
+    //       "type": "command",
+    //       "command": "joplinNote.refreshNoteList"
+    //     },
+    //     {
+    //       "key": "p",
+    //       "name": "paste note",
+    //       "type": "command",
+    //       "command": "joplinNote.paste"
+    //     },
+    //     {
+    //       "key": "x",
+    //       "name": "cut note",
+    //       "type": "command",
+    //       "command": "joplinNote.cut"
+    //     },
+    //     {
+    //       "key": "s",
+    //       "name": "search",
+    //       "type": "command",
+    //       "command": "joplinNote.search"
+    //     },
+    //     {
+    //       "key": "d",
+    //       "name": "delete note",
+    //       "type": "command",
+    //       "command": "joplinNote.remove"
+    //     }
+    //   ]
+    // },
     {
-      "key": "j",
-      "name": "Joplin",
+      "key": "w",
+      "name": "window...",
       "type": "bindings",
       "bindings": [
         {
-          "key": "t",
-          "name": "toogle between ASUS/Swift",
-          "type": "command",
-          "command": "settingsOnFire.toggleSettings"
-        },
-        {
-          "key": "a",
-          "name": "add/create Note",
-          "type": "command",
-          "command": "joplinNote.createNote"
-        },
-        {
-          "key": "f",
-          "name": "create folder",
-          "type": "command",
-          "command": "joplinNote.createFolder"
-        },
-        {
-          "key": "r",
-          "name": "refresh",
-          "type": "command",
-          "command": "joplinNote.refreshNoteList"
-        },
-        {
-          "key": "p",
-          "name": "paste note",
-          "type": "command",
-          "command": "joplinNote.paste"
-        },
-        {
-          "key": "x",
-          "name": "cut note",
-          "type": "command",
-          "command": "joplinNote.cut"
-        },
-        {
           "key": "s",
-          "name": "search",
+          "name": "window split",
           "type": "command",
-          "command": "joplinNote.search"
+          "command": "workbench.action.splitEditor"
         },
-        {
-          "key": "d",
-          "name": "delete note",
-          "type": "command",
-          "command": "joplinNote.remove"
-        }
       ]
     },
     {
@@ -135,6 +208,13 @@
       "command": "workbench.action.tasks.runTask"
     },
     {
+      "key": "g",
+      "name": "compile and run C/C++",
+      "type": "command",
+      "command": "workbench.action.tasks.runTask",
+      "args": "Build C and run"
+    },
+    {
       "key": "?",
       "name": "View All References",
       "type": "command",
@@ -156,17 +236,30 @@
       //   "openToSide": true
       // }
     },
-    {
-      "key": "l",
-      "name": "toggle aboulate line number",
-      "type": "command",
-      "command": "extension.toggle"
-    },
+    // {
+    //   "key": "l",
+    //   "name": "toggle aboulate line number",
+    //   "type": "command",
+    //   "command": "extension.toggle"
+    // },
     {
       "key": "k",
       "name": "keyboard(JSON)",
       "type": "command",
       "command": "workbench.action.openGlobalKeybindingsFile"
+    },
+    {
+      "key": "t",
+      "name": "toogle...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "block comment",
+          "type": "command",
+          "command": "editor.action.blockComment"
+        }
+      ],
     },
     {
       "key": "b",
@@ -175,27 +268,27 @@
       // "command": "workbench.action.toggleSidebarVisibility"
       "command": "macros.toggleSideBarAndActivityBar"
     },
-    {
-      "key": "t",
-      "name": "Terminal Panel Moving",
-      "type": "bindings",
-      "bindings": [
-        {
-          "key": "b",
-          "name": "move Bottom",
-          "type": "command",
-          "command": "macros.moveTerminalBottom"
-          // "when":"terminalFocus"
-        },
-        {
-          "key": "r",
-          "name": "move Right",
-          "type": "command",
-          "command": "macros.moveTerminalRight"
-          // "when":"terminalFocus"
-        }
-      ]
-    },
+    // {
+    //   "key": "t",
+    //   "name": "Terminal Panel Moving",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "b",
+    //       "name": "move Bottom",
+    //       "type": "command",
+    //       "command": "macros.moveTerminalBottom"
+    //       // "when":"terminalFocus"
+    //     },
+    //     {
+    //       "key": "r",
+    //       "name": "move Right",
+    //       "type": "command",
+    //       "command": "macros.moveTerminalRight"
+    //       // "when":"terminalFocus"
+    //     }
+    //   ]
+    // },
     {
       "key": "c",
       "name": "Close",
@@ -307,720 +400,24 @@
         }
       ]
     },
-    // {
-    //   "key": "l",
-    //   "name": "LSP...",
-    //   "type": "bindings",
-    //   "bindings": [
-    //     {
-    //       "key": ";",
-    //       "name": "Refactor",
-    //       "type": "command",
-    //       "command": "editor.action.refactor",
-    //       "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-    //     },
-    //     {
-    //       "key": "a",
-    //       "name": "Auto Fix",
-    //       "type": "command",
-    //       "command": "editor.action.autoFix",
-    //       "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
-    //     },
-    //     {
-    //       "key": "d",
-    //       "name": "Definition",
-    //       "type": "command",
-    //       "command": "editor.action.revealDefinition",
-    //       "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-    //     },
-    //     {
-    //       "key": "D",
-    //       "name": "Declaration",
-    //       "type": "command",
-    //       "command": "editor.action.revealDeclaration"
-    //     },
-    //     {
-    //       "key": "e",
-    //       "name": "Errors",
-    //       "type": "command",
-    //       "command": "workbench.actions.view.problems"
-    //     },
-    //     {
-    //       "key": "f",
-    //       "name": "Format",
-    //       "type": "command",
-    //       "command": "editor.action.formatDocument",
-    //       "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    //     },
-    //     {
-    //       "key": "i",
-    //       "name": "Implementation",
-    //       "type": "command",
-    //       "command": "editor.action.goToImplementation",
-    //       "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
-    //     },
-    //     {
-    //       "key": "l",
-    //       "name": "Code Lens",
-    //       "type": "command",
-    //       "command": "codelens.showLensesInCurrentLine"
-    //     },
-    //     {
-    //       "key": "n",
-    //       "name": "Next Problem",
-    //       "type": "command",
-    //       "command": "editor.action.marker.next",
-    //       "when": "editorFocus"
-    //     },
-    //     {
-    //       "key": "N",
-    //       "name": "Next Problem (Proj)",
-    //       "type": "command",
-    //       "command": "editor.action.marker.nextInFiles",
-    //       "when": "editorFocus"
-    //     },
-    //     {
-    //       "key": "o",
-    //       "name": "Outline",
-    //       "type": "command",
-    //       "command": "outline.focus"
-    //     },
-    //     {
-    //       "key": "p",
-    //       "name": "Prev Problem",
-    //       "type": "command",
-    //       "command": "editor.action.marker.prevInFiles",
-    //       "when": "editorFocus"
-    //     },
-    //     {
-    //       "key": "P",
-    //       "name": "Prev Problem (Proj)",
-    //       "type": "command",
-    //       "command": "editor.action.marker.prev",
-    //       "when": "editorFocus"
-    //     },
-    //     {
-    //       "key": "q",
-    //       "name": "Quick Fix",
-    //       "type": "command",
-    //       "command": "editor.action.quickFix",
-    //       "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-    //     },
-    //     {
-    //       "key": "r",
-    //       "name": "References",
-    //       "type": "command",
-    //       "command": "editor.action.goToReferences",
-    //       "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-    //     },
-    //     {
-    //       "key": "R",
-    //       "name": "Rename",
-    //       "type": "command",
-    //       "command": "editor.action.rename",
-    //       "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-    //     },
-    //     {
-    //       "key": "v",
-    //       "name": "View All References",
-    //       "type": "command",
-    //       "command": "references-view.find",
-    //       "when": "editorHasReferenceProvider"
-    //     },
-    //     {
-    //       "key": "s",
-    //       "name": "Go To Symbol",
-    //       "type": "command",
-    //       "command": "workbench.action.gotoSymbol"
-    //     },
-    //     {
-    //       "key": "S",
-    //       "name": "Show All Symbols",
-    //       "type": "command",
-    //       "command": "workbench.action.showAllSymbols"
-    //     }
-    //   ]
-    // }
-    // {
-    //   "key": "n",
-    //   "name": "No Highlight",
-    //   "type": "command",
-    //   "command": "vscode-neovim.send",
-    //   "args": ":noh<CR>"
-    // }
   ],
-  "postfix.languages": ["html", "vue", "python", "javascript", "typescript"],
-  "editor.lineHeight": 25,
-  "editor.minimap.enabled": false,
-  "editor.fontFamily": "Hack Nerd Font Mono, 'Courier New', monospace, 細明體",
-  "editor.fontLigatures": true,
-  // "editor.cursorStyle": "block",
-  "editor.renderIndentGuides": true,
-  "editor.renderControlCharacters": false,
-  "editor.renderWhitespace": "all",
-  "editor.wrappingIndent": "indent",
-  "editor.accessibilitySupport": "off",
-  "editor.foldingStrategy": "indentation",
-  "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
-  "javascript.format.enable": false,
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-  "javascript.validate.enable": false,
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/node_modules/**": true,
-    "**/tmp/**": true
+  "clangd.path": "c:\\Users\\re438\\AppData\\Roaming\\VSCodium\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\13.0.0\\clangd_13.0.0\\bin\\clangd.exe",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "gitlens.views.repositories.files.layout": "list",
-  "highlight-matching-tag.styles": {
-    "opening": {
-      "left": {
-        "underline": "yellow"
-      },
-      "right": {
-        "surround": "#155FFA"
-      },
-      "name": {
-        // "highlight": "rgba(180, 20, 80, 0.3)"
-        "highlight": "rgba(101, 113, 200,0.2)"
-      }
-    },
-    "closing": {
-      "full": {
-        "custom": {
-          "dark": {
-            "borderWidth": "0 0 2px 0",
-            "borderColor": "white",
-            "borderStyle": "solid",
-            "borderRadius": "4px",
-            "right": "10px"
-          },
-          "light": {
-            "borderWidth": "0 0 2px 0",
-            "borderColor": "black",
-            "borderStyle": "solid",
-            "borderRadius": "4px",
-            "right": "10px"
-          }
-        }
-      }
-    }
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "telemetry.enableTelemetry": false,
-  "workbench.statusBar.visible": true,
-  "todohighlight.include": [
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.html",
-    "**/*.php",
-    "**/*.vue",
-    "**/*.css",
-    "**/*.scss"
-  ],
-  "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.inheritEnv": false,
-  "explorer.confirmDragAndDrop": false,
-  "git.enableSmartCommit": true,
-  // "jenkins.pipeline.linter.connector.crumbUrl": "http://10.0.4.52:3080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)",
-  // "jenkins.pipeline.linter.connector.url": "http://10.0.4.52:3080/pipeline-model-converter/validate",
-  // "jenkins.pipeline.linter.connector.pass": "2aoxjgju",
-  // "jenkins.pipeline.linter.connector.user": "re4388",
-  "files.eol": "\n",
-  // "code-runner.runInTerminal": true,
-  // "pyqt-integration.qtdesigner.path": "c:\\Users\\re438\\Anaconda3\\Lib\\site-packages\\pyqt5_tools\\Qt\\bin\\designer.exe",
-  "explorer.confirmDelete": false,
-  "workbench.tree.indent": 20,
-  "problems.showCurrentInStatus": true,
-  "peacock.favoriteColors": [
-    {
-      "name": "Angular Red",
-      "value": "#dd0531"
-    },
-    {
-      "name": "Azure Blue",
-      "value": "#007fff"
-    },
-    {
-      "name": "JavaScript Yellow",
-      "value": "#f9e64f"
-    },
-    {
-      "name": "Mandalorian Blue",
-      "value": "#1857a4"
-    },
-    {
-      "name": "Node Green",
-      "value": "#215732"
-    },
-    {
-      "name": "React Blue",
-      "value": "#61dafb"
-    },
-    {
-      "name": "Something Different",
-      "value": "#832561"
-    },
-    {
-      "name": "Svelte Orange",
-      "value": "#ff3d00"
-    },
-    {
-      "name": "Vue Green",
-      "value": "#42b883"
-    },
-    {
-      "name": "Auth0 Orange",
-      "value": "#eb5424"
-    },
-    {
-      "name": "C# Purple",
-      "value": "#68217A"
-    },
-    {
-      "name": "Gatsby Purple",
-      "value": "#639"
-    },
-    {
-      "name": "Go Cyan",
-      "value": "#5dc9e2"
-    },
-    {
-      "name": "Java Blue-Gray",
-      "value": "#557c9b"
-    }
-  ],
-  // "leetcode.endpoint": "leetcode-cn",
-  // "leetcode.workspaceFolder": "C:\\Users\\re438\\.leetcode",
-  // "leetcode.defaultLanguage": "python3",
-  // "leetcode.hint.commandShortcut": false,
-  // "leetcode.hint.configWebviewMarkdown": false,
-  // "leetcode.hint.commentDescription": false,
-  "files.trimTrailingWhitespace": true,
-  "trailing-spaces.trimOnSave": true,
-  "remote.SSH.remotePlatform": {
-    "10.0.4.52": "linux",
-    "192.168.56.1": "linux"
-  },
-  "files.associations": {
-    "*.py": "python",
-    "*.js": "javascript",
-    "*.lua": "lua"
-  },
-  "python.terminal.activateEnvironment": false,
-  "python.analysis.disabled": ["unresolved-import"],
-  "python.condaPath": "C:\\Users\\re438\\Anaconda3",
-  "python.testing.autoTestDiscoverOnSaveEnabled": false,
-  "python.experiments.enabled": false,
-  "python.testing.promptToConfigure": false,
-  "python.defaultInterpreterPath": "C:\\Users\\re438\\Anaconda3",
-  "yaml.schemas": {
-    "file:///c%3A/Users/tp2011002/.vscode/extensions/atlassian.atlascode-2.8.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
-    "file:///toc.schema.json": "/toc\\.yml/i"
-  },
-  // "python.formatting.provider": "autopep8",
-  "python.formatting.provider": "black",
-  "python.formatting.autopep8Args": [
-    "--max-line-length",
-    "88",
-    "--experimental"
-  ],
-  "[python]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 4,
-    "editor.formatOnPaste": false,
-    "editor.defaultFormatter": "ms-python.python"
-  },
-  "python.linting.enabled":true,
-  "python.linting.lintOnSave":true,
-  "python.linting.maxNumberOfProblems":30,
-  "python.linting.ignorePatterns":[".vscode/*.py", "**/site-packages/**/*.py"],
-  "python.languageServer": "Jedi",
-
-  // below seems good but maybe not sutiable for current view-service-py code
-  // "python.analysis.typeCheckingMode":"basic",
-
-  // "python.jediEnabled": false, // I tried both true and false
-  // "python.analysis.memory.keepLibraryLocalVariables": true,
-  // "python.analysis.useImportHeuristic": true,
-  // "python.analysis.autoImportCompletions": true,
-  // "python.analysis.autoSearchPaths":true ,
-  // "python.analysis.memory.keepLibraryAst": true,
-  "editor.codeActionsOnSave": {
-    // "source.organizeImports": true,
-    // "source.fixAll.eslint": true
-  },
-  // eslint => "dbaeumer.vscode-eslint"
-  // prettier => "esbenp.prettier-vscode"
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[go]": {
-    "editor.defaultFormatter": "golang.go",
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "[lua]": {
-    "editor.defaultFormatter": "Koihik.vscode-lua-format",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "prettier.singleQuote": true,
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true
-  },
-  "cSpell.userWords": [
-    "apikey",
-    "Autosize",
-    "bioclinica",
-    "BIOPACS",
-    "boto",
-    "botocore",
-    "CFMN",
-    "chrono",
-    "combinator",
-    "commandline",
-    "Customizer",
-    "dasherize",
-    "Datepicker",
-    "Devkit",
-    "DICOM",
-    "downlevel",
-    "drawcloud",
-    "dynamoose",
-    "Envr",
-    "esbuild",
-    "favourite",
-    "filesaver",
-    "Firestorage",
-    "firestore",
-    "Focusable",
-    "formik",
-    "Framefunctional",
-    "Gamification",
-    "gcloud",
-    "Heera",
-    "ifps",
-    "Incompleted",
-    "inversify",
-    "joinhandles",
-    "keycodes",
-    "linebreak",
-    "linkify",
-    "Mammo",
-    "minigrep",
-    "minlength",
-    "mockito",
-    "MUEN",
-    "noprefix",
-    "notionhq",
-    "numer",
-    "nums",
-    "octokit",
-    "openweather",
-    "overmind",
-    "paginator",
-    "palevioletred",
-    "papayawhip",
-    "parens",
-    "Preprocess",
-    "prerender",
-    "runtimes",
-    "Scrollable",
-    "sendgrid",
-    "serializable",
-    "set",
-    "shiftcoders",
-    "Sidenav",
-    "slimbot",
-    "SLMB",
-    "SPECT",
-    "spfs",
-    "stackoverflow",
-    "strs",
-    "structopt",
-    "STUDYDIRECT",
-    "subcommand",
-    "tabindex",
-    "telegramtoken",
-    "templat",
-    "Timepoint",
-    "timepoints",
-    "Todos",
-    "Truncator",
-    "tsdx",
-    "typedoc",
-    "typeorm",
-    "UIDs",
-    "unmanaged",
-    "unmarshall",
-    "uuidv",
-    "vals",
-    "VDOM",
-    "Vercel",
-    "viewports",
-    "Vite",
-    "Wado",
-    "wadors",
-    "wadouri",
-    "xstate",
-    "youtube"
-  ],
-  "js/ts.implicitProjectConfig.experimentalDecorators": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.quickSuggestions": {
-    "other": false, // set false and only use ctrl+ space to activiate
-    "comments": false, // set false and only use ctrl+ space to activiate
-    "strings": false // set false and only use ctrl+ space to activiate
-  },
-  "editor.acceptSuggestionOnCommitCharacter": false, // if we want to use . or ; to accept suggesiton
-  "editor.acceptSuggestionOnEnter": "on",
-  "editor.suggest.snippetsPreventQuickSuggestions": true,
-  "editor.suggestOnTriggerCharacters": true,
-  "editor.suggest.localityBonus": true,
-  "editor.quickSuggestionsDelay": 0,
-  "editor.wordBasedSuggestions": true,
-  "editor.suggestSelection": "recentlyUsedByPrefix",
-  "editor.suggestFontSize": 17,
-  // when cursor hover, all words highlighted
-  "editor.occurrencesHighlight": true,
-  // when use in Angular, maybe 5000 or turn off
-  "files.autoSaveDelay": 5000,
-  // "typescript.preferences.quoteStyle": "single",
-  // "javascript.preferences.quoteStyle": "single",
-  "yaml.format.singleQuote": true,
-  // comment this out to let eslint to indent files, and not allow Prettier isn’t overriding it.
-  "[rust]": {
-    "editor.defaultFormatter": "statiolake.vscode-rustfmt"
-  },
-  "workbench.editor.decorations.colors": true,
-  "workbench.editor.decorations.badges": true,
-  "jestrunner.codeLensSelector": "**/*.{test,spec,jest}.{js,jsx,ts,tsx}",
-  // "jestrunner.configPath": "jest.config.js",
-  // "jestrunner.changeDirectoryToWorkspaceRoot": true,
-  // "jestrunner.jestCommand": "npm run test --",
-  "jestrunner.debugOptions": {
-    "name": "Debug Jest Tests 20210224",
-    "type": "node",
-    "request": "launch",
-    "skipFiles": [
-      "${workspaceFolder}/node_modules/**/*.js",
-      "${workspaceFolder}/lib/**/*.js",
-      "<node_internals>/**/*.js"
-    ],
-    "runtimeArgs": [
-      // "--inspect-brk",   // this will break at first
-      "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "--runInBand"
-    ],
-    "console": "integratedTerminal",
-    "internalConsoleOptions": "neverOpen",
-    "port": 9230
-  },
-  "git-graph.repository.commits.order": "topo",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
-  "editor.linkedEditing": true,
-  "settingsSync.keybindingsPerPlatform": false,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "gitlens.blame.avatars": false,
-  "gitlens.currentLine.enabled": false,
-  "workbench.iconTheme": "vscode-great-icons",
-  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
-  "php.validate.executablePath": "c:/PHP7/php.exe",
-  "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace, 細明體",
-  // "vsintellicode.features.python.deepLearning": "disabled",
-  "debug.onTaskErrors": "debugAnyway",
-  "workbench.colorTheme": "Darcula",
   "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-  "codetour.showMarkers": false,
-  "terminal.integrated.tabs.enabled": true,
-  "powershell.promptToUpdatePowerShell": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.suggest.preview": true,
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
-  },
-  "redhat.telemetry.enabled": false,
-  "leetcode.workspaceFolder": "c:\\projects\\leetcode\\ts\\src",
-  // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init.vim",
-  // below i use mklink to replace above path to sync in different machine..
-  "vscode-neovim.neovimInitVimPaths.win32": "C:\\link\\init.vim",
-  // "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\re438\\AppData\\Local\\nvim\\init-test.vim",
-  "vscode-neovim.textDecorationsAtTop": true,
-  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\Users\\re438\\scoop\\apps\\neovim\\0.5.0\\bin\\nvim.exe",
-  // below i use mklink to replace above path to sync in different machine..
-  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\link\\nvim.exe",
-  "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
-  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\nvim-install\\nvim-win64\\Neovim\\bin\\nvim.exe",
-  "vscode-neovim.mouseSelectionStartVisualMode": true,
-  // here i use cmd mklink \D to link to "C:\\Users\\re438\\OneDrive - g.ntu.edu.tw\\vscode_note_ext"
-  "Notes.notesLocation": "C:\\link\\vscode_note_ext",
-  "editor.scrollBeyondLastLine": false,
-  "workbench.list.automaticKeyboardNavigation": false,
-  "Lua.telemetry.enable": false,
-  "editor.codeLens": false,
-  "toggle.settingTitle": "editor.lineNumbers",
-  "toggle.settingState1": "on",
-  "toggle.settingState2": "off",
-  "update.mode": "manual",
-  "gitlens.codeLens.enabled": false,
-  "macros": {
-    "toggleSideBarAndActivityBar": [
-      "workbench.action.toggleSidebarVisibility",
-      "workbench.action.toggleActivityBarVisibility"
-    ],
-    "commentDown": [
-      "editor.action.copyLinesDownAction",
-      "cursorUp",
-      "editor.action.addCommentLine",
-      "cursorDown"
-    ],
-    "moveTerminalRight": [
-      "workbench.action.positionPanelRight",
-      "workbench.action.terminal.focus"
-      // "workbench.action.focusActiveEditorGroup",
-    ],
-    "moveTerminalBottom": [
-      "workbench.action.positionPanelBottom",
-      "workbench.action.terminal.focus"
-      // "workbench.action.focusActiveEditorGroup",
-    ],
-    "consoleLogDown": [
-      "editor.action.addSelectionToNextFindMatch",
-      "extension.clog"
-    ]
-  },
-  "terminal.integrated.profiles.windows": {
-    "PowerShell": {
-      "source": "PowerShell",
-      "icon": "terminal-powershell"
-    },
-    "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ],
-      "args": [],
-      "icon": "terminal-cmd"
-    },
-    "Git Bash": {
-      "source": "Git Bash"
-    },
-    "Windows PowerShell": {
-      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-    }
-  },
-  "workbench.startupEditor": "readme",
-  "terminal.integrated.fontSize": 15,
-  "editor.fontSize": 16,
-  "security.workspace.trust.untrustedFiles": "open",
-  "clock.dateFormat": "dddd, mmmm dS, yyyy, h:MM TT",
-  "editor.semanticTokenColorCustomizations": {
-    "enabled": true // enable for all themes
-  },
-  "aws.profile": "profile:default",
-
-  // if you want to let certain command works when your cursor in the integratedTerminal, put that command in thie array
-  "terminal.integrated.commandsToSkipShell": ["whichkey.show"],
-  "editor.bracketPairColorization.enabled": true,
-  "yaml.customTags": [
-    "!And",
-    "!And sequence",
-    "!If",
-    "!If sequence",
-    "!Not",
-    "!Not sequence",
-    "!Equals",
-    "!Equals sequence",
-    "!Or",
-    "!Or sequence",
-    "!FindInMap",
-    "!FindInMap sequence",
-    "!Base64",
-    "!Join",
-    "!Join sequence",
-    "!Cidr",
-    "!Ref",
-    "!Sub",
-    "!Sub sequence",
-    "!GetAtt",
-    "!GetAZs",
-    "!ImportValue",
-    "!ImportValue sequence",
-    "!Select",
-    "!Select sequence",
-    "!Split",
-    "!Split sequence"
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Darcula",
+  "telemetry.telemetryLevel": "off",
+  "cSpell.userWords": [
+    "bioclinica",
+    "timepoint",
+    "wado"
   ],
-  "settingsOnFire.toggle": {
-    "joplineToken": {
-      "on": {
-        "_label": "ASUS",
-        "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb"
-      },
-      "off": {
-        "_label": "WITS",
-        "joplin.token": "23cb4f16bdb5306263d2405bbca50534b7b0337998abae926061f64fb8784a5d31063bc88d1074e3679133e1f93b62169ff129ed4288df1094c6c4e5b737371c"
-      }
-    }
-  },
-  "joplin.token": "e9639d07316a709e94b61c0eb478d3adcbd51121a75170c0417de4e2969619b3930646be7c4d0df96a68758702fbb2dba1dfa565a914ca13fb9c883ea1f974bb",
-  "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
-  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
-  "vscode-neovim.neovimInitVimPaths.linux": "/home/re4388/.config/nvim/init.vim",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "rest-client.enableTelemetry": false,
-  "go.formatTool": "gofmt",
-  "cmake.autoSelectActiveFolder": false,
-  "clang-format.executable": "C:\\Program Files\\nodejs\\clang-format.cmd",
-  "editor.lineNumbers": "off",
-  "tabnine.experimentalAutoImports": true,
-  // setting toogle (I use it for toggle line number)
-  "toggle.iconEnabled": false,
-  "toggle.showStatusbarPrimary": false,
-  "workbench.colorCustomizations": {
-    "tab.activeBorder": "#FFFF00",
-    "tab.unfocusedActiveBorder": "#000000",
-    "tab.activeBackground": "#42557b",
-    "tab.activeForeground": "#dcdcdc",
-    // "editorCursor.foreground": "#00ff00",
-    "terminalCursor.fojeground": "#00ff00",
-    "editorCursor.background": "#ffffffc9",
-    "editor.selectionHighlightBorder": "#FFFA",
-    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
-  },
-  "editor.cursorBlinking": "solid",
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "window.zoomLevel": -1,
-  "workbench.sideBar.location": "right"
+  "editor.formatOnSave": true
 }

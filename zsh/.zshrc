@@ -69,7 +69,7 @@ bash ~/projects/dotfiles/notice_change.sh
 #
 ######################################################
 
-alias v=nvim
+alias vi=nvim
 alias weather="curl -H 'Accept-Language: zh' wttr.in/'${1:-New Taipei}?${2:-2q}'"
 alias so=source
 alias ll='ls -a'
