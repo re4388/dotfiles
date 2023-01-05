@@ -1,0 +1,609 @@
+{
+  // Controls if quick suggestions should show up while typing
+  "editor.quickSuggestions": {
+    "other": false, // <---trun true to enable suggestion
+    "comments": false,
+    "strings": false
+  },
+  "macros.list": {
+    "commentDown": [
+      "editor.action.copyLinesDownAction",
+      "cursorUp",
+      "editor.action.addCommentLine",
+      "cursorDown"
+    ],
+    // other macros example
+    "doMySnippet": [
+      {
+        "command": "type",
+        "args": {
+          "text": "mySnippetPrefixHere"
+        }
+      },
+      "insertSnippet"
+    ],
+    "addSemicolon": [
+      "cursorEnd",
+      {
+        "command": "type",
+        "args": {
+          "text": ";"
+        }
+      }
+    ],
+    "logCurrentVariable": [
+      "editor.action.addSelectionToNextFindMatch",
+      "problems.action.copy",
+      {
+        "command": "type",
+        "args": {
+          "text": "con"
+        }
+      }
+    ],
+    "createNewTabAndPaste": [
+      "workbench.action.files.newUntitledFile",
+      {
+        "command": "$delay",
+        "args": {
+          "delay": 50
+        }
+      },
+      "editor.action.clipboardPasteAction"
+    ]
+  },
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+  "terminal.integrated.fontFamily": "MesloLGS NF , 'Courier New', monospace, 細明體",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
+  },
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.commandsToSkipShell": [
+    "whichkey.show"
+  ],
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#FFFF00",
+    "tab.unfocusedActiveBorder": "#000000",
+    "tab.activeBackground": "#42557b",
+    "tab.activeForeground": "#dcdcdc",
+    "editorCursor.foreground": "#00ff00",
+    "terminalCursor.fojeground": "#00ff00",
+    "editorCursor.background": "#ffffffc9",
+    "editor.selectionHighlightBorder": "#FFFA",
+    "editor.findMatchBackground": "#42557b", //Current SEARCH MATCH
+  },
+  "workbench.sideBar.location": "right",
+  "editor.fontFamily": "Hack Nerd Font , 'Courier New', monospace, 細明體",
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "redhat.telemetry.enabled": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  /////////////////////////////////////////////
+  ////////////////// which key ////////////////
+  /////////////////////////////////////////////
+  // note: use category to group, not use action prefix to group
+  // for example, don't use add, and to note, project, block comment inside
+  // note, project and comment are 3 different categories
+  "whichkey.sortOrder": "alphabetically",
+  "whichkey.delay": 0,
+  "whichkey.bindings": [
+    {
+      "key": "/",
+      "name": "VScode Command Plate",
+      "type": "command",
+      "command": "workbench.action.showCommands"
+    },
+    {
+      "key": "l",
+      "name": "go to line",
+      "type": "command",
+      "command": "workbench.action.gotoLine"
+    },
+    {
+      "key": "r",
+      "name": "reload vscode window",
+      "type": "command",
+      "command": "workbench.action.reloadWindow"
+    },
+    // {
+    //   "key": "p",
+    //   "name": "project open in new window",
+    //   "type": "command",
+    //   "command": "projectManager.listProjectsNewWindow"
+    // },
+    {
+      // "key": "x",
+      // "name": "Script/Task",
+      // "type": "command",
+      // "command": "workbench.action.tasks.runTask",
+      // "args": "node run"
+      "key": "x",
+      "name": "execute python file in terminal",
+      "type": "bindings",
+      "command": "python.execInTerminal"
+      // "bindings": [
+      //   {
+      //     "key": "x",
+      //     "name": "execute python file in terminal",
+      //     "type": "command",
+      //     "command": "python.execInTerminal"
+      //   }
+      // ]
+    },
+    // {
+    //   "key": "j",
+    //   "name": "Joplin",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "t",
+    //       "name": "toogle between ASUS/Swift",
+    //       "type": "command",
+    //       "command": "settingsOnFire.toggleSettings"
+    //     },
+    //     {
+    //       "key": "a",
+    //       "name": "add/create Note",
+    //       "type": "command",
+    //       "command": "joplinNote.createNote"
+    //     },
+    //     {
+    //       "key": "f",
+    //       "name": "create folder",
+    //       "type": "command",
+    //       "command": "joplinNote.createFolder"
+    //     },
+    //     {
+    //       "key": "r",
+    //       "name": "refresh",
+    //       "type": "command",
+    //       "command": "joplinNote.refreshNoteList"
+    //     },
+    //     {
+    //       "key": "p",
+    //       "name": "paste note",
+    //       "type": "command",
+    //       "command": "joplinNote.paste"
+    //     },
+    //     {
+    //       "key": "x",
+    //       "name": "cut note",
+    //       "type": "command",
+    //       "command": "joplinNote.cut"
+    //     },
+    //     {
+    //       "key": "s",
+    //       "name": "search",
+    //       "type": "command",
+    //       "command": "joplinNote.search"
+    //     },
+    //     {
+    //       "key": "d",
+    //       "name": "delete note",
+    //       "type": "command",
+    //       "command": "joplinNote.remove"
+    //     }
+    //   ]
+    // },
+    {
+      "key": "t",
+      "name": "terminal",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "h",
+          "name": "open terminal here",
+          "type": "command",
+          "command": "terminalHere.create"
+        },
+        {
+          "key": "m",
+          "name": "toggle terminal max / default",
+          "type": "command",
+          "command": "workbench.action.toggleMaximizedPanel"
+        },
+        {
+          "key": "b",
+          "name": "move to bottom",
+          "type": "command",
+          "command": "macros.moveTerminalBottom"
+          // "when":"terminalFocus"
+        },
+        {
+          "key": "r",
+          "name": "move to right",
+          "type": "command",
+          "command": "macros.moveTerminalRight"
+          // "when":"terminalFocus"
+        }
+      ]
+    },
+    {
+      "key": "w",
+      "name": "window...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "s",
+          "name": "split",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+      ]
+    },
+    // {
+    //   "key": "a",
+    //   "name": "add",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "a",
+    //       "name": "new favorite",
+    //       "type": "command",
+    //       "command": "favorites.addToFavorites"
+    //     },
+    //     {
+    //       "key": "p",
+    //       "name": "new project",
+    //       "type": "command",
+    //       "command": "projectManager.saveProject"
+    //     },
+    //     {
+    //       "key": "n",
+    //       "name": "new note",
+    //       "type": "command",
+    //       "command": "Notes.newNote"
+    //     }
+    //   ]
+    // },
+    // kind of I can use this for a better view(side bar)
+    // than use gr(popup style)
+    // {
+    //   "key": "s",
+    //   "name": "Script/Task",
+    //   "type": "command",
+    //   "command": "workbench.action.tasks.runTask"
+    // },
+    // {
+    //   "key": "g",
+    //   "name": "compile and run C/C++",
+    //   "type": "command",
+    //   "command": "workbench.action.tasks.runTask",
+    //   "args": "Build C and run"
+    // },
+    {
+      "key": "?",
+      "name": "View All References",
+      "type": "command",
+      "command": "references-view.find",
+      "when": "editorHasReferenceProvider"
+    },
+    {
+      "key": "n",
+      "name": "NPM script",
+      "type": "command",
+      "command": "npm-script.run"
+    },
+    {
+      "key": ".",
+      "name": "Open Setting in JSON",
+      "type": "command",
+      "command": "workbench.action.openSettingsJson"
+      // "args": {
+      //   "openToSide": true
+      // }
+    },
+    // {
+    //   "key": "l",
+    //   "name": "toggle aboulate line number",
+    //   "type": "command",
+    //   "command": "extension.toggle"
+    // },
+    {
+      "key": "k",
+      "name": "Open Keyboard Setting JSON",
+      "type": "command",
+      "command": "workbench.action.openGlobalKeybindingsFile"
+    },
+    {
+      "key": "t",
+      "name": "Task",
+      "type": "bindings",
+      "command": "workbench.action.tasks.runTask"
+    },
+    {
+      "key": "s",
+      "name": "snippet",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "block comment",
+          "type": "command",
+          "command": "editor.action.blockComment"
+        },
+        {
+          "key": "t",
+          "name": "tag added to the wrap selection with #region",
+          "type": "command",
+          "command": "regionfolder.wrapWithRegion"
+        }
+      ],
+    },
+    {
+      "key": "b",
+      "name": "Toggle SideBar visible",
+      "type": "command",
+      // "command": "workbench.action.toggleSidebarVisibility"
+      "command": "macros.toggleSideBarAndActivityBar"
+    },
+    // {
+    //   "key": "t",
+    //   "name": "Terminal Panel Moving",
+    //   "type": "bindings",
+    //   "bindings": [
+    //   ]
+    // },
+    {
+      "key": "e",
+      "name": "Editors",
+      "type": "bindings",
+      "bindings": [
+        // {
+        //   "key": "s",
+        //   "name": "Sidebar",
+        //   "type": "command",
+        //   "command": "workbench.action.toggleSidebarVisibility"
+        // },
+        // {
+        //   "key": "c",
+        //   "name": "activity bar",
+        //   "type": "command",
+        //   "command": "workbench.action.toggleActivityBarVisibility"
+        // },
+        {
+          "key": "c",
+          "name": "close all open window",
+          "type": "command",
+          "command": "workbench.action.closeAllEditors"
+        }
+      ]
+    },
+    {
+      "key": "f",
+      "name": "File",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "s",
+          "name": "save without format",
+          "type": "command",
+          "command": "workbench.action.files.saveWithoutFormatting"
+        },
+        {
+          "key": "p",
+          "name": "copy file relative path",
+          "type": "command",
+          "command": "copyRelativeFilePath"
+        },
+        {
+          "key": "n",
+          "name": "file name copy",
+          "type": "command",
+          "command": "copy-file-name.copyFileNameWithExtension"
+        },
+        {
+          "key": "c",
+          "name": "create new file",
+          "type": "command",
+          "command": "explorer.newFile"
+        },
+        {
+          "key": "u",
+          "name": "focus to unsaved files area",
+          "type": "command",
+          "command": "unsaved-files.focus"
+        },
+      ]
+    },
+    // {
+    //   "key": "o",
+    //   "name": "Open",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "o",
+    //       "name": "open outlined sidebar",
+    //       "type": "command",
+    //       "command": "outline.focus"
+    //     },
+    //     {
+    //       "key": "m",
+    //       "name": "open modified area",
+    //       "type": "command",
+    //       "command": "workbench.scm.focus"
+    //     },
+    //     {
+    //       "key": "g",
+    //       "name": "open git graph",
+    //       "type": "command",
+    //       "command": "git-graph.view"
+    //     },
+    //     {
+    //       "key": "r",
+    //       "name": "Recent Project",
+    //       "type": "command",
+    //       "command": "workbench.action.openRecent"
+    //     },
+    //     {
+    //       "key": "n",
+    //       "name": "Note",
+    //       "type": "command",
+    //       "command": "Notes.listNotes"
+    //     },
+    //     {
+    //       "key": "f",
+    //       "name": "favorites side bar",
+    //       "type": "command",
+    //       "command": "favoritesActivity.focus"
+    //     },
+    //     {
+    //       "key": "t",
+    //       "name": "user task",
+    //       "type": "command",
+    //       "command": "workbench.action.tasks.openUserTasks"
+    //     },
+    //     {
+    //       "key": "q",
+    //       "name": "Quokka TS",
+    //       "type": "command",
+    //       "command": "quokka.createFile"
+    //     },
+    //     {
+    //       "key": "k",
+    //       "name": "open keyboard(no json)",
+    //       "type": "command",
+    //       "command": "workbench.action.openGlobalKeybindings"
+    //     }
+    //   ]
+    // },
+  ],
+  "clangd.path": "c:\\Users\\re438\\AppData\\Roaming\\VSCodium\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\13.0.0\\clangd_13.0.0\\bin\\clangd.exe",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Darcula",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoCheckUpdates": false,
+  "telemetry.telemetryLevel": "off",
+  "cSpell.userWords": [
+    "ascoltatore",
+    "bioclinica",
+    "clario",
+    "curr",
+    "dicom",
+    "dotfile",
+    "dotfiles",
+    "Envr",
+    "executemany",
+    "execve",
+    "followee",
+    "gcloud",
+    "heapify",
+    "IIFE",
+    "inorder",
+    "karabiner",
+    "llist",
+    "MILLISEC",
+    "mitmproxy",
+    "momenttz",
+    "mosca",
+    "nestjs",
+    "nums",
+    "popleft",
+    "Preprocess",
+    "proto",
+    "protoc",
+    "psql",
+    "psycopg",
+    "readai",
+    "rentour",
+    "strs",
+    "timepoint",
+    "ttypescript",
+    "typeorm",
+    "Uids",
+    "unfollow",
+    "viewports",
+    "vnode",
+    "vuln",
+    "wado",
+    "wemo",
+    "whichkey"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "extensions.ignoreRecommendations": true,
+  "workbench.experimental.layoutControl.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "leetcode.workspaceFolder": "C:\\Users\\re438\\.leetcode",
+  "editor.bracketPairColorization.enabled": false,
+  "npm.keybindingsChangedWarningShown": true,
+  "terminal.integrated.macOptionIsMeta": true,
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.scrollback": 5000,
+  // "terminal.integrated.confirmOnExit": "always",
+  "explorer.confirmDragAndDrop": false,
+  "totalTypeScript.hideAllTips": false,
+  "totalTypeScript.hideBasicTips": false,
+  "totalTypeScript.hiddenTips": [
+    "variable-type-annotation",
+    "passing-generics-to-types",
+    "typeof",
+    "interface-declaration",
+    "basic-types",
+    "optional-object-property",
+    "union-type",
+    "array-type",
+    "type-alias-declaration",
+    "conditional-type",
+    "omit-utility-type",
+    "interface-with-generics",
+    "ts-object-type",
+    "literal-type",
+    "type-alias-with-generics",
+    "typing-function-parameters",
+    "function-return-type",
+    "any-type",
+    "as-assertion",
+    "null-keyword",
+    "generic-slots-in-functions",
+    "tuple-type",
+    "undefined-keyword",
+    "parameters-utility-type",
+    "returntype-utility-type",
+    "type-alias-with-multiple-generics",
+    "multiple-generic-slots-in-functions",
+    "partial-utility-type",
+    "pick-utility-type"
+  ],
+  "gitlens.codeLens.enabled": false,
+  "vscode-pets.petSize": "medium",
+  "chatgpt.emailAddress": "",
+  "chatgpt.password": "",
+  "chatgpt.promptPrefix.findProblems": "Find problems with the following code, fix them and explain what was wrong (Do not change anything else): ",
+  "chatgpt.promptPrefix.explain": "Explain what this code does: ",
+  // "chatgpt.userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+  // "print-it.javascript.template": "console.log(\"XXX:\", {{raw}});",
+  // "print-it.typescript.template": "console.log(\"XXX:\", {{raw}});",
+  // "print-it.python.template": "print(\"XXX:\", {{raw}});"
+  // "print-it.typescript.template": "console.log(\"The value of {{escaped}} is:\", {{raw}});",
+  "vim.useSystemClipboard": true
+}

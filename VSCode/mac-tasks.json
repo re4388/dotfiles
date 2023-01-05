@@ -1,0 +1,92 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "go run .",
+      "type": "shell",
+      "command": "go run .",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build C and run",
+      "type": "shell",
+      "command": "gcc ${file} -o tmp; ./tmp ",
+      "problemMatcher": []
+    },
+    {
+      "label": "python run",
+      "type": "shell",
+      "command": "& C:/Users/re438/anaconda3/python.exe c:/projects/py/app.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "lua run",
+      "type": "shell",
+      "command": "lua t2.lua",
+      "problemMatcher": []
+    },
+    {
+      "label": "ts-implet-run",
+      "type": "shell",
+      "command": "ts-node .\\src\\dynamo_API\\API\\try_impl\\test_impl.ts",
+      "problemMatcher": []
+    },
+    {
+      "label": "node run",
+      "type": "shell",
+      "command": "npm run-script start",
+      "problemMatcher": []
+    },
+    {
+      "label": "deno run",
+      "type": "shell",
+      "command": "deno run ./index.ts",
+      "problemMatcher": []
+    },
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo Hello"
+    },
+    {
+      "label": "cargo run --quiet",
+      "type": "shell",
+      "command": "cargo run --quiet",
+      "problemMatcher": [
+        "$rustc"
+      ]
+    },
+    {
+      "label": "cargo run",
+      "type": "shell",
+      "command": "cargo run",
+      "problemMatcher": [
+        "$rustc"
+      ]
+    },
+    {
+      "label": "cargo build",
+      "type": "shell",
+      "command": "cargo build",
+      "problemMatcher": []
+    },
+    {
+      "label": "cargo check",
+      "type": "shell",
+      "command": "cargo check",
+      "problemMatcher": [
+        "$rustc"
+      ]
+    },
+    {
+      "label": "cargo fmt",
+      "type": "shell",
+      "command": "cargo fmt",
+      "problemMatcher": [
+        "$rustc"
+      ]
+    }
+  ]
+}
