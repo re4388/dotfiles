@@ -1,0 +1,212 @@
+[[snippets]]
+  description = "curl: use curl to download file as remote name (-O) with relocate enabled (-L)"
+  command = "curl -LO https:xxxx0.7.1.zip"
+  tag = ["curl"]
+  output = ""
+
+[[snippets]]
+  description = "rg: to find one or more 'fastXXX' in particular file as how in command ex"
+  command = "rg 'fast\\w+' README.md"
+  tag = ["rg"]
+  output = ""
+
+[[snippets]]
+  description = "rg: to find function recursive from current folder"
+  command = "rg 'fn write\\('"
+  tag = ["rg"]
+  output = ""
+
+[[snippets]]
+  description = "Get my public ip addr"
+  command = "curl ifconfig.co"
+  output = ""
+
+[[snippets]]
+  description = "get private ip (using en5)"
+  command = "ipconfig getifaddr en5"
+  output = ""
+
+[[snippets]]
+  description = "get network info"
+  command = "ifconfig en5"
+  output = ""
+
+[[snippets]]
+  description = "get routing table with peco(filter)"
+  command = "netstat -nr | peco"
+  output = ""
+
+[[snippets]]
+  description = "info on sockets"
+  command = "netstat -a"
+  output = ""
+
+[[snippets]]
+  description = "trace the path packet in debug mode"
+  command = "traceroute -d google.com"
+  output = ""
+
+[[snippets]]
+  description = "establish a network connection to google.com in verbose mode on port 80"
+  command = "nc -v google.com 80"
+  output = ""
+
+[[snippets]]
+  description = "setup a network listener on port 2196 for testing"
+  command = "nc -l 2196"
+  output = ""
+
+[[snippets]]
+  description = "capture all packets for a given port going to a given destination"
+  command = "sudo tcpdump -nnvvXs 80 dst 172.217.163.46"
+  output = ""
+
+[[snippets]]
+  description = "capture packets as above but dump to a pcap file"
+  command = "sudo tcpdump -nnvvXs 80 dst 172.217.163.46 -w /tmp/demo.pcap"
+  output = ""
+
+[[snippets]]
+  description = "show listenning port"
+  command = "lsof -n -i4TCP | grep LISTEN"
+  output = ""
+
+[[snippets]]
+  description = "to edit git global config"
+  command = "git config --global --edit"
+  output = ""
+
+[[snippets]]
+  description = "docker run-up a pg named pgacid with default pass"
+  command = "docker run --name pgacid -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres:latest"
+  output = ""
+
+[[snippets]]
+  description = "docker go inside pgacid with psql command"
+  command = "docker exec -it pgacid psql -U postgres"
+  output = ""
+
+[[snippets]]
+  description = "pg: create a quick table named t1"
+  command = "create table t1 (pid serial primary key, name text, price float);"
+  output = ""
+
+[[snippets]]
+  description = "pg: insert into t1 table"
+  command = "insert into t1 (name, price) values('apple', 12.2);"
+  output = ""
+
+[[snippets]]
+  description = "pg: begin tx"
+  command = "begin transaction isolation level <repeatable read | serializable>;"
+  output = ""
+
+[[snippets]]
+  description = "get line of code"
+  command = "find . -type f | xargs wc -w | tail -1"
+  output = ""
+
+[[snippets]]
+  description = "找出目前路徑之下的所有 .txt2 檔案，並且將其刪除, -p 可以先確認再執行"
+  command = "find . -name \"*.txt2\" | xargs -p rm -f"
+  output = ""
+
+[[snippets]]
+  description = "要在所有的 .txt 檔案中搜尋 ben 這個字串"
+  command = "find . -name '*.txt' | xargs grep 'ben'"
+  output = ""
+
+[[snippets]]
+  description = "psql login into hermes-qat w/ password"
+  command = "psql -h 34.80.181.225  -p 5432 -d hermes-qat -U qat -W 1qaz@WSX"
+  output = ""
+
+[[snippets]]
+  description = "curl set proxy"
+  command = "curl --proxy https://127.0.0.1:8080 \"http://wttr.in/Taipei?0\""
+  output = ""
+
+[[snippets]]
+  description = "mitmproxy intercept: `~u` is regex,  `~q` is request, use `i` to trigger command prompt"
+  command = "[i:~u /Taipei & ~q]"
+  output = ""
+
+[[snippets]]
+  description = "run mitmproxy with sslkeylog file"
+  command = "MITMPROXY_SSLKEYLOGFILE=\"~/sslkeylogfile.txt\" mitmproxy"
+  output = ""
+
+[[snippets]]
+  description = "mitmdump with script/addon"
+  command = "mitmdump -s ~/project/personal/mitmproxy-addon/anatomy.py"
+  output = ""
+
+[[snippets]]
+  description = "查詢特定 port 的 service"
+  command = "lsof -n -i:8080 | grep LISTEN"
+  output = ""
+
+[[snippets]]
+  description = "git stash include newly added file"
+  command = "git stash --include-untracked"
+  output = ""
+
+[[snippets]]
+  description = "wemo: npm run test watch"
+  command = "npm run test:watch flashSignal"
+  output = ""
+
+[[snippets]]
+  description = "conda create"
+  command = "conda create --name myenv python=3.10 -y"
+  output = ""
+
+[[snippets]]
+  description = "history get from field 4 to last (will remove the history pid)"
+  command = "history -20 | cut -d ' ' -f 4-"
+  output = ""
+
+[[snippets]]
+  description = "npm check global package"
+  command = "npm list -g --depth=0"
+  output = ""
+
+[[snippets]]
+  description = "cut get first field (-f1) for input file"
+  command = "cut -d: -f1 < /etc/passwd"
+  output = ""
+
+[[snippets]]
+  description = "conda install forge"
+  command = "conda install -c conda-forge <package>"
+  output = ""
+
+[[snippets]]
+  description = "conda run mimtdump"
+  command = "conda run --no-capture-output mitmdump -s write_into_file.py"
+  output = ""
+
+[[snippets]]
+  description = "measure zsh startup time"
+  command = "time  zsh -i -c exit"
+  output = ""
+
+[[snippets]]
+  description = "jq - get all ids from an array response"
+  command = "curl https://jsonplaceholder.typicode.com/comments | jq '. [].id'"
+  output = ""
+
+[[snippets]]
+  description = "jq - get value from a key (response is just an objec)t"
+  command = "curl https://jsonplaceholder.typicode.com/posts/1 | jq '.body'"
+  output = ""
+
+[[snippets]]
+  description = "jq - get nested key from an array of object"
+  command = "curl https://jsonplaceholder.typicode.com/users | jq '. [].address.street'"
+  output = ""
+
+[[snippets]]
+  description = "pm2 cronjob"
+  command = "pm2 start /Users/re4388/project/personal/experiment/node-12-22-0-commonJS/src/cron-job/backup_dotfiles.js --no-autorestart --cron \"*/1 * * * *\""
+  output = ""
