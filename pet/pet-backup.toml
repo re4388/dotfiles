@@ -17,7 +17,7 @@
   output = ""
 
 [[snippets]]
-  description = "Get my public ip addr"
+  description = "curl: Get my public ip addr"
   command = "curl ifconfig.co"
   output = ""
 
@@ -122,7 +122,7 @@
   output = ""
 
 [[snippets]]
-  description = "curl set proxy"
+  description = "curl: set proxy"
   command = "curl --proxy https://127.0.0.1:8080 \"http://wttr.in/Taipei?0\""
   output = ""
 
@@ -209,4 +209,9 @@
 [[snippets]]
   description = "pm2 cronjob"
   command = "pm2 start /Users/re4388/project/personal/experiment/node-12-22-0-commonJS/src/cron-job/backup_dotfiles.js --no-autorestart --cron \"*/1 * * * *\""
+  output = ""
+
+[[snippets]]
+  description = "curl POST w/ JSON data"
+  command = "curl -d '{\"key1\":\"value1\", \"key2\":\"value2\"}' -H \"Content-Type: application/json\" -X POST http://localhost:9000/users/1/tasks/transcode"
   output = ""
