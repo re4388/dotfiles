@@ -98,9 +98,9 @@
   "editor.minimap.enabled": false,
   "redhat.telemetry.enabled": false,
   "workbench.iconTheme": "vscode-great-icons",
-  /////////////////////////////////////////////
-  ////////////////// which key ////////////////
-  /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+  ////////////////// which key  start /////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
   // note: use category to group, not use action prefix to group
   // for example, don't use add, and to note, project, block comment inside
   // note, project and comment are 3 different categories
@@ -125,12 +125,12 @@
       "type": "command",
       "command": "workbench.action.reloadWindow"
     },
-    // {
-    //   "key": "p",
-    //   "name": "project open in new window",
-    //   "type": "command",
-    //   "command": "projectManager.listProjectsNewWindow"
-    // },
+    {
+      "key": "p",
+      "name": "project open in new window",
+      "type": "command",
+      "command": "projectManager.listProjectsNewWindow"
+    },
     {
       // "key": "x",
       // "name": "Script/Task",
@@ -333,7 +333,7 @@
     },
     {
       "key": "s",
-      "name": "snippet",
+      "name": "Snippet",
       "type": "bindings",
       "bindings": [
         {
@@ -352,11 +352,30 @@
     },
     {
       "key": "b",
-      "name": "Toggle SideBar visible",
-      "type": "command",
-      // "command": "workbench.action.toggleSidebarVisibility"
-      "command": "macros.toggleSideBarAndActivityBar"
+      "name": "Bookmark",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "toggle bookmark on/off",
+          "type": "command",
+          "command": "bookmarks.toggle"
+        },
+        // {
+        //   "key": "t",
+        //   "name": "tag added to the wrap selection with #region",
+        //   "type": "command",
+        //   "command": "regionfolder.wrapWithRegion"
+        // }
+      ],
     },
+    // {
+    //   "key": "b",
+    //   "name": "toogle side bar",
+    //   "type": "command",
+    //   // "command": "workbench.action.toggleSidebarVisibility"
+    //   "command": "macros.toggleSideBarAndActivityBar"
+    // },
     // {
     //   "key": "t",
     //   "name": "Terminal Panel Moving",
@@ -365,16 +384,47 @@
     //   ]
     // },
     {
+      "key": "q",
+      "name": "Note",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "add new note",
+          "type": "command",
+          "command": "vsnotes.newNote"
+        },
+        {
+          "key": "o",
+          "name": "list notes",
+          "type": "command",
+          "command": "vsnotes.listNotes"
+        },
+        {
+          "key": "s",
+          "name": "search notes",
+          "type": "command",
+          "command": "vsnotes.search"
+        }
+      ]
+    },
+    {
       "key": "e",
       "name": "Editors",
       "type": "bindings",
       "bindings": [
-        // {
-        //   "key": "s",
-        //   "name": "Sidebar",
-        //   "type": "command",
-        //   "command": "workbench.action.toggleSidebarVisibility"
-        // },
+        {
+          "key": "s",
+          "name": "split editor right",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "key": "b",
+          "name": "Sidebar",
+          "type": "command",
+          "command": "workbench.action.toggleSidebarVisibility"
+        },
         // {
         //   "key": "c",
         //   "name": "activity bar",
@@ -488,6 +538,9 @@
     //   ]
     // },
   ],
+  //////////////////////////////////////////////////////////////////////
+  ////////////////// which key  end /////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
   "clangd.path": "c:\\Users\\re438\\AppData\\Roaming\\VSCodium\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\13.0.0\\clangd_13.0.0\\bin\\clangd.exe",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -503,6 +556,7 @@
   "cSpell.userWords": [
     "ascoltatore",
     "bioclinica",
+    "cheatsheet",
     "clario",
     "curr",
     "dicom",
@@ -511,6 +565,7 @@
     "Envr",
     "executemany",
     "execve",
+    "facker",
     "followee",
     "gcloud",
     "heapify",
@@ -518,6 +573,7 @@
     "inorder",
     "karabiner",
     "llist",
+    "middlewares",
     "MILLISEC",
     "mitmproxy",
     "momenttz",
@@ -547,7 +603,6 @@
   ],
   "diffEditor.ignoreTrimWhitespace": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
   "workbench.experimental.layoutControl.enabled": true,
   "[python]": {
@@ -605,5 +660,34 @@
   // "print-it.typescript.template": "console.log(\"XXX:\", {{raw}});",
   // "print-it.python.template": "print(\"XXX:\", {{raw}});"
   // "print-it.typescript.template": "console.log(\"The value of {{escaped}} is:\", {{raw}});",
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "vsnotes.defaultNotePath": "/Users/re4388/Library/CloudStorage/Dropbox/VSNote-ext",
+  "vsnotes.treeviewHideTags": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  // "rest-client.environmentVariables": {
+  //   "$shared": {
+  //     "WEMO_LOCAL_BASE_URL": "http://localhost:3007",
+  //     "WEMO_QAT_BASE_URL": "https://kottos-qat.wemoscooter.com",
+  //     "userToken": "WeMo eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDA1NDkiLCJ1c2VyX2lkIjoiMjAwNTQ5IiwidmVyc2lvbiI6IjIuMCIsImlhdCI6MTY3MzI1NjY3OCwiZXhwIjoxNjczNjg4Njc4fQ.QE_OHm8cCsu1LsdBRg0jDVzvJdyq0JMvE9LDOEMsx5M"
+  //   },
+  //   "development": {
+  //     "url_test": "test.example.com"
+  //   },
+  //   "staging": {
+  //     "url_test": "test.example.com"
+  //   },
+  //   "production": {
+  //     "url_test": "test.com"
+  //   }
+  // },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // this line enable your js file to use ts to detect error and hint
+  // from ext: TS-CheckMyJS
+  // "js/ts.implicitProjectConfig.checkJs": true
 }

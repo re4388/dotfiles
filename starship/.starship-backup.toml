@@ -30,6 +30,8 @@ very-long-project-name = 'vlpn'
 
 
 
+
+
 [aws]
 symbol = "  "
 
@@ -98,6 +100,8 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+format = 'via [🤖 $version](bold green) '
+
 
 [os.symbols]
 Alpine = " "
