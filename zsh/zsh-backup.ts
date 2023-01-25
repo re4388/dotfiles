@@ -72,10 +72,6 @@ export NVM_DIR="$HOME/.nvm"
 # nvm use v12.22.0
 
 
-###### Auto jump ########
-
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
 
 
 ##################### pet ##############
@@ -247,7 +243,21 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-pm2-completion-###
 
+#eval "$(zoxide init zsh)"
+
+
+
+
+###### Auto jump ########
+
+# [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+
+. ~/.config/z.sh
 
 
 # zprof
 
+
+eval 
+AI_AC_ZSH_SETUP_PATH=/Users/re4388/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup

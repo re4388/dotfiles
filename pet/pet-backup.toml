@@ -68,7 +68,7 @@
 
 [[snippets]]
   description = "show listenning port"
-  command = "lsof -n -i4TCP | grep LISTEN"
+  command = "lsof -iTCP -sTCP:LISTEN -P -n"
   output = ""
 
 [[snippets]]
@@ -214,4 +214,19 @@
 [[snippets]]
   description = "curl POST w/ JSON data"
   command = "curl -d '{\"key1\":\"value1\", \"key2\":\"value2\"}' -H \"Content-Type: application/json\" -X POST http://localhost:9000/users/1/tasks/transcode"
+  output = ""
+
+[[snippets]]
+  description = "curl-cheatsheet"
+  command = "curl cheat.sh/xargs"
+  output = ""
+
+[[snippets]]
+  description = "alias edit"
+  command = "vi ~/.oh-my-zsh/custom/aliases.zsh"
+  output = ""
+
+[[snippets]]
+  description = "startship config go in"
+  command = "vi ~/.config/starship.toml"
   output = ""

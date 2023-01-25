@@ -177,10 +177,6 @@
     // },
     // region shrink and expend
     {
-        "key": "cmd+up",
-        "command": "expand_region"
-    },
-    {
         "key": "cmd+down",
         "command": "undo_expand_region"
     },
@@ -441,5 +437,23 @@
     {
         "key": "alt+a",
         "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+shift+cmd+right",
+        "command": "-very-smart-select.grow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+cmd+left",
+        "command": "-very-smart-select.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+up",
+        "command": "very-smart-select.grow"
+    },
+    {
+        "key": "cmd+down",
+        "command": "very-smart-select.shrink"
     }
 ]
