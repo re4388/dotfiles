@@ -250,10 +250,9 @@ fi
 
 ###### Auto jump ########
 
-# [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-
-. ~/.config/z.sh
+export SSLKEYLOGFILE=~/sslkeylogfile/keylogfile.log
 
 
 # zprof
