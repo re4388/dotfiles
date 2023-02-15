@@ -17,6 +17,18 @@
   output = ""
 
 [[snippets]]
+  description = "tar and zip current path"
+  command = "tar -czvf data.tar.gz ./"
+  tag = ["tar"]
+  output = ""
+
+[[snippets]]
+  description = "untar and unzip to current path"
+  command = "tar -xzvf data.tar.gz"
+  tag = ["tar"]
+  output = ""
+
+[[snippets]]
   description = "curl: Get my public ip addr"
   command = "curl ifconfig.co"
   output = ""
@@ -77,13 +89,13 @@
   output = ""
 
 [[snippets]]
-  description = "docker run-up a pg named pgacid with default pass"
-  command = "docker run --name pgacid -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres:latest"
+  description = "pg docker run up a postgres container"
+  command = "docker run -itd -e POSTGRES_USER=re4388 -e POSTGRES_PASSWORD=2aoxjgju -p 5499:5432 -v '$PWD/data':/var/lib/postgresql/data --name postgresV0 postgres:latest"
   output = ""
 
 [[snippets]]
-  description = "docker go inside pgacid with psql command"
-  command = "docker exec -it pgacid psql -U postgres"
+  description = "pg docker exec go inside container"
+  command = "docker exec -it postgresV0 bash"
   output = ""
 
 [[snippets]]
@@ -229,4 +241,64 @@
 [[snippets]]
   description = "startship config go in"
   command = "vi ~/.config/starship.toml"
+  output = ""
+
+[[snippets]]
+  description = "get the current/active network"
+  command = "route get default | grep interface | awk '{print $2}'"
+  output = ""
+
+[[snippets]]
+  description = "path line by line"
+  command = "echo $PATH | tr ':' '\\n'"
+  output = ""
+
+[[snippets]]
+  description = "get active network name"
+  command = "networksetup -listallhardwareports | grep -B 1 \"$activeNetwork\" | awk '/Hardware Port/{ print }'|cut -d \" \" -f3-"
+  output = ""
+
+[[snippets]]
+  description = "timestamp covert to date"
+  command = "gdate -d @1674784876"
+  output = ""
+
+[[snippets]]
+  description = "open chrome default profile"
+  command = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --args --profile-directory=Default\\n"
+  output = ""
+
+[[snippets]]
+  description = "send curl with proxy"
+  command = "curl --proxy http://218.250.67.85:80 http://example.com"
+  output = ""
+
+[[snippets]]
+  description = "measure rate using pv"
+  command = "yes | pv -r > /dev/null"
+  output = ""
+
+[[snippets]]
+  description = "find file with name"
+  command = "find ./ -name index.ts"
+  output = ""
+
+[[snippets]]
+  description = "http error status code"
+  command = "curl https://www.iana.org/assignments/http-status-codes/http-status-codes.txt"
+  output = ""
+
+[[snippets]]
+  description = "check someone(apps) is listning on what ip and port"
+  command = "netstat -na | grep LIST"
+  output = ""
+
+[[snippets]]
+  description = "show all containers (incl. stop ones)"
+  command = "docker ps -a"
+  output = ""
+
+[[snippets]]
+  description = "mimtpoxy wemo1"
+  command = "mitmproxy --view-filter \"~d .*\\.wemoscooter\\.com\" --set anticache=true --set anticomp=true --set console_flowlist_layout=list"
   output = ""

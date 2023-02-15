@@ -1,6 +1,6 @@
 
 alias vi=nvim
-
+alias chrome="open -a 'Google Chrome'"
 ########### exa
 
 alias ls="exa"
