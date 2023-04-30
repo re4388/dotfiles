@@ -302,3 +302,263 @@
   description = "mimtpoxy wemo1"
   command = "mitmproxy --view-filter \"~d .*\\.wemoscooter\\.com\" --set anticache=true --set anticomp=true --set console_flowlist_layout=list"
   output = ""
+
+[[snippets]]
+  description = "base64 encode"
+  command = "echo  'linuxhint.com' | base64"
+  output = ""
+
+[[snippets]]
+  description = "base64 decode"
+  command = "echo 'bGludXhoaW50LmNvbQo=' | base64 --decode"
+  output = ""
+
+[[snippets]]
+  description = "bettercap"
+  command = "sudo bettercap -caplet /Users/re4388/bettercap_script/a1.cap"
+  output = ""
+
+[[snippets]]
+  description = "apache (start, restart, stop)"
+  command = "sudo /usr/sbin/apachectl stop"
+  output = ""
+
+[[snippets]]
+  description = "ai ask"
+  command = "ai ask \"show listening port and pid\""
+  output = ""
+
+[[snippets]]
+  description = "check port listening"
+  command = "lsof -i -nP | grep LISTEN"
+  output = ""
+
+[[snippets]]
+  description = "check pid name"
+  command = "ps -p 586 -o comm="
+  output = ""
+
+[[snippets]]
+  description = "wget download recursivly"
+  command = "wget -r https://0af9006504dc264dc0e5271900b3001c.web-security-academy.net/.git"
+  output = ""
+
+[[snippets]]
+  description = "softlink setup"
+  command = "ln -s ~/real_file ~/link_file\\n"
+  output = ""
+
+[[snippets]]
+  description = "ssh into my acer via private ip"
+  command = "ssh re4388@192.168.0.128"
+  output = ""
+
+[[snippets]]
+  description = "cloud sql proxy for wemo qat"
+  command = "./cloud-sql-proxy backend-qat:asia-east1:wemo-qat --port 9432 -g"
+  output = ""
+
+[[snippets]]
+  description = "CIDR expansion"
+  command = "mapcidr -cidr 127.0.0.1/27"
+  output = ""
+
+[[snippets]]
+  description = "slice cidr into how many cidr count"
+  command = "mapcidr -cidr 127.0.0.1/27 -sbc 4 -silent"
+  output = ""
+
+[[snippets]]
+  description = "ip format"
+  command = "echo 127.0.1.0 | mapcidr -if 0 -silent"
+  output = ""
+
+[[snippets]]
+  description = "slice given CIDR for equal number of host count in each CIDR"
+  command = "mapcidr -cidr 173.0.84.0/16 -sbh 20000 -silent"
+  output = ""
+
+[[snippets]]
+  description = "ip4 -> ip6"
+  command = "mapcidr -cl ips.txt -t6"
+  output = ""
+
+[[snippets]]
+  description = "count number of hosts for a given CIDR"
+  command = "echo 173.0.84.0/27 | mapcidr -count -silent"
+  output = ""
+
+[[snippets]]
+  description = "nmap scan ip range"
+  command = "nmap 192.168.254.1-200"
+  output = ""
+
+[[snippets]]
+  description = "nmap cidar"
+  command = "nmap 192.168.254.0/24"
+  output = ""
+
+[[snippets]]
+  description = "only check host and skip port scan"
+  command = "nmap -sP 192.168.254.0/24"
+  output = ""
+
+[[snippets]]
+  description = "use grep to find command"
+  command = "nmap | grep -- -sV"
+  output = ""
+
+[[snippets]]
+  description = "nmap -v(verbose or use -vv) -A is to show OS and more info"
+  command = "nmap -v 192.168.64.6 -A"
+  output = ""
+
+[[snippets]]
+  description = "use host to resolve via Google's public DNS server"
+  command = "host kottos.wemoscooter.com 8.8.8.8"
+  output = ""
+
+[[snippets]]
+  description = "namp via provided public google dns"
+  command = "nmap --dns-servers 8.8.4.4,8.8.8.8 192.168.64.6/24"
+  output = ""
+
+[[snippets]]
+  description = "nmap -n(no dns, faster), -sn(no port scan), -T5(faster)"
+  command = "nmap -vv -n -sn -T5 192.168.64.1/24"
+  output = ""
+
+[[snippets]]
+  description = "linex ver of \"nc -lp 5001\", no need to use p"
+  command = "nc -l 5001"
+  output = ""
+
+[[snippets]]
+  description = "dec2hex"
+  command = "printf '%x\\n' 5002"
+  output = ""
+
+[[snippets]]
+  description = "hex2dec"
+  command = "echo $((0x1389))"
+  output = ""
+
+[[snippets]]
+  description = "git remove local branch"
+  command = "git branch -D qat"
+  output = ""
+
+[[snippets]]
+  description = "adb push"
+  command = "adb push fridascript.js /data/local/tmp "
+  output = ""
+
+[[snippets]]
+  description = "adb check frida server is running"
+  command = "adb shell \"ps | grep frida\""
+  output = ""
+
+[[snippets]]
+  description = "frida check process via Usb connected"
+  command = "frida-ps -U "
+  output = ""
+
+[[snippets]]
+  description = "adb check device architecture"
+  command = "adb shell getprop ro.product.cpu.abi "
+  output = ""
+
+[[snippets]]
+  description = "adb instell apk"
+  command = "adb install app-debug.apk"
+  output = ""
+
+[[snippets]]
+  description = "abd logcat to get log"
+  command = "adb logcat |grep Sum"
+  output = ""
+
+[[snippets]]
+  description = "andrio remount in shell, use su first"
+  command = "andriod remot => mount -o rw,remount /system"
+  output = ""
+
+[[snippets]]
+  description = "run up frida-server in my a8"
+  command = "default frida server: /data/local/tmp/frida-server-16.0.3"
+  output = ""
+
+[[snippets]]
+  description = "pyenv init"
+  command = "eval \"$(pyenv init -)\""
+  output = ""
+
+[[snippets]]
+  description = "virtualenv deactivate"
+  command = "deactivate"
+  output = ""
+
+[[snippets]]
+  description = "virtualenv setup and put stuff in venv folder"
+  command = "virtualenv venv"
+  output = ""
+
+[[snippets]]
+  description = "virtualenv activatee"
+  command = "source venv/bin/activate"
+  output = ""
+
+[[snippets]]
+  description = "adb check connected device architecture"
+  command = "adb shell getprop ro.product.cpu.abi"
+  output = ""
+
+[[snippets]]
+  description = "start avd api29"
+  command = "/Users/re4388/Library/Android/sdk/emulator/emulator -writable-system -netdelay none -netspeed full -avd Pixel-5-API-29"
+  output = ""
+
+[[snippets]]
+  description = "string2hex"
+  command = "hex abc"
+  output = ""
+
+[[snippets]]
+  description = "hex2string"
+  command = "unhex 465249444120726f636b7321"
+  output = ""
+
+[[snippets]]
+  description = "gcc compile"
+  command = "gcc -Wall a4.c -o a4"
+  output = ""
+
+[[snippets]]
+  description = "frida -f <file_path> and -l <xxx.js>"
+  command = "frida -l _agent.js -f ./custom_dll/a4"
+  output = ""
+
+[[snippets]]
+  description = "gcc create shared xx.so"
+  command = "gcc -shared -o libtest.so libtest.c"
+  output = ""
+
+[[snippets]]
+  description = "see child process give parent process"
+  command = "pstree -p 53986"
+  output = ""
+
+[[snippets]]
+  description = "check port given port"
+  command = "lsof -i :8080"
+  output = ""
+
+[[snippets]]
+  description = "ngrok"
+  command = "ngrok http 3000"
+  output = ""
+
+[[snippets]]
+  description = "diff"
+  command = "code --diff a1 a2"
+  output = ""
