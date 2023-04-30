@@ -1,10 +1,15 @@
 {
   // Controls if quick suggestions should show up while typing
   "editor.quickSuggestions": {
-    "other": false, // <---trun true to enable suggestion
+    "other": true, // <---trun true to enable suggestion
     "comments": false,
     "strings": false
   },
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
+  ///////////////// MACRO //////////////////////
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
   "macros.list": {
     "commentDown": [
       "editor.action.copyLinesDownAction",
@@ -77,49 +82,27 @@
       "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
     }
   },
-  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontSize": 15, // 16 for small screen
   "terminal.integrated.commandsToSkipShell": [
     "whichkey.show"
   ],
-  "workbench.colorCustomizations": {
-    "tab.activeBorder": "#FFFF00",
-    "tab.unfocusedActiveBorder": "#000000",
-    "tab.activeBackground": "#42557b",
-    "tab.activeForeground": "#dcdcdc",
-    "editorCursor.foreground": "#00ff00",
-    "terminalCursor.fojeground": "#00ff00",
-    "editorCursor.background": "#ffffffc9",
-    "editor.selectionHighlightBorder": "#FFFA",
-    "editor.findMatchBackground": "#42557b",
-    "editor.lineHighlightBackground": "#1073cf2d",
-    "editor.lineHighlightBorder": "#9fced11f",
-    "activityBar.activeBackground": "#fa1b49",
-    "activityBar.background": "#fa1b49",
-    "activityBar.foreground": "#e7e7e7",
-    "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#155e02",
-    "activityBarBadge.foreground": "#e7e7e7",
-    "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#fa1b49",
-    "statusBar.background": "#af2828",
-    "statusBar.foreground": "#ffffff",
-    "statusBarItem.hoverBackground": "#fa1b49",
-    "statusBarItem.remoteBackground": "#dd0531",
-    "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#dd0531",
-    "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#dd053199",
-    "titleBar.inactiveForeground": "#e7e7e799",
-    "statusBar.noFolderBackground": "#af2828"
-  },
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
+  /////////////////COLOR CUSTOMIZE//////////////
+  ///////////////////////////////////////////////
+  ///////////////////////////////////////////////
   "editor.fontFamily": "Hack Nerd Font , 'Courier New', monospace, 細明體",
-  "editor.fontSize": 16,
+  "editor.fontSize": 16, // 17 for bigger screen
   "editor.minimap.enabled": false,
   "redhat.telemetry.enabled": false,
   "workbench.iconTheme": "vscode-great-icons",
   //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
   ////////////////// which key  start /////////////////////////////////
   /////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
   // note: use category to group, not use action prefix to group
   // for example, don't use add, and to note, project, block comment inside
   // note, project and comment are 3 different categories
@@ -151,79 +134,95 @@
       "command": "projectManager.listProjectsNewWindow"
     },
     {
-      // "key": "x",
-      // "name": "Script/Task",
-      // "type": "command",
-      // "command": "workbench.action.tasks.runTask",
-      // "args": "node run"
       "key": "x",
-      "name": "execute python file in terminal",
+      "name": "Joplin Note create",
       "type": "bindings",
-      "command": "python.execInTerminal"
-      // "bindings": [
-      //   {
-      //     "key": "x",
-      //     "name": "execute python file in terminal",
-      //     "type": "command",
-      //     "command": "python.execInTerminal"
-      //   }
-      // ]
+      "command": "joplinNote.createNote"
     },
     // {
-    //   "key": "j",
-    //   "name": "Joplin",
+    //   "key": "x",
+    //   "name": "execute python file in terminal",
     //   "type": "bindings",
-    //   "bindings": [
-    //     {
-    //       "key": "t",
-    //       "name": "toogle between ASUS/Swift",
-    //       "type": "command",
-    //       "command": "settingsOnFire.toggleSettings"
-    //     },
-    //     {
-    //       "key": "a",
-    //       "name": "add/create Note",
-    //       "type": "command",
-    //       "command": "joplinNote.createNote"
-    //     },
-    //     {
-    //       "key": "f",
-    //       "name": "create folder",
-    //       "type": "command",
-    //       "command": "joplinNote.createFolder"
-    //     },
-    //     {
-    //       "key": "r",
-    //       "name": "refresh",
-    //       "type": "command",
-    //       "command": "joplinNote.refreshNoteList"
-    //     },
-    //     {
-    //       "key": "p",
-    //       "name": "paste note",
-    //       "type": "command",
-    //       "command": "joplinNote.paste"
-    //     },
-    //     {
-    //       "key": "x",
-    //       "name": "cut note",
-    //       "type": "command",
-    //       "command": "joplinNote.cut"
-    //     },
-    //     {
-    //       "key": "s",
-    //       "name": "search",
-    //       "type": "command",
-    //       "command": "joplinNote.search"
-    //     },
-    //     {
-    //       "key": "d",
-    //       "name": "delete note",
-    //       "type": "command",
-    //       "command": "joplinNote.remove"
-    //     }
-    //   ]
+    //   "command": "python.execInTerminal"
     // },
+    // {
+    // "key": "x",
+    // "name": "execute python file in terminal",
+    // "type": "bindings",
+    // "command": "python.execInTerminal"
+    // "key": "x",
+    // "name": "Script/Task",
+    // "type": "command",
+    // "command": "workbench.action.tasks.runTask",
+    // "args": "node run"
+    // "key": "x",
+    // "name": "execute python file in terminal",
+    // "type": "bindings",
+    // "command": "python.execInTerminal"
+    // "bindings": [
+    //   {
+    //     "key": "x",
+    //     "name": "execute python file in terminal",
+    //     "type": "command",
+    //     "command": "python.execInTerminal"
+    //   }
+    // ]
+    // },
+    {
+      "key": "j",
+      "name": "Joplin",
+      "type": "bindings",
+      "bindings": [
+        // {
+        // "key": "t",
+        //   "name": "toogle between ASUS/Swift",
+        //   "type": "command",
+        //   "command": "settingsOnFire.toggleSettings"
+        // },
+        {
+          "key": "x",
+          "name": "exeecute note create",
+          "type": "command",
+          "command": "joplinNote.createNote"
+        },
+        {
+          "key": "f",
+          "name": "folder create",
+          "type": "command",
+          "command": "joplinNote.createFolder"
+        },
+        {
+          "key": "r",
+          "name": "refresh",
+          "type": "command",
+          "command": "joplinNote.refreshNoteList"
+        },
+        {
+          "key": "p",
+          "name": "paste note",
+          "type": "command",
+          "command": "joplinNote.paste"
+        },
+        {
+          "key": "x",
+          "name": "cut note",
+          "type": "command",
+          "command": "joplinNote.cut"
+        },
+        {
+          "key": "s",
+          "name": "search",
+          "type": "command",
+          "command": "joplinNote.search"
+        },
+        {
+          "key": "d",
+          "name": "delete note",
+          "type": "command",
+          "command": "joplinNote.remove"
+        }
+      ]
+    },
     {
       "key": "t",
       "name": "terminal",
@@ -338,11 +337,66 @@
     //   "type": "command",
     //   "command": "extension.toggle"
     // },
+    // {
+    //   "key": "k",
+    //   "name": "Open Keyboard Setting JSON",
+    //   "type": "command",
+    //   "command": "workbench.action.openGlobalKeybindingsFile"
+    // },
     {
       "key": "k",
-      "name": "Open Keyboard Setting JSON",
+      "name": "open keyboard(no json)",
       "type": "command",
-      "command": "workbench.action.openGlobalKeybindingsFile"
+      "command": "workbench.action.openGlobalKeybindings"
+    },
+    {
+      "key": "s",
+      "name": "sidebar",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "f",
+          "name": "focus folder",
+          "type": "command",
+          "command": "workbench.explorer.fileView.focus"
+        },
+        {
+          "key": "j",
+          "name": "focus joplin",
+          "type": "command",
+          "command": "workbench.view.extension.joplin-note"
+        },
+        {
+          "key": "b",
+          "name": "toggle bookmark on/off",
+          "type": "command",
+          "command": "bookmarksExplorer.focus"
+        },
+        {
+          "key": "s",
+          "name": "focus on commit",
+          "type": "command",
+          "command": "workbench.view.scm"
+        },
+        {
+          "key": "r",
+          "name": "focus on showCallHierarchy",
+          "type": "command",
+          "command": "references-view.showCallHierarchy"
+        },
+        {
+          "key": "e",
+          "name": "focus on extensions",
+          "type": "command",
+          "command": "workbench.view.extensions"
+        },
+        {
+          "key": "p",
+          "name": "focus on project manager",
+          "type": "command",
+          "command": "workbench.view.extension.project-manager"
+        }
+      ],
     },
     {
       "key": "t",
@@ -350,25 +404,25 @@
       "type": "bindings",
       "command": "workbench.action.tasks.runTask"
     },
-    {
-      "key": "s",
-      "name": "Snippet",
-      "type": "bindings",
-      "bindings": [
-        {
-          "key": "b",
-          "name": "block comment",
-          "type": "command",
-          "command": "editor.action.blockComment"
-        },
-        {
-          "key": "t",
-          "name": "tag added to the wrap selection with #region",
-          "type": "command",
-          "command": "regionfolder.wrapWithRegion"
-        }
-      ],
-    },
+    // {
+    //   "key": "s",
+    //   "name": "Snippet",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "b",
+    //       "name": "block comment",
+    //       "type": "command",
+    //       "command": "editor.action.blockComment"
+    //     },
+    //     {
+    //       "key": "t",
+    //       "name": "tag added to the wrap selection with #region",
+    //       "type": "command",
+    //       "command": "regionfolder.wrapWithRegion"
+    //     }
+    //   ],
+    // },
     {
       "key": "b",
       "name": "Bookmark",
@@ -380,6 +434,12 @@
           "type": "command",
           "command": "bookmarks.toggle"
         },
+        {
+          "key": "e",
+          "name": "toggle bookmark on/off",
+          "type": "command",
+          "command": "bookmarksExplorer.focus"
+        }
         // {
         //   "key": "t",
         //   "name": "tag added to the wrap selection with #region",
@@ -404,29 +464,35 @@
     // },
     {
       "key": "q",
-      "name": "Note",
-      "type": "bindings",
-      "bindings": [
-        {
-          "key": "a",
-          "name": "add new note",
-          "type": "command",
-          "command": "vsnotes.newNote"
-        },
-        {
-          "key": "o",
-          "name": "list notes",
-          "type": "command",
-          "command": "vsnotes.listNotes"
-        },
-        {
-          "key": "s",
-          "name": "search notes",
-          "type": "command",
-          "command": "vsnotes.search"
-        }
-      ]
+      "name": "close all open window",
+      "type": "command",
+      "command": "workbench.action.closeAllEditors"
     },
+    // {
+    //   "key": "q",
+    //   "name": "Note",
+    //   "type": "bindings",
+    //   "bindings": [
+    //     {
+    //       "key": "a",
+    //       "name": "add new note",
+    //       "type": "command",
+    //       "command": "vsnotes.newNote"
+    //     },
+    //     {
+    //       "key": "o",
+    //       "name": "list notes",
+    //       "type": "command",
+    //       "command": "vsnotes.listNotes"
+    //     },
+    //     {
+    //       "key": "s",
+    //       "name": "search notes",
+    //       "type": "command",
+    //       "command": "vsnotes.search"
+    //     }
+    //   ]
+    // },
     {
       "key": "e",
       "name": "Editors",
@@ -548,12 +614,6 @@
     //       "type": "command",
     //       "command": "quokka.createFile"
     //     },
-    //     {
-    //       "key": "k",
-    //       "name": "open keyboard(no json)",
-    //       "type": "command",
-    //       "command": "workbench.action.openGlobalKeybindings"
-    //     }
     //   ]
     // },
   ],
@@ -572,7 +632,10 @@
   "extensions.autoCheckUpdates": false,
   "telemetry.telemetryLevel": "off",
   "cSpell.userWords": [
+    "alloc",
+    "Appier",
     "ascoltatore",
+    "Backtracer",
     "bioclinica",
     "Cetustek",
     "cheatsheet",
@@ -588,8 +651,11 @@
     "execve",
     "facker",
     "followee",
+    "frida",
     "gcloud",
     "heapify",
+    "hexdump",
+    "idcard",
     "IIFE",
     "inorder",
     "karabiner",
@@ -600,8 +666,11 @@
     "mockttp",
     "momenttz",
     "mosca",
+    "Mvdvan",
     "nestjs",
     "nums",
+    "Payway",
+    "PGPS",
     "popleft",
     "Preprocess",
     "proto",
@@ -610,18 +679,22 @@
     "psycopg",
     "readai",
     "rentour",
+    "retval",
     "strs",
     "timepoint",
     "ttypescript",
     "typeorm",
     "Uids",
     "unfollow",
+    "UNPASSED",
+    "VGPS",
     "viewports",
     "vnode",
     "vuln",
     "wado",
     "wemo",
-    "whichkey"
+    "whichkey",
+    "wordlists"
   ],
   "diffEditor.ignoreTrimWhitespace": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -682,6 +755,8 @@
   // "print-it.python.template": "print(\"XXX:\", {{raw}});"
   // "print-it.typescript.template": "console.log(\"The value of {{escaped}} is:\", {{raw}});",
   "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
   "vsnotes.defaultNotePath": "/Users/re4388/Library/CloudStorage/Dropbox/VSNote-ext",
   "vsnotes.treeviewHideTags": true,
   "[markdown]": {
@@ -708,13 +783,10 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // below are blockman setting for better use it ===================
-  "editor.inlayHints.enabled": "off",
   "editor.wordWrap": "off",
   "diffEditor.wordWrap": "off",
   "editor.guides.indentation": false,
   "editor.guides.bracketPairs": false,
-  "workbench.colorTheme": "Darcula",
   // ================================================================
   // ===== below setting will turn-off blockman all color scheme =====
   "blockman.n05CustomColorOfDepth0": "none",
@@ -734,13 +806,67 @@
   "sonarlint.pathToNodeExecutable": "/Users/re4388/.nvm/versions/node/v14.17.0/bin/node",
   "sonarlint.connectedMode.connections.sonarqube": [
     {
-      "serverUrl": "http://34.81.107.2:9000",
-      "connectionId": "WeMo SonarQube"
+      "serverUrl": "http://localhost:9000",
+      "connectionId": "a1"
     }
   ],
+  "workbench.editor.untitled.hint": "hidden",
+  "sonarlint.disableTelemetry": true,
+  "sonarlint.rules": {
+    "c:S987": {
+      "level": "on"
+    }
+  },
+  "qwerty-learner.keySound": true,
+  "qwerty-learner.voiceType": "close",
   // =================================================================
   // ====this line enable your js file to use ts to detect error and hint ======
   // from ext: TS-CheckMyJS
   // "js/ts.implicitProjectConfig.checkJs": true
   // ===========================================================================
+  "prettier.enable": true,
+  "eslint.enable": false,
+  "toggle.settingTitle": "eslint.enable",
+  "markdownlint.ignore": [],
+  "joplin.token": "810ac4bf5d43da584edb863bbbc8491f036722b7337fb1b5dbcd15239f3db194eba2888bc12d38f807ef8912a731eb2b6c451d077ba2749f234d0c5324719809",
+  "git.openRepositoryInParentFolders": "always",
+  "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-12",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.enumMemberValues.enabled": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "editor.inlayHints.padding": true,
+  "workbench.colorTheme": "Darcula",
+  "editor.inlayHints.fontSize": 14,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#fbed80",
+    "activityBar.background": "#fbed80",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#06b9a5",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#fbed80",
+    "statusBar.background": "#af2828",
+    "statusBar.foreground": "#ffffff",
+    "statusBarItem.hoverBackground": "#f7df1e",
+    "statusBarItem.remoteBackground": "#f9e64f",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#f9e64f",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#f9e64f99",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.noFolderBackground": "#af2828"
+  }, // <-- Set the font-size you want
 }

@@ -95,7 +95,6 @@ bindkey '^s' pet-select
 
 
 
-
 ##################### nvim ###################
 export VISUAL=nvim;
 export EDITOR=nvim;
@@ -255,8 +254,30 @@ fi
 export SSLKEYLOGFILE=~/sslkeylogfile/keylogfile.log
 
 
+########## add go/bin into path
+export PATH=$PATH:/Users/re4388/go/bin
+
+
+########### k8s ###############
+alias kbs=kubectl
+
+# auto complete
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
+
+
 # zprof
 
 
-eval 
-AI_AC_ZSH_SETUP_PATH=/Users/re4388/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup
+# eval AI_AC_ZSH_SETUP_PATH=/Users/re4388/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup
+
+
+# export andriod build-tools
+# export PATH=/Users/re4388/Library/Android/sdk/build-tools/30.0.2
+
+
+# perl5
+# PATH="/Users/re4388/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# PERL5LIB="/Users/re4388/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/Users/re4388/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/Users/re4388/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/Users/re4388/perl5"; export PERL_MM_OPT;
