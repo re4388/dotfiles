@@ -12,14 +12,15 @@
 
 ######## profile code at top ############
 
+
+###################33
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
  	# fast-syntax-highlighting
 	# sudo
-  ## copyfile
-
-        # zsh-vi-mode
+    ## copyfile
+    # zsh-vi-mode
 
 plugins=(
     # 缓存 eval
@@ -60,15 +61,9 @@ export HISTSIZE=10000		# save 10000 items in history
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
 
-
-
 #############    node.js 相關 #########################
 
 
-
-########################## fnm(rust version of nvm, faster) ###########
-# eval "$(fnm env --use-on-cd)"
-_evalcache fnm env --use-on-cd
 
 
 
@@ -129,7 +124,14 @@ bindkey '^s' pet-select
 ##########################################
 
 
-################### custom function ####################3
+################### custom function ####################
+
+
+function gitbk () {
+  git switch -c backup_$(date +"_%Y_%m_%d_%H_%M_%S")
+}
+
+
 google() {
     if [ -z "$1" ]; then
         echo "Usage: google <query>"
@@ -304,6 +306,10 @@ shuf -n 1 $q0
 #eval "$(zoxide init zsh)"
 
 
+########################## fnm(rust version of nvm, faster) ###########
+# eval "$(fnm env --use-on-cd)"
+_evalcache fnm env --use-on-cd
+
 
 
 ###### Auto jump ########
@@ -322,11 +328,6 @@ alias minik=minikube
 alias kctx=kubectx
 
 
-################ git ###################
-
-function gitbk () {
-  git switch -c backup_$(date +"_%Y_%m_%d_%H_%M_%S")
-}
 
 
 ############## kubectl ########
@@ -424,5 +425,5 @@ _evalcache zoxide init zsh
 #########  profile code at bottom ###########
 ######### ref: https://blog.skk.moe/post/make-oh-my-zsh-fly/
 
-unsetopt XTRACE
-exec 2>&3 3>&-
+# unsetopt XTRACE
+# exec 2>&3 3>&-
