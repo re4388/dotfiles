@@ -49,11 +49,6 @@
   output = ""
 
 [[snippets]]
-  description = "info on sockets"
-  command = "netstat -a"
-  output = ""
-
-[[snippets]]
   description = "trace the path packet in debug mode"
   command = "traceroute -d google.com"
   output = ""
@@ -160,12 +155,7 @@
 
 [[snippets]]
   description = "git stash include newly added file"
-  command = "git stash --include-untracked"
-  output = ""
-
-[[snippets]]
-  description = "wemo: npm run test watch"
-  command = "npm run test:watch flashSignal"
+  command = "git stash save 'Fix issue #123' --include-untracked"
   output = ""
 
 [[snippets]]
@@ -289,11 +279,6 @@
   output = ""
 
 [[snippets]]
-  description = "check someone(apps) is listning on what ip and port"
-  command = "netstat -na | grep LIST"
-  output = ""
-
-[[snippets]]
   description = "show all containers (incl. stop ones)"
   command = "docker ps -a"
   output = ""
@@ -329,7 +314,7 @@
   output = ""
 
 [[snippets]]
-  description = "check port listening"
+  description = "-i internet, -np No parse(ip to domain) listening port check"
   command = "lsof -i -nP | grep LISTEN"
   output = ""
 
@@ -351,11 +336,6 @@
 [[snippets]]
   description = "ssh into my acer via private ip"
   command = "ssh re4388@192.168.0.128"
-  output = ""
-
-[[snippets]]
-  description = "cloud sql proxy for wemo qat"
-  command = "./cloud-sql-proxy backend-qat:asia-east1:wemo-qat --port 9432 -g"
   output = ""
 
 [[snippets]]
@@ -562,3 +542,290 @@
   description = "diff"
   command = "code --diff a1 a2"
   output = ""
+
+[[snippets]]
+  description = "check mac os version"
+  command = "sw_vers"
+  output = ""
+
+[[snippets]]
+  description = "grpc get list"
+  command = "grpcurl -import-path /Users/re4388/project/work/proto -proto /Users/re4388/project/work/proto/angelia/angelia.proto list"
+  output = ""
+
+[[snippets]]
+  description = "host edit"
+  command = "sudo nvim /etc/hosts"
+  output = ""
+
+[[snippets]]
+  description = "edit mac nginx conf"
+  command = "vi /opt/homebrew/etc/nginx/nginx.conf"
+  output = ""
+
+[[snippets]]
+  description = "nginx reload"
+  command = "nginx -s reload"
+  output = ""
+
+[[snippets]]
+  description = "nginx stop"
+  command = "nginx -s stop"
+  output = ""
+
+[[snippets]]
+  description = "xarg example, -I recursive apply placeholder for later use from prev output"
+  command = "pgrep node | xargs -I {} ps -p {}"
+  output = ""
+
+[[snippets]]
+  description = "next trace"
+  command = "nexttrace http://example.com:8080/index.html\\?q\\=1"
+  output = ""
+
+[[snippets]]
+  description = "fine `error` keyword in log.txt file and count how many line"
+  command = "grep error log.txt | wc -l"
+  output = ""
+
+[[snippets]]
+  description = "gcp account switcher (written by Go!)"
+  command = "gcpSwitcher"
+  output = ""
+
+[[snippets]]
+  description = "sed"
+  command = "echo Hello World! | sed s/World/Node.js/g"
+  output = ""
+
+[[snippets]]
+  description = "ping redis via nc"
+  command = "echo \"PING\\r\\nQUIT\\r\\n\" | nc localhost 6379"
+  output = ""
+
+[[snippets]]
+  description = "wemo-npx-tsc"
+  command = "npx tsc --watch"
+  output = ""
+
+[[snippets]]
+  description = "wemo run test"
+  command = "npm run test:watch test/api/v2/users/me/promotions/V16/promotionNormalPostCheck.test.js"
+  output = ""
+
+[[snippets]]
+  description = "redis command"
+  command = "echo \"info server\" | nc localhost 6379"
+  output = ""
+
+[[snippets]]
+  description = "edit startship config"
+  command = "vi ~/.config/starship.toml"
+  output = ""
+
+[[snippets]]
+  description = "generate pw, i.e. pwgen <number>"
+  command = "pwgen 12"
+  output = ""
+
+[[snippets]]
+  description = "while synax"
+  command = "while true; do curl -m10 $IPADDRESS; done"
+  output = ""
+
+[[snippets]]
+  description = "Replace \"old_text\" with \"new_text\" in file.txt"
+  command = "sed 's/old_text/new_text/g' file.txt"
+  output = ""
+
+[[snippets]]
+  description = "Delete lines containing \"pattern\" from file.txt and output to stdout"
+  command = "sed '/pattern/d' file.txt"
+  output = ""
+
+[[snippets]]
+  description = "jq example: get token key(JSON response from curl) and assign to token variable"
+  command = "TOKEN=$(curl http://127.0.0.1:10080/login -u user|jq -r '.token')"
+  output = ""
+
+[[snippets]]
+  description = "wc, count how many line"
+  command = "cat file.txt | wc -l"
+  output = ""
+
+[[snippets]]
+  description = "show npm global installed package"
+  command = "npm list -g"
+  output = ""
+
+[[snippets]]
+  description = "only get line prefix with ###"
+  command = "grep '^###' sp.txt > filtered_lines.txt"
+  output = ""
+
+[[snippets]]
+  description = "ssh tunnel"
+  command = "gcloud compute ssh --zone \"asia-east1-b\" \"sisyphus\" --project \"backend-qat\" -- -NL localhost:30088:10.101.20.17:30088"
+  output = ""
+
+[[snippets]]
+  description = "ionex-swap"
+  command = "curl -s https://api.ionex.com.tw/location | jq '.data | length'"
+  output = ""
+
+[[snippets]]
+  description = "gcp ssh local port forwarding sonarqube-vm"
+  command = "gcloud compute ssh --zone \"asia-east1-c\" \"sonarqube-vm\" --project \"backend-qat\" -- -NL localhost:30088:10.101.20.17:30088"
+  output = ""
+
+[[snippets]]
+  description = "ngrox alternative Localtunnel"
+  command = "lt --port 3007"
+  output = ""
+
+[[snippets]]
+  description = "ptt"
+  command = "ssh bbsu@ptt.cc"
+  output = ""
+
+[[snippets]]
+  description = "netcat listen on port 1234"
+  command = "nc -l 1234"
+  output = ""
+
+[[snippets]]
+  description = "nsloopup check domain"
+  command = "nslookup -qt=ptr 8.8.8.8"
+  output = ""
+
+[[snippets]]
+  description = "node process opening port"
+  command = "lsof -PiTCP -sTCP:LISTEN | grep node"
+  output = ""
+
+[[snippets]]
+  description = "tcpdump"
+  command = "sudo tcpdump port 443 -w output.pcap"
+  output = ""
+
+[[snippets]]
+  description = "lsof-list open network sockets that are in a listening state (-sTCP:LISTEN) for both IPv4 and IPv6 protocols (-PiTCP)"
+  command = "lsof -PiTCP -sTCP:LISTEN"
+  output = ""
+
+[[snippets]]
+  description = "netstat -a, all -v, verbose"
+  command = "netstat -avn | grep 63370"
+  output = ""
+
+[[snippets]]
+  description = "curl to check my public ip"
+  command = "curl icanhazip.com"
+  output = ""
+
+[[snippets]]
+  description = "find folder via name"
+  command = "find . -name my-nest"
+  output = ""
+
+[[snippets]]
+  description = "zeus kick off script"
+  command = "npm run start:watch"
+  output = ""
+
+[[snippets]]
+  description = "disk size check for a given folder"
+  command = "du -sh taipei-city-beta3"
+  output = ""
+
+[[snippets]]
+  description = "show ip info"
+  command = "curl -sL ip.guide"
+  output = ""
+
+[[snippets]]
+  description = "git branchName"
+  command = "npm install git+https://wemo-gitlab-reader:_Vt9yXdAdKsuhjNa33Ru@athena.wemoscooter.com/wemo/mnemosyne.git#fix/add-vehicleModleId-to-workerTask"
+  output = ""
+
+[[snippets]]
+  description = "git: only want to see offshoot commits(of feat-breanch) from develop"
+  command = "git log develop..feat/low-bat-notify --oneline"
+  output = ""
+
+[[snippets]]
+  description = "check npx cache"
+  command = "du -sh $HOME/.npm/_npx/"
+  output = ""
+
+[[snippets]]
+  description = "check npm cache"
+  command = "du -sh $HOME/.npm/_cacache/"
+  output = ""
+
+[[snippets]]
+  description = "git: commit empty and push empty commit for testing"
+  command = "git commit --allow-empty -m 'test' && git push origin master"
+  output = ""
+
+[[snippets]]
+  description = "architecture os check"
+  command = "uname -m"
+  output = ""
+
+[[snippets]]
+  description = "checl all TCP listening"
+  command = "lsof -iTCP -sTCP:LISTEN | awk  '{print $1, $2, $8, $9}'"
+  output = ""
+
+[[snippets]]
+  description = "profile zshrc cold start time"
+  command = "for i in $(seq 1 5); do /usr/bin/time /bin/zsh -i -c exit; done"
+  output = ""
+
+[[snippets]]
+  description = "check port"
+  command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/check_port.ts"
+  output = ""
+
+[[snippets]]
+description = "edit in vim"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/edit_in_vim.ts"
+output = ""
+
+[[snippets]]
+description = "git_clone_depth1"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/git_clone_depth1.ts"
+output = ""
+
+[[snippets]]
+description = "go_meeting_tab"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/go_meeting_tab.ts"
+output = ""
+
+[[snippets]]
+description = "show_tcp_listening"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/show_tcp_listening.ts"
+output = ""
+
+[[snippets]]
+description = "vim_macro_cheatsheet"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/vim_macro_cheatsheet.js"
+output = ""
+
+[[snippets]]
+description = "wemo_qat_manager_token"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_manager_token.ts"
+output = ""
+
+[[snippets]]
+description = "wemo_qat_user_token"
+command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_user_token.ts"
+output = ""
+
+
+
+
+
+
+
