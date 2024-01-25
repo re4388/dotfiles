@@ -13,13 +13,13 @@
 ######## profile code at top ############
 
 
-###################33
+##########################################
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
  	# fast-syntax-highlighting
 	# sudo
-    ## copyfile
+    # copyfile
     # zsh-vi-mode
 
 plugins=(
@@ -246,8 +246,8 @@ source $ZSH/oh-my-zsh.sh
 
 ### this shall be at end of this file #######
 ##########startship #########
-# eval "$(starship init zsh)"
-_evalcache starship init zsh
+eval "$(starship init zsh)"
+# _evalcache starship init zsh
 
 
 ################## cosay froom my advice ###############
@@ -307,8 +307,8 @@ shuf -n 1 $q0
 
 
 ########################## fnm(rust version of nvm, faster) ###########
-# eval "$(fnm env --use-on-cd)"
-_evalcache fnm env --use-on-cd
+eval "$(fnm env --use-on-cd)"
+# _evalcache fnm env --use-on-cd
 
 
 
@@ -404,15 +404,15 @@ PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 ################### atuin (history with sqlite!) #############
 # https://atuin.sh/docs/key-binding#disable-up-arrow
 # Bind up-arrow but not ctrl-r
-# eval "$(atuin init zsh --disable-ctrl-r)"
-_evalcache atuin init zsh --disable-ctrl-r
+eval "$(atuin init zsh --disable-ctrl-r)"
+# _evalcache atuin init zsh --disable-ctrl-r
 
 
 
 
 ############## zoxin ###############
-# eval "$(zoxide init zsh)"
-_evalcache zoxide init zsh
+eval "$(zoxide init zsh)"
+# _evalcache zoxide init zsh
 
 
 
