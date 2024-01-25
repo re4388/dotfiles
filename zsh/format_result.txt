@@ -1,0 +1,30 @@
+499099 /Users/re4388/.zshrc:208> thefuck --alias  => 砍掉
+279638 /Users/re4388/.zshrc:244> register-python-argcomplete pipx  => 先關掉
+218791 /Users/re4388/.zshrc:376> kubectl completion zsh
+151324 (eval):9> pyenv rehash
+144294 pyenv:12> pyenv init -
+79830 handle_completion_insecurities:13> insecure_dirs=( )
+60272 /Users/re4388/.zshrc:290> starship init zsh
+48212 /Users/re4388/.zshrc:88> fnm env --use-on-cd
+39746 /Users/re4388/.oh-my-zsh/tools/check_for_upgrade.sh:30> git --version
+36468 /Users/re4388/.zshrc:299> shuf -n 1 /Users/re4388/Library/CloudStorage/Dropbo...
+36147 /Users/re4388/.zshrc:445> zoxide init zsh
+31624 /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh:17> compaudit
+20165 /Users/re4388/.oh-my-zsh/plugins/command-not-found/command-not-found.plugin.z...
+15556 /Users/re4388/.oh-my-zsh/oh-my-zsh.sh:118> zcompdump_revision='#omz revision:...
+12422 (eval):72> compdef _python_argcomplete pipx
+12409 /dev/fd/13:94> PROMPT2=▶▶
+11488 /Users/re4388/.oh-my-zsh/plugins/git/git.plugin.zsh:3> git_version=2.39.2
+11325 /Users/re4388/.zshrc:146> zle -N pet-select
+11093 .autocomplete.__init__:84> [[ -d /Users/re4388/.local/share/zsh-autocomplete/...
+9579 /Users/re4388/.oh-my-zsh/oh-my-zsh.sh:107> SHORT_HOST='Hu的MacBook Air'
+9410 /Users/re4388/.zshrc:257> __conda_setup=''
+8865 /Users/re4388/.oh-my-zsh/oh-my-zsh.sh:60> [[ ! -w /Users/re4388/.oh-my-zsh/ca...
+8684 /Users/re4388/google-cloud-sdk/completion.zsh.inc:1> autoload -U +X bashcompinit
+8194 /Users/re4388/.zshrc:444> atuin init zsh --disable-ctrl-r
+7968 (eval):27> atuin uuid
+7941 (eval):1> source /dev/fd/13
+6248 /Users/re4388/.zshrc:244> eval $'n# Run something, muting output or redirecti...
+5593 /Users/re4388/.oh-my-zsh/custom/plugins/you-should-use/you-should-use.plugin....
+5335 (eval):1> PATH='/opt/homebrew/opt/libpq/bin:/Users/re4388/miniconda3/bin:/Use...
+4416 /Users/re4388/.oh-my-zsh/oh-my-zsh.sh:122> grep -q -Fx '#omz revision: f7b647...
