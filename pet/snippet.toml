@@ -73,15 +73,7 @@
   command = "sudo tcpdump -nnvvXs 80 dst 172.217.163.46 -w /tmp/demo.pcap"
   output = ""
 
-[[snippets]]
-  description = "show listenning port"
-  command = "lsof -iTCP -sTCP:LISTEN -P -n"
-  output = ""
-
-[[snippets]]
-  description = "to edit git global config"
-  command = "git config --global --edit"
-  output = ""
+#########################  pg ##############
 
 [[snippets]]
   description = "pg docker run up a postgres container"
@@ -149,16 +141,6 @@
   output = ""
 
 [[snippets]]
-  description = "查詢特定 port 的 service"
-  command = "lsof -n -i:8080 | grep LISTEN"
-  output = ""
-
-[[snippets]]
-  description = "git stash include newly added file"
-  command = "git stash save 'Fix issue #123' --include-untracked"
-  output = ""
-
-[[snippets]]
   description = "conda create"
   command = "conda create --name myenv python=3.10 -y"
   output = ""
@@ -208,10 +190,6 @@
   command = "curl https://jsonplaceholder.typicode.com/users | jq '. [].address.street'"
   output = ""
 
-[[snippets]]
-  description = "pm2 cronjob"
-  command = "pm2 start /Users/re4388/project/personal/experiment/node-12-22-0-commonJS/src/cron-job/backup_dotfiles.js --no-autorestart --cron \"*/1 * * * *\""
-  output = ""
 
 [[snippets]]
   description = "curl POST w/ JSON data"
@@ -224,7 +202,7 @@
   output = ""
 
 [[snippets]]
-  description = "alias edit"
+  description = "zsh alias edit"
   command = "vi ~/.oh-my-zsh/custom/aliases.zsh"
   output = ""
 
@@ -423,10 +401,7 @@
   command = "echo $((0x1389))"
   output = ""
 
-[[snippets]]
-  description = "git remove local branch"
-  command = "git branch -D qat"
-  output = ""
+
 
 [[snippets]]
   description = "adb push"
@@ -699,18 +674,8 @@
   output = ""
 
 [[snippets]]
-  description = "node process opening port"
-  command = "lsof -PiTCP -sTCP:LISTEN | grep node"
-  output = ""
-
-[[snippets]]
   description = "tcpdump"
   command = "sudo tcpdump port 443 -w output.pcap"
-  output = ""
-
-[[snippets]]
-  description = "lsof-list open network sockets that are in a listening state (-sTCP:LISTEN) for both IPv4 and IPv6 protocols (-PiTCP)"
-  command = "lsof -PiTCP -sTCP:LISTEN"
   output = ""
 
 [[snippets]]
@@ -744,11 +709,6 @@
   output = ""
 
 [[snippets]]
-  description = "git branchName"
-  command = "npm install git+https://wemo-gitlab-reader:_Vt9yXdAdKsuhjNa33Ru@athena.wemoscooter.com/wemo/mnemosyne.git#fix/add-vehicleModleId-to-workerTask"
-  output = ""
-
-[[snippets]]
   description = "git: only want to see offshoot commits(of feat-breanch) from develop"
   command = "git log develop..feat/low-bat-notify --oneline"
   output = ""
@@ -774,58 +734,81 @@
   output = ""
 
 [[snippets]]
-  description = "checl all TCP listening"
-  command = "lsof -iTCP -sTCP:LISTEN | awk  '{print $1, $2, $8, $9}'"
-  output = ""
-
-[[snippets]]
   description = "profile zshrc cold start time"
   command = "for i in $(seq 1 5); do /usr/bin/time /bin/zsh -i -c exit; done"
   output = ""
 
-[[snippets]]
-  description = "check port"
-  command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/check_port.ts"
-  output = ""
+
+############################# bun ##########################
+
+#[[snippets]]
+#  description = "check port"
+#  command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/check_port.ts"
+#  output = ""
+#
+#[[snippets]]
+#description = "edit in vim"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/edit_in_vim.ts"
+#output = ""
+#
+#[[snippets]]
+#description = "git_clone_depth1"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/git_clone_depth1.ts"
+#output = ""
+#
+#[[snippets]]
+#description = "go_meeting_tab"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/go_meeting_tab.ts"
+#output = ""
+#
+#[[snippets]]
+#description = "show_tcp_listening"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/show_tcp_listening.ts"
+#output = ""
+#
+#[[snippets]]
+#description = "vim_macro_cheatsheet"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/vim_macro_cheatsheet.js"
+#output = ""
+#
+#[[snippets]]
+#description = "wemo_qat_manager_token"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_manager_token.ts"
+#output = ""
+#
+#[[snippets]]
+#description = "wemo_qat_user_token"
+#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_user_token.ts"
+#output = ""
+
+################################ git ###############
+
 
 [[snippets]]
-description = "edit in vim"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/edit_in_vim.ts"
+description = "git branchName"
+command = "npm install git+https://wemo-gitlab-reader:_Vt9yXdAdKsuhjNa33Ru@athena.wemoscooter.com/wemo/mnemosyne.git#fix/add-vehicleModleId-to-workerTask"
+output = ""
+
+
+[[snippets]]
+description = "git backup branch and switch to there"
+command = "git switch -c backup_$(date +'_%Y_%m_%d_%H_%M_%S')_xxxxx"
+output = ""
+
+
+[[snippets]]
+description = "to edit git global config"
+command = "git config --global --edit"
 output = ""
 
 [[snippets]]
-description = "git_clone_depth1"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/git_clone_depth1.ts"
+description = "git remove local branch"
+command = "git branch -D qat"
 output = ""
+
+
 
 [[snippets]]
-description = "go_meeting_tab"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/go_meeting_tab.ts"
+description = "git stash include newly added file"
+command = "git stash save 'Fix issue #123' --include-untracked"
 output = ""
-
-[[snippets]]
-description = "show_tcp_listening"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/show_tcp_listening.ts"
-output = ""
-
-[[snippets]]
-description = "vim_macro_cheatsheet"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/vim_macro_cheatsheet.js"
-output = ""
-
-[[snippets]]
-description = "wemo_qat_manager_token"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_manager_token.ts"
-output = ""
-
-[[snippets]]
-description = "wemo_qat_user_token"
-command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_user_token.ts"
-output = ""
-
-
-
-
-
-
-
