@@ -126,10 +126,40 @@ bindkey '^s' pet-select
 
 ################### custom function ####################
 
-
-function gitbk () {
-  git switch -c backup_$(date +"_%Y_%m_%d_%H_%M_%S")
+# git pull (ctrl-g+p)
+function gitpull() {
+    echo "git pull";
+    git pull;
+    zle reset-prompt;
+    zle redisplay
 }
+zle -N gitpull
+bindkey '^gp' gitpull
+
+
+# create a feature branch with <name> and then ctrl-g+f
+function git_feat_branch() {
+    branch_name=$BUFFER
+    zle backward-kill-line  # delete text from the cursor position to the beginning of the line
+    echo "git checkout -b feat/$branch_name"
+    git checkout -b "feat/${branch_name}"
+    zle reset-prompt
+    zle redisplay
+}
+zle -N git_feat_branch
+bindkey '^gf' git_feat_branch
+
+# function sourceZsh() {
+#     so ~/.zshrc;
+#     zle reset-prompt;
+#     zle redisplay
+# }
+# zle -N sourceZsh
+# stty -ixon
+# bindkey '^gg' sourceZsh
+
+
+
 
 
 google() {
@@ -142,17 +172,31 @@ google() {
 }
 
 # Define the function
-function qq {
+function qqCanNotBeCalledDirectly {
   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-  ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | pbcopy
-  echo -e "\e[1;34m"~~command copied to the clipboard~~"\e[0m"
 
+  BUFFER=$(ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf  | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay  # redraws the current command line
 }
 
-function ben {
-  # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-  ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | (zsh)
-}
+zle -N qqCanNotBeCalledDirectly       # create a new Zsh widget
+stty -ixon                            # send to tty as regular characters
+bindkey '^e' qqCanNotBeCalledDirectly # ctrl-e
+
+
+
+# function qq {
+#   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
+#   ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | pbcopy
+#   echo -e "\e[1;34m"~~command copied to the clipboard~~"\e[0m"
+#
+# }
+
+# function ben {
+#   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
+#   ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | (zsh)
+# }
 
 # function ben1 {
 #   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
@@ -392,7 +436,6 @@ RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey '\t'  autosuggest-accept
 # bindkey '\t' menu-complete
-# bindkey '^s' pet-select
 
 # [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zshexport
 
