@@ -73,52 +73,9 @@
   command = "sudo tcpdump -nnvvXs 80 dst 172.217.163.46 -w /tmp/demo.pcap"
   output = ""
 
-#########################  pg ##############
 
-[[snippets]]
-  description = "pg docker run up a postgres container"
-  command = "docker run -itd -e POSTGRES_USER=re4388 -e POSTGRES_PASSWORD=2aoxjgju -p 5499:5432 -v '$PWD/data':/var/lib/postgresql/data --name postgresV0 postgres:latest"
-  output = ""
 
-[[snippets]]
-  description = "pg docker exec go inside container"
-  command = "docker exec -it postgresV0 bash"
-  output = ""
 
-[[snippets]]
-  description = "pg: create a quick table named t1"
-  command = "create table t1 (pid serial primary key, name text, price float);"
-  output = ""
-
-[[snippets]]
-  description = "pg: insert into t1 table"
-  command = "insert into t1 (name, price) values('apple', 12.2);"
-  output = ""
-
-[[snippets]]
-  description = "pg: begin tx"
-  command = "begin transaction isolation level <repeatable read | serializable>;"
-  output = ""
-
-[[snippets]]
-  description = "get line of code"
-  command = "find . -type f | xargs wc -w | tail -1"
-  output = ""
-
-[[snippets]]
-  description = "找出目前路徑之下的所有 .txt2 檔案，並且將其刪除, -p 可以先確認再執行"
-  command = "find . -name \"*.txt2\" | xargs -p rm -f"
-  output = ""
-
-[[snippets]]
-  description = "要在所有的 .txt 檔案中搜尋 ben 這個字串"
-  command = "find . -name '*.txt' | xargs grep 'ben'"
-  output = ""
-
-[[snippets]]
-  description = "psql login into hermes-qat w/ password"
-  command = "psql -h 34.80.181.225  -p 5432 -d hermes-qat -U qat -W 1qaz@WSX"
-  output = ""
 
 [[snippets]]
   description = "curl: set proxy"
@@ -175,6 +132,40 @@
   command = "time  zsh -i -c exit"
   output = ""
 
+############################### postgres #############################
+
+[[snippets]]
+description = "pg docker run up a postgres container"
+command = "docker run -itd -e POSTGRES_USER=re4388 -e POSTGRES_PASSWORD=2aoxjgju -p 5499:5432 -v '$PWD/data':/var/lib/postgresql/data --name postgresV0 postgres:latest"
+output = ""
+
+[[snippets]]
+description = "pg docker exec go inside container"
+command = "docker exec -it postgresV0 bash"
+output = ""
+
+[[snippets]]
+description = "pg: create a quick table named t1"
+command = "create table t1 (pid serial primary key, name text, price float);"
+output = ""
+
+[[snippets]]
+description = "pg: insert into t1 table"
+command = "insert into t1 (name, price) values('apple', 12.2);"
+output = ""
+
+[[snippets]]
+description = "pg: begin tx"
+command = "begin transaction isolation level <repeatable read | serializable>;"
+output = ""
+
+[[snippets]]
+description = "psql login into hermes-qat w/ password"
+command = "psql -h 34.80.181.225  -p 5432 -d hermes-qat -U qat -W 1qaz@WSX"
+output = ""
+
+###################################
+
 [[snippets]]
   description = "jq - get all ids from an array response"
   command = "curl https://jsonplaceholder.typicode.com/comments | jq '. [].id'"
@@ -189,7 +180,6 @@
   description = "jq - get nested key from an array of object"
   command = "curl https://jsonplaceholder.typicode.com/users | jq '. [].address.street'"
   output = ""
-
 
 [[snippets]]
   description = "curl POST w/ JSON data"
@@ -248,7 +238,7 @@
 
 [[snippets]]
   description = "find file with name"
-  command = "find ./ -name index.ts"
+  command = "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
   output = ""
 
 [[snippets]]
@@ -260,6 +250,9 @@
   description = "show all containers (incl. stop ones)"
   command = "docker ps -a"
   output = ""
+
+
+##################### mimtpoxy ################3
 
 [[snippets]]
   description = "mimtpoxy wemo1"
@@ -286,10 +279,6 @@
   command = "sudo /usr/sbin/apachectl stop"
   output = ""
 
-[[snippets]]
-  description = "ai ask"
-  command = "ai ask \"show listening port and pid\""
-  output = ""
 
 [[snippets]]
   description = "-i internet, -np No parse(ip to domain) listening port check"
@@ -400,8 +389,6 @@
   description = "hex2dec"
   command = "echo $((0x1389))"
   output = ""
-
-
 
 [[snippets]]
   description = "adb push"
@@ -690,7 +677,7 @@
 
 [[snippets]]
   description = "find folder via name"
-  command = "find . -name my-nest"
+  command = "fd --type d your_folder_name"
   output = ""
 
 [[snippets]]
@@ -738,77 +725,32 @@
   command = "for i in $(seq 1 5); do /usr/bin/time /bin/zsh -i -c exit; done"
   output = ""
 
-
-############################# bun ##########################
-
-#[[snippets]]
-#  description = "check port"
-#  command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/check_port.ts"
-#  output = ""
-#
-#[[snippets]]
-#description = "edit in vim"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/edit_in_vim.ts"
-#output = ""
-#
-#[[snippets]]
-#description = "git_clone_depth1"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/git_clone_depth1.ts"
-#output = ""
-#
-#[[snippets]]
-#description = "go_meeting_tab"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/go_meeting_tab.ts"
-#output = ""
-#
-#[[snippets]]
-#description = "show_tcp_listening"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/show_tcp_listening.ts"
-#output = ""
-#
-#[[snippets]]
-#description = "vim_macro_cheatsheet"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/vim_macro_cheatsheet.js"
-#output = ""
-#
-#[[snippets]]
-#description = "wemo_qat_manager_token"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_manager_token.ts"
-#output = ""
-#
-#[[snippets]]
-#description = "wemo_qat_user_token"
-#command = "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/wemo_qat_user_token.ts"
-#output = ""
-
-################################ git ###############
-
+[[snippets]]
+  description = "git branchName"
+  command = "npm install git+https://wemo-gitlab-reader:_Vt9yXdAdKsuhjNa33Ru@athena.wemoscooter.com/wemo/mnemosyne.git#fix/add-vehicleModleId-to-workerTask"
+  output = ""
 
 [[snippets]]
-description = "git branchName"
-command = "npm install git+https://wemo-gitlab-reader:_Vt9yXdAdKsuhjNa33Ru@athena.wemoscooter.com/wemo/mnemosyne.git#fix/add-vehicleModleId-to-workerTask"
-output = ""
-
-
-[[snippets]]
-description = "git backup branch and switch to there"
-command = "git switch -c backup_$(date +'_%Y_%m_%d_%H_%M_%S')_xxxxx"
-output = ""
-
+  description = "git backup branch and switch to there"
+  command = "git switch -c backup_$(date +'_%Y_%m_%d_%H_%M_%S')_xxxxx"
+  output = ""
 
 [[snippets]]
-description = "to edit git global config"
-command = "git config --global --edit"
-output = ""
+  description = "to edit git global config"
+  command = "git config --global --edit"
+  output = ""
 
 [[snippets]]
-description = "git remove local branch"
-command = "git branch -D qat"
-output = ""
-
-
+  description = "git remove local branch"
+  command = "git branch -D qat"
+  output = ""
 
 [[snippets]]
-description = "git stash include newly added file"
-command = "git stash save 'Fix issue #123' --include-untracked"
-output = ""
+  description = "git stash include newly added file"
+  command = "git stash save 'Fix issue #123' --include-untracked"
+  output = ""
+
+[[snippets]]
+  description = "emoji finder"
+  command = "emojis=$(curl -sSL 'https://git.io/JXXO7'); echo $emojis | fzf"
+  output = ""
