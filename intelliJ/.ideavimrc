@@ -1,0 +1,258 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+" substitute all occur not only the first one"
+set gdefault
+set visualbell
+set hlsearch
+set ignorecase
+set smartcase
+set scrolloff=3 " 3 lines above/below cursor when scrolling
+
+" 打開實驗性質的 EX mdoe
+set noideadelaymacro
+
+
+
+" 客製 ex command
+" command! new action NewFile
+
+
+
+""" Plugins  --------------------------------
+Plug 'scrooloose/nerdtree'
+set NERDTree
+
+" need to install IdeaVim-sneak
+" set sneak
+
+'Plugin' 'tpope/vim-surround'
+set surround
+
+Plug 'tpope/vim-commentary'
+
+set commentary
+set argtextobj
+" set easymotion
+
+set textobj-entire
+set ReplaceWithRegister
+" set sneak
+"set quickscope
+
+
+" sync vim marks with bookmark
+set ideamarks
+
+""" highlighted yank
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "500"
+
+
+Plug 'Improved-paragraph-motion'
+set vim-paragraph-motion
+
+
+""" Idea specific settings ------------------
+set ideajoin
+"set ideastatusicon=gray
+set idearefactormode=keep
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+
+" whichkey
+set which-key
+" set notimeout
+set timeoutlen=3000
+" make the popup show up 'instantly'
+let g:WhichKey_DefaultDelay = 0
+
+
+
+" Have j and k navigate visual lines rather than logical ones
+nmap j gj
+nmap k gk
+
+nmap <S-j> 20gj
+nmap <S-k> 20gk
+
+" I like using H and L for beginning/end of line
+#nmap H ^
+#nmap L $
+nnoremap qq yiw
+
+" 所有的leader 都放在這邊，方便管理
+" search under cursor
+nnoremap <leader>j *
+" clear highlight
+nnoremap <leader>c :nohl<cr>
+
+" or use shift+ctrl+v to reload
+"map <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
+
+"nerdTree"""""""""""""""""""""""""""""""
+nnoremap <leader>n :NERDTreeFocus<cr>
+nnoremap <leader>nt :NERDTreeToggle<cr>
+
+
+
+""""""""""""""""""""""""
+" 目前官方支援的 vim command
+" https://github.com/JetBrains/ideavim/blob/master/src/main/java/com/maddyhome/idea/vim/package-info.java
+""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""
+" 官方推薦選項"""""""""""
+"""""""""""""""""""""""""""""
+"
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+"""""""""""""""""""""""""""""
+" personal setting"""""""""""
+"""""""""""""""""""""""""""""
+
+" use F1, find track actoin id to find the IDE action,
+" and then you can mimic below reloadVimRc way to create your own shortcut"
+
+
+
+"""""""""""""""""""""""'
+" make life easier
+"""""""""""""""""""""""
+" eaier to go into EX mode
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap : ;
+" vnoremap ; :
+
+"GIT"""""""""""""""""""""""""""""""
+
+" map <leader>gc <Action>(ActivateCommitToolWindow)
+" let g:WhichKeyDesc_git       = "<leader>g git"
+" let g:WhichKeyDesc_gitCommitWindow  = "<leader>gc  active git commit window"
+
+" maybe still need to use keyboard to handle this?
+" NextDiff
+" PreviousDiff
+
+" map <leader>gg <Action>(ActivateVersionControlToolWindow)
+" let g:WhichKeyDesc_gitGrpah = "<leader>gg  active git graph"
+
+""""""""""""""""""""""""""""""""""""
+
+"File"""""""""""""""""""""""""""""""
+" let g:WhichKeyDesc_file      = "<leader>f file"
+" let g:WhichKeyDesc_fileCopy  = "<leader>fp  copy file path"
+" map <leader>fp <Action>(org.momuniverse42.idea.copyNixPath.CopyNixPath)
+""""""""""""""""""""""""""""""""""""
+
+"window"""""""""""""""""""""""""""""""
+" let g:WhichKeyDesc_window       = "<leader>w  window"
+" let g:WhichKeyDesc_hideActiveWindow = "<leader>wh hide active window"
+" map <leader>wh <Action>(HideActiveWindow)
+""""""""""""""""""""""""""""""""""""
+
+
+" nnoremap <leader><leader> :action ideaVim.ReloadVimRc.reload<cr>
+
+"nnoremap <C-n> :NERDTreeFocus<cr>
+" let g:WhichKeyDesc_nerdTreeFocus = "<leader>n  NERDTreeFocus"
+" let g:WhichKeyDesc_nerTreeToggle = "<leader>nt NERDTreeToggle"
+
+""""""""""""""""""""""""""""""""""""
+
+"TAB"""""""""""""""""""""""""""""""
+" nnoremap <s-TAB> :action PreviousTab<CR>
+" nnoremap <TAB> :action NextTab<CR>
+""""""""""""""""""""""""""""""""""""
+
+
+
+""""""""""""""""""""""""""""""""""""""'
+" Window Navigation
+"""""""""""""""""""""""""""""""""""""""
+
+" use cmd+hjkl to jump across window
+" in my setup, it means I can use capslock
+nnoremap <D-h> <C-W>h
+nnoremap <D-l> <C-W>l
+nnoremap <D-j> <C-W>j
+nnoremap <D-k> <C-W>k
+
+"nnoremap qh <C-W>h
+"nnoremap ql <C-W>l
+"nnoremap qj <C-W>j
+"nnoremap qk <C-W>k
+" nnoremap <C-h> <C-W>h
+" nnoremap <C-l> <C-W>l
+" nnoremap <C-j> <C-W>j
+" nnoremap <C-k> <C-W>k
+
+" nnoremap <leader>h :action Refactorings.QuickListPopupAction<CR>
+
+" Go to..
+" map <leader>gp <Action>(SelectInProjectView)
+
+
+" to find more intelliJ command..."
+
+
+
+" q Git go history `gh`
+" nnoremap <leader>gh :action LocalHistory.ShowHistory<cr>
+" nnoremap <leader>gb :action Git.Branches<cr>
+" nnoremap <leader>gp :action Git.Pull<cr>
+" nnoremap <leader>ga :action GitRepositoryActions<cr>
+
+
+" e: editor"
+" nnoremap <Leader>en :action EditSourceInNewWindow<CR>
+" nnoremap <leader>eo :action CloseAllEditorsButActive<cr>
+" nnoremap <leader>ew :action EditorToggleUseSoftWraps<cr>
+
+" r: run"
+" nnoremap <leader>rr :action Run<CR>
+"nnoremap <leader>rd :action Debug<cr>
+" nnoremap <leader>bb :action ToggleLineBreakpoint<cr>
+
+" project"
+" nnoremap <leader>pn :action NextProjectWindow<cr>
+
+"other"
+" nnoremap <leader>fs :action NewScratchFile<cr>
+
+" easier surrounding vim
+" cursor on word, just use below to add '' or ""
+"nmap q` ysiw`
+"nmap q" ysiw"
+"nmap q' ysiw'
+"nmap qb ysiwb
+"nmap qB ysiwB
+"nmap qt ysiw<
+"nmap q[ ysiw[
+" another way to use surrounding vim:
+" cs"' <-- change surround from " to '
+" visual mode: select in visual mode first and then add "
+" ex: `viwS'`
+
+
+" Disable dengerous/annoying mappings
+" ZZ - save and close Vim
+" ZQ - close Vim
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+" show the file structure in popup / symbols
+" map <leader>h <Action>(FileStructurePopup)
+

@@ -15,7 +15,11 @@ plugins=(
 # fast-syntax-highlighting
 # sudo
 # copyfile
-# zsh-vi-mode
+
+
+    # here I use the forked version, which can copy to system clipbord https://github.com/brorbw/zsh-vi-mode/tree/master
+#     zsh-vi-mode
+
 
     # autoload -uz compinit 移動到這邊管理，一天只跑一起 補全載入
     # /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh
@@ -33,9 +37,9 @@ plugins=(
     you-should-use
     command-not-found
 
-#     fzf-tab
+    fzf-tab  # 可以跟 fzf complete use together
 
-#     zsh-autocomplete  # 跟 fzf-autocomplete 衝到
+#     zsh-autocomplete  # 跟 fzf complete 功能衝到
 
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -71,31 +75,70 @@ export HISTSIZE=10000		# save 10000 items in history
 
 
 ################### fzf ####################
+# key bindings:
+# CTRL-T - Paste the selected files and directories onto the command-line
+# CTRL-R - fzf 版本的 看歷史 -> 目前不需要用，我用 atuin
+# ALT-C - fzf 版本的 CD
 
 # 換成更高效的查詢引擎
 # export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
-# Use ~~ as the trigger sequence instead of the default **
-export FZF_COMPLETION_TRIGGER='~~'
+
+# export FZF_CTRL_T_COMMAND	按鍵對映行為設定
+# export FZF_ALT_C_COMMAND	按鍵對映行為設定
+# export FZF_CTRL_R_COMMAND	按鍵對映行為設定
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
 # export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 # export FZF_COMPLETION_TRIGGER="**"
-
-# key bindings and fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# key bindings:
-# CTRL-T - Paste the selected files and directories onto the command-line
-export FZF_CTRL_T_OPTS="--height 60% \
+export FZF_ALT_C_OPTS="--height 60% \
+--layout=reverse
 --border sharp \
---layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+
+export FZF_CTRL_T_OPTS="--height 60% \
+--layout=reverse
+--border sharp \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+export FZF_CTRL_R_OPTS="--height 60% \
+--layout=reverse
+--border sharp \
 --prompt '∷ ' \
 --pointer ▶ \
 --marker ⇒"
 
 
-# CTRL-R - Paste the selected command from history onto the command-line
-# ALT-C - cd into the selected directory
+### preview example
+# fzf --preview 'cat {}' # 預覽檔案內容
+# fzf --preview 'rg -F "def main(" -C 3 {}' # 預覽 Python 檔案 main 函式前後3行程式碼
+
+# fzf --preview '[[ $(file --mime {}) =~ binary ]] &&                                                                                                             (prod/default)
+#                  echo {} is a binary file ||
+#                  (bat --style=numbers --color=always {} ||
+#                   highlight -O ansi -l {} ||
+#                   coderay {} ||
+#                   rougify {} ||
+#                   cat {}) 2> /dev/null | head -500'
+
+
+# fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'
+
+
+
+
+
+
+
+
+# key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 
 
 
@@ -103,16 +146,26 @@ export FZF_CTRL_T_OPTS="--height 60% \
 # 我用 zsh-autocomplete, 因為後者的功能比較全面
 
 # fuzzy completion:
-# - You can select multiple items with TAB key
 # vi ~~<TAB>
 # kill -9
 # export ~~
 # unset	~~
+
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS='--border --info=inline'
+
 # export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 
 #  to specify shell commands that should be used by fzf (Fuzzy Finder) for directory completion
 # export FZF_COMPLETION_DIR_COMMANDS="fd --type d"
 
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
@@ -122,25 +175,20 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1 # first argument
+  shift # shifts the argument list to the left, effectively removing the first argument. The remaining arguments are stored in "$@".
 
-#
-# # try build a simple completion
-# _fzf_complete_git() {
-#   _fzf_complete -- "$@" < <(
-#     git --help -a | grep -E '^\s+' | awk '{print $1}'
-#   )
-# }
-#
-#
-# _fzf_comprun() {
-#   local command=$1
-#   shift
-#
-#   case "$command" in
-#     tree)         find . -type d | fzf --preview 'tree -C {}' "$@";;
-#     *)            fzf "$@" ;;
-#   esac
-# }
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
 
 
 ################################ alias
@@ -325,89 +373,6 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_comma
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 
-source /Users/re4388/project/personal/zsh_plugin_manual/enhancd/init.sh
 
 
-
-
-
-
-
-
-########################################################################
-########################################################################
-########################################################################
-############ archived ################
-########################################################################
-########################################################################
-########################################################################
-
-
-
-
-
-
-
-####### pyenv ###############
-# by default, "pyenv" and "brew" conflict on how they use PATH
-# this alias will ensure brew work correctly
-
-# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-
-
-
-##################### pipx  ###################
-
-### note: 影響 cold start, 先關掉，有常用再開
-
-# autoload -U bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pipx)"
-
-#################### br (replace tree)
-# source /Users/re4388/.config/broot/launcher/bash/br
-
-
-
-################## nvm ####################
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Put this into your $HOME/.zshrc to call nvm use automatically whenever you enter a directory that contains an .nvmrc file with a string telling nvm which node to use:
-
-
-# load-nvmrc() {
-#   local nvmrc_path
-#   nvmrc_path="$(nvm_find_nvmrc)"
-#
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version
-#     nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-#
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-#       nvm use
-#     fi
-#   elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
-
-# The add-zsh-hook function is part of Zsh and is used for adding hooks, which are functions that get executed at certain points in the Zsh execution cycle. Hooks are useful for performing actions or customizations before or after specific events, such as before a command is executed or after a command is completed.
-# autoload -U add-zsh-hook
-
-
-
+cd ~/project

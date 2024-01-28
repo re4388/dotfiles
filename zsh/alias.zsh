@@ -1,9 +1,9 @@
 ##################### alias ###################
 
 
-alias vi=nvim
-alias vim=nvim
-alias nvim=nvim
+alias vi=lvim
+alias vim=lvim
+alias nvim=lvim
 
 
 alias kc=kubectl
