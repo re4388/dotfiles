@@ -73,11 +73,11 @@ export HISTSIZE=10000		# save 10000 items in history
 ################### fzf ####################
 
 # 換成更高效的查詢引擎
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
-# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 # export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 # export FZF_COMPLETION_TRIGGER="**"
 
@@ -111,15 +111,18 @@ export FZF_CTRL_T_OPTS="--height 60% \
 # export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 
 #  to specify shell commands that should be used by fzf (Fuzzy Finder) for directory completion
-export FZF_COMPLETION_DIR_COMMANDS="fd --type d"
+# export FZF_COMPLETION_DIR_COMMANDS="fd --type d"
 
 _fzf_compgen_path() {
-    rg --files --glob "!.git" . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
+# Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-   fd --type d --hidden --follow --exclude ".git" . "$1"
+  fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+
 #
 # # try build a simple completion
 # _fzf_complete_git() {
@@ -321,6 +324,8 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_comma
 ######## sensitive env variables #########
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
+
+source /Users/re4388/project/personal/zsh_plugin_manual/enhancd/init.sh
 
 
 
