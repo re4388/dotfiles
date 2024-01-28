@@ -20,28 +20,28 @@ function prev() {
 }
 
 # 熱鍵版本
-#function pet-select() {
-#  BUFFER=$(pet search --query "$LBUFFER")
-#  CURSOR=$#BUFFER
-#  zle redisplay
-#}
-#zle -N pet-select
-#stty -ixon
-#bindkey '^[s' pet-select
-
-# 指令版本
-function petf() {
-#  BUFFER=$(pet search --query "$LBUFFER")
-#  CURSOR=$#BUFFER
-#  zle redisplay
-
+function pet-select() {
   BUFFER=$(pet search --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle redisplay
 }
-zle -N petf
+zle -N pet-select
 stty -ixon
-bindkey '^[s' petf
+bindkey '^[s' pet-select
+
+# 指令版本 -> 還在找方法
+#function petf() {
+#  BUFFER=$(pet search --query "$LBUFFER")
+#  CURSOR=$#BUFFER
+#  zle redisplay
+#
+#  BUFFER=$(pet search --query "$LBUFFER")
+#  CURSOR=$#BUFFER
+#  zle redisplay
+#}
+#zle -N petf
+#stty -ixon
+#bindkey '^[s' petf
 
 ##########################################
 
