@@ -11,18 +11,16 @@
 # setopt XTRACE
 
 ######## profile code at top ############
-
-
-##########################################
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
- 	# fast-syntax-highlighting
-	# sudo
-    # copyfile
-    # zsh-vi-mode
-
 plugins=(
+# fast-syntax-highlighting
+# sudo
+# copyfile
+# zsh-vi-mode
+
+    # autoload -uz compinit 移動到這邊管理，一天只跑一起 補全載入
+    # /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh
+    zshfl
+
     # 缓存 eval
     # https://github.com/mroth/evalcache
     # use _evalcache to replace eval
@@ -30,17 +28,34 @@ plugins=(
 
     pyenv-lazy
 
-    # autoload -uz compinit 移動到這邊管理，一天只跑一起 補全載入
-    # /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh
-    zshfl
     git
-    zsh-autocomplete
-    zsh-syntax-highlighting
-    zsh-autosuggestions
     zsh-kubectl-prompt
     you-should-use
     command-not-found
+
+#     fzf-tab
+
+#     zsh-autocomplete  # 跟 fzf-autocomplete 衝到
+
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
+
+
+############# oh-my-zsh #############
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+
+
+
+############ zsh completion #############
+# https://thevaluable.dev/zsh-completion-guide-examples
+
+# 使用上面的 zshfl 取代
+# autoload -U compinit && compinit
+# fpath=($ZSH/custom/completions $fpath)
+
 
 
 ######## general setup ##########
@@ -52,159 +67,92 @@ export HISTSIZE=10000		# save 10000 items in history
 
 
 
-####### pyenv ###############
-# by default, "pyenv" and "brew" conflict on how they use PATH
-# this alias will ensure brew work correctly
-
-# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-#############    node.js 相關 #########################
 
 
 
+################### fzf ####################
+
+# 換成更高效的查詢引擎
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+# export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
+# export FZF_COMPLETION_TRIGGER="**"
+
+# key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# key bindings:
+# CTRL-T - Paste the selected files and directories onto the command-line
+export FZF_CTRL_T_OPTS="--height 60% \
+--border sharp \
+--layout reverse \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+
+
+# CTRL-R - Paste the selected command from history onto the command-line
+# ALT-C - cd into the selected directory
 
 
 
-################## nvm ####################
+# 目前 fzf 的 completion 跟 zsh-autocomplete 衝到, 因此不起作用
+# 我用 zsh-autocomplete, 因為後者的功能比較全面
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fuzzy completion:
+# - You can select multiple items with TAB key
+# vi ~~<TAB>
+# kill -9
+# export ~~
+# unset	~~
+# export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 
-# Put this into your $HOME/.zshrc to call nvm use automatically whenever you enter a directory that contains an .nvmrc file with a string telling nvm which node to use:
+#  to specify shell commands that should be used by fzf (Fuzzy Finder) for directory completion
+export FZF_COMPLETION_DIR_COMMANDS="fd --type d"
 
-
-# load-nvmrc() {
-#   local nvmrc_path
-#   nvmrc_path="$(nvm_find_nvmrc)"
-#
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version
-#     nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-#
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-#       nvm use
-#     fi
-#   elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-
-##################### pet ##############
-# to help me to add a new command to pet
-function prev() {
-  PREV=$(fc -lrn | head -n 1)
-  sh -c "pet new `printf %q "$PREV"`"
+_fzf_compgen_path() {
+    rg --files --glob "!.git" . "$1"
 }
 
-# Select snippets at the current line (like C-r)
-function pet-select() {
-  BUFFER=$(pet search --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
+_fzf_compgen_dir() {
+   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-zle -N pet-select
-stty -ixon
-bindkey '^s' pet-select
-
-##########################################
-
-
-################### custom function ####################
-
-
-# function sourceZsh() {
-#     so ~/.zshrc;
-#     zle reset-prompt;
-#     zle redisplay
-# }
-# zle -N sourceZsh
-# stty -ixon
-# bindkey '^gg' sourceZsh
-
-
-
-
-
-google() {
-    if [ -z "$1" ]; then
-        echo "Usage: google <query>"
-    else
-        query="$1"
-        open "https://www.google.com/search?q=$query"
-    fi
-}
-
-# Define the function
-function qqCanNotBeCalledDirectly {
-  # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-
-  BUFFER=$(ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf  | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay  # redraws the current command line
-}
-
-zle -N qqCanNotBeCalledDirectly       # create a new Zsh widget
-stty -ixon                            # send to tty as regular characters
-bindkey '^e' qqCanNotBeCalledDirectly # ctrl-e
-
-
-
-# function qq {
-#   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-#   ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | pbcopy
-#   echo -e "\e[1;34m"~~command copied to the clipboard~~"\e[0m"
 #
+# # try build a simple completion
+# _fzf_complete_git() {
+#   _fzf_complete -- "$@" < <(
+#     git --help -a | grep -E '^\s+' | awk '{print $1}'
+#   )
 # }
-
-# function ben {
-#   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-#   ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | (zsh)
-# }
-
-# function ben1 {
-#   # get the scripts, fzf, use awk to append bun run and path, then copy into system clipboard
-#   ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf |  awk '{print "/Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}' | xargs -0 -o bun
 #
+#
+# _fzf_comprun() {
+#   local command=$1
+#   shift
+#
+#   case "$command" in
+#     tree)         find . -type d | fzf --preview 'tree -C {}' "$@";;
+#     *)            fzf "$@" ;;
+#   esac
 # }
 
 
-##################### vim related ###################
-export VISUAL=lvim;
-export EDITOR=lvim;
-
-alias vi=lvim
-alias vim=lvim
-alias nvim=lvim
-###################### mitmproxy ######################
+################################ alias
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/alias.zsh
 
 
 
 
-################# navi as shelkl widget ###############
-# allow you to use ctrl+g to active the navi
-# eval "$(navi widget zsh)"
+###################### export, env variables ######################
+
+export VISUAL=nvim;
+export EDITOR=nvim;
 
 
 
-
-########### thefuck, a tool to help fix wrong command ##########
-# note: make cold start slow and seldom use -> remove
-# eval $(thefuck --alias)
 
 
 
@@ -216,17 +164,6 @@ if [ -f '/Users/re4388/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/re4388/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/re4388/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/re4388/google-cloud-sdk/completion.zsh.inc'; fi
 
-
-##################### pipx  ###################
-
-### note: 影響 cold start, 先關掉，有常用再開
-
-# autoload -U bashcompinit
-# bashcompinit
-# eval "$(register-python-argcomplete pipx)"
-
-#################### br (replace tree)
-# source /Users/re4388/.config/broot/launcher/bash/br
 
 
 
@@ -261,9 +198,6 @@ set the auto_activate_base parameter to false
 export PATH="$PATH:/Users/re4388/.local/bin"
 
 
-############# oh-my-zsh #############
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 
 ### this shall be at end of this file #######
@@ -282,50 +216,6 @@ shuf -n 1 $q0
 
 
 
-###-begin-pm2-completion-###
-### credits to npm for the completion file model
-#
-# Installation: pm2 completion >> ~/.bashrc  (or ~/.zshrc)
-# below the code begin:
-
-
-# COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
-# COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
-# export COMP_WORDBREAKS
-#
-# if type complete &>/dev/null; then
-#   _pm2_completion () {
-#     local si="$IFS"
-#     IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-#                            COMP_LINE="$COMP_LINE" \
-#                            COMP_POINT="$COMP_POINT" \
-#                            pm2 completion -- "${COMP_WORDS[@]}" \
-#                            2>/dev/null)) || return $?
-#     IFS="$si"
-#   }
-#   complete -o default -F _pm2_completion pm2
-# elif type compctl &>/dev/null; then
-#   _pm2_completion () {
-#     local cword line point words si
-#     read -Ac words
-#     read -cn cword
-#     let cword-=1
-#     read -l line
-#     read -ln point
-#     si="$IFS"
-#     IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-#                        COMP_LINE="$line" \
-#                        COMP_POINT="$point" \
-#                        pm2 completion -- "${words[@]}" \
-#                        2>/dev/null)) || return $?
-#     IFS="$si"
-#   }
-#   compctl -K _pm2_completion + -f + pm2
-# fi
-
-###-end-pm2-completion-###
-
-#eval "$(zoxide init zsh)"
 
 
 ########################## fnm(rust version of nvm, faster) ###########
@@ -334,20 +224,10 @@ eval "$(fnm env --use-on-cd)"
 
 
 
-###### Auto jump ########
-
-# [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-# export SSLKEYLOGFILE=~/sslkeylogfile/keylogfile.log
 
 
 ########## add go/bin into path
 export PATH=$PATH:/Users/re4388/go/bin
-
-
-## ########## k8s ###############
-alias kc=kubectl
-alias minik=minikube
-alias kctx=kubectx
 
 
 
@@ -361,15 +241,13 @@ alias kctx=kubectx
 
 
 
-# a script to ssh into many wemo service
-# need to git clone https://athena.wemoscooter.com/wemo/ssh-gcp first
-# alias wemogcp="/Users/re4388/project/work/ssh-gcp/ssh-gcp.sh"
 
-# binding auto suggest accept with ctrl + space
-# ^ is ctrl
-# bindkey '^ ' autosuggest-accept
+# zsh-autosuggestions
+# 目前用 default 就是 ->
+# bindkey '^[i' autosuggest-accept
 # bindkey '^b' autosuggest-accept
 # bindkey '^[f' autosuggest-accept
+
 
 
 
@@ -389,26 +267,13 @@ alias kctx=kubectx
 # PERL_MM_OPT="INSTALL_BASE=/Users/re4388/perl5"; export PERL_MM_OPT;
 
 # add kit bin into path, scriptkit, https://www.scriptkit.com/
-export PATH="$PATH:/Users/re4388/.kit/bin"
+# export PATH="$PATH:/Users/re4388/.kit/bin"
 
-
-# autoload -U compinit && compinit
-fpath=($ZSH/custom/completions $fpath)
-
-
-# IDEA open, like `code` for vscode
-alias idea='open -na "IntelliJ IDEA.app" --args'
-
-
-alias du='gdu-go'
 
 
 # https://github.com/superbrothers/zsh-kubectl-prompt
 # display current k8s context
 RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-
-
-
 
 # bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
@@ -425,21 +290,24 @@ PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 ################### atuin (history with sqlite!) #############
 # https://atuin.sh/docs/key-binding#disable-up-arrow
 # Bind up-arrow but not ctrl-r
-eval "$(atuin init zsh --disable-ctrl-r)"
-# _evalcache atuin init zsh --disable-ctrl-r
+# eval "$(atuin init zsh --disable-ctrl-r)"
+_evalcache atuin init zsh --disable-ctrl-r
 
 
 
 
 ############## zoxin ###############
-eval "$(zoxide init zsh)"
-# _evalcache zoxide init zsh
+# eval "$(zoxide init zsh)"
+_evalcache zoxide init zsh
 
 
 
 # bun completions
 [ -s "/Users/re4388/.bun/_bun" ] && source "/Users/re4388/.bun/_bun"
 
+
+################### custom commands
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_command.zsh
 
 
 
@@ -448,3 +316,93 @@ eval "$(zoxide init zsh)"
 
 # unsetopt XTRACE
 # exec 2>&3 3>&-
+
+
+######## sensitive env variables #########
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
+
+
+
+
+
+
+
+
+
+########################################################################
+########################################################################
+########################################################################
+############ archived ################
+########################################################################
+########################################################################
+########################################################################
+
+
+
+
+
+
+
+####### pyenv ###############
+# by default, "pyenv" and "brew" conflict on how they use PATH
+# this alias will ensure brew work correctly
+
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+
+
+
+##################### pipx  ###################
+
+### note: 影響 cold start, 先關掉，有常用再開
+
+# autoload -U bashcompinit
+# bashcompinit
+# eval "$(register-python-argcomplete pipx)"
+
+#################### br (replace tree)
+# source /Users/re4388/.config/broot/launcher/bash/br
+
+
+
+################## nvm ####################
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Put this into your $HOME/.zshrc to call nvm use automatically whenever you enter a directory that contains an .nvmrc file with a string telling nvm which node to use:
+
+
+# load-nvmrc() {
+#   local nvmrc_path
+#   nvmrc_path="$(nvm_find_nvmrc)"
+#
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version
+#     nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+#       nvm use
+#     fi
+#   elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
+
+
+# The add-zsh-hook function is part of Zsh and is used for adding hooks, which are functions that get executed at certain points in the Zsh execution cycle. Hooks are useful for performing actions or customizations before or after specific events, such as before a command is executed or after a command is completed.
+# autoload -U add-zsh-hook
+
+
+
