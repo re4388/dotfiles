@@ -1,4 +1,4 @@
-""" Map leader to space ---------------------
+" Map leader to space
 let mapleader=" "
 
 " substitute all occur not only the first one"
@@ -7,7 +7,9 @@ set visualbell
 set hlsearch
 set ignorecase
 set smartcase
-set scrolloff=3 " 3 lines above/below cursor when scrolling
+
+" 3 lines above/below cursor when scrolling
+set scrolloff=3
 
 " 打開實驗性質的 EX mdoe
 set noideadelaymacro
@@ -19,14 +21,14 @@ set noideadelaymacro
 
 
 
-""" Plugins  --------------------------------
+" Plugins
 Plug 'scrooloose/nerdtree'
 set NERDTree
 
 " need to install IdeaVim-sneak
 " set sneak
 
-'Plugin' 'tpope/vim-surround'
+" Plugin' 'tpope/vim-surround'
 set surround
 
 Plug 'tpope/vim-commentary'
@@ -84,18 +86,6 @@ nmap <S-k> 20gk
 #nmap L $
 nnoremap qq yiw
 
-" 所有的leader 都放在這邊，方便管理
-" search under cursor
-nnoremap <leader>j *
-" clear highlight
-nnoremap <leader>c :nohl<cr>
-
-" or use shift+ctrl+v to reload
-"map <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
-
-"nerdTree"""""""""""""""""""""""""""""""
-nnoremap <leader>n :NERDTreeFocus<cr>
-nnoremap <leader>nt :NERDTreeToggle<cr>
 
 
 
@@ -119,23 +109,67 @@ set incsearch
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+
+
+
+
+
+
 """""""""""""""""""""""""""""
 " personal setting"""""""""""
 """""""""""""""""""""""""""""
 
-" use F1, find track actoin id to find the IDE action,
-" and then you can mimic below reloadVimRc way to create your own shortcut"
 
 
 
-"""""""""""""""""""""""'
-" make life easier
-"""""""""""""""""""""""
-" eaier to go into EX mode
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap : ;
-" vnoremap ; :
+
+
+
+""""""""""""""""""""""""""""""""""""""'
+" Window Navigation
+"""""""""""""""""""""""""""""""""""""""
+
+" use cmd+hjkl to jump across split panels
+" in my setup, it means I can use capslock
+nnoremap <D-h> <C-W>h
+nnoremap <D-l> <C-W>l
+nnoremap <D-j> <C-W>j
+nnoremap <D-k> <C-W>k
+
+" nnoremap qh <C-W>h
+" nnoremap ql <C-W>l
+" nnoremap qj <C-W>j
+" nnoremap qk <C-W>k
+" nnoremap <C-h> <C-W>h
+" nnoremap <C-l> <C-W>l
+" nnoremap <C-j> <C-W>j
+" nnoremap <C-k> <C-W>k
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""沒用到的放下面 """"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
 
 "GIT"""""""""""""""""""""""""""""""
 
@@ -179,29 +213,6 @@ map Q gq
 """"""""""""""""""""""""""""""""""""
 
 
-
-""""""""""""""""""""""""""""""""""""""'
-" Window Navigation
-"""""""""""""""""""""""""""""""""""""""
-
-" use cmd+hjkl to jump across window
-" in my setup, it means I can use capslock
-nnoremap <D-h> <C-W>h
-nnoremap <D-l> <C-W>l
-nnoremap <D-j> <C-W>j
-nnoremap <D-k> <C-W>k
-
-"nnoremap qh <C-W>h
-"nnoremap ql <C-W>l
-"nnoremap qj <C-W>j
-"nnoremap qk <C-W>k
-" nnoremap <C-h> <C-W>h
-" nnoremap <C-l> <C-W>l
-" nnoremap <C-j> <C-W>j
-" nnoremap <C-k> <C-W>k
-
-" nnoremap <leader>h :action Refactorings.QuickListPopupAction<CR>
-
 " Go to..
 " map <leader>gp <Action>(SelectInProjectView)
 
@@ -235,24 +246,52 @@ nnoremap <D-k> <C-W>k
 
 " easier surrounding vim
 " cursor on word, just use below to add '' or ""
-"nmap q` ysiw`
-"nmap q" ysiw"
-"nmap q' ysiw'
-"nmap qb ysiwb
-"nmap qB ysiwB
-"nmap qt ysiw<
-"nmap q[ ysiw[
+" nmap q` ysiw`
+" nmap q" ysiw"
+" nmap q' ysiw'
+" nmap qb ysiwb
+" nmap qB ysiwB
+" nmap qt ysiw<
+" nmap q[ ysiw[
 " another way to use surrounding vim:
 " cs"' <-- change surround from " to '
 " visual mode: select in visual mode first and then add "
 " ex: `viwS'`
 
+" nnoremap <leader>h :action Refactorings.QuickListPopupAction<CR>
 
 " Disable dengerous/annoying mappings
+" nnoremap ZZ <Nop>
+"  nnoremap ZQ <Nop>
 " ZZ - save and close Vim
 " ZQ - close Vim
-nnoremap ZZ <Nop>
-nnoremap ZQ <Nop>
 " show the file structure in popup / symbols
 " map <leader>h <Action>(FileStructurePopup)
 
+
+
+
+"""""""""""""""""""""""'
+" make life easier
+"""""""""""""""""""""""
+" eaier to go into EX mode
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap : ;
+" vnoremap ; :
+
+
+
+""""""""""""""""""""""" 所有的leader 都放在這邊，方便管理 """""""""""""""""""""""""
+" search under cursor
+" nnoremap <leader>j *
+
+" clear highlight
+" nnoremap <leader>c :nohl<cr>
+
+" or use shift+ctrl+v to reload
+" map <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
+
+" nerdTree"""""""""""""""""""""""""""""""
+" nnoremap <leader>n :NERDTreeFocus<cr>
+" nnoremap <leader>nt :NERDTreeToggle<cr>
