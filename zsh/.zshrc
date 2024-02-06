@@ -15,7 +15,7 @@ plugins=(
 # fast-syntax-highlighting
 # sudo
 # copyfile
-
+    zsh-better-npm-completion
 
     # here I use the forked version, which can copy to system clipbord https://github.com/brorbw/zsh-vi-mode/tree/master
     # zsh-vi-mode
@@ -40,7 +40,6 @@ plugins=(
     # fzf-tab  # 可以跟 fzf complete use together
 
     zsh-autocomplete  # 跟 fzf complete 功能衝到
-
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -88,7 +87,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 # export FZF_CTRL_T_COMMAND	按鍵對映行為設定
 # export FZF_ALT_C_COMMAND	按鍵對映行為設定
 # export FZF_CTRL_R_COMMAND	按鍵對映行為設定
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+export FZF_DEFAULT_OPTS="--inline-info"
+# export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
 # export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 # export FZF_COMPLETION_TRIGGER="**"
@@ -136,7 +136,7 @@ export FZF_CTRL_R_OPTS="--height 60% \
 
 
 # key bindings and fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 
@@ -191,15 +191,19 @@ _fzf_comprun() {
 }
 
 
+fullpath() {
+  readlink -f $1
+}
+
+
 ###############################################
 ##################### alias ###################
 ###############################################
 
 
-
-alias vi=lvim
+alias vi=/Users/re4388/project/personal/nvim-macos/bin/nvim
+alias nvim=/Users/re4388/project/personal/nvim-macos/bin/nvim
 alias vim=lvim
-alias nvim=nvim
 
 
 alias kc=kubectl
@@ -216,7 +220,12 @@ alias fdf="fd | fzf"
 
 
 alias ls="eza"
-alias ll="eza"
+alias ll="eza -al"
+
+
+alias qq='ben'
+
+alias j="z"
 
 ###############################################
 ###############################################
@@ -235,8 +244,6 @@ alias ll="eza"
 
 ###################### export, env variables ######################
 
-export VISUAL=nvim;
-export EDITOR=nvim;
 
 
 
@@ -394,7 +401,7 @@ _evalcache zoxide init zsh
 
 
 ################### custom commands
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_command.zsh
+# source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_command.zsh
 
 
 
@@ -429,7 +436,16 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_comma
 
 
 function lsf(){
-  ls -al | fzf --layout reverse
+  # ls -al | fzf --layout reverse
+  ls -al | fzf
+}
+function llf(){
+  ls -al | fzf
+}
+
+
+function brewls(){
+  brew ls | fzf
 }
 
 
@@ -547,13 +563,50 @@ function ben() {
     --prompt '∷ ' \
     --pointer "▶" \
     --marker "⇒" \
-    --header "Enter to 'bun run <script>'" | awk '{print "bun /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}')
+    --header "Enter to 'bun run <script>'" | awk '{print "/Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}')
 
     if [ -n "$command" ]; then
-      eval "bun run $command"
+     eval "bun run $command"
     fi
+
+#     local extension="${command##*.}"
+#     echo $extension
+#     echo $command
+#
+#     if [ "$extension" == "ts" ]; then
+#         echo "yes!"
+#     fi
+
+#     if [ "$extension" == "ts" ] || [ "$extension" == "js" ]; then
+#       echo "qq"
+#       eval "bun run $command"
+#       echo "hello"
+#     elif [ "$extension" == "zsh" ]; then
+#       chmod +x "$command"  # Ensure the script is executable
+#       eval "$command"
+#     else
+#       echo "Unsupported file extension: $extension"
+#     fi
 }
 
+function whiteSpace_to_underscore(){
+    # Check if the correct number of arguments is provided
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: $0 <filename>"
+        exit 1
+    fi
+
+    # Get the input filename
+    filename="$1"
+
+    # Replace white spaces with underscores
+    new_filename="${filename// /_}"
+
+    # Rename the file
+    mv "$filename" "$new_filename"
+
+    echo "File renamed from '$filename' to '$new_filename'"
+}
 
 
 
@@ -594,7 +647,6 @@ function npms() {
 
 
 
-
 #########  profile code at bottom ###########
 ######### ref: https://blog.skk.moe/post/make-oh-my-zsh-fly/
 
@@ -608,3 +660,6 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 
 
+# I install nvim in my own place
+export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
+export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim

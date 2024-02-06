@@ -747,3 +747,13 @@
   description = "check csv"
   command = "csvlens a111.csv"
   output = ""
+
+[[snippets]]
+  description = "check music from spotube"
+  command = "ls /Users/re4388/Library/Containers/oss.krtirtho.spotube/Data/Library/Caches | rg .m4a"
+  output = ""
+
+[[snippets]]
+  description = "get full/absolute path give a file"
+  command = "readlink -f cmd_n.js"
+  output = ""
