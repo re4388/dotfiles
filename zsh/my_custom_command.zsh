@@ -156,37 +156,12 @@ function ben() {
     fi
 }
 
-# cm -add
-function bookmark_add(){
-    # Check if the correct number of arguments is provided
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: $0 <filename/bookmark name>"
-        return
-    fi
 
-    local filename="$1"
 
-    local path="/Users/re4388/project/work/cm/marks/$filename"
-    nvim $path
+function repo_summary() {
+    onefetch
 }
 
-
-
-# cm as code marker
-function bookmark() {
-    local command=$(ls /Users/re4388/project/work/cm/marks | fzf \
-    --height=60% \
-    --layout=reverse \
-    --border sharp \
-    --prompt '∷ ' \
-    --pointer "▶" \
-    --marker "⇒" \
-    --header "Enter to check the code" | awk '{print "/Users/re4388/project/work/cm/marks/"$1}')
-
-    if [ -n "$command" ]; then
-     eval "bat $command"
-    fi
-}
 
 
 function whiteSpace_to_underscore(){
@@ -196,53 +171,14 @@ function whiteSpace_to_underscore(){
         echo "Usage: $0 <filename>"
         exit 1
     fi
-
     # Get the input filename
     filename="$1"
-
     # Replace white spaces with underscores
     new_filename="${filename// /_}"
-
     # Rename the file
     mv "$filename" "$new_filename"
-
     echo "File renamed from '$filename' to '$new_filename'"
 }
-
-
-
-function snippet_add(){
-    # Check if the correct number of arguments is provided
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: $0 <filename/snippet name>"
-        return
-    fi
-
-    local filename="$1"
-
-    local path="/Users/re4388/project/personal/snippet/all/$filename"
-    nvim $path
-}
-
-
-
-# cm as code marker
-function snippet() {
-    local command=$(ls /Users/re4388/project/personal/snippet/all | fzf \
-    --height=60% \
-    --layout=reverse \
-    --border sharp \
-    --prompt '∷ ' \
-    --pointer "▶" \
-    --marker "⇒" \
-    --header "Enter to check the snippet" | awk '{print "/Users/re4388/project/personal/snippet/all/"$1}')
-
-    if [ -n "$command" ]; then
-     eval "bat $command"
-    fi
-}
-
-
 
 # 跑 npm scripts
 ####### source: https://github.com/torifat/npms/blob/master/npms.plugin.zsh
