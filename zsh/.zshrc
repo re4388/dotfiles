@@ -342,17 +342,18 @@ _evalcache zoxide init zsh
 
 
 ###################custom alias
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/custom_alias.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__alias.zsh
 
 ################### custom commands
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_command.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bashFn.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__oneLiner.zsh
 
 ######## sensitive env variables #########
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 ########## 一些個人小工作
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/_bookmark.zsh
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/_snippet.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bookmark.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
 
 
 # I install nvim in my own place
