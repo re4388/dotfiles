@@ -32,6 +32,8 @@ plugins=(
 
     pyenv-lazy
 
+
+
     git
     zsh-kubectl-prompt
     you-should-use
@@ -80,8 +82,8 @@ export HISTSIZE=10000		# save 10000 items in history
 # ALT-C - fzf 版本的 CD
 
 # 換成更高效的查詢引擎
-# export FZF_DEFAULT_COMMAND='rg --files --hidden'
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 
 # export FZF_CTRL_T_COMMAND	按鍵對映行為設定
@@ -354,6 +356,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 ########## 一些個人小工作
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bookmark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__shell_gpt_util.zsh
 
 
 # I install nvim in my own place
@@ -364,11 +367,14 @@ export VISUAL=nvim
 
 ################# howdoi
 
+## this is basically use google and search stackoverflow
 alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
 
 
 export HOWDOI_COLORIZE=1
 export HOWDOI_SEARCH_ENGINE=google
+
+
 
 
 

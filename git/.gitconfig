@@ -1,13 +1,34 @@
-[user]
-	name = ben.hu
-	email = ben.hu@bioclinica.com
-[http]
-	sslcainfo = C:/Users/re438/git_certs/cert_WitsCA-Windows.crt
-	sslVerify = false
-[core]
-	autocrlf = input
-	excludesFile = C:\\Users\\re438\\.gitignore_global
+[includeIf "gitdir:~/project/personal/"]
+	    path = ~/project/personal/.gitconfig-personal
+
+[includeIf "gitdir:~/project/work/"]
+	    path = ~/project/work/.gitconfig-work
+
 [alias]
-	cn    = commit --no-verify -m
-	a     = !git add . && git reset -- ./.gitignore
-	s     = status
+        a    = add .
+        co   = checkout
+        sw   = switch
+        cn    = commit --no-verify -m
+        edit  = config --global -e
+        wip   = !git add --all && git commit -m WIP
+        wip2  = !git add --all && git commit -m WIP && git push
+        stash = stash --include-untracked
+        saferPush = push push --force-with-lease
+        bk        = switch -c backup
+[core]
+	    excludesfile = /Users/re4388/.gitignore_global
+
+[commit]
+	    template = /Users/re4388/.stCommitMsg
+
+[diff]
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
