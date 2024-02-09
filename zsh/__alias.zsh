@@ -2,6 +2,8 @@
 alias vi=nvim
 alias vim=lvim
 
+alias ps=procs
+
 
 alias kc=kubectl
 alias minik=minikube
