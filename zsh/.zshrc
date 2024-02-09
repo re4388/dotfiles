@@ -191,10 +191,6 @@ _fzf_comprun() {
 }
 
 
-fullpath() {
-  readlink -f $1
-}
-
 ############### gcloud #######################
 #
 # The next line updates PATH for the Google Cloud SDK.
@@ -346,13 +342,34 @@ _evalcache zoxide init zsh
 
 
 ###################custom alias
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/custom-alias.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/custom_alias.zsh
 
 ################### custom commands
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/my_custom_command.zsh
 
 ######## sensitive env variables #########
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
+
+########## 一些個人小工作
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/_bookmark.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/_snippet.zsh
+
+
+# I install nvim in my own place
+# export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
+# export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
+
+################# howdoi
+
+alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+
+
+export HOWDOI_COLORIZE=1
+export HOWDOI_SEARCH_ENGINE=google
+
+
 
 
 #########  profile code at bottom ###########
@@ -364,8 +381,3 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 
 
-# I install nvim in my own place
-# export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
-# export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
-export EDITOR=nvim
-export VISUAL=nvim
