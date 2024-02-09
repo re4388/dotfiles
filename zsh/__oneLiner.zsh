@@ -5,10 +5,12 @@ function llf(){
   ls -al | fzf
 }
 
-function brewls(){
+function brewf(){
   brew ls | fzf
 }
 
+
+########################
 
 function sz(){
   source ~/.zshrc

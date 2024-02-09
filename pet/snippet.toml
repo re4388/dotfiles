@@ -757,3 +757,18 @@
   description = "get full/absolute path give a file"
   command = "readlink -f cmd_n.js"
   output = ""
+
+[[snippets]]
+  description = "macos damaged, trash, cannot open, to overcome security restriction"
+  command = "xattr -cr /Applications/XXXX.app"
+  output = ""
+
+[[snippets]]
+  description = "another way to see node proc via \"proc\""
+  command = "ps node --sortd mem --insert port --insert cputime --insert StartTime"
+  output = ""
+
+[[snippets]]
+  description = "rg search string given file type"
+  command = "rg \"update-box\" --type ts"
+  output = ""
