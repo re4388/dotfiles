@@ -1,34 +1,67 @@
 [includeIf "gitdir:~/project/personal/"]
-	    path = ~/project/personal/.gitconfig-personal
+    path = ~/project/personal/.gitconfig-personal
 
 [includeIf "gitdir:~/project/work/"]
-	    path = ~/project/work/.gitconfig-work
+    path = ~/project/work/.gitconfig-work
 
 [alias]
-        a    = add .
-        co   = checkout
-        sw   = switch
-        cn    = commit --no-verify -m
-        edit  = config --global -e
-        wip   = !git add --all && git commit -m WIP
-        wip2  = !git add --all && git commit -m WIP && git push
-        stash = stash --include-untracked
-        saferPush = push push --force-with-lease
-        bk        = switch -c backup
+    a    = add .
+    co   = checkout
+    sw   = switch
+    cn    = commit --no-verify -m
+    edit  = config --global -e
+    wip   = !git add --all && git commit -m WIP
+    wip2  = !git add --all && git commit -m WIP && git push
+    stash = stash --include-untracked
+    saferPush = push push --force-with-lease
+    bk        = switch -c backup
+
+    # 下面兩段是 for difftastic
+    # `git dlog` to show `git log -p` with difftastic.
+;     dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+    # `git dft` is less to type than `git difftool`.
+;     dft = difftool
+
+; [diff]
+;     tool = vimdiff
 [core]
-	    excludesfile = /Users/re4388/.gitignore_global
+    # for delta
+    pager = delta
+    excludesfile = /Users/re4388/.gitignore_global
 
 [commit]
-	    template = /Users/re4388/.stCommitMsg
+    template = /Users/re4388/.stCommitMsg
+
+[interactive]
+    # for delta
+    diffFilter = delta --color-only
+
+# for delta
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
 
 [diff]
-        tool = difftastic
+    colorMoved = default
 
-[difftool]
-        prompt = false
 
-[difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
 
-[pager]
-        difftool = true
+; [diff]
+;     # This only applies to git diff. For other git commands, you still need to specify --ext-diff, or use an alias as described above.
+;     # $ git show HEAD --ext-diff
+;     # $ git log -p --ext-diff
+;     external = difft
+;
+;     tool = difftastic
+;
+; [difftool]
+;     prompt = false
+;
+; [difftool "difftastic"]
+;     cmd = difft "$LOCAL" "$REMOTE"
+;
+; [pager]
+;     difftool = true

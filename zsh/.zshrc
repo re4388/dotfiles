@@ -12,18 +12,18 @@
 
 ######## profile code at top ############
 plugins=(
-# fast-syntax-highlighting
-# sudo
-# copyfile
+    # fast-syntax-highlighting
+    # sudo
+    # copyfile
     zsh-better-npm-completion
 
     # here I use the forked version, which can copy to system clipbord https://github.com/brorbw/zsh-vi-mode/tree/master
     # zsh-vi-mode
 
-
     # autoload -uz compinit 移動到這邊管理，一天只跑一起 補全載入
     # /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh
     zshfl
+
 
     # 缓存 eval
     # https://github.com/mroth/evalcache
@@ -32,20 +32,27 @@ plugins=(
 
     pyenv-lazy
 
-
-
     git
     zsh-kubectl-prompt
     you-should-use
+
+    # if you run a program which is not installed, it will help you to let you know
+    # you need to install
     command-not-found
 
-    # fzf-tab  # 可以跟 fzf complete use together
+    fzf-tab  # 可以跟 fzf complete use together
 
-    zsh-autocomplete  # 跟 fzf complete 功能衝到
+    # 自動把 auto complete 的東西顯示出來，no need to tab
+    # 但是感覺會有點不直覺，因為 tab 會失效
+#     zsh-autocomplete  # 跟 fzf complete 功能衝到
+
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
+# zsh-completions/src
+# 這邊又加入很多 command 的 completion script
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 ############# oh-my-zsh #############
 export ZSH="$HOME/.oh-my-zsh"
@@ -53,6 +60,21 @@ source $ZSH/oh-my-zsh.sh
 
 
 
+##################### zsh complete 相關 #################
+#  test my completion code, so enable it!
+# autoload -uz compinit && compinit
+
+# case-insensitive (all), partial-word and then substring completion
+# zstyle ':completion:*' matcher-list 'm:{a-za-z}={a-za-z}' \
+#     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' menu yes select
+
+# if type brew &>/dev/null; then
+#   fpath=$(brew --prefix)/share/zsh/site-functions:$fpath
+#
+#   autoload -uz compinit
+#   compinit
+# fi
 
 ############ zsh completion #############
 # https://thevaluable.dev/zsh-completion-guide-examples
@@ -71,126 +93,6 @@ export HISTSIZE=10000		# save 10000 items in history
 
 
 
-
-
-
-
-################### fzf ####################
-# key bindings:
-# CTRL-T - Paste the selected files and directories onto the command-line
-# CTRL-R - fzf 版本的 看歷史 -> 目前不需要用，我用 atuin
-# ALT-C - fzf 版本的 CD
-
-# 換成更高效的查詢引擎
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
-# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-
-
-# export FZF_CTRL_T_COMMAND	按鍵對映行為設定
-# export FZF_ALT_C_COMMAND	按鍵對映行為設定
-# export FZF_CTRL_R_COMMAND	按鍵對映行為設定
-export FZF_DEFAULT_OPTS="--inline-info"
-# export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
-
-# export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
-# export FZF_COMPLETION_TRIGGER="**"
-export FZF_ALT_C_OPTS="--height 60% \
---layout=reverse
---border sharp \
---prompt '∷ ' \
---pointer ▶ \
---marker ⇒"
-
-export FZF_CTRL_T_OPTS="--height 60% \
---layout=reverse
---border sharp \
---prompt '∷ ' \
---pointer ▶ \
---marker ⇒"
-export FZF_CTRL_R_OPTS="--height 60% \
---layout=reverse
---border sharp \
---prompt '∷ ' \
---pointer ▶ \
---marker ⇒"
-
-
-### preview example
-# fzf --preview 'cat {}' # 預覽檔案內容
-# fzf --preview 'rg -F "def main(" -C 3 {}' # 預覽 Python 檔案 main 函式前後3行程式碼
-
-# fzf --preview '[[ $(file --mime {}) =~ binary ]] &&                                                                                                             (prod/default)
-#                  echo {} is a binary file ||
-#                  (bat --style=numbers --color=always {} ||
-#                   highlight -O ansi -l {} ||
-#                   coderay {} ||
-#                   rougify {} ||
-#                   cat {}) 2> /dev/null | head -500'
-
-
-# fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'
-
-
-
-
-
-
-
-
-# key bindings and fuzzy completion
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-
-
-
-# 目前 fzf 的 completion 跟 zsh-autocomplete 衝到, 因此不起作用
-# 我用 zsh-autocomplete, 因為後者的功能比較全面
-
-# fuzzy completion:
-# vi ~~<TAB>
-# kill -9
-# export ~~
-# unset	~~
-
-# Use ~~ as the trigger sequence instead of the default **
-export FZF_COMPLETION_TRIGGER='~~'
-
-# Options to fzf command
-export FZF_COMPLETION_OPTS='--border --info=inline'
-
-# export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
-
-#  to specify shell commands that should be used by fzf (Fuzzy Finder) for directory completion
-# export FZF_COMPLETION_DIR_COMMANDS="fd --type d"
-
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1 # first argument
-  shift # shifts the argument list to the left, effectively removing the first argument. The remaining arguments are stored in "$@".
-
-  case "$command" in
-    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
-  esac
-}
 
 
 ############### gcloud #######################
@@ -281,7 +183,8 @@ export PATH=$PATH:/Users/re4388/go/bin
 
 # zsh-autosuggestions
 # 目前用 default 就是 ->
-# bindkey '^[i' autosuggest-accept
+# use alt+ i
+bindkey '^[i' autosuggest-accept
 # bindkey '^b' autosuggest-accept
 # bindkey '^[f' autosuggest-accept
 
@@ -332,6 +235,15 @@ _evalcache atuin init zsh --disable-ctrl-r
 
 
 
+############ 自動 ls  when change pwd #########
+# `emulate -L zsh`` ->
+# This command sets the emulation mode for the shell.
+# emulate -L zsh instructs the shell to emulate behavior similar to a Zsh shell.
+# The -L option ensures that the shell's behavior closely matches that of a login shell.
+do-ls() {emulate -L zsh; eza;}
+
+# add do-ls to chpwd hook
+add-zsh-hook chpwd do-ls
 
 ############## zoxin ###############
 # eval "$(zoxide init zsh)"
@@ -342,6 +254,53 @@ _evalcache zoxide init zsh
 # bun completions
 [ -s "/Users/re4388/.bun/_bun" ] && source "/Users/re4388/.bun/_bun"
 
+# I install nvim in my own place
+# export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
+# export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
+
+
+
+
+################# howdoi
+
+## this is basically use google and search stackoverflow
+# alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+#
+#
+# export HOWDOI_COLORIZE=1
+# export HOWDOI_SEARCH_ENGINE=google
+
+
+###################### fff
+
+# leave also cd in the current checking directory
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+# Show/Hide hidden files on open.
+export FFF_HIDDEN=1
+
+# Enable or disable CD on exit.
+# (On by default)
+export FFF_CD_ON_EXIT=1
+
+# export FFF_TRASH=~/.local/share/fff/trash
+export FFF_TRASH=~/.Trash
+
+# Favourites (Bookmarks) (keys 1-9) (dir or file)
+export FFF_FAV1=/Users/re4388
+export FFF_FAV2=/Users/re4388/project/work
+export FFF_FAV3=/Users/re4388/project/personal
+export FFF_FAV4=/Users/re4388/Downloads
+export FFF_FAV5=/Users/re4388/.config
+export FFF_FAV6=
+export FFF_FAV7=
+export FFF_FAV8=
+export FFF_FAV9=
 
 ###################custom alias
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__alias.zsh
@@ -353,30 +312,14 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__oneLiner.zsh
 ######## sensitive env variables #########
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
-########## 一些個人小工作
+########## 套件分開整理
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bookmark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__shell_gpt_util.zsh
-
-
-# I install nvim in my own place
-# export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
-# export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
-export EDITOR=nvim
-export VISUAL=nvim
-
-################# howdoi
-
-## this is basically use google and search stackoverflow
-alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
-
-
-export HOWDOI_COLORIZE=1
-export HOWDOI_SEARCH_ENGINE=google
-
-
-
-
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__llm_utl.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__play.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/pet.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__fzf.zsh
 
 
 #########  profile code at bottom ###########
@@ -384,7 +327,3 @@ export HOWDOI_SEARCH_ENGINE=google
 
 # unsetopt XTRACE
 # exec 2>&3 3>&-
-
-
-
-

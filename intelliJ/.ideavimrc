@@ -82,8 +82,8 @@ nmap <S-j> 20gj
 nmap <S-k> 20gk
 
 " I like using H and L for beginning/end of line
-#nmap H ^
-#nmap L $
+nmap H ^
+nmap L $
 nnoremap qq yiw
 
 
