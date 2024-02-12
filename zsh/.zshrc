@@ -50,6 +50,11 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+# 自己管理 repo
+source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
+autopair-init
+
+
 # zsh-completions/src
 # 這邊又加入很多 command 的 completion script
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -235,15 +240,6 @@ _evalcache atuin init zsh --disable-ctrl-r
 
 
 
-############ 自動 ls  when change pwd #########
-# `emulate -L zsh`` ->
-# This command sets the emulation mode for the shell.
-# emulate -L zsh instructs the shell to emulate behavior similar to a Zsh shell.
-# The -L option ensures that the shell's behavior closely matches that of a login shell.
-do-ls() {emulate -L zsh; eza;}
-
-# add do-ls to chpwd hook
-add-zsh-hook chpwd do-ls
 
 ############## zoxin ###############
 # eval "$(zoxide init zsh)"
@@ -267,7 +263,6 @@ export VISUAL=nvim
 
 ## this is basically use google and search stackoverflow
 # alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
-#
 #
 # export HOWDOI_COLORIZE=1
 # export HOWDOI_SEARCH_ENGINE=google
@@ -297,12 +292,12 @@ export FFF_FAV2=/Users/re4388/project/work
 export FFF_FAV3=/Users/re4388/project/personal
 export FFF_FAV4=/Users/re4388/Downloads
 export FFF_FAV5=/Users/re4388/.config
-export FFF_FAV6=
+export FFF_FAV6=/Users/re4388/.oh-my-zsh
 export FFF_FAV7=
 export FFF_FAV8=
 export FFF_FAV9=
 
-###################custom alias
+################### custom alias
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__alias.zsh
 
 ################### custom commands
