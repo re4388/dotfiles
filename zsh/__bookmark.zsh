@@ -1,4 +1,4 @@
-bookmarkRepoPath="/Users/re4388/project/work/bookmark/marks"
+bookmarkRepoPath="/Users/re4388/project/work/bookmark/marks/"
 
 # cm -add
 function bookmark_add(){
@@ -9,7 +9,7 @@ function bookmark_add(){
     fi
 
     local filename="$1"
-    nvim "$bookmarkRepoPath$filename/"
+    nvim "$bookmarkRepoPath$filename"
 }
 
 
@@ -38,7 +38,7 @@ function bookmark_edit() {
     --prompt '∷ ' \
     --pointer "▶" \
     --marker "⇒" \
-    --header "Enter to check the code" | awk '{print "$bookmarkRepoPath/"$1}')
+    --header "Enter to edit the code" | awk '{print "$bookmarkRepoPath/"$1}')
 
     if [ -n "$command" ]; then
      eval "nvim $command"

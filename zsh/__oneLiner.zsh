@@ -1,12 +1,14 @@
-function lsf(){
-  ls -al | fzf
-}
-function llf(){
-  ls -al | fzf
+function brew_size(){
+  cd /opt/homebrew/cellar && gdu-go
 }
 
-function brewf(){
-  brew ls | fzf
+function mac_top(){
+  sudo asitop
+}
+
+
+function py_pkg_size(){
+  cd /Users/re4388/.pyenv/versions/3.10.6/lib/python3.10 && gdu-go
 }
 
 

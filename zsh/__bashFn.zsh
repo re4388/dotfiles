@@ -1,5 +1,44 @@
 
 
+
+
+
+function show_nameOnly_extOnly_() {
+    for FILE in $(ls -1); do
+        # :r takes filename and removes extension
+        # :e takes extension without filename
+        # :l lowercases text
+        echo "${FILE}"
+        echo "${FILE:r}"
+        echo "${FILE:e:l}"
+
+
+#        mv ${FILE} ${FILE:r}.${FILE:e:l}
+    done
+}
+
+
+function prepend-sudo {
+  if [[ $BUFFER != "sudo "* ]]; then
+    BUFFER="sudo $BUFFER"; CURSOR+=5
+  fi
+}
+zle -N prepend-sudo
+#bindkey -M vicmd s prepend-sudo
+
+
+zmodload -i zsh/parameter
+
+# use alt + p to paste last command output
+insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+bindkey -M emacs "^[p" insert-last-command-output
+
+
+
+
 function google(){
     if [ -z "$1" ]; then
         echo "Usage: google <query>"
@@ -9,37 +48,6 @@ function google(){
     fi
 }
 
-
-
-##################### pet ##############
-# to help me to add a new command to pet
-function prev() {
-  # retrieving the most recent command from the command history
-  PREV=$(fc -lrn | head -n 1)
-  # executes a new shell (sh) with a command passed as a string
-  # The %q format of printf escapes special characters, ensuring that the command can be safely executed.
-  sh -c "pet new `printf %q "$PREV"`"
-}
-
-
-# 熱鍵版本
-
-function pet-select() {
-  BUFFER=$(pet search --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
-}
-zle -N pet-select
-stty -ixon
-bindkey '^[s' pet-select
-
-##########################################
-
-
-# 一些指令，可以使用 alt+h triiger hzh 的 help manu
-source $HOME/.local/share/fzf-help/fzf-help.zsh
-zle -N fzf-help-widget
-bindkey "^[h" fzf-help-widget
 
 # V4 自己跑的版本 -> 自己跑的話，無法用 widget 跑
 function ben() {

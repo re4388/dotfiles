@@ -1,8 +1,57 @@
 
 alias ai=sgpt
 
-function ai-usage(){
-  open "https://platform.openai.com/usage"
+
+
+function ai_shell_gpt_doc() {
+  echo "common usage:"
+  echo 'ai "how to say hello world in python"'
+  echo 'git diff | a "generate git commit msg for those changes"'
+  echo 'sgpt "summarise" < document.txt'
+  echo ""
+
+  echo "pure code:"
+  echo 'ai --code "xxxxxx"'
+  echo ""
+  echo "only shell cmd:"
+  echo 'ai -- shell "xxxxxx"'
+  echo ""
+
+  echo "repl mode:"
+  echo "ai --repl <unique_session_name>"
+  echo ""
+
+  echo "repl mode:"
+  echo "ai --repl <unique_session_name>"
+  echo "use 3 double quote for multiple line"
+  echo ""
+}
+
+
+function ai_price_usage() {
+      selected_option=$(echo -e "openAI\nmistralAI\nopenRouter\ncheckPriceRate" | fzf --prompt="Choose an option: ")
+      if [ -n "$selected_option" ]; then
+           case $selected_option in
+               'openAI')
+                   open "https://platform.openai.com/usage"
+                   ;;
+               'mistralAI')
+                   open "https://console.mistral.ai/user/usage/"
+                   ;;
+               'openRouter')
+                   open "https://openrouter.ai/keys"
+                   ;;
+                'checkPriceRate')
+                    open "https://docs.google.com/spreadsheets/d/13qfDq8I0vIX0BxInC-KgUzghnJsP8AnB028myvxU-kQ"
+                    ;;
+               *)
+                   echo "not available"
+                   ;;
+           esac
+
+      else
+          echo "No option selected"
+      fi
 }
 
 function ai_config() {

@@ -16,7 +16,7 @@ cp ~/.config/pet/snippet.toml /Users/re4388/project/personal/my-github-pjt/dotfi
 rm ~/.config/pet/snippet.toml
 
 # step3: 建立軟連接 
-ln -s <這個repo的想要管理的path> <config檔案應該放的地方>  (ln -s real_file link_file)
+ln -s <這個repo的想要管理的path> <config檔案應該放的地方>  (ln -s real_filegit link_file)
 ln -s /Users/re4388/project/personal/my-github-pjt/dotfiles/pet/snippet.toml ~/.config/pet/snippet.toml
 
 ```
