@@ -6,6 +6,9 @@ function mac_top(){
   sudo asitop
 }
 
+function man_find() {
+    compgen -c | fzf | xargs man
+}
 
 function py_pkg_size(){
   cd /Users/re4388/.pyenv/versions/3.10.6/lib/python3.10 && gdu-go

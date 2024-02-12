@@ -92,7 +92,7 @@ function llm_show() {
 #alias llmfree="llm -m gpt4all-falcon-newbpe-q4_0" I think this model is still to
 alias llm_phind_code="llm -m openrouter/phind/phind-codellama-34b"
 alias llm_palm2_code="llm -m openrouter/google/palm-2-codechat-bison"
-alias llm_lamma2_70b="llm -m meta-llama/llama-2-70b-chat"
+alias llm_lamma2_70b="llm -m openrouter/meta-llama/llama-2-70b-chat"
 alias llm_3t_0125="llm -m openrouter/openai/gpt-3.5-turbo-0125"
 alias llm_4t_0125="llm -m gpt-4-0125-preview"
 
@@ -102,7 +102,7 @@ alias llm_4t_0125="llm -m gpt-4-0125-preview"
 #alias llm_free_Chat="llm chat -m orca-mini-3b-gguf2-q4_0"
 alias chat_phind_code="llm chat -m openrouter/phind/phind-codellama-34b"
 alias chat_paLm_code="llm chat -m openrouter/google/palm-2-codechat-bison"
-alias chat_llama70b="llm chat -m meta-llama/llama-2-70b-chat"
+alias chat_llama70b="llm chat -m openrouter/meta-llama/llama-2-70b-chat"
 alias chat_geminiPro="llm chat -m openrouter/google/gemini-pro"
 
 #alias llm_local_Orca_4gb_Chat="llm chat -m orca-mini-3b-gguf2-q4_0"

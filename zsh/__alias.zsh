@@ -40,6 +40,7 @@ alias dif="difft"
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md#global-aliases
 
 alias -g F='| fzf | pbcopy'
+alias -g C='| pbcopy'
 alias -g L='| llm -m ph "explain this code"'
 
 # usage: echo "https://www.nytimes.com" TO

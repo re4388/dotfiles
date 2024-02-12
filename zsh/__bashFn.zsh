@@ -1,5 +1,14 @@
 
 
+############ 自動 ls  when change pwd #########
+# `emulate -L zsh`` ->
+# This command sets the emulation mode for the shell.
+# emulate -L zsh instructs the shell to emulate behavior similar to a Zsh shell.
+# The -L option ensures that the shell's behavior closely matches that of a login shell.
+do-ls() {emulate -L zsh; eza;}
+
+# add do-ls to chpwd hook
+add-zsh-hook chpwd do-ls
 
 
 
@@ -18,25 +27,6 @@ function show_nameOnly_extOnly_() {
 }
 
 
-function prepend-sudo {
-  if [[ $BUFFER != "sudo "* ]]; then
-    BUFFER="sudo $BUFFER"; CURSOR+=5
-  fi
-}
-zle -N prepend-sudo
-#bindkey -M vicmd s prepend-sudo
-
-
-zmodload -i zsh/parameter
-
-# use alt + p to paste last command output
-insert-last-command-output() {
-  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
-}
-zle -N insert-last-command-output
-bindkey -M emacs "^[p" insert-last-command-output
-
-
 
 
 function google(){
@@ -49,7 +39,6 @@ function google(){
 }
 
 
-# V4 自己跑的版本 -> 自己跑的話，無法用 widget 跑
 function ben() {
     local command=$(ls /Users/re4388/project/personal/lang/bun/bun_cli_0/scripts | fzf \
     --height=60% \
@@ -66,7 +55,7 @@ function ben() {
 }
 
 
-function whiteSpace_to_underscore(){
+function whiteSpace_to_underscore_of_rename(){
     # check the number of command-line arguments passed to the script (denoted by $#)
     # is equal to 1.
     if [ "$#" -ne 1 ]; then
