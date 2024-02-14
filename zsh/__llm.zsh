@@ -14,7 +14,6 @@
 #            ;;
 #        "imaging-library")
 
-
 function llm_doc() {
       selected_option=$(echo -e "llm_doc_plugin\nllm_doc_chat\nllm_doc_alias\nllm_doc_models\nllm_doc\nllm_doc_common_use\nllm_doc_log\nllm_doc_template\n" | fzf --prompt="Choose an option: ")
       if [ -n "$selected_option" ]; then
@@ -52,9 +51,6 @@ function llm_doc() {
           echo "No option selected"
       fi
 }
-
-
-
 
 
 
@@ -175,9 +171,6 @@ function llm_doc_common_use() {
         # where llm model placed?
         ~/.cache/gpt4all
 
-        # see model support
-        llm models
-        llm models --options
 
         # show key path
         llm keys path"
@@ -287,7 +280,7 @@ function llm_doc_alias() {
     echo ""
 
     echo "add aliases:"
-    echo "llm aliases set <alias> <model-id>"
+    echo "llm aliases set <alias> <model_name>"
     echo ""
 
     echo "remove aliases:"

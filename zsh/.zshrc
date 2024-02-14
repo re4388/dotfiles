@@ -1,16 +1,3 @@
-######## profile code at top ############
-
-# zmodload zsh/datetime
-# setopt PROMPT_SUBST
-# PS4='+$EPOCHREALTIME %N:%i> '
-#
-# logfile=$(mktemp zsh_profile.7Pw1Ny0G)
-# echo "Logging to $logfile"
-# exec 3>&2 2>$logfile
-#
-# setopt XTRACE
-
-######## profile code at top ############
 plugins=(
     # fast-syntax-highlighting
     # sudo
@@ -44,20 +31,37 @@ plugins=(
 
     # 自動把 auto complete 的東西顯示出來，no need to tab
     # 但是感覺會有點不直覺，因為 tab 會失效
-#     zsh-autocomplete  # 跟 fzf complete 功能衝到
-
+    #  zsh-autocomplete  # 跟 fzf complete 功能衝到
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+
+# folder of all of 我自己管理的 autocomplete functions
+fpath=(/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.zsh-completions $fpath)
+export ZSH_AUTOCOMPLETE_PATH="/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.zsh-completions"
+
+# 讓每次跑都會 load, 會讓啟動速度慢
+# 如果沒有在開發 autocomplete script, 可以關掉
+# 透過上面的 zshfl 插件，一天只會 load 一次
+autoload -U compinit && compinit
+
 
 # 自己管理 repo
 source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
 autopair-init
 
 
+
+
 # zsh-completions/src
 # 這邊又加入很多 command 的 completion script
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# fpath+=('/Users/re4388/.oh-my-zsh/custom/plugins/zsh-completions/src')
+
+# add rg complete
+# fpath+=('/Users/re4388/.zsh-complete/_rg')
+
 
 ############# oh-my-zsh #############
 export ZSH="$HOME/.oh-my-zsh"
@@ -65,9 +69,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 
+
+
 ##################### zsh complete 相關 #################
-#  test my completion code, so enable it!
-# autoload -uz compinit && compinit
+
 
 # case-insensitive (all), partial-word and then substring completion
 # zstyle ':completion:*' matcher-list 'm:{a-za-z}={a-za-z}' \
@@ -311,14 +316,15 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bookmark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__shell_gpt_util.zsh
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__llm_utl.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__llm.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__play.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/pet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__fzf.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__widget.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__py.zsh
 
 
-#########  profile code at bottom ###########
-######### ref: https://blog.skk.moe/post/make-oh-my-zsh-fly/
-
-# unsetopt XTRACE
-# exec 2>&3 3>&-
+########## directly load autocomplete
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/complete_example.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_llm.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_strip-tags.zsh

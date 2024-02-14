@@ -1,6 +1,3 @@
-
-
-#######################################
 # 3 way to define functions
 
 # function foo1() {
