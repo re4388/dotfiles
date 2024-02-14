@@ -772,3 +772,8 @@
   description = "rg search string given file type"
   command = "rg \"update-box\" --type ts"
   output = ""
+
+[[snippets]]
+  description = "history get only command"
+  command = "atuin search --format \"{command}\" --after=\"today 1:40am\""
+  output = ""

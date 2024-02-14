@@ -2,7 +2,7 @@
 alias vi=nvim
 alias vim=lvim
 
-alias ps=procs
+alias ps2=procs
 
 ###################### mdcat - pretty markdown in terminal
 ## 有點慢，可能比較適合作為一些需要漂亮展示的 markdown顯示
@@ -20,20 +20,16 @@ alias idea='open -na "IntelliJ IDEA.app" --args'
 alias goland='open -na "GoLand.app" --args'
 alias du='gdu-go'
 
-alias fdf="fd | fzf"
-
-
-
 alias ls="eza"
 alias ll="eza -al"
 
 
 alias qq='ben'
-
 alias j="z"
 
-
 alias dif="difft"
+
+alias his="atuin"
 
 ################ global alias #################################
 # doc
@@ -47,19 +43,8 @@ alias -g L='| llm -m ph "explain this code"'
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
 
 
-################ global alias #################################
-
-
-
-
-
-
-
-
-
-
-
-# use`space` to exand your aliases
+################### use`space` to exand your aliases
+################## 好處？ 你可以知道你實際上在用那個套件
 globalias() {
    zle _expand_alias
    zle expand-word

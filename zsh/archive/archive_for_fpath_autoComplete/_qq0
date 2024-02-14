@@ -1,0 +1,31 @@
+#!/bin/zsh
+#compdef qq0
+
+
+
+function _qq0 {
+   local line
+   _arguments -C \
+       "-h[Show help information22]" \
+       "--h[Show help information]" \
+       "1: :(a1 a2)" \
+       "*::arg:->args"
+
+   case $line[1] in
+       a1)
+           _a1
+       ;;
+       a2)
+           _a2
+       ;;
+   esac
+}
+
+function _a1() {
+     _arguments '-s2[sort output111]'
+}
+function _a2() {
+     _arguments '-s2[sort output]'
+}
+
+_qq0
