@@ -11,6 +11,7 @@ function _llm {
     local line
 
     _arguments -C \
+        '-m[to specify model]:t:->models' \
         "--help[Show help information]" \
         "--version[Show version information]" \
         "--no-stream[disable output stream]" \
@@ -39,6 +40,15 @@ function _llm {
         ;;
         keys)
             _keys
+        ;;
+    esac
+
+
+    case "$state" in
+        empty)
+        ;;
+        models)
+            _values -s 'model' "${(uonzf)$(cat /Users/re4388/tmp/a2)}"
         ;;
     esac
 }

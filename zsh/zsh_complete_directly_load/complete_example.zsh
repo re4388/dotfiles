@@ -3,6 +3,8 @@
 # 教學
 # [zsh-completions/zsh-completions-howto.org at master · zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org)
 # https://wikimatze.de/writing-zsh-completion-for-padrino/
+# [Writing zsh completions for CLIs with subcommands | DoltHub Blog](https://www.dolthub.com/blog/2021-11-15-zsh-completions-with-subcommands/)
+
 # a lot of source code to see
 # https://github.com/zsh-users/zsh-completions/tree/master/src
 
