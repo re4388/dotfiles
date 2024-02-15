@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 ############ 自動 ls  when change pwd #########
 # `emulate -L zsh`` ->
 # This command sets the emulation mode for the shell.
@@ -27,6 +32,7 @@ function show_nameOnly_extOnly_() {
 }
 
 
+#curl -s https://example.com | strip-tags -m  | ttok
 
 
 function google(){
