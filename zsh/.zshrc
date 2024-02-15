@@ -313,7 +313,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__oneLiner.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 ########## 套件分開整理
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bookmark.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__codemark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__shell_gpt_util.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__llm.zsh
@@ -328,3 +328,4 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__py.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/complete_example.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_llm.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_strip-tags.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_codemark.zsh

@@ -4,15 +4,54 @@
 # curl -s https://www.nytimes.com/ | strip-tags .story-wrapper | ttok -t 4000 | llm -m openrouter/mistralai/mistral-7b-instruct:free 'summary bullet points'
 
 
-#    case $opt in
-#        "view-webapp")
-#            dir=${workspace}${datetime}_view-webapp
-#            git clone https://stash.imgdev.bioclinica.com/scm/vf/view-webapp.git $dir
-# 						cd $dir
-#						npm i
-#            break
-#            ;;
-#        "imaging-library")
+
+function getDifSummaryAgainstTo() {
+        if [ -z "$1" ]; then
+            echo "Usage: getSummaryAgainstTo <branch_name you want to dif to>"
+        else
+            currentBranch=$(git symbolic-ref --short HEAD)
+            echo "Current branch: ${currentBranch}"
+            local timestamp=$(date +%s)
+            echo "timestamp: ${timestamp}"
+            git diff $1 $currentBranch > /Users/re4388/tmp/$timestamp
+            cat /Users/re4388/tmp/$timestamp | llm "help me summarize the git diff and show me the bullet points result"
+#            rm /Users/re4388/tmp/$timestamp
+        fi
+}
+
+function getWebPageToken() {
+    if [ -z "$1" ]; then
+        echo "Usage: getToken <url>"
+    else
+        url="$1"
+        curl -s "$url" | strip-tags -m  | ttok
+    fi
+}
+
+function getSumUpWebPage() {
+    if [ -z "$1" ]; then
+        echo "Usage: get_sum_up <url>"
+        exit 1
+    fi
+
+    local tokenCount=$(curl -s "$url" | strip-tags -m  | ttok)
+
+    echo "token: $tokenCount"
+
+    # Check if v1 is greater than 3000
+    if [[ "$tokenCount" -gt 3000 ]]; then
+      echo "token is greater than 3000. stop"
+      exit 1
+    fi
+
+    url="$1"
+    curl -s "$url" | strip-tags -m  | llm "Help me succinctly summarize this article with bullet point"
+}
+
+
+
+
+
 
 function llm_doc() {
       selected_option=$(echo -e "llm_doc_plugin\nllm_doc_chat\nllm_doc_alias\nllm_doc_models\nllm_doc\nllm_doc_common_use\nllm_doc_log\nllm_doc_template\n" | fzf --prompt="Choose an option: ")

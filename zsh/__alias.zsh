@@ -31,13 +31,20 @@ alias dif="difft"
 
 alias his="atuin"
 
+#alias b='buku'
+
 ################ global alias #################################
 # doc
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md#global-aliases
 
 alias -g F='| fzf | pbcopy'
 alias -g C='| pbcopy'
-alias -g L='| llm -m ph "explain this code"'
+#alias -g E='| llm -m ph "explain this code"'
+#alias -g S='| llm -m ph "help me summarize the this dif diff difference and show me the bullet points result"'
+
+alias -g SUM="| llm 'Help me succinctly summarize this article with bullet point'"
+
+#
 
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
