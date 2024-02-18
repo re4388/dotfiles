@@ -1,35 +1,61 @@
 
 
+function reminder() {
 
 
 
-#function go_to_trending_github() {
-#    local langList=(
-#       'typescript'
-#       'javascript'
-#       'Python'
-#       'All'
-#       'shell'
-#       'go'
-#       'c'
-#       'java'
-#     )
-#
-#    # Use fzf to select an element
-#    # langList[@] is shell way to get all ele from a list
-#    selected_item=$(printf "%s\n" "${langList[@]}" | fzf)
-#
-#    # Check if an item was selected
-#    if [[ -n "$selected_item" ]]; then
-#      # Do something with the selected item
-#      echo "You selected: $selected_item"
-#    else
-#      echo "No item selected."
-#    fi
-#
-#    open -na "Google Chrome" --args --profile-directory="Profile 12" --new-window https://github.com/trending/"${selected_item}"\?since=weekly
-#}
-#
+
+
+
+
+    # 1. Access the "a/b/c" folder
+    cd /Users/re4388/project/personal/lang/bun/bun_cli_0/data/reminder || exit 1  # Exit if the directory doesn't exist
+
+    # Initialize an empty array to store the xxxx parts
+    file_list=()
+
+    # Loop through all files in the directory
+    for file in *; do
+        # Check if the file is a regular file
+        if [ -f "$file" ]; then
+            # Extract the xxxx part before the underscore
+            xxxx=$(echo "$file" | cut -d'_' -f1)
+            # Add xxxx part to the list
+            file_list+=("$xxxx")
+        fi
+    done
+
+    # Print the list
+    for item in "${file_list[@]}"; do
+        echo "$item"
+    done
+
+    # langList[@] is shell way to get all ele from a list
+    selected_project=$(printf "%s\n" "${file_list[@]}" | fzf)
+
+    # Check if an item was selected
+    if [[ -n "$selected_project" ]]; then
+      # Do something with the selected item
+#      echo "You selected: $selected_project"
+      bun run /Users/re4388/project/personal/lang/bun/bun_cli_0/standalone/reminder.ts $selected_project
+    else
+      echo "No item selected."
+    fi
+
+
+}
+
+
+
+
+function html2pdf() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: html2pdf.sh <url>"
+    exit 1
+  fi
+
+  docker run --rm -v $(pwd):/converted/ arachnysdocker/athenapdf athenapdf "$1"
+}
 
 
 
@@ -59,10 +85,6 @@ function show_nameOnly_extOnly_() {
     done
 }
 
-
-#curl -s https://example.com | strip-tags -m  | ttok
-
-
 function google(){
     if [ -z "$1" ]; then
         echo "Usage: google <query>"
@@ -83,9 +105,6 @@ function ben() {
     --marker "⇒" \
     --header "Enter to 'bun run <script>'" | awk '{print "/Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}')
 
-#    if [ -n "$command" ]; then
-#     eval "bun run $command"
-#    fi
     if [[ -n "$command" ]]; then
       # Extract the file extension
       extension="${command##*\.}"

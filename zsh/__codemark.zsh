@@ -28,7 +28,6 @@ function codemark() {
 }
 
 
-# cm -add
 function codemark_add(){
     # return if the number of arguments is not equal to 1
     if [ "$#" -ne 1 ]; then
