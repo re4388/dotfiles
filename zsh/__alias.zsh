@@ -21,14 +21,19 @@ alias goland='open -na "GoLand.app" --args'
 alias du='gdu-go'
 
 alias ls="eza"
-alias ll="eza -al"
+#alias ll="eza -al"
+
+
+# -a is to show all, include hidden file
+# --hyperlink make it clickable
+# -l means show all info
+alias ll="eza --sort newest -a --hyperlink -l"
 
 
 alias qq='ben'
 alias j="z"
 
 alias dif="difft"
-
 alias his="atuin"
 
 #alias b='buku'
@@ -42,9 +47,12 @@ alias -g C='| pbcopy'
 #alias -g E='| llm -m ph "explain this code"'
 #alias -g S='| llm -m ph "help me summarize the this dif diff difference and show me the bullet points result"'
 
-alias -g SUM="| llm 'Help me succinctly summarize this article with bullet point'"
+alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this article with bullet point in traditional Chinese'"
 
 #
+
+alias ai=sgpt
+
 
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'

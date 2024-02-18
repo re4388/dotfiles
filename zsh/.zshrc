@@ -329,3 +329,4 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_di
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_llm.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_strip-tags.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_codemark.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_snippet.zsh

@@ -3,6 +3,34 @@
 
 
 
+#function go_to_trending_github() {
+#    local langList=(
+#       'typescript'
+#       'javascript'
+#       'Python'
+#       'All'
+#       'shell'
+#       'go'
+#       'c'
+#       'java'
+#     )
+#
+#    # Use fzf to select an element
+#    # langList[@] is shell way to get all ele from a list
+#    selected_item=$(printf "%s\n" "${langList[@]}" | fzf)
+#
+#    # Check if an item was selected
+#    if [[ -n "$selected_item" ]]; then
+#      # Do something with the selected item
+#      echo "You selected: $selected_item"
+#    else
+#      echo "No item selected."
+#    fi
+#
+#    open -na "Google Chrome" --args --profile-directory="Profile 12" --new-window https://github.com/trending/"${selected_item}"\?since=weekly
+#}
+#
+
 
 
 ############ 自動 ls  when change pwd #########
@@ -55,8 +83,32 @@ function ben() {
     --marker "⇒" \
     --header "Enter to 'bun run <script>'" | awk '{print "/Users/re4388/project/personal/lang/bun/bun_cli_0/scripts/"$1}')
 
-    if [ -n "$command" ]; then
-     eval "bun run $command"
+#    if [ -n "$command" ]; then
+#     eval "bun run $command"
+#    fi
+    if [[ -n "$command" ]]; then
+      # Extract the file extension
+      extension="${command##*\.}"
+
+      # Handle different cases based on extension
+      case "$extension" in
+        # Bun scripts (.js, .ts)
+        js|ts)
+          eval "bun run $command"
+          ;;
+        # Shell scripts (.sh, .zsh)
+        sh|zsh)
+          bash "$command"
+          ;;
+        # Executables
+        *)
+          if [[ -x "$command" ]]; then
+            "$command"
+          else
+            echo "$command is not executable!"
+          fi
+          ;;
+      esac
     fi
 }
 
