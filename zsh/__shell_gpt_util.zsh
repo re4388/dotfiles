@@ -1,7 +1,4 @@
 
-alias ai=sgpt
-
-
 
 function ai_shell_gpt_doc() {
   echo "common usage:"
@@ -27,9 +24,19 @@ function ai_shell_gpt_doc() {
   echo ""
 }
 
-
 function ai_price_usage() {
-      selected_option=$(echo -e "openAI\nmistralAI\nopenRouter\ncheckPriceRate" | fzf --prompt="Choose an option: ")
+      local list=(
+           'openRouter'
+           'checkPriceRate'
+           'openAI'
+           'mistralAI'
+         )
+
+      local selected_option=$(printf "%s\n" "${list[@]}" | fzf)
+
+#      selected_option=$(echo -e "checkPriceRate\nopenAI\nmistralAI\nopenRouter" | fzf --prompt="Choose an option: ")
+
+
       if [ -n "$selected_option" ]; then
            case $selected_option in
                'openAI')

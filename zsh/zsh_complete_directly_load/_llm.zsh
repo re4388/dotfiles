@@ -48,7 +48,7 @@ function _llm {
         empty)
         ;;
         models)
-            _values -s 'model' "${(uonzf)$(cat /Users/re4388/tmp/a2)}"
+            _values -s 'model' "${(uonzf)$(cat $llm_model_list)}"
         ;;
     esac
 }
@@ -108,7 +108,7 @@ function _logs() {
           empty)
           ;;
           models)
-              _values -s 'model' "${(uonzf)$(cat /Users/re4388/tmp/a2)}"
+              _values -s 'model' "${(uonzf)$(cat $llm_model_list)}"
           ;;
       esac
 

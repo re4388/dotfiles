@@ -39,13 +39,13 @@ function getSumUpWebPage() {
     echo "token: $tokenCount"
 
     # Check if v1 is greater than 3000
-    if [[ "$tokenCount" -gt 3000 ]]; then
-      echo "token is greater than 3000. stop"
-      exit 1
-    fi
-
-    url="$1"
-    curl -s "$url" | strip-tags -m  | llm "Help me succinctly summarize this article with bullet point"
+#    if [[ "$tokenCount" -gt 3000 ]]; then
+#      echo "token is greater than 3000. stop"
+#      exit 1
+#    fi
+#
+#    url="$1"
+#    curl -s "$url" | strip-tags -m  | llm -m openrouter/anthropic/claude-2 "Help me succinctly summarize this article with bullet point"
 }
 
 
