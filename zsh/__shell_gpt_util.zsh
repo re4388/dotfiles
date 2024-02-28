@@ -26,9 +26,9 @@ function ai_shell_gpt_doc() {
 
 function ai_price_usage() {
       local list=(
+           'openAI'
            'openRouter'
            'checkPriceRate'
-           'openAI'
            'mistralAI'
          )
 

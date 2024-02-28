@@ -777,3 +777,13 @@
   description = "history get only command"
   command = "atuin search --format \"{command}\" --after=\"today 1:40am\""
   output = ""
+
+[[snippets]]
+  description = "git: get the latest tag for the current repo"
+  command = "git tag --sort=committerdate -l | tail -n 1"
+  output = ""
+
+[[snippets]]
+  description = "interact"
+  command = "/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/plugins/interactively 'jq -C {} package.json'"
+  output = ""

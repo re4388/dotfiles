@@ -5,3 +5,15 @@ function pyenv_pkg_size(){
 function pyenv_show_folder(){
   cd /Users/re4388/.pyenv/versions
 }
+
+
+
+function pyEnvInit() {
+    # create vurtual env and put config in venv folder
+    virtualenv venv
+
+    # activate the env
+    source venv/bin/activate
+
+    pip list
+}

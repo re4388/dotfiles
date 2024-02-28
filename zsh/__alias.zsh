@@ -16,7 +16,7 @@ alias kctx=kubectx
 
 
 # IDEA open, like `code` for vscode
-alias idea='open -na "IntelliJ IDEA.app" --args'
+#alias idea='open -na "IntelliJ IDEA.app" --args'
 alias goland='open -na "GoLand.app" --args'
 alias du='gdu-go'
 
