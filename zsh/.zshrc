@@ -149,6 +149,7 @@ export PATH="$PATH:/Users/re4388/.local/bin"
 
 
 
+
 ### this shall be at end of this file #######
 ##########startship #########
 eval "$(starship init zsh)"
@@ -330,3 +331,11 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_di
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_strip-tags.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_codemark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_snippet.zsh
+
+
+
+### bin
+export PATH="$PATH:/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/bin"
+
+# interactively 'jq -C {} package.json'
+export PATH="$PATH:/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/bin/interactively"

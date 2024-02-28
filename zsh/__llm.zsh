@@ -28,6 +28,7 @@ function getWebPageToken() {
     fi
 }
 
+# to fix, not seldom needed
 function getSumUpWebPage() {
     if [ -z "$1" ]; then
         echo "Usage: get_sum_up <url>"

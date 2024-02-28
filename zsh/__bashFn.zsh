@@ -1,12 +1,18 @@
 
 
+
+function jq2() {
+    if [[ -z "$1" ]]; then
+      echo "Usage: jq2 <jsonFile>"
+      exit 1
+    fi
+
+    local file="$1"
+    echo file
+    interactively "jq {} $file"
+}
+
 function reminder() {
-
-
-
-
-
-
 
     # 1. Access the "a/b/c" folder
     cd /Users/re4388/project/personal/lang/bun/bun_cli_0/data/reminder || exit 1  # Exit if the directory doesn't exist
@@ -47,15 +53,15 @@ function reminder() {
 
 
 
-
-function html2pdf() {
-  if [[ -z "$1" ]]; then
-    echo "Usage: html2pdf.sh <url>"
-    exit 1
-  fi
-
-  docker run --rm -v $(pwd):/converted/ arachnysdocker/athenapdf athenapdf "$1"
-}
+# 網路上的成功率還比較高
+#function html2pdf() {
+#  if [[ -z "$1" ]]; then
+#    echo "Usage: html2pdf.sh <url>"
+#    exit 1
+#  fi
+#
+#  docker run --rm -v $(pwd):/converted/ arachnysdocker/athenapdf athenapdf "$1"
+#}
 
 
 
@@ -64,7 +70,7 @@ function html2pdf() {
 # This command sets the emulation mode for the shell.
 # emulate -L zsh instructs the shell to emulate behavior similar to a Zsh shell.
 # The -L option ensures that the shell's behavior closely matches that of a login shell.
-do-ls() {emulate -L zsh; eza;}
+do-ls() {emulate -L zsh; eza --sort newest -a --hyperlink -l;}
 
 # add do-ls to chpwd hook
 add-zsh-hook chpwd do-ls
