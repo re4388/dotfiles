@@ -27,6 +27,8 @@ enumWemo(){
   local zeus="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/zeus --json=stream"
 
   { eval "$hermes"; eval "$ceres"; eval "$mneApi"; eval "$talos"; eval "$boSvc"; eval "$angelia"; eval "$zeus"; } | jq .lines | fzf | handleStringStream
+
+
 }
 
 #
