@@ -263,8 +263,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 
-
-
 ################# howdoi
 
 ## this is basically use google and search stackoverflow
@@ -331,6 +329,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_di
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_strip-tags.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_codemark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_snippet.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__ast_grep.zsh
 
 
 
@@ -339,3 +338,17 @@ export PATH="$PATH:/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/bin
 
 # interactively 'jq -C {} package.json'
 export PATH="$PATH:/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/bin/interactively"
+
+
+
+############################ pnpm
+export PNPM_HOME="/Users/re4388/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+###############
+
+
+
+

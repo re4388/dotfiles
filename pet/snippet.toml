@@ -787,3 +787,8 @@
   description = "interact"
   command = "/Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/plugins/interactively 'jq -C {} package.json'"
   output = ""
+
+[[snippets]]
+  description = "see tcp protocal"
+  command = "sudo ngrep -d lo0 -t '' 'tcp and port 6379'"
+  output = ""
