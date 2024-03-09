@@ -125,13 +125,8 @@ function ben() {
         sh|zsh)
           bash "$command"
           ;;
-        # Executables
         *)
-          if [[ -x "$command" ]]; then
-            "$command"
-          else
-            echo "$command is not executable!"
-          fi
+          echo "not supported!"
           ;;
       esac
     fi
