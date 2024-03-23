@@ -52,6 +52,7 @@ alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this ar
 #
 
 alias ai=sgpt
+#alias ai=llm
 
 
 # usage: echo "https://www.nytimes.com" TO
