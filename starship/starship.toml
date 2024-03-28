@@ -1,6 +1,13 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+
+# Use custom format
+format = '''
+[┌──────────────────────────────────────────────────────────────────────────────────────>](bold green)
+[│](bold green)$all
+[└─>](bold green) '''
+
 # Inserts a blank line between shell prompts
 add_newline = true
 
@@ -28,8 +35,18 @@ very-long-project-name = 'vlpn'
 
 
 
+[time]
+disabled = false
+time_format = '%T'
+utc_time_offset = '+8'
 
 
+[cmd_duration]
+min_time = 500
+format = 'underwent [$duration](bold yellow)'
+show_milliseconds = true
+show_notifications = false
+disabled = false
 
 
 [aws]
