@@ -1,6 +1,9 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# 相關設定
+#https://starship.rs/config/#prompt
+
 
 # Use custom format
 format = '''

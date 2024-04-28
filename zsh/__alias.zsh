@@ -52,7 +52,14 @@ alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this ar
 #
 
 alias ai=sgpt
+alias traceroute2=nexttrace
 #alias ai=llm
+
+
+alias jq2="jnv"
+
+alias ts="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
 
 
 # usage: echo "https://www.nytimes.com" TO

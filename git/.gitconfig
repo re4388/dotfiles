@@ -30,4 +30,6 @@
 [core]
     excludesfile = /Users/re4388/.gitignore_global
 
+[pull]
+    ff = only
 
