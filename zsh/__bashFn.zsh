@@ -1,16 +1,16 @@
 
 
 
-function jq2() {
-    if [[ -z "$1" ]]; then
-      echo "Usage: jq2 <jsonFile>"
-      exit 1
-    fi
-
-    local file="$1"
-    echo file
-    interactively "jq {} $file"
-}
+#function jq2() {
+#    if [[ -z "$1" ]]; then
+#      echo "Usage: jq2 <jsonFile>"
+#      exit 1
+#    fi
+#
+#    local file="$1"
+#    echo file
+#    interactively "jq {} $file"
+#}
 
 function reminder() {
 

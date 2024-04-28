@@ -20,7 +20,7 @@ plugins=(
     pyenv-lazy
 
     git
-    zsh-kubectl-prompt
+#     zsh-kubectl-prompt
     you-should-use
 
     # if you run a program which is not installed, it will help you to let you know
@@ -30,8 +30,8 @@ plugins=(
     fzf-tab  # 可以跟 fzf complete use together
 
     # 自動把 auto complete 的東西顯示出來，no need to tab
-    # 但是感覺會有點不直覺，因為 tab 會失效
-    #  zsh-autocomplete  # 跟 fzf complete 功能衝到
+    # 但是感覺會有點不直覺?，因為 不用 tab
+    #  zsh-autocomplete  # 跟 fzf-tab 選一個用
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -224,7 +224,7 @@ bindkey '^[i' autosuggest-accept
 
 # https://github.com/superbrothers/zsh-kubectl-prompt
 # display current k8s context
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+# RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 # bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
