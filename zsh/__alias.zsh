@@ -53,6 +53,7 @@ alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this ar
 
 alias ai=sgpt
 alias traceroute2=nexttrace
+alias traceroute3="trip --unprivileged"
 #alias ai=llm
 
 

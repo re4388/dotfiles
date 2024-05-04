@@ -1,3 +1,28 @@
+acerCopy(){
+  cd /Users/re4388/project/personal/git-clone-pjt/lemonade
+  lemonade server
+}
+
+
+
+
+ytdl() {
+    cd /Users/re4388/project/personal/git-clone-pjt/youtube-dl
+    python -m youtube_dl -F $1
+
+    echo "continue(y/n)?"
+    read response
+
+    if [ "$response" = "y" ]; then
+      echo "開始下載..."
+    elif [ "$response" = "n" ]; then
+      echo "退出..."
+      exit 0
+    fi
+
+    python -m youtube_dl -f 22 $1
+}
+
 
 
 
