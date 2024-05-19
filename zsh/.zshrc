@@ -331,6 +331,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_di
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__ast_grep.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__wemo.zsh
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__ytdl.zsh
 
 
 
