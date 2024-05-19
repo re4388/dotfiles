@@ -17,27 +17,19 @@
     bk                = switch -c backup
     tagLastest        = tag --sort=committerdate -l
 
-    # `git dlog` to show `git log -p` with difftastic.
-    dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
-    # `git dft` is less to type than `git difftool`.
-    dft = difftool
-
+[diff]
+    tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+  
 [core]
     excludesfile = /Users/re4388/.gitignore_global
 
-[commit]
-    template = /Users/re4388/.stCommitMsg
+[pull]
+    ff = only
 
-[diff]
-    external = difft
-    tool = difftastic
-
-[difftool]
-        prompt = false
-
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-    prompt = false
-
-[pager]
-    difftool = true

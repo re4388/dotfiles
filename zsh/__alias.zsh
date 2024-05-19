@@ -36,6 +36,7 @@ alias j="z"
 alias dif="difft"
 alias his="atuin"
 
+
 #alias b='buku'
 
 ################ global alias #################################
