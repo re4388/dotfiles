@@ -1,4 +1,3 @@
-
 alias vi=nvim
 alias vim=lvim
 
@@ -8,12 +7,9 @@ alias ps2=procs
 ## 有點慢，可能比較適合作為一些需要漂亮展示的 markdown顯示
 alias mdcat=/Users/re4388/project/personal/mdcat-2.1.1-x86_64-apple-darwin/mdcat
 
-
-
 alias kc=kubectl
 alias minik=minikube
 alias kctx=kubectx
-
 
 # IDEA open, like `code` for vscode
 #alias idea='open -na "IntelliJ IDEA.app" --args'
@@ -23,19 +19,16 @@ alias du='gdu-go'
 alias ls="eza"
 #alias ll="eza -al"
 
-
 # -a is to show all, include hidden file
 # --hyperlink make it clickable
 # -l means show all info
 alias ll="eza --sort newest -a --hyperlink -l"
-
 
 alias qq='ben'
 alias j="z"
 
 alias dif="difft"
 alias his="atuin"
-
 
 #alias b='buku'
 
@@ -50,23 +43,19 @@ alias -g C='| pbcopy'
 
 alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this article with bullet point in traditional Chinese'"
 
-#
+alias tower=gittower
 
 alias ai=sgpt
 alias traceroute2=nexttrace
 alias traceroute3="trip --unprivileged"
 #alias ai=llm
 
-
 alias jq2="jnv"
 
 alias ts="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
-
-
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
-
 
 ################### use`space` to exand your aliases
 ################## 好處？ 你可以知道你實際上在用那個套件
