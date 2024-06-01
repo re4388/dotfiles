@@ -41,3 +41,6 @@
 
 [pager]
     difftool = true
+[user]
+	name = ben.hu
+	email = ben.hu@wemoscooter.com

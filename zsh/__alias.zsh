@@ -52,7 +52,7 @@ alias traceroute3="trip --unprivileged"
 
 alias jq2="jnv"
 
-alias ts="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
