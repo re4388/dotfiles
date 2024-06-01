@@ -5,22 +5,35 @@ nmap k gk
 nmap H ^
 nmap L $
 
+
+
+
+" 作弊快速鍵 XD
 nmap qq yiw
 
-
+" remove highlight when hit enter
+nmap <silent> <cr> :noh<cr><cr>
 
 " Quickly remove search highlights
-nmap <F9> :nohl
+" nmap <F9> :nohl
 
 " Yank to system clipboard
 set clipboard=unnamed
 
+
+
+" go back and forward 這邊我們用 原本的熱鍵，不用 vim 的
 " Go back and forward with Ctrl+O and Ctrl+I
 " (make sure to remove default Obsidian shortcuts for these to work)
-exmap back obcommand app:go-back
-nmap <C-o> :back
-exmap forward obcommand app:go-forward
-nmap <C-i> :forward
+" exmap back obcommand app:go-back
+" nmap <C-o> :back
+" exmap forward obcommand app:go-forward
+" nmap <C-i> :forward
+
+
+" 定義出來的可以用用 ex mode 打了，未必需要用熱鍵
+exmap vsplit obcommand workspace:split-vertical
+exmap split obcommand workspace:split-horizontal
 
 
 

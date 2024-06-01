@@ -354,4 +354,4 @@ esac
 
 
 
-PATH=~/.console-ninja/.bin:$PATH
+# PATH=~/.console-ninja/.bin:$PATH
