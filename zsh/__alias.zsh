@@ -57,6 +57,9 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
 
+alias nvim_kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+alias nvim_kickstart_module='NVIM_APPNAME="nvim-kickstart-module" nvim'
+
 ################### use`space` to exand your aliases
 ################## 好處？ 你可以知道你實際上在用那個套件
 globalias() {
