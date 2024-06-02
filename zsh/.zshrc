@@ -5,7 +5,7 @@ plugins=(
     zsh-better-npm-completion
 
     # here I use the forked version, which can copy to system clipbord https://github.com/brorbw/zsh-vi-mode/tree/master
-    # zsh-vi-mode
+    zsh-vi-mode
 
     # autoload -uz compinit 移動到這邊管理，一天只跑一起 補全載入
     # /Users/re4388/.oh-my-zsh/plugins/zshfl/zshfl.plugin.zsh
