@@ -58,7 +58,15 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
 
 alias nvim_kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+
+# this is vscode backend v0 -> all lua in one file -> work, but init.lua is not support treesitter text obj
 alias nvim_kickstart_module='NVIM_APPNAME="nvim-kickstart-module" nvim'
+
+# this is vscode backend v1 -> try use lua module way and seems not work -> seems I need to stick in one file
+alias nvim_vscodeV2='NVIM_APPNAME="nvim-vscodeV2" nvim'
+
+# this is vscode backend v3, the final ver, support treesitter with yank funciton stuff
+alias nvim_vimscript='NVIM_APPNAME="nvim-vimscript" nvim'
 
 ################### use`space` to exand your aliases
 ################## 好處？ 你可以知道你實際上在用那個套件
