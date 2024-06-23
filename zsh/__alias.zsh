@@ -7,10 +7,6 @@ alias ps2=procs
 ## 有點慢，可能比較適合作為一些需要漂亮展示的 markdown顯示
 alias mdcat=/Users/re4388/project/personal/mdcat-2.1.1-x86_64-apple-darwin/mdcat
 
-alias kc=kubectl
-alias minik=minikube
-alias kctx=kubectx
-
 # IDEA open, like `code` for vscode
 #alias idea='open -na "IntelliJ IDEA.app" --args'
 alias goland='open -na "GoLand.app" --args'
@@ -57,6 +53,7 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 # usage: echo "https://www.nytimes.com" TO
 alias -g TO='| xargs curl -s | strip-tags -m | ttok'
 
+# this is terminal version of nvim
 alias nvim_kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
 # this is vscode backend v0 -> all lua in one file -> work, but init.lua is not support treesitter text obj
@@ -67,6 +64,12 @@ alias nvim_vscodeV2='NVIM_APPNAME="nvim-vscodeV2" nvim'
 
 # this is vscode backend v3, the final ver, support treesitter with yank funciton stuff
 alias nvim_vimscript='NVIM_APPNAME="nvim-vimscript" nvim'
+
+alias k=kubectl
+# alias kc=kubectl
+# alias minik=minikube
+alias kctx=kubectx
+alias kns=kubens
 
 ################### use`space` to exand your aliases
 ################## 好處？ 你可以知道你實際上在用那個套件
