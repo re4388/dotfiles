@@ -1,5 +1,3 @@
-
-
 handleStringStream() {
   local input=""
   while IFS= read -r line; do
@@ -14,11 +12,8 @@ handleStringStream() {
   fi
 }
 
-
-
-
-enumWemo(){
-  local hermes="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/Hermes-poc --json=stream"
+enumWemo() {
+  local hermes="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/hermes --json=stream"
   local ceres="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/Ceres --json=stream"
   local mneApi="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/mnemosyne-api --json=stream"
   local talos="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/talos --json=stream"
@@ -26,14 +21,21 @@ enumWemo(){
   local angelia="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/angelia --json=stream"
   local zeus="sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/zeus --json=stream"
 
-  { eval "$hermes"; eval "$ceres"; eval "$mneApi"; eval "$talos"; eval "$boSvc"; eval "$angelia"; eval "$zeus"; } | jq .lines | fzf | handleStringStream
-
+  {
+    eval "$hermes"
+    eval "$ceres"
+    eval "$mneApi"
+    eval "$talos"
+    eval "$boSvc"
+    eval "$angelia"
+    eval "$zeus"
+  } | jq .lines | fzf | handleStringStream
 
 }
 
 #
 #enumHermes() {
-#  sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/Hermes-poc --json=stream | jq .lines | fzf | handleStringStream
+#  sg scan -r /Users/re4388/project/personal/nodejs/ast-grep0/my_rule_folder/file_all_enum.yml /Users/re4388/project/work/hermes --json=stream | jq .lines | fzf | handleStringStream
 #}
 #
 ############# no use below ##############
