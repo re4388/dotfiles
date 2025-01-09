@@ -65,6 +65,8 @@ alias nvim_vscodeV2='NVIM_APPNAME="nvim-vscodeV2" nvim'
 # this is vscode backend v3, the final ver, support treesitter with yank funciton stuff
 alias nvim_vimscript='NVIM_APPNAME="nvim-vimscript" nvim'
 
+alias gitinfo=onefetch
+
 alias k=kubectl
 # alias kc=kubectl
 # alias minik=minikube
