@@ -6,12 +6,10 @@
 ; ================================
 ; Hotstring
 ; ================================
-
 ;Powershell
 ; ::ahkfff::get-Bioclincal-repos
 ::ahkrrr::. $profile; show
 ::ahkooo::open-profile
-
 
 ;git
 ; ::ahkstash::git stash --include-untracked
@@ -107,8 +105,15 @@ return
 #IfWinActive
 
 
+
 !Left::Send {Home}
 !Right::Send {End}
+
+
+
+; CapsLock/Control/RightAlt remap
+CapsLock::Control
+F9::CapsLock
 
 
 ; ================================
@@ -117,112 +122,115 @@ return
 
 
 
-
 ; CHANGE CAPSLOCK TO CTRL AND ALSO ENABLE ALL ORIGINAL CTRL + X COMBO
 ; https://gist.github.com/yyolk/fddf44b973e6008f0667fc4b3346cbda
 ; https://gist.github.com/sedm0784/4443120
-g_LastCtrlKeyDownTime := 0
-g_AbortSendEsc := false
-g_ControlRepeatDetected := false
 
-*CapsLock::
-    if (g_ControlRepeatDetected)
-    {
-        return
-    }
 
-    send,{Ctrl down}
-    g_LastCtrlKeyDownTime := A_TickCount
-    g_AbortSendEsc := false
-    g_ControlRepeatDetected := true
 
-    return
 
-*CapsLock Up::
-    send,{Ctrl up}
-    g_ControlRepeatDetected := false
-    if (g_AbortSendEsc)
-    {
-        return
-    }
-    current_time := A_TickCount
-    time_elapsed := current_time - g_LastCtrlKeyDownTime
-    if (time_elapsed <= 250)
-    {
-        SendInput {Esc}
-    }
-    return
+; g_LastCtrlKeyDownTime := 0
+; g_AbortSendEsc := false
+; g_ControlRepeatDetected := false
 
-~*^a::
-~*^b::
-~*^c::
-~*^d::
-~*^e::
-~*^f::
-~*^g::
-~*^h::
-~*^i::
-~*^j::
-~*^k::
-~*^l::
-~*^m::
-~*^n::
-~*^o::
-~*^p::
-~*^q::
-~*^r::
-~*^s::
-~*^t::
-~*^u::
-~*^v::
-~*^w::
-~*^x::
-~*^y::
-~*^z::
-~*^1::
-~*^2::
-~*^3::
-~*^4::
-~*^5::
-~*^6::
-~*^7::
-~*^8::
-~*^9::
-~*^0::
-~*^Space::
-~*^Backspace::
-~*^Delete::
-~*^Insert::
-~*^Home::
-~*^End::
-~*^PgUp::
-~*^PgDn::
-~*^Tab::
-~*^Return::
-~*^,::
-~*^.::
-~*^/::
-~*^;::
-~*^'::
-~*^[::
-~*^]::
-~*^\::
-~*^-::
-~*^=::
-~*^`::
-~*^F1::
-~*^F2::
-~*^F3::
-~*^F4::
-~*^F5::
-~*^F6::
-~*^F7::
-~*^F8::
-~*^F9::
-~*^F10::
-~*^F11::
-~*^F12::
-    g_AbortSendEsc := true
-    return
+; *CapsLock::
+;     if (g_ControlRepeatDetected)
+;     {
+;         return
+;     }
+
+;     send,{Ctrl down}
+;     g_LastCtrlKeyDownTime := A_TickCount
+;     g_AbortSendEsc := false
+;     g_ControlRepeatDetected := true
+
+;     return
+
+; *CapsLock Up::
+;     send,{Ctrl up}
+;     g_ControlRepeatDetected := false
+;     if (g_AbortSendEsc)
+;     {
+;         return
+;     }
+;     current_time := A_TickCount
+;     time_elapsed := current_time - g_LastCtrlKeyDownTime
+;     if (time_elapsed <= 250)
+;     {
+;         SendInput {Esc}
+;     }
+;     return
+
+; ~*^a::
+; ~*^b::
+; ~*^c::
+; ~*^d::
+; ~*^e::
+; ~*^f::
+; ~*^g::
+; ~*^h::
+; ~*^i::
+; ~*^j::
+; ~*^k::
+; ~*^l::
+; ~*^m::
+; ~*^n::
+; ~*^o::
+; ~*^p::
+; ~*^q::
+; ~*^r::
+; ~*^s::
+; ~*^t::
+; ~*^u::
+; ~*^v::
+; ~*^w::
+; ~*^x::
+; ~*^y::
+; ~*^z::
+; ~*^1::
+; ~*^2::
+; ~*^3::
+; ~*^4::
+; ~*^5::
+; ~*^6::
+; ~*^7::
+; ~*^8::
+; ~*^9::
+; ~*^0::
+; ~*^Space::
+; ~*^Backspace::
+; ~*^Delete::
+; ~*^Insert::
+; ~*^Home::
+; ~*^End::
+; ~*^PgUp::
+; ~*^PgDn::
+; ~*^Tab::
+; ~*^Return::
+; ~*^,::
+; ~*^.::
+; ~*^/::
+; ~*^;::
+; ~*^'::
+; ~*^[::
+; ~*^]::
+; ~*^\::
+; ~*^-::
+; ~*^=::
+; ~*^`::
+; ~*^F1::
+; ~*^F2::
+; ~*^F3::
+; ~*^F4::
+; ~*^F5::
+; ~*^F6::
+; ~*^F7::
+; ~*^F8::
+; ~*^F9::
+; ~*^F10::
+; ~*^F11::
+; ~*^F12::
+;     g_AbortSendEsc := true
+;     return
 
 
