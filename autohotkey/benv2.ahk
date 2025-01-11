@@ -105,14 +105,12 @@ return
 #IfWinActive
 
 
-
 !Left::Send {Home}
 !Right::Send {End}
 
-CapsLock/Control/RightAlt remap
+; CapsLock/Control/RightAlt remap
 CapsLock::Control
 F9::CapsLock
-
 
 
 ; https://gist.github.com/volks73/1e889e01ad0a736159a5d56268a300a8
