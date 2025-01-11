@@ -68,9 +68,12 @@ Insert::Send, {Volume_Up}
 !;::Send #v
 
 
-; ================================
-; Code helper
-; ================================
+
+
+;;;;;;;;;;; ([{}]) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; alt + j, k , l for (), [], {}
 !j::
@@ -87,6 +90,12 @@ return
 
 
 
+
+
+;;;;;;;;;;; back and forward ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 這邊先設定 explorer 的 alt+q, alt+a 來做為 go back, go forward
 ; 然後下面全範圍的 alt+left, alt+right 來做為 go line begin, go line end
@@ -105,149 +114,30 @@ return
 #IfWinActive
 
 
+;;;;;;;;;;; HOME and END ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; 因為 max mini沒有 home and end, 所以這邊的設定會比較複雜
+; 1. 使用 alt + left, right 來做為 global home and end
+; alt + left, right -> go line begin, go line end
 !Left::Send {Home}
 !Right::Send {End}
 
-; CapsLock/Control/RightAlt remap
-CapsLock::Control
-F9::CapsLock
+
+; 這邊我習慣用 alt + [ 和 alt + ] 來做為 go to file top, go to bottom only in intellij idea (intelliJ 好像沒有keymap可以設定)
+; 然後 vscode 的設定，使用 vscode 的熱鍵去設定 cursorTop and cursorBottom
+; alt +[/] -> go to file top, go to bottom
+#IfWinActive ahk_exe idea64.exe
+![::Send ^{Home}
+!]::Send ^{End}
+#IfWinActive
 
 
-; https://gist.github.com/volks73/1e889e01ad0a736159a5d56268a300a8
-; *CapsLock::
-;     Send {Blind}{Ctrl Down}
-;     cDown := A_TickCount
-; Return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; *CapsLock up::
-;     If ((A_TickCount-cDown)<400)  ; Modify press time as needed (milliseconds)
-;         Send {Blind}{Ctrl Up}{Esc}
-;     Else
-;         Send {Blind}{Ctrl Up}
-; Return
-
-
-
-; 下面這個可以 disable, 但還是無法解決我會遇到的 bug
-; this is ver2 syntax
-; SetCapsLockState 'AlwaysOff'
-; CapsLock::Return ; ver1
-
-; ================================
-; CAPSLOCK replace Ctrl
-; ================================
-
-
-
-; CHANGE CAPSLOCK TO CTRL AND ALSO ENABLE ALL ORIGINAL CTRL + X COMBO
-; https://gist.github.com/yyolk/fddf44b973e6008f0667fc4b3346cbda
-; https://gist.github.com/sedm0784/4443120
-
-
-
-
-; g_LastCtrlKeyDownTime := 0
-; g_AbortSendEsc := false
-; g_ControlRepeatDetected := false
-
-; *CapsLock::
-;     if (g_ControlRepeatDetected)
-;     {
-;         return
-;     }
-
-;     send,{Ctrl down}
-;     g_LastCtrlKeyDownTime := A_TickCount
-;     g_AbortSendEsc := false
-;     g_ControlRepeatDetected := true
-
-;     return
-
-; *CapsLock Up::
-;     send,{Ctrl up}
-;     g_ControlRepeatDetected := false
-;     if (g_AbortSendEsc)
-;     {
-;         return
-;     }
-;     current_time := A_TickCount
-;     time_elapsed := current_time - g_LastCtrlKeyDownTime
-;     if (time_elapsed <= 250)
-;     {
-;         SendInput {Esc}
-;     }
-;     return
-
-; ~*^a::
-; ~*^b::
-; ~*^c::
-; ~*^d::
-; ~*^e::
-; ~*^f::
-; ~*^g::
-; ~*^h::
-; ~*^i::
-; ~*^j::
-; ~*^k::
-; ~*^l::
-; ~*^m::
-; ~*^n::
-; ~*^o::
-; ~*^p::
-; ~*^q::
-; ~*^r::
-; ~*^s::
-; ~*^t::
-; ~*^u::
-; ~*^v::
-; ~*^w::
-; ~*^x::
-; ~*^y::
-; ~*^z::
-; ~*^1::
-; ~*^2::
-; ~*^3::
-; ~*^4::
-; ~*^5::
-; ~*^6::
-; ~*^7::
-; ~*^8::
-; ~*^9::
-; ~*^0::
-; ~*^Space::
-; ~*^Backspace::
-; ~*^Delete::
-; ~*^Insert::
-; ~*^Home::
-; ~*^End::
-; ~*^PgUp::
-; ~*^PgDn::
-; ~*^Tab::
-; ~*^Return::
-; ~*^,::
-; ~*^.::
-; ~*^/::
-; ~*^;::
-; ~*^'::
-; ~*^[::
-; ~*^]::
-; ~*^\::
-; ~*^-::
-; ~*^=::
-; ~*^`::
-; ~*^F1::
-; ~*^F2::
-; ~*^F3::
-; ~*^F4::
-; ~*^F5::
-; ~*^F6::
-; ~*^F7::
-; ~*^F8::
-; ~*^F9::
-; ~*^F10::
-; ~*^F11::
-; ~*^F12::
-;     g_AbortSendEsc := true
-;     return
 
 
