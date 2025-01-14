@@ -20,6 +20,10 @@ send %TimeString%
 return
 
 
+::ccc::send (用繁體中文解釋)
+
+ 
+
 ; ================================
 ; Notion specific hotkey added
 ; ================================
