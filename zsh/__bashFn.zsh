@@ -79,7 +79,6 @@ do-ls() {emulate -L zsh; eza --sort newest -a --hyperlink -l;}
 add-zsh-hook chpwd do-ls
 
 
-
 function show_nameOnly_extOnly_() {
     for FILE in $(ls -1); do
         # :r takes filename and removes extension

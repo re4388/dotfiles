@@ -1,46 +1,36 @@
 [includeIf "gitdir:~/project/personal/"]
-    path = ~/project/personal/.gitconfig-personal
-
+	path = ~/project/personal/.gitconfig-personal
 [includeIf "gitdir:~/project/work/"]
-    path = ~/project/work/.gitconfig-work
-
+	path = ~/project/work/.gitconfig-work
 [alias]
-    a    = add .
-    co   = checkout
-    sw   = switch
-    cn    = commit --no-verify -m
-    edit  = config --global -e
-    wip   = !git add --all && git commit -m WIP
-    wip2  = !git add --all && git commit -m WIP && git push
-    stash = stash --include-untracked
-    saferPush = push push --force-with-lease
-    bk                = switch -c backup
-    tagLastest        = tag --sort=committerdate -l
-
-    # `git dlog` to show `git log -p` with difftastic.
-    dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
-    # `git dft` is less to type than `git difftool`.
-    dft = difftool
-
+	a = add .
+	co = checkout
+	sw = switch
+	cn = commit --no-verify -m
+	edit = config --global -e
+	wip = !git add --all && git commit -m WIP
+	wip2 = !git add --all && git commit -m WIP && git push
+	stash = stash --include-untracked
+	saferPush = push push --force-with-lease
+	bk = switch -c backup
+	tagLastest = tag --sort=committerdate -l
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+	dft = difftool
 [core]
-    excludesfile = /Users/re4388/.gitignore_global
-
+	excludesfile = /Users/re4388/.gitignore_global
+	fsmonitor = true
 [commit]
-    template = /Users/re4388/.stCommitMsg
-
+	template = /Users/re4388/.stCommitMsg
 [diff]
-    external = difft
-    tool = difftastic
-
+	external = difft
+	tool = difftastic
 [difftool]
-        prompt = false
-
+	prompt = false
 [difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-    prompt = false
-
+	cmd = difft "$LOCAL" "$REMOTE"
+	prompt = false
 [pager]
-    difftool = true
+	difftool = true
 [user]
 	name = ben.hu
 	email = ben.hu@wemoscooter.com
