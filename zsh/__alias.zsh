@@ -1,6 +1,8 @@
 alias vi=nvim
 alias vim=lvim
 
+alias so="source ~/.zshrc"
+
 alias ps2=procs
 
 ###################### mdcat - pretty markdown in terminal
