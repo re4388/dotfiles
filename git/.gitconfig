@@ -19,6 +19,7 @@
 [core]
 	excludesfile = /Users/re4388/.gitignore_global
 	fsmonitor = true
+	quotePath = false
 [commit]
 	template = /Users/re4388/.stCommitMsg
 [diff]
@@ -33,4 +34,4 @@
 	difftool = true
 [user]
 	name = ben.hu
-	email = ben.hu@wemoscooter.com
+	email = re4388@gmail.com

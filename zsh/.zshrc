@@ -44,6 +44,9 @@ export ZSH_AUTOCOMPLETE_PATH="/Users/re4388/project/personal/my-github-pjt/dotfi
 # 透過上面的 zshfl 插件，一天只會 load 一次
 autoload -U compinit && compinit
 
+# zsh-autosuggesitons, ctrl+space
+# bindkey '^ ' autosuggest-accept
+
 # 自己管理 repo
 source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
 autopair-init
@@ -201,7 +204,10 @@ _evalcache zoxide init zsh
 # export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
 # export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
 export EDITOR=nvim
-export VISUAL=nvim
+# export VISUAL=nvim
+
+# export EDITOR="code --wait"
+export VISUAL="$EDITOR"
 
 ################# howdoi
 
@@ -247,8 +253,6 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__alias.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__bashFn.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__oneLiner.zsh
 
-######## sensitive env variables #########
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
 ########## 套件分開整理
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__codemark.zsh
@@ -285,21 +289,65 @@ case ":$PATH:" in
 esac
 ###############
 
-# 
+#
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # pnpm
 export PNPM_HOME="/Users/re4388/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+export PATH="$HOME/.local/bin:$PATH"
+
+# use vim mode -> 建議裝 zsh-vi-mode 插件（比內建更完整）
+# bindkey -v
+
+# Added by Antigravity
+export PATH="/Users/re4388/.antigravity/antigravity/bin:$PATH"
+
+alias love="/Applications/love.app/Contents/MacOS/love"
+
+# OpenClaw Completion
+source "/Users/re4388/.openclaw/completions/openclaw.zsh"
+
+# alias cc="ccr code --dangerously-skip-permissions"
+alias cc="claude --dangerously-skip-permissions"
+
+# to enable long running task in claude code
+export ENABLE_BACKGROUND_TASKS=1
+# disable claude code auto update, this cause CCR not able to use some models
+export DISABLE_AUTOUPDATER=1
+
+# 然後就可以像 Linux 一樣用：~/.config/xxx
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# 加到 ~/.zshrc 或 ~/.bashrc
+# 讓離開 Yazi 後，Terminal 自動切換到你最後所在的目錄：
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+
+
+
+alias oo="opencode"
+
+
+
+######## sensitive env variables #########
+source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
+

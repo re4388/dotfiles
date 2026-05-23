@@ -1,18 +1,18 @@
-alias vi=nvim
-alias vim=lvim
+# alias vi=nvim
+# alias vim=lvim
 
-alias so="source ~/.zshrc"
+# alias so="source ~/.zshrc"
 
-alias ps2=procs
+# alias ps2=procs
 
 ###################### mdcat - pretty markdown in terminal
 ## 有點慢，可能比較適合作為一些需要漂亮展示的 markdown顯示
-alias mdcat=/Users/re4388/project/personal/mdcat-2.1.1-x86_64-apple-darwin/mdcat
+# alias mdcat=/Users/re4388/project/personal/mdcat-2.1.1-x86_64-apple-darwin/mdcat
 
 # IDEA open, like `code` for vscode
 #alias idea='open -na "IntelliJ IDEA.app" --args'
-alias goland='open -na "GoLand.app" --args'
-alias du='gdu-go'
+# alias goland='open -na "GoLand.app" --args'
+# alias du='gdu-go'
 
 alias ls="eza"
 #alias ll="eza -al"
@@ -22,7 +22,7 @@ alias ls="eza"
 # -l means show all info
 alias ll="eza --sort newest -a --hyperlink -l"
 
-alias qq='ben'
+# alias qq='ben'
 alias j="z"
 
 alias dif="difft"
@@ -41,7 +41,7 @@ alias -g C='| pbcopy'
 
 alias -g SUM="| llm -m gpt-4-turbo-preview 'Help me succinctly summarize this article with bullet point in traditional Chinese'"
 
-alias tower=gittower
+# alias tower=gittower
 
 alias ai=sgpt
 alias traceroute2=nexttrace
@@ -60,9 +60,6 @@ alias nvim_kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
 # this is vscode backend v0 -> all lua in one file -> work, but init.lua is not support treesitter text obj
 alias nvim_kickstart_module='NVIM_APPNAME="nvim-kickstart-module" nvim'
-
-# this is vscode backend v1 -> try use lua module way and seems not work -> seems I need to stick in one file
-alias nvim_vscodeV2='NVIM_APPNAME="nvim-vscodeV2" nvim'
 
 # this is vscode backend v3, the final ver, support treesitter with yank funciton stuff
 alias nvim_vimscript='NVIM_APPNAME="nvim-vimscript" nvim'

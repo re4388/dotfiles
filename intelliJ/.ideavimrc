@@ -1,3 +1,6 @@
+" ideaVim action list
+" https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+" see vim plugin page: https://github.com/JetBrains/ideavim/blob/master/doc/IdeaVim%20Plugins.md
 " Map leader to space
 let mapleader=" "
 
@@ -8,11 +11,38 @@ set hlsearch
 set ignorecase
 set smartcase
 
+
+nnoremap gr :action ShowUsages<CR>
+"nnoremap <leader>su :action ShowUsages<CR>
+
+
+:iunmap <C-r>
+
+" 啟用 IDE 的 join 功能"
+set ideajoin
+set dial
+
+" 使用剪貼簿與 IDE 原生互動"
+set ideaput
+
+set anyobject
+
+"將 IntelliJ bookmarks 與 Vim marks 同步（僅限大寫 marks）"
+set ideamarks
+
+set peekaboo
+
 " 3 lines above/below cursor when scrolling
 set scrolloff=3
 
 " 打開實驗性質的 EX mdoe
 set noideadelaymacro
+
+
+
+Plug 'vim-matchit'
+Plug 'chrisbra/matchit'
+set matchit
 
 
 
@@ -22,6 +52,8 @@ set noideadelaymacro
 
 
 " Plugins
+set functiontextobj
+
 Plug 'scrooloose/nerdtree'
 set NERDTree
 
@@ -32,7 +64,6 @@ set NERDTree
 set surround
 
 Plug 'tpope/vim-commentary'
-
 set commentary
 set argtextobj
 " set easymotion
@@ -43,10 +74,8 @@ set ReplaceWithRegister
 "set quickscope
 
 
-" sync vim marks with bookmark
-set ideamarks
 
-""" highlighted yank
+"highlighted yank
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = "500"
 
@@ -55,10 +84,9 @@ Plug 'Improved-paragraph-motion'
 set vim-paragraph-motion
 
 
-""" Idea specific settings ------------------
-set ideajoin
+" Idea specific settings
 "set ideastatusicon=gray
-set idearefactormode=keep
+"set idearefactormode=keep
 
 " Copy to system clipboard as well
 set clipboard+=unnamed
@@ -66,28 +94,20 @@ set clipboard+=ideaput
 
 
 " whichkey
-set which-key
+"set which-key
 " set notimeout
-set timeoutlen=3000
+"set timeoutlen=2000
 " make the popup show up 'instantly'
-let g:WhichKey_DefaultDelay = 0
-
+"let g:WhichKey_DefaultDelay = 0
 
 
 " Have j and k navigate visual lines rather than logical ones
 nmap j gj
 nmap k gk
 
-nmap <S-j> 20gj
-nmap <S-k> 20gk
 
-" I like using H and L for beginning/end of line
-nmap H ^
-nmap L $
 nnoremap qq yiw
-
-
-
+nnoremap qa viwp
 
 """"""""""""""""""""""""
 " 目前官方支援的 vim command
@@ -96,9 +116,9 @@ nnoremap qq yiw
 
 
 """""""""""""""""""""""""""""
-" 官方推薦選項"""""""""""
+" 官方推薦選項
 """""""""""""""""""""""""""""
-"
+
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
@@ -106,24 +126,33 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
+
+"""""""""""""""""""沒用到的放下面 """"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" nmap <S-j> 20gj
+" nmap <S-k> 20gk
+
+" I like using H and L for beginning/end of line
+"nmap H ^
+"nmap L $
+"nnoremap qq yiw
+"nnoremap qa viwp
+
+"surround with
+"nmap q" ysiw"
+"nmap q` ysiw`
+"nmap q' ysiw'
+"nmap qb ysiwb
+"nmap qB ysiwB
+"nmap qt ysiw<
+"nmap q[ ysiw[
 " Don't use Ex mode, use Q for formatting.
-map Q gq
-
-
-
-
-
-
+" map Q gq
 
 """""""""""""""""""""""""""""
-" personal setting"""""""""""
+" personal setting
 """""""""""""""""""""""""""""
-
-
-
-
-
-
 
 """"""""""""""""""""""""""""""""""""""'
 " Window Navigation
@@ -131,10 +160,10 @@ map Q gq
 
 " use cmd+hjkl to jump across split panels
 " in my setup, it means I can use capslock
-nnoremap <D-h> <C-W>h
-nnoremap <D-l> <C-W>l
-nnoremap <D-j> <C-W>j
-nnoremap <D-k> <C-W>k
+"nnoremap <D-h> <C-W>h
+"nnoremap <D-l> <C-W>l
+"nnoremap <D-j> <C-W>j
+"nnoremap <D-k> <C-W>k
 
 " nnoremap qh <C-W>h
 " nnoremap ql <C-W>l
@@ -144,37 +173,10 @@ nnoremap <D-k> <C-W>k
 " nnoremap <C-l> <C-W>l
 " nnoremap <C-j> <C-W>j
 " nnoremap <C-k> <C-W>k
-
-
-
-
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""沒用到的放下面 """"""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
-
-"GIT"""""""""""""""""""""""""""""""
+"GIT
 
 " map <leader>gc <Action>(ActivateCommitToolWindow)
-" let g:WhichKeyDesc_git       = "<leader>g git"
+"let g:WhichKeyDesc_git       = "<leader>g git"
 " let g:WhichKeyDesc_gitCommitWindow  = "<leader>gc  active git commit window"
 
 " maybe still need to use keyboard to handle this?
@@ -197,6 +199,9 @@ nnoremap <D-k> <C-W>k
 " let g:WhichKeyDesc_hideActiveWindow = "<leader>wh hide active window"
 " map <leader>wh <Action>(HideActiveWindow)
 """"""""""""""""""""""""""""""""""""
+
+
+
 
 
 " nnoremap <leader><leader> :action ideaVim.ReloadVimRc.reload<cr>
@@ -233,10 +238,12 @@ nnoremap <D-k> <C-W>k
 " nnoremap <leader>eo :action CloseAllEditorsButActive<cr>
 " nnoremap <leader>ew :action EditorToggleUseSoftWraps<cr>
 
-" r: run"
+" r: run
 " nnoremap <leader>rr :action Run<CR>
 "nnoremap <leader>rd :action Debug<cr>
 " nnoremap <leader>bb :action ToggleLineBreakpoint<cr>
+nnoremap <leader>rr EditorPopupMenu.Run<CR>
+"nnoremap <leader>r :action GotoDeclaration<CR>
 
 " project"
 " nnoremap <leader>pn :action NextProjectWindow<cr>
@@ -253,6 +260,8 @@ nnoremap <D-k> <C-W>k
 " nmap qB ysiwB
 " nmap qt ysiw<
 " nmap q[ ysiw[
+
+
 " another way to use surrounding vim:
 " cs"' <-- change surround from " to '
 " visual mode: select in visual mode first and then add "
@@ -282,16 +291,16 @@ nnoremap <D-k> <C-W>k
 
 
 
-""""""""""""""""""""""" 所有的leader 都放在這邊，方便管理 """""""""""""""""""""""""
+"""""""""""""""""""""" 所有的leader 都放在這邊，方便管理
 " search under cursor
 " nnoremap <leader>j *
 
 " clear highlight
-" nnoremap <leader>c :nohl<cr>
+nnoremap <leader>c :nohl<cr>
 
 " or use shift+ctrl+v to reload
-" map <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
+" nnoremap <leader>s <Action>(IdeaVim.ReloadVimRc.reload)
 
 " nerdTree"""""""""""""""""""""""""""""""
-" nnoremap <leader>n :NERDTreeFocus<cr>
-" nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeFocus<cr>
+nnoremap <leader>nt :NERDTreeToggle<cr>
