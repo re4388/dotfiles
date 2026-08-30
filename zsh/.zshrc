@@ -1,3 +1,5 @@
+export JCODE_9ROUTER_API_KEY=sk-a14d9a737dcda746-b0qi7n-80694568
+
 plugins=(
     # fast-syntax-highlighting
     # sudo
@@ -48,8 +50,8 @@ autoload -U compinit && compinit
 # bindkey '^ ' autosuggest-accept
 
 # 自己管理 repo
-source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
-autopair-init
+# source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
+# autopair-init
 
 # zsh-completions/src
 # 這邊又加入很多 command 的 completion script
@@ -93,27 +95,27 @@ export HISTSIZE=10000        # save 10000 items in history
 ############### gcloud #######################
 #
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/re4388/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/re4388/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/re4388/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/re4388/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/re4388/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/re4388/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/re4388/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/re4388/google-cloud-sdk/completion.zsh.inc'; fi
 
 ############## conda #######################
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/re4388/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-    #     eval "$__conda_setup"
-    _evalcache $__conda_setup
-else
-    if [ -f "/Users/re4388/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/re4388/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/re4388/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/Users/re4388/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+# if [ $? -eq 0 ]; then
+#     #     eval "$__conda_setup"
+#     _evalcache $__conda_setup
+# else
+#     if [ -f "/Users/re4388/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/re4388/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/re4388/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 # base is not be activated on startup
@@ -127,8 +129,8 @@ export PATH="$PATH:/Users/re4388/.local/bin"
 
 ### this shall be at end of this file #######
 ##########startship #########
-eval "$(starship init zsh)"
-# _evalcache starship init zsh
+# eval "$(starship init zsh)"
+_evalcache starship init zsh
 
 ################## cosay froom my advice ###############
 # input_file=~/project/personal/advice-db/db0.txt
@@ -139,8 +141,8 @@ eval "$(starship init zsh)"
 # shuf -n 1 $q0
 
 ########################## fnm(rust version of nvm, faster) ###########
-eval "$(fnm env --use-on-cd)"
-# _evalcache fnm env --use-on-cd
+# eval "$(fnm env --use-on-cd)"
+_evalcache fnm env --use-on-cd
 
 ########## add go/bin into path
 export PATH=$PATH:/Users/re4388/go/bin
@@ -255,7 +257,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__oneLiner.zsh
 
 
 ########## 套件分開整理
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__codemark.zsh
+# source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__codemark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__shell_gpt_util.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__llm.zsh
@@ -272,7 +274,7 @@ source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_di
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_codemark.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/zsh_complete_directly_load/_snippet.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__ast_grep.zsh
-source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__wemo.zsh
+# source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__wemo.zsh
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/__ytdl.zsh
 
 ### bin
@@ -345,9 +347,16 @@ function y() {
 
 
 alias oo="opencode"
+alias lg="lazygit"
 
 
 
 ######## sensitive env variables #########
 source /Users/re4388/project/personal/my-github-pjt/dotfiles/zsh/.env
 
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
