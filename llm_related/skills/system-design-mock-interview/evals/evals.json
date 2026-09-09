@@ -1,0 +1,23 @@
+{
+  "skill_name": "system-design-mock-interview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想練習 system design 面試，幫我模擬一下。",
+      "expected_output": "Skill 呈現主題列表讓使用者選擇，然後以面試官身份進行 mock interview，最後產出詳細的評估報告。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我最近在準備 Google 的面試，可以幫我練 system design 嗎？我想試試 design a URL shortener。",
+      "expected_output": "Skill 直接以 URL Shortener 為主題進行 mock interview，包含需求釐清、估算、架構設計、deep dive，最後提供評估報告與職級評定。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "幫我 mock interview system design，但我沒什麼經驗，從基礎開始就好。",
+      "expected_output": "Skill 以較基礎的難度進行面試，多給予引導，產出適合初學者的評估報告。",
+      "files": []
+    }
+  ]
+}

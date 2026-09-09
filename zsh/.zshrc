@@ -46,8 +46,6 @@ export ZSH_AUTOCOMPLETE_PATH="/Users/re4388/project/personal/my-github-pjt/dotfi
 # 透過上面的 zshfl 插件，一天只會 load 一次
 autoload -U compinit && compinit
 
-# zsh-autosuggesitons, ctrl+space
-# bindkey '^ ' autosuggest-accept
 
 # 自己管理 repo
 # source /Users/re4388/project/personal/zsh_plugin_manual/zsh-autopair/zsh-autopair.plugin.zsh
@@ -153,12 +151,6 @@ export PATH=$PATH:/Users/re4388/go/bin
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# zsh-autosuggestions
-# 目前用 default 就是 ->
-# use alt+ i
-bindkey '^[i' autosuggest-accept
-# bindkey '^b' autosuggest-accept
-# bindkey '^[f' autosuggest-accept
 
 # eval AI_AC_ZSH_SETUP_PATH=/Users/re4388/Library/Caches/ai/autocomplete/zsh_setup && test -f $AI_AC_ZSH_SETUP_PATH && source $AI_AC_ZSH_SETUP_PATH; # ai autocomplete setup
 
@@ -179,10 +171,6 @@ bindkey '^[i' autosuggest-accept
 # display current k8s context
 # RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
-# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# bindkey '\t'  autosuggest-accept
-# bindkey '\t' menu-complete
 
 # [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zshexport
 
@@ -205,10 +193,10 @@ _evalcache zoxide init zsh
 # I install nvim in my own place
 # export EDITOR=/Users/re4388/project/personal/nvim-macos/bin/nvim
 # export VISUAL=/Users/re4388/project/personal/nvim-macos/bin/nvim
-export EDITOR=nvim
+# export EDITOR=nvim
 # export VISUAL=nvim
 
-# export EDITOR="code --wait"
+export EDITOR="code --wait"
 export VISUAL="$EDITOR"
 
 ################# howdoi
@@ -360,3 +348,24 @@ export PATH="$HOME/.grok/bin:$PATH"
 fpath=(~/.grok/completions/zsh $fpath)
 autoload -Uz compinit && compinit -C
 # <<< grok installer <<<
+
+
+# what is ^H? use "stty raw -echo; cat -v; stty sane" and type capslock+backspace, it shows ^H
+bindkey '^H' backward-kill-word
+
+# bindkey '^ ' autosuggest-accept  # zsh-autosuggesitons, ctrl+space
+
+bindkey '^[i' autosuggest-accept # zsh-autosuggestions use alt+ i
+# bindkey '^b' autosuggest-accept
+# bindkey '^[f' autosuggest-accept
+
+# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# bindkey '\t'  autosuggest-accept
+# bindkey '\t' menu-complete
+
+# to allow vifm to leave at place when u move inside
+vifmcd() {
+    local dir
+    dir=$(vifm --choose-dir - "$@") && cd "$dir"
+}
