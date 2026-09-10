@@ -1,0 +1,69 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.local.md"],
+  "model": "9router/test0",
+  "provider": {
+    "9router": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:20128/v1",
+        "apiKey": "{env:API_KEY_9ROUTER}"
+      },
+      "models": {
+        "test0": {
+          "name": "test0",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        },
+        "paid": {
+          "name": "dsv4",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    // "line-desktop": {
+    //   "type": "local",
+    //   "command": ["npx", "line-desktop-mcp@latest"],
+    //   "enabled": true
+    // }
+  },
+  "permission": "allow",
+  // "experimental": {
+  //   "disable_paste_summary": true
+  // },
+  "lsp": true,
+  "plugin": [
+    "opencode-mem", 
+    "opencode-sessions",
+    // "file:///Users/re4388/.config/opencode/opencode_session.js",
+    "./ponytail/.opencode/plugins/ponytail.mjs"
+  ],
+  "agent": {
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    },
+    "explorer": {
+      "description": "Fast explorer subagent for codebase exploration",
+      "mode": "subagent",
+      "model": "9router/test0"
+    }
+  }
+}
