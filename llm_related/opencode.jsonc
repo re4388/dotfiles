@@ -36,6 +36,12 @@
     }
   },
   "mcp": {
+    "ghidra": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8080/mcp",
+      "enabled": true,
+      "oauth": false
+    }
     // "line-desktop": {
     //   "type": "local",
     //   "command": ["npx", "line-desktop-mcp@latest"],
