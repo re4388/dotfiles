@@ -190,8 +190,9 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 - 解法：直接降級到本機 mlx-whisper（步驟 6），不要再 retry
 
 ### 暫存清理 (Cleanup)
-- **清理限制**：`rm` 指令在 `/Users/re4388/workspace` 或 `/tmp` 下執行時，若涉及多個檔案或特定路徑，常會被 `BLOCKED`。
-- **策略**：轉錄腳本末尾應包含 `os.remove(status_file)`。其餘 `.m4a` 或 `.py` 檔案若清理失敗，可向使用者告知並保持原樣，不必為了清理而反覆嘗試。
+- **直接刪除，不必問使用者**：`/tmp` 下的 `.m4a`、`.py` 等暫存檔，轉錄完成後直接 `rm -f` 清掉即可，無須先取得確認。
+- **清理限制**：`rm` 指令在 `/Users/re4388/workspace` 或 `/tmp` 下執行時，若涉及多個檔案或特定路徑，偶爾會被 `BLOCKED`。
+- **策略**：轉錄腳本末尾應包含 `os.remove(status_file)`。其餘暫存檔直接 `rm -f`；若清理失敗，告知並保持原樣，不必為了清理而反覆嘗試。
 
 ### YouTube 下載 403 Forbidden
 - **症狀**：`yt-dlp -f 18` 下載時報 `HTTP Error 403: Forbidden`
@@ -214,11 +215,11 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 即使 `process(action='poll')` 顯示 output_lines=0，進程仍可能在正常跑（200% CPU）。用 status file 追蹤比依賴 process 輸出更可靠。
 
 ### 清理暫存
-- `.m4a` 音訊檔案可視需求保留或刪除
+- `/tmp` 下的暫存檔（`.m4a`、`.py`）轉錄完成後直接刪除，不必問使用者
 - 切片後的 segment 檔案 (`seg_*.m4a`) 轉錄完成後可清理
 
 ## 注意事項
 - 轉錄完成後，在對話中呈現結構化摘要（含時長、字數、轉錄方式、儲存位置）
 - .txt 與 .md 都推送至 GitHub repo `re4388/audio_transcript_0`
-- 清理暫存檔案（`.m4a`、`.py` 腳本）須先取得使用者確認，因 `terminal()` 清理可能被系統阻擋
+- 清理暫存檔案（`.m4a`、`.py` 腳本）直接刪除即可，不必先取得使用者確認
 - 原始音訊檔案 (.m4a/.mp3) 保留與否由使用者決定
