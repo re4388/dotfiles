@@ -60,6 +60,17 @@ Each lesson should recommend a primary source for the user to read or watch. Thi
 
 Each lesson should contain a reminder to ask followup questions to the agent. The agent is their teacher, and can assist with anything that's unclear.
 
+## Plain Language
+
+Every lesson and reference document should be written so a newcomer can understand it on first read. Explain in plain language:
+
+- Prefer short sentences and everyday words over jargon. Define each term the first time it appears.
+- Lead with a concrete example or analogy, then the formal definition.
+- Spell out acronyms, and don't assume prior background.
+- When a concept needs earlier knowledge, link to the lesson or reference that teaches it.
+
+If a paragraph can't be understood without re-reading, rewrite it. Clarity beats completeness.
+
 ## Assets
 
 Lessons are built from reusable **components**, stored in `./assets/`: stylesheets, quiz widgets, simulators, diagram helpers — anything a second lesson could reuse.

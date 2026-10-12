@@ -1,7 +1,9 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": ["AGENTS.local.md"],
-  "model": "9router/test0",
+  "instructions": [
+    "AGENTS.local.md"
+  ],
+  "model": "9router/9routerDsV4",
   "provider": {
     "9router": {
       "npm": "@ai-sdk/openai-compatible",
@@ -10,28 +12,139 @@
         "apiKey": "{env:API_KEY_9ROUTER}"
       },
       "models": {
-        "test0": {
-          "name": "test0",
+        "9routerCodexTerra": {
+          "name": "9routerCodexTerra",
           "limit": {
             "context": 1048576,
             "output": 65536
           },
           "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
           }
         },
-        "paid": {
-          "name": "dsv4",
+        "9routerAntiGravityGemimi38": {
+          "name": "9routerAntiGravityGemimi38",
           "limit": {
             "context": 1048576,
             "output": 65536
           },
           "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "9routerDsV4": {
+          "name": "9routerDsV4",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
           }
         }
+        // can't use
+        // "9RouterCfKimi26": {
+        //   "name": "9RouterCfKimi26",
+        //   "limit": {
+        //     "context": 1048576,
+        //     "output": 65536
+        //   },
+        //   "modalities": {
+        //     "input": [
+        //       "text",
+        //       "image"
+        //     ],
+        //     "output": [
+        //       "text"
+        //     ]
+        //   }
+        // },
+        // can't use
+        //  "9RouterNvDs4Flash": {
+        //     "name": "9RouterNvDs4Flash",
+        //     "limit": {
+        //       "context": 1048576,
+        //       "output": 65536
+        //     },
+        //     "modalities": {
+        //       "input": [
+        //         "text",
+        //         "image"
+        //       ],
+        //       "output": [
+        //         "text"
+        //       ]
+        //     }
+        //   },
+        // can't use
+        // "9RouterOcDsV4Flash": {
+        //   "name": "9RouterOcDsV4Flash",
+        //   "limit": {
+        //     "context": 1048576,
+        //     "output": 65536
+        //   },
+        //   "modalities": {
+        //     "input": [
+        //       "text",
+        //       "image"
+        //     ],
+        //     "output": [
+        //       "text"
+        //     ]
+        //   }
+        // },
+        // can't use
+        // "9RouterKiroSonnet5": {
+        //   "name": "9RouterKiroSonnet5",
+        //   "limit": {
+        //     "context": 1048576,
+        //     "output": 65536
+        //   },
+        //   "modalities": {
+        //     "input": [
+        //       "text",
+        //       "image"
+        //     ],
+        //     "output": [
+        //       "text"
+        //     ]
+        //   }
+        // },
+        // can't use
+        // "9RouterGhCloudeSonnt46": {
+        //   "name": "9RouterGhCloudeSonnt46",
+        //   "limit": {
+        //     "context": 1048576,
+        //     "output": 65536
+        //   },
+        //   "modalities": {
+        //     "input": [¡
+        //       "text",
+        //       "image"
+        //     ],
+        //     "output": [
+        //       "text"
+        //     ]
+        //   }
+        // },
       }
     }
   },
@@ -39,7 +152,7 @@
     "ghidra": {
       "type": "remote",
       "url": "http://127.0.0.1:8080/mcp",
-      "enabled": true,
+      "enabled": false,
       "oauth": false
     }
     // "line-desktop": {
@@ -54,22 +167,22 @@
   // },
   "lsp": true,
   "plugin": [
-    "opencode-mem", 
-    "opencode-sessions",
+    "opencode-mem",
+    "@dietrichgebert/ponytail"
     // "file:///Users/re4388/.config/opencode/opencode_session.js",
-    "./ponytail/.opencode/plugins/ponytail.mjs"
-  ],
-  "agent": {
-    "explore": {
-      "disable": true
-    },
-    "general": {
-      "disable": true
-    },
-    "explorer": {
-      "description": "Fast explorer subagent for codebase exploration",
-      "mode": "subagent",
-      "model": "9router/test0"
-    }
-  }
+    // "./ponytail/.opencode/plugins/ponytail.mjs"
+  ]
+  // "agent": {
+  //   "explore": {
+  //     "disable": true
+  //   },
+  //   "general": {
+  //     "disable": true
+  //   },
+  //   "explorer": {
+  //     "description": "Fast explorer subagent for codebase exploration",
+  //     "mode": "subagent",
+  //     "model": "9router/test0"
+  //   }
+  // }
 }

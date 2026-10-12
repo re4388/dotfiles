@@ -3,7 +3,7 @@ name: yt-no-subtitle
 description: Workflow for YouTube videos without subtitles. Downloads audio via yt-dlp, transcribes via local mlx-whisper (Apple Metal), and generates detailed summaries.
 tags: [youtube, transcription, whisper, stt, 9router, audio, yt-dlp, mlx]
 related_skills: [nine-router-stt, youtube-content]
-version: 1.5.0
+version: 1.9.1
 ---
 
 # YT No Subtitle (Whisper Fallback)
@@ -26,18 +26,50 @@ version: 1.5.0
 - **若有自動字幕 (automatic captions)**：仍可用 `--write-auto-subs --sub-langs zh-Hant` 抓取
 - **若完全無字幕**：下載音訊進行轉錄
 
-### VTT 字幕清洗 (純文字轉換)
-```python
-# 將 VTT 轉成無時間戳的連續純文字
-lines = open("file.vtt").read().split('\\n')
-text = ' '.join(
-    line.strip() for line in lines
-    if line.strip() and '-->' not in line
-    and not line.startswith(('WEBVTT', 'NOTE', 'Kind:', 'Language:'))
-    and not line.isdigit()
-)
-clean = ''.join(text.split())  # Chinese 去空白
+**多軌字幕語言優先序**：`en-orig > zh-TW > zh-Hant > zh-Hans > en > zh-CN`（英文原音片通常有 `en-orig`；中文片為 `zh-TW`/`zh-Hant`）。
+
+**批量抓字幕（canonical）**：
+```bash
+yt-dlp --cookies-from-browser firefox --skip-download \
+  --write-subs --write-auto-subs \
+  --sub-langs "zh-TW,zh-Hant,zh-Hans,zh-CN,en,en-orig" --convert-subs vtt \
+  -a urls.txt -o "out/%(id)s.%(ext)s"
 ```
+
+### VTT 字幕清洗（純文字轉換，含自動字幕去重）
+
+YouTube 自動字幕是「滾動式」——同一句會在連續多個 cue 重複，且夾雜 `<c>` 逐字時間標籤。天真的逐行 join 會產生大量重複；用下面這支（auto 與手動字幕都適用）：
+
+```python
+import re
+
+def clean_vtt(path):
+    kept = []
+    for ln in open(path, encoding="utf-8").read().split("\n"):
+        s = ln.strip()
+        if not s or "-->" in s:
+            continue
+        if s.startswith(("WEBVTT", "NOTE", "Kind:", "Language:", "X-TIMESTAMP")):
+            continue
+        s = re.sub(r"<[^>]*>", "", s).strip().replace("\u200b", "")  # 去 <c> 與逐字時間標籤
+        if s:
+            kept.append(s)
+    cjk = any("\u4e00" <= c <= "\u9fff" for c in "".join(kept))
+    out = []
+    for s in kept:
+        if not out:
+            out.append(s); continue
+        if cjk:
+            if s == out[-1] or s in out[-1]:          # 滾動重複：整句或子句重複 → 跳過
+                continue
+        else:
+            if s == out[-1] or out[-1].endswith(s):
+                continue
+        out.append(s)
+    return ("".join(out) if cjk else " ".join(out)).strip()
+```
+
+邏輯：**每個 cue 取第一個非空行**，並跳過與前一行相同／被前一行包含的行。批次版見 `scripts/pipeline.py`。
 
 ### YouTube 音訊下載（無字幕時）
 `yt-dlp -x --audio-format m4a -o "/path/to/%(id)s.%(ext)s" "URL"`
@@ -74,9 +106,11 @@ with open("output.txt", "w") as f:
 
 ## GitHub 自動化推送
 所有轉錄完成後，應推送至 `re4388/audio_transcript_0`。
+**資料夾規則**：repo 已改為「每個有新增檔案的 commit 一個資料夾」，資料夾命名為 `<YYYYMMDD>_<N>`（`YYYYMMDD` = commit 日期，`N` = 當天第幾個新增檔案的 commit，從 1 起算）。同一批轉錄的檔案全部放進當天最新的一個資料夾。
 1. `git clone ... /tmp/repo`
-2. `cp transcript.txt /tmp/repo/`
-3. `git add . && git commit -m "..." && git push`
+2. 在 repo 內建立當天資料夾 `<YYYYMMDD>_<N>`（演算法見「### 7. GitHub 推送」）；**不要放到 repo 根目錄**
+3. `cp -- <id>.txt <id>.md <YYYYMMDD_N>/`
+4. `git add . && git commit -m "..." && git push`
 
 
 - **無須 ffmpeg 切片** — 單檔 <~100MB 直接餵給 mlx-whisper 即可
@@ -138,13 +172,38 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 
 ### 7. GitHub 推送
 
-產出兩個檔案，都推送到 `re4388/audio_transcript_0`：
+產出兩個檔案，都推送到 `re4388/audio_transcript_0`。
+
+**資料夾放置規則（必遵守，最常出錯的地方）**：
+
+⚠️ **絕對不要把 `<id>.txt` / `<id>.md` 複製到 repo 根目錄**。repo 慣例是「每個有新增檔案的 commit 一個資料夾」，資料夾命名 `<YYYYMMDD>_<N>`：
+- `YYYYMMDD` = commit 當天日期（= `date +%Y%m%d`）
+- `N` = 當天第幾個新增檔案的 commit，從 1 起算（= 當天已存在的 `<YYYYMMDD>_*` 資料夾數 + 1）
+
+同一批轉錄（同一次 push）的全部檔案，放進**同一個**日期資料夾，例如 `20261008_1/7typuNJDvRY.md`。
+
+```bash
+# 在 clone 下來的 repo 目錄內執行（不要 cd 去別處再 cp 回 root）
+D=$(date +%Y%m%d)
+N=$(ls -d "${D}"_* 2>/dev/null | wc -l | tr -d ' ')   # 當天已有幾個資料夾
+FOLDER="${D}_$((N+1))"
+mkdir -p "$FOLDER"
+for f in *.txt *.md; do
+  [ -f "$f" ] || continue
+  [ "$f" = "README.md" ] && continue                  # 別把 README 搬進去
+  cp -- "./$f" "$FOLDER/"                             # './' 讓 - 開頭檔名不被當成選項
+done
+git add -A && git commit -m "..." && git push
+```
+
+- 驗證時路徑要含資料夾：`gh api repos/re4388/audio_transcript_0/contents/<FOLDER>/<id>.md --jq .name`。
+- 少數情況要「接續」已推過的同一批（追加檔案到既有資料夾），才手動 `cp -- ./<id>.* "<既有 FOLDER>/"`；否則每次新批次都建新資料夾。
 
 **檔名規則**：
 - YouTube 影片：使用 video ID（如 `CVx0DyJYP5k`）
 - 一般音訊檔案：保留原檔名（如 `1150709_Serena_eng_transcript.txt`）
 - 本地暫存：`yt_transcript_<video_id>.txt` / `.md`
-- 推送到 GitHub 後：重命名為 `<video_id>.txt` / `<video_id>.md`
+- 推送到 GitHub 後：重命名為 `<video_id>.txt` / `<video_id>.md`（放進上述日期資料夾內）
 
 **Repo 管理陷阱**：
 - **Git Repo 損壞/不存在**：若 `/tmp` 下的 repo 因 session 重啟或系統清理而遺失 `.git` 目錄，`rm -rf` 常會被系統阻擋 (BLOCKED)。
@@ -152,6 +211,11 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
   ```bash
   cd /tmp && git clone https://github.com/re4388/audio_transcript_0.git audio_transcript_0_vN
   ```
+
+### 推送與批次陷阱
+- **推送後務必驗證遠端**（別只看 `git commit` 訊息）：`git ls-remote https://github.com/re4388/audio_transcript_0.git HEAD`，或 `gh api repos/re4388/audio_transcript_0/contents/<folder>/<id>.md --jq .name` 抽查。曾經 `cp *.txt *.md` 靜默失敗，導致「nothing to commit」卻誤以為已推送。
+- **檔名以 `-` 開頭**（如 `-_adjFzTuyc`）：`cp *.txt`、`ls` 會把它當成選項 → 用 `cp ./-file` 或逐檔迴圈。
+- **批次下載可能靜默漏檔**：下載後比對 id 清單（`comm -23 want got`），缺的逐支重抓。
 
 ### 8. 批次處理 (Multiple Videos)
 
@@ -174,6 +238,35 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 
 同時在回覆中提供完整的處理摘要表格：影片ID、標題、時長、轉錄耗時、字數。
 
+### 10. 加到個人 Apple Notes（每支影片必做，最終步驟）
+
+每支影片處理完成後，除了推送 GitHub，**最後一步必須**為該支影片新增一則 Apple 筆記。
+
+規則：**一支影片一則筆記**。
+
+- **放置位置**：iCloud 帳號 → 資料夾「YT 稍後觀看」（不存在時腳本會自動建立）。
+- **標題**：用 `<id>.md` 的第一行 `# <影片標題>`。Notes 會把內文第一行當筆記標題，所以不必另外設定標題。
+- **字級**：內文 24px、段落標題 26px、文章大標 28px。
+  - ⚠️ Notes 會把寫入的 HTML 字級縮成約 2/3，而且有 9px 下限。腳本會先乘 1.5 補回來，否則字會縮到 9px 變得超小。
+- **去重**：同標題筆記已存在就跳過。要覆蓋更新時加 `--force`。
+
+指令：
+
+```bash
+python3 ~/.agents/skills/yt-no-subtitle/scripts/md_to_apple_note.py <id>.md
+# 覆蓋更新：
+python3 ~/.agents/skills/yt-no-subtitle/scripts/md_to_apple_note.py <id>.md --force
+```
+
+- 腳本會自動完成：md → HTML、建立資料夾、比對標題去重、建立筆記。
+- **批次多支時**：每支各跑一次。
+- **若暫存已清理、本機已無 `<id>.md`**：先從 GitHub 取回，再跑腳本：
+  ```bash
+  P=$(gh api "repos/re4388/audio_transcript_0/git/trees/HEAD?recursive=1" \
+        --jq ".tree[].path | select(endswith(\"/<id>.md\"))")
+  gh api "repos/re4388/audio_transcript_0/contents/$P" --jq .content | tr -d '\n' | base64 -d > <id>.md
+  ```
+
 ## 陷阱 / 已知問題
 
 ### 語言假設錯誤
@@ -181,6 +274,8 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 - mlx-whisper 支援 auto-detect（omit `language` 參數），但指定正確語言可大幅提升準確率。
 - 若轉錄出來全是錯字或錯誤語言 → 立即用正確語言重跑，不要等使用者糾正。
 - 中英夾雜的錄音：指定主要語言（如 `"zh"`）即可，仍會輸出英文部分。
+- **反向警告**：英文影片務必用 `language="en"`。若把英文音訊硬指定 `zh`，會輸出整段亂碼 → 立刻改用正確語言重跑（實例：f1gkkzHZxNg、ITU1TpTwe8w）。
+- 轉錄前可先 `ffprobe` 比對音訊時長；若逐字稿明顯偏短，切一段重轉確認，避免「內容只講到一半」被漏掉。
 
 ### 9Router Whisper Quota 耗盡
 - 錯誤訊息：`[openai/whisper-1] You exceeded your current quota`
@@ -220,6 +315,7 @@ whisper /path/to/audio.m4a --language zh --model base --output_dir /path/to/outp
 
 ## 注意事項
 - 轉錄完成後，在對話中呈現結構化摘要（含時長、字數、轉錄方式、儲存位置）
-- .txt 與 .md 都推送至 GitHub repo `re4388/audio_transcript_0`
+- .txt 與 .md 都推送至 GitHub repo `re4388/audio_transcript_0`，**且必須放進當天日期資料夾 `<YYYYMMDD>_<N>/`（不可散在 repo 根目錄）**
+- 每支影片最終步驟：用 `scripts/md_to_apple_note.py` 為該支影片新增一則 Apple 筆記（一支一則，放 iCloud 資料夾「YT 稍後觀看」；詳見步驟 10）
 - 清理暫存檔案（`.m4a`、`.py` 腳本）直接刪除即可，不必先取得使用者確認
 - 原始音訊檔案 (.m4a/.mp3) 保留與否由使用者決定
