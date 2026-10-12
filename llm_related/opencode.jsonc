@@ -1,8 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": [
-    "AGENTS.local.md"
-  ],
   "model": "9router/9routerDsV4",
   "provider": {
     "9router": {
