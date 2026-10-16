@@ -73,6 +73,7 @@ def clean_vtt(path):
 
 ### YouTube 音訊下載（無字幕時）
 `yt-dlp -x --audio-format m4a -o "/path/to/%(id)s.%(ext)s" "URL"`
+- **若報 403**：這是 SABR，別重試一般格式。改用 `-f 18 --no-check-certificate` 抓 mp4 再抽音訊。詳見下方「YouTube 下載 403 Forbidden（SABR）」。
 
 ### Bilibili (及受限平台)
 - **必須帶 Cookies**：使用 `--cookies-from-browser chrome` (或其他瀏覽器) 繞過 412 錯誤與 480P 限制。
@@ -289,14 +290,18 @@ python3 ~/.agents/skills/yt-no-subtitle/scripts/md_to_apple_note.py <id>.md --fo
 - **清理限制**：`rm` 指令在 `/Users/re4388/workspace` 或 `/tmp` 下執行時，若涉及多個檔案或特定路徑，偶爾會被 `BLOCKED`。
 - **策略**：轉錄腳本末尾應包含 `os.remove(status_file)`。其餘暫存檔直接 `rm -f`；若清理失敗，告知並保持原樣，不必為了清理而反覆嘗試。
 
-### YouTube 下載 403 Forbidden
-- **症狀**：`yt-dlp -f 18` 下載時報 `HTTP Error 403: Forbidden`
-- **原因**：YouTube SABR-only streaming experiment 或 SSL 驗證問題
-- **解法**：加 `--no-check-certificate` 參數
+### YouTube 下載 403 Forbidden（SABR）
+- **SABR 是什麼**：Server-side Adaptive Bitrate，YouTube 自研的串流協定，2025 起取代 DASH。它把音訊與影片包在單一 UMP 格式回應裡，並用播放時間（不是 byte range）索取片段，所以只有 YouTube 自家播放器吃得下。`web` client 現在常只吐 SABR-only 格式 → 用一般 https 格式抓就 403。
+- **症狀**：`-x`／`bestaudio`／`-f 251` 等一般格式下載時報 `HTTP Error 403: Forbidden`（取字幕仍正常）。
+- **實測可行解法（2026-10 驗證，10 支影片 3 支中招，一次成功）**：
   ```bash
-  yt-dlp --cookies-from-browser firefox -f 18 --no-check-certificate -o "output.%(ext)s" "URL"
+  # 抓中低畫質漸進式 mp4（含音軌），再抽音訊
+  yt-dlp --cookies-from-browser firefox --no-check-certificate -f 18 -o "audio/%(id)s.%(ext)s" "$URL"
+  ffmpeg -y -i "audio/<id>.mp4" -vn -ac 1 -ar 16000 "audio/<id>.m4a"
   ```
-- 若仍失敗，嘗試 `--list-formats` 確認可用格式，或改用 `bestaudio[ext=m4a]/bestaudio`
+  重點：`-f 18`（progressive 360p，https 直鏈，非 SABR）＋ `--no-check-certificate`。mlx-whisper 也可直接吃 `.mp4`。
+- **不要浪費時間的方向**：`-x`、`bestaudio[ext=m4a]/bestaudio`、`player_client=tv,web_safari`（會回 "Requested format is not available"）、以及重試同一條一般格式。
+- 若 `-f 18` 也失敗，再 `--list-formats` 挑 `https` 直鏈的 progressive 格式，或更新 yt-dlp（SABR 支援仍在演進）。
 
 ### 本機轉錄限制（實測結論，M2 Air / mlx-whisper 0.4.3 / faster-whisper 1.2.1）
 - **mlx 甜蜜點 = base/small**。`medium`/`large-v3` 在此硬體 memory-bandwidth bound，慢於 real-time（12.5min 檔 medium 花 865s），勿用。
