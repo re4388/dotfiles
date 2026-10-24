@@ -51,31 +51,30 @@ Run `agent-browser skills list` to see everything available on the installed ver
 
 The dashboard runs independently of browser sessions on port 4848 and can also be opened through a proxied or forwarded URL such as `https://dashboard.agent-browser.localhost`. Agents should stay on the dashboard origin: session tabs, status, and stream traffic are proxied internally, so session ports do not need to be exposed.
 
-## Local env: re4388 Chrome (macOS, this machine)
+## Local env: this machine (macOS)
 
-Drive YouTube/Google as **re4388@gmail.com** (= Chrome `Profile 12`). One recipe — no alternatives to weigh:
+用 `abg` 取代 `agent-browser`。它先確認 Chrome 在跑，再綁到 port 9333。
 
 ```bash
-# one-time: APFS copy-on-write clone of the real Chrome data dir (~13s, no real disk cost)
-cp -Rc "$HOME/Library/Application Support/Google/Chrome" "$HOME/.agent-browser/chrome-main"
-
-# start the debug Chrome — real binary, non-default data dir; leave it running
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --user-data-dir="$HOME/.agent-browser/chrome-main" \
-  --profile-directory="Profile 12" \
-  --remote-debugging-port=9222 --no-first-run --headless=new &
-
-# every time — instant, logged in as re4388
-agent-browser --session yt --auto-connect open https://youtube.com
-agent-browser --session yt screenshot ~/downloads/out.png
+abg open https://www.youtube.com
+abg snapshot -i
+abg screenshot ~/downloads/out.png
 ```
 
-Why this exact shape (don't relearn):
-- **Always `--session <name>`** — the default session is shared and holds other tasks' tabs; once `open` reported YouTube while `get url`/`screenshot` gave a stale GitHub tab.
-- **Real Chrome binary + non-default `--user-data-dir`** — bundled Chrome for Testing can't decrypt the profile's Keychain cookies, and Chrome 136+ (153 here) blocks `--remote-debugging-port` on the default dir.
-- **Don't use `--profile`** — it copies the whole multi-GB profile to a temp dir on *every* launch (~30–45 s). **Don't use `--state`** — `state save` drops the auth cookies (`SID`, `SAPISID`, `__Secure-*PSID`), so it's always signed out.
+設定：
+- `chrome-agent` 啟動 Chrome。資料夾是 `~/.chrome-agent`，除錯埠是 9333。
+- 登入態存在 `~/.chrome-agent`。每個網站只登入一次。
+- 這個資料夾不是預設 profile。Chrome 不會問「Allow remote debugging?」。
+- 單獨用 `agent-browser` 會開一個新的未登入瀏覽器。不要用。
 
-Caveat: the clone is a snapshot; re-clone (restart the debug Chrome) if logins/cookies change.
+不要用 `--auto-connect`。
+它會接到你的主 Chrome。主 Chrome 的 9222 開了 `chrome://inspect` 除錯。
+每個新連線都跳一次授權視窗。這就是彈窗的來源。
 
-Verify before trusting a login-sensitive screenshot:
-`agent-browser --session <s> snapshot -i | grep -E "帳戶選單|Sign in|登入"` → `帳戶選單` = logged in, `登入`/`Sign in` = NOT.
+不要用 `--profile`。每次啟動都複製整個 profile，要 30 到 45 秒。
+不要用 `--state`。`state save` 會丟掉 `SID`、`SAPISID`、`__Secure-*PSID`，結果永遠是登出。
+
+舊的 `~/.agent-browser/chrome-main` 複本已刪除。不要再建立，它會變成過期快照。
+
+信任任何登入相關的畫面之前，先驗證：
+`abg snapshot -i | grep -E "帳戶選單|Sign in|登入"` → `帳戶選單` 代表已登入，`登入`/`Sign in` 代表沒登入。
